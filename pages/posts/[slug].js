@@ -12,13 +12,7 @@ import PostTitle from "../../components/post-title";
 import Head from "next/head";
 import { CMS_NAME } from "../../lib/constants";
 import Tags from "../../components/tags";
-// <PostHeader
-//   title={post.title}
-//   coverImage={post.featuredImage}
-//   date={post.date}
-//   author={post.author}
-//   categories={post.categories}
-// />
+
 export default function Post({ post, posts, preview }) {
   const router = useRouter();
   const morePosts = posts?.edges;
@@ -40,15 +34,22 @@ export default function Post({ post, posts, preview }) {
                 <title>
                   {post.title} | Next.js Blog Example with {CMS_NAME}
                 </title>
-                {/**
+
                 <meta
                   property="og:image"
                   content={post.featuredImage?.node.sourceUrl}
                 />
-        */}
               </Head>
 
-              {/** <PostBody content={post.content} /> */}
+              <PostHeader
+                title={post.title}
+                coverImage={post.featuredImage.node}
+                date={post.date}
+                author={post.author}
+                categories={post.categories}
+              />
+
+              <PostBody content={post.content} />
               <footer>
                 {post.tags.edges.length > 0 && <Tags tags={post.tags} />}
               </footer>
