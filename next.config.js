@@ -1,8 +1,13 @@
 module.exports = {
   images: {
     domains: [
-      // "[yourapp].wpengine.com" (Update this to be your Wordpress application name in order to load images connected to your posts)
-      'secure.gravatar.com',
+      "cavalieredev.wpengine.com",
+      "cavstaging.wpengine.com",
+      "mikecavaliere.com",
+      "mikecavaliere.wpengine.com",
+      "mikecavaliere.wpenginepowered.com",
+      "secure.gravatar.com",
+      "www.mikecavaliere.com",
     ],
   },
-}
+};
