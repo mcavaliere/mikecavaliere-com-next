@@ -1,13 +1,12 @@
 import {
-  Box,
   Button,
   Center,
+  Flex,
   Heading,
-  Link as ChakraLink,
   Text,
-  Stack,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { FaArrowRight } from "react-icons/fa";
 import NextLink from "next/link";
 
 export type CardProps = {
@@ -15,13 +14,18 @@ export type CardProps = {
   title: string;
   body: string;
   buttonText: string;
+  emoji?: string;
 };
 
-export function Card({ href, title, body, buttonText }: CardProps) {
+export function Card({ emoji, href, title, body, buttonText }: CardProps) {
   return (
     <NextLink href={href}>
-      <Center py={6} cursor="pointer">
-        <Box
+      <Center py={6} cursor="pointer" height="100%">
+        <Flex
+          direction="column"
+          justify="space-between"
+          flex={1}
+          height="100%"
           maxW={"445px"}
           w={"full"}
           bg={useColorModeValue("white", "gray.900")}
@@ -30,33 +34,22 @@ export function Card({ href, title, body, buttonText }: CardProps) {
           p={6}
           overflow={"hidden"}
         >
-          {/* <Box
-          h={"210px"}
-          bg={"gray.100"}
-          mt={-6}
-          mx={-6}
-          mb={6}
-          pos={"relative"}
-        >
-          <Image
-            src={
-              "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-            }
-            layout={"fill"}
-          />
-        </Box> */}
-          <Stack>
+          <Flex direction="column">
             <Heading
               color={useColorModeValue("gray.700", "white")}
               fontSize="2xl"
               fontFamily="body"
+              mb={2}
             >
+              {emoji ? `${emoji} ` : null}
               {title}
             </Heading>
             <Text color="gray.500">{body}</Text>
-            <Button>{buttonText}</Button>
-          </Stack>
-        </Box>
+          </Flex>
+          <Button mt={4} rightIcon={<FaArrowRight />}>
+            {buttonText}
+          </Button>
+        </Flex>
       </Center>
     </NextLink>
   );
