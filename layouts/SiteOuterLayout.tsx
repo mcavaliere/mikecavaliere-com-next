@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 // import { Footer } from 'components/Footer';
-// import { Navbar } from 'components/Navbar';
+import { Navbar } from "components/Navbar";
 // import { HeadContent } from 'components/HeadContent';
 
 export type SiteOuterLayoutProps = {
@@ -10,7 +10,8 @@ export type SiteOuterLayoutProps = {
 export const SiteOuterLayout = ({ children }: SiteOuterLayoutProps) => (
   <>
     {/* <HeadContent />
-    <Navbar /> */}
+     */}
+    <Navbar />
     {children}
     {/* <Footer /> */}
   </>

@@ -1,4 +1,5 @@
 import { Container } from "@chakra-ui/react";
+import { getLayout as getSiteLayout } from "layouts/SiteOuterLayout";
 
 export const HomePageLayout = ({ children }) => (
   <Container
@@ -16,4 +17,5 @@ export const HomePageLayout = ({ children }) => (
   </Container>
 );
 
-export const getLayout = (page) => <HomePageLayout>{page}</HomePageLayout>;
+export const getLayout = (page) =>
+  getSiteLayout(<HomePageLayout>{page}</HomePageLayout>);

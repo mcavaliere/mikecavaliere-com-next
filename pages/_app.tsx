@@ -5,7 +5,7 @@ import { AppPropsWithLayout } from "lib/types";
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   // Grab the layout if set; otherwise default to the default layout.
-  const getLayout = Component.getLayout || getSiteOuterLayout;
+  const getLayout = Component.getLayout || ((page) => page);
 
   return (
     <ChakraProvider theme={theme}>
