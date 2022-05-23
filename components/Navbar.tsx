@@ -2,16 +2,16 @@ import { ReactNode } from "react";
 import {
   Box,
   Flex,
-  Avatar,
   HStack,
   Link,
   IconButton,
   Button,
   useDisclosure,
   useColorModeValue,
+  useColorMode,
   Stack,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { FaBook } from "react-icons/fa";
 
 const Links = ["Home", "About", "Articles"];
@@ -32,6 +32,7 @@ const NavLink = ({ children }: { children: ReactNode }) => (
 );
 
 export function Navbar() {
+  const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -50,20 +51,23 @@ export function Navbar() {
               {Links.map((link) => (
                 <NavLink key={link}>{link}</NavLink>
               ))}
+              <Button
+                as="a"
+                variant="solid"
+                colorScheme="teal"
+                size="sm"
+                mr={4}
+                leftIcon={<FaBook />}
+                href="https://www.cutintothejamstack.com"
+                target="_blank"
+              >
+                My Book
+              </Button>
             </HStack>
           </HStack>
           <Flex alignItems="center">
-            <Button
-              as="a"
-              variant="solid"
-              colorScheme="teal"
-              size="sm"
-              mr={4}
-              leftIcon={<FaBook />}
-              href="https://www.cutintothejamstack.com"
-              target="_blank"
-            >
-              My Book
+            <Button onClick={toggleColorMode}>
+              {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
             </Button>
           </Flex>
         </Flex>
