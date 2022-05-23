@@ -1,4 +1,13 @@
-import { Center, Heading, Box, Flex, Text } from "@chakra-ui/react";
+import {
+  Heading,
+  HStack,
+  Box,
+  Button,
+  ButtonGroup,
+  IconButton,
+  Flex,
+} from "@chakra-ui/react";
+import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 import Image from "next/image";
 
 export const HERO_AVATAR_SIZES = {
@@ -30,6 +39,7 @@ export function HomeHero() {
         direction="column"
         justify="center"
         width={{ base: "100%", md: "50%" }}
+        textAlign={{ base: "center", md: "left" }}
       >
         <Heading>Hi, I'm Mike Cavaliere.</Heading>
         <Heading as="h2" size="md" fontWeight="normal">
@@ -37,6 +47,20 @@ export function HomeHero() {
           <strong>software engineer</strong>, <strong>presenter</strong>,{" "}
           <strong>author</strong> and <strong>brain hacker</strong>.
         </Heading>
+
+        <HStack marginY={10} marginX="auto">
+          <ButtonGroup size="sm">
+            <IconButton
+              aria-label="Follow me on Twitter"
+              icon={<FaTwitter />}
+            />
+            <IconButton
+              aria-label="Follow me on LinkedImn"
+              icon={<FaLinkedin />}
+            />
+            <IconButton aria-label="Follow me on GitHub" icon={<FaGithub />} />
+          </ButtonGroup>
+        </HStack>
       </Flex>
     </Flex>
   );

@@ -18,7 +18,6 @@ export default function IndexPage({
   allPosts: { edges },
   preview,
 }: IndexPageProps) {
-  const heroPost = edges[0]?.node;
   const morePosts = edges.slice(1);
 
   return (
