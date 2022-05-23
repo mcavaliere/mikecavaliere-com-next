@@ -32,6 +32,7 @@ export function HomeHero() {
             layout="fill"
             objectFit="cover"
             objectPosition="center"
+            priority
           />
         </Box>
       </Flex>
