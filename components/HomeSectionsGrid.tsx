@@ -1,5 +1,5 @@
 import { SimpleGrid } from "@chakra-ui/react";
-import { Card } from "components/Card";
+import { HomeSectionCard } from "components/HomeSectionCard";
 
 const GRID_ITEMS = [
   {
@@ -29,7 +29,7 @@ export function HomeSectionsGrid() {
   return (
     <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
       {GRID_ITEMS.map(({ emoji, href, title, body, buttonText }) => (
-        <Card
+        <HomeSectionCard
           key={title}
           emoji={emoji}
           href={href}

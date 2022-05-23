@@ -17,7 +17,13 @@ export type CardProps = {
   emoji?: string;
 };
 
-export function Card({ emoji, href, title, body, buttonText }: CardProps) {
+export function HomeSectionCard({
+  emoji,
+  href,
+  title,
+  body,
+  buttonText,
+}: CardProps) {
   return (
     <NextLink href={href}>
       <Center py={6} cursor="pointer" height="100%">

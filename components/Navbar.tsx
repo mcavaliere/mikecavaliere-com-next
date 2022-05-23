@@ -13,7 +13,9 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { FaBook } from "react-icons/fa";
+import { theme } from "lib/theme";
 
+const navbarColors = theme.colors.navbar;
 const Links = ["Home", "About", "Articles"];
 
 const NavLink = ({ children }: { children: ReactNode }) => (
@@ -37,7 +39,7 @@ export function Navbar() {
 
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+      <Box bg="transparent" px={4}>
         <Flex h={16} alignItems="center" justifyContent="space-between">
           <IconButton
             size="md"
