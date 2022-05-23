@@ -51,14 +51,26 @@ export function HomeHero() {
         <HStack marginY={10} marginX="auto">
           <ButtonGroup size="sm">
             <IconButton
+              as="a"
               aria-label="Follow me on Twitter"
               icon={<FaTwitter />}
+              href="https://twitter.com/mcavaliere"
+              target="blank"
             />
             <IconButton
+              as="a"
               aria-label="Follow me on LinkedImn"
               icon={<FaLinkedin />}
+              href="https://www.linkedin.com/in/mikecavaliere"
+              target="blank"
             />
-            <IconButton aria-label="Follow me on GitHub" icon={<FaGithub />} />
+            <IconButton
+              as="a"
+              aria-label="Follow me on GitHub"
+              icon={<FaGithub />}
+              href="https://github.com/mcavaliere"
+              target="blank"
+            />
           </ButtonGroup>
         </HStack>
       </Flex>
