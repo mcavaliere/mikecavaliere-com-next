@@ -42,7 +42,7 @@ export default function IndexPage({
         />
       )} */}
 
-      {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+      {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
     </>
   );
 }
