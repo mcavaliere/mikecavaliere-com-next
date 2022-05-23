@@ -1,14 +1,16 @@
-// 1. Import `extendTheme`
 import { extendTheme } from "@chakra-ui/react";
+import { mode } from "@chakra-ui/theme-tools";
 
-// 2. Call `extendTheme` and pass your custom values
 export const theme = extendTheme({
   styles: {
-    global: {
+    global: (props) => ({
       "*": {
         transition: "0.3s all ease-in-out",
       },
-    },
+      body: {
+        bg: mode("white", "gray.900")(props),
+      },
+    }),
   },
   colors: {
     gray: {
