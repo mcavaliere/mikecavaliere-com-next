@@ -2,6 +2,7 @@ import Head from "next/head";
 import Container from "@chakra-ui/react";
 import MoreStories from "../components/more-stories";
 import HeroPost from "../components/hero-post";
+import { HomeHero } from "components/HomeHero";
 import Intro from "../components/intro";
 import { NextPageWithLayout } from "lib/types";
 import { getAllPostsForHome } from "../lib/api";
@@ -25,6 +26,8 @@ export default function IndexPage({
       <Head>
         <title>Next.js Blog Example with {CMS_NAME}</title>
       </Head>
+
+      <HomeHero />
 
       <Intro />
 
