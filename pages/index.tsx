@@ -28,7 +28,7 @@ export default function IndexPage({
 
       <Intro />
 
-      {heroPost && (
+      {/* {heroPost && (
         <HeroPost
           title={heroPost.title}
           coverImage={heroPost.featuredImage.node}
@@ -37,7 +37,7 @@ export default function IndexPage({
           slug={heroPost.slug}
           excerpt={heroPost.excerpt}
         />
-      )}
+      )} */}
 
       {morePosts.length > 0 && <MoreStories posts={morePosts} />}
     </>

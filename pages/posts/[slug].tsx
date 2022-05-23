@@ -47,6 +47,7 @@ export default function Post({ post, posts, preview }) {
                 date={post.date}
                 author={post.author}
                 categories={post.categories}
+                slug={post.slug}
               />
 
               <PostBody content={post.content} />

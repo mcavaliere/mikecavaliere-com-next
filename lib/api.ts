@@ -65,6 +65,7 @@ export async function getAllPostsForHome(preview) {
       posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
           node {
+            id
             title
             excerpt
             slug
@@ -120,6 +121,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
       }
     }
     fragment PostFields on Post {
+      id
       title
       excerpt
       slug
