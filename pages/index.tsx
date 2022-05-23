@@ -29,7 +29,7 @@ export default function IndexPage({
 
       <HomeHero />
 
-      <Intro />
+      {/* <Intro /> */}
 
       {/* {heroPost && (
         <HeroPost

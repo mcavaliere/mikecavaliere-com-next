@@ -26,8 +26,17 @@ export function HomeHero() {
           />
         </Box>
       </Flex>
-      <Flex bg="tomato" width={{ base: "100%", md: "50%" }}>
-        text
+      <Flex
+        direction="column"
+        justify="center"
+        width={{ base: "100%", md: "50%" }}
+      >
+        <Heading>Hi, I'm Mike Cavaliere.</Heading>
+        <Heading as="h2" size="md" fontWeight="normal">
+          I'm a <strong>technical strategist</strong>,{" "}
+          <strong>software engineer</strong>, <strong>presenter</strong>,{" "}
+          <strong>author</strong> and <strong>brain hacker</strong>.
+        </Heading>
       </Flex>
     </Flex>
   );
