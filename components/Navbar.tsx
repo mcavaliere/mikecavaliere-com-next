@@ -7,11 +7,6 @@ import {
   Link,
   IconButton,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
   useDisclosure,
   useColorModeValue,
   Stack,
@@ -19,13 +14,13 @@ import {
 import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
 import { FaBook } from "react-icons/fa";
 
-const Links = ["Home", "About", "Writing"];
+const Links = ["Home", "About", "Articles"];
 
 const NavLink = ({ children }: { children: ReactNode }) => (
   <Link
     px={2}
     py={1}
-    rounded={"md"}
+    rounded="md"
     _hover={{
       textDecoration: "none",
       bg: useColorModeValue("gray.200", "gray.700"),
@@ -42,32 +37,31 @@ export function Navbar() {
   return (
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+        <Flex h={16} alignItems="center" justifyContent="space-between">
           <IconButton
-            size={"md"}
+            size="md"
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label={"Open Menu"}
+            aria-label="Open Menu"
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
           />
-          <HStack spacing={8} alignItems={"center"}>
-            <HStack
-              as={"nav"}
-              spacing={4}
-              display={{ base: "none", md: "flex" }}
-            >
+          <HStack spacing={8} alignItems="center">
+            <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }}>
               {Links.map((link) => (
                 <NavLink key={link}>{link}</NavLink>
               ))}
             </HStack>
           </HStack>
-          <Flex alignItems={"center"}>
+          <Flex alignItems="center">
             <Button
-              variant={"solid"}
-              colorScheme={"teal"}
-              size={"sm"}
+              as="a"
+              variant="solid"
+              colorScheme="teal"
+              size="sm"
               mr={4}
               leftIcon={<FaBook />}
+              href="https://www.cutintothejamstack.com"
+              target="_blank"
             >
               My Book
             </Button>
@@ -76,7 +70,7 @@ export function Navbar() {
 
         {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>
-            <Stack as={"nav"} spacing={4}>
+            <Stack as="nav" spacing={4}>
               {Links.map((link) => (
                 <NavLink key={link}>{link}</NavLink>
               ))}
