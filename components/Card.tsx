@@ -72,8 +72,6 @@ export function CardContainer({ children, href }) {
     </Flex>
   );
 
-  console.log(`---------------- href: `, href);
-
   if (href) {
     const linkContents = (
       <Center py={6} cursor="pointer" height="100%">

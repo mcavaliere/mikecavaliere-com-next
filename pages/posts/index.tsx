@@ -5,6 +5,7 @@ import { getAllPostsForHome } from "lib/api";
 import { getLayout } from "layouts/MaxWidthContainerLayout";
 import { CardGrid } from "components/CardGrid";
 import { ArticleCategoryCard } from "components/ArticleCategoryCard";
+import { Heading1, Heading2 } from "components/Headings";
 
 export type PostsIndexPageProps = NextPageWithLayout & {
   allPosts: Record<string, any>;
@@ -44,11 +45,11 @@ export default function PostsIndexPage({
   return (
     <>
       <Box mb={10}>
-        <Heading as="h1">My Articles</Heading>
-        <Heading as="h2" size="lg" fontWeight="normal">
+        <Heading1>My Articles</Heading1>
+        <Heading2>
           Over the years I've written about software, tech careers, and brain
           improvement.
-        </Heading>
+        </Heading2>
         <CardGrid>
           {ARTICLE_INDEX_CARDS.map(
             ({ title, description, ctaHref, ctaText }) => (

@@ -8,7 +8,7 @@ export const NAVBAR_LINKS = [
   { slug: "home", title: "Home", href: "/" },
   { slug: "about", title: "About", href: "/about" },
   { slug: "articles", title: "Articles", href: "/posts" },
-  { slug: "talks", title: "Talks", href: "/talks" },
+  // { slug: "talks", title: "Talks", href: "/talks" },
 ];
 
 export const NAVBAR_LINKS_MAP = NAVBAR_LINKS.reduce((acc, curr) => {

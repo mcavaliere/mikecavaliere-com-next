@@ -17,13 +17,13 @@ const GRID_ITEMS = [
     buttonText: "Cut Into The Jamstack",
     emoji: "📘",
   },
-  {
-    title: "Talks",
-    body: "Presentations I've given at conferences, meetups and other events.",
-    href: NAVBAR_LINKS_MAP["talks"].href,
-    buttonText: "My Talks",
-    emoji: "🎙",
-  },
+  // {
+  //   title: "Talks",
+  //   body: "Presentations I've given at conferences, meetups and other events.",
+  //   href: NAVBAR_LINKS_MAP["talks"].href,
+  //   buttonText: "My Talks",
+  //   emoji: "🎙",
+  // },
 ];
 
 export function HomeSectionsGrid() {
