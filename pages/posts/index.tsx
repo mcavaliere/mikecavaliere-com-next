@@ -10,7 +10,6 @@ export type PostsIndexPageProps = NextPageWithLayout & {
 export default function PostsIndexPage({
   allPosts: { edges },
 }: PostsIndexPageProps) {
-  console.log(`---------------- edges: `, edges);
   const morePosts = edges;
   return <MoreStories posts={morePosts} />;
 }

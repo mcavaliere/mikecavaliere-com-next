@@ -1,11 +1,12 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import { HomeSectionCard } from "components/HomeSectionCard";
+import { NAVBAR_LINKS_MAP } from "lib/constants";
 
 const GRID_ITEMS = [
   {
     title: "Articles",
     body: "Writing I've done on full-stack web development, technology careers, and brain improvement.",
-    href: "/posts",
+    href: NAVBAR_LINKS_MAP["articles"].href,
     buttonText: "My Articles",
     emoji: "🖊",
   },
@@ -19,7 +20,7 @@ const GRID_ITEMS = [
   {
     title: "Talks",
     body: "Presentations I've given at conferences, meetups and other events.",
-    href: "/talks",
+    href: NAVBAR_LINKS_MAP["talks"].href,
     buttonText: "My Talks",
     emoji: "🎙",
   },

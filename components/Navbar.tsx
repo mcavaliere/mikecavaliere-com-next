@@ -3,7 +3,7 @@ import {
   Box,
   Flex,
   HStack,
-  Link,
+  Link as ChakraLink,
   IconButton,
   Button,
   useDisclosure,
@@ -12,25 +12,33 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import NextLink from "next/link";
 import { FaBook } from "react-icons/fa";
 import { theme } from "lib/theme";
+import { NAVBAR_LINKS } from "lib/constants";
 
 const navbarColors = theme.colors.navbar;
-const Links = ["Home", "About", "Articles"];
 
-const NavLink = ({ children }: { children: ReactNode }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded="md"
-    _hover={{
-      textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
-    }}
-    href={"#"}
-  >
-    {children}
-  </Link>
+export type NavLinkProps = {
+  children: ReactNode;
+  href: string;
+};
+
+export const NavLink = ({ href, children }: NavLinkProps) => (
+  <NextLink href={href} passHref>
+    <ChakraLink
+      px={2}
+      py={1}
+      rounded="md"
+      _hover={{
+        textDecoration: "none",
+        bg: useColorModeValue("gray.200", "gray.700"),
+      }}
+      href={"#"}
+    >
+      {children}
+    </ChakraLink>
+  </NextLink>
 );
 
 export function Navbar() {
@@ -50,8 +58,10 @@ export function Navbar() {
           />
           <HStack spacing={8} alignItems="center">
             <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+              {NAVBAR_LINKS.map(({ title, href }) => (
+                <NavLink key={title} href={href}>
+                  {title}
+                </NavLink>
               ))}
               <Button
                 as="a"
@@ -77,8 +87,10 @@ export function Navbar() {
         {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>
             <Stack as="nav" spacing={4}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+              {NAVBAR_LINKS.map(({ title, href }) => (
+                <NavLink key={title} href={href}>
+                  {title}
+                </NavLink>
               ))}
             </Stack>
           </Box>
