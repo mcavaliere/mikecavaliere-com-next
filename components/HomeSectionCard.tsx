@@ -1,14 +1,7 @@
-import {
-  Button,
-  Center,
-  Flex,
-  Heading,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Button, Center, Flex, Text } from "@chakra-ui/react";
 import { FaArrowRight } from "react-icons/fa";
 import NextLink from "next/link";
-import { CardContainer } from "components/Card";
+import { CardContainer, CardDescription, CardHeading } from "components/Card";
 
 export type HomeSectionCardProps = {
   href: string;
@@ -30,16 +23,11 @@ export function HomeSectionCard({
       <Center py={6} cursor="pointer" height="100%">
         <CardContainer>
           <Flex direction="column">
-            <Heading
-              color={useColorModeValue("gray.700", "white")}
-              fontSize="2xl"
-              fontFamily="body"
-              mb={2}
-            >
+            <CardHeading>
               {emoji ? `${emoji} ` : null}
               {title}
-            </Heading>
-            <Text color="gray.500">{body}</Text>
+            </CardHeading>
+            <CardDescription>{body}</CardDescription>
           </Flex>
           <Button mt={4} rightIcon={<FaArrowRight />}>
             {buttonText}

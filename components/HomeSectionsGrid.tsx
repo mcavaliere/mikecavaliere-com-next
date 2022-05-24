@@ -1,6 +1,6 @@
-import { SimpleGrid } from "@chakra-ui/react";
 import { HomeSectionCard } from "components/HomeSectionCard";
 import { NAVBAR_LINKS_MAP } from "lib/constants";
+import { CardGrid } from "./CardGrid";
 
 const GRID_ITEMS = [
   {
@@ -28,7 +28,7 @@ const GRID_ITEMS = [
 
 export function HomeSectionsGrid() {
   return (
-    <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
+    <CardGrid>
       {GRID_ITEMS.map(({ emoji, href, title, body, buttonText }) => (
         <HomeSectionCard
           key={title}
@@ -39,6 +39,6 @@ export function HomeSectionsGrid() {
           buttonText={buttonText}
         />
       ))}
-    </SimpleGrid>
+    </CardGrid>
   );
 }

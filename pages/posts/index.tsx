@@ -1,17 +1,57 @@
+import { Box, Heading } from "@chakra-ui/react";
 import MoreStories from "components/more-stories";
 import { NextPageWithLayout } from "lib/types";
 import { getAllPostsForHome } from "lib/api";
 import { getLayout } from "layouts/MaxWidthContainerLayout";
+import { CardGrid } from "components/CardGrid";
+import { ArticleCategoryCard } from "components/ArticleCategoryCard";
 
 export type PostsIndexPageProps = NextPageWithLayout & {
   allPosts: Record<string, any>;
 };
 
+export const ARTICLE_INDEX_CARDS = [
+  {
+    title: "🧠 Brain Improvement",
+    description:
+      "My articles on brain hacking, and on being a programmer with ADHD live on ADHDTechies.com",
+  },
+  {
+    title: "⚛️ Full-Stack React",
+    description:
+      "I write about React, Next.js and other full-stack Jamstack topics at cutintothejamstack.com.",
+  },
+  {
+    title: "Tech Strategy",
+    description: "I've written about various tech topics on the Echobind Blog.",
+  },
+];
+
 export default function PostsIndexPage({
   allPosts: { edges },
 }: PostsIndexPageProps) {
   const morePosts = edges;
-  return <MoreStories posts={morePosts} />;
+  return (
+    <>
+      <Box mb={10}>
+        <Heading as="h1">My Articles</Heading>
+        <Heading as="h2" size="lg" fontWeight="normal">
+          Over the years I've written about software, tech careers, and brain
+          improvement.
+        </Heading>
+        <CardGrid>
+          {ARTICLE_INDEX_CARDS.map(({ title, description }) => (
+            <ArticleCategoryCard
+              key={title}
+              title={title}
+              description={description}
+            />
+          ))}
+        </CardGrid>
+      </Box>
+      <MoreStories posts={morePosts} />
+    </>
+  );
 }
 
 PostsIndexPage.getLayout = getLayout;

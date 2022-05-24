@@ -3,6 +3,7 @@ import Date from "./date";
 import CoverImage from "./cover-image";
 import Link from "next/link";
 import { Heading, Text } from "@chakra-ui/react";
+import { stripHtml } from "lib/utils/stripHtml";
 
 export default function PostPreview({
   title,
@@ -13,7 +14,7 @@ export default function PostPreview({
 }) {
   // Strip HTML to prevent rehydration mismatch errors.
   // See: https://nextjs.org/docs/messages/react-hydration-error
-  const cleanedExcerpt = excerpt.replace(/<[^>]*>?/gm, "");
+  const cleanedExcerpt = stripHtml(excerpt);
 
   return (
     <article>
