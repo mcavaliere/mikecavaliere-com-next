@@ -1,11 +1,15 @@
+import { ReactNode } from "react";
 import {
   Button,
+  Center,
   Flex,
   Heading,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { FaArrowRight } from "react-icons/fa";
+import NextLink from "next/link";
+import { isExternalUrl } from "lib/utils/isExternalUrl";
 
 export function CardHeading({ children }) {
   return (
@@ -25,8 +29,8 @@ export function CardDescription({ children }) {
 }
 
 export type CardCtaProps = {
-  children: React.ReactNode;
-  rightIcon?: React.ReactNode;
+  children: ReactNode;
+  rightIcon?: ReactNode;
 };
 
 export function CardCta({
@@ -40,24 +44,54 @@ export function CardCta({
   );
 }
 
-export function CardContainer({ children }) {
-  return (
+export type CardContainerProps = {
+  children: ReactNode;
+  href?: string;
+};
+
+/**
+ * Card border, optionally linkable.
+ * Detects whether the href is an external URL and adds a target="_blank".
+ */
+export function CardContainer({ children, href }) {
+  const innerContainer = (
     <Flex
-      direction="column"
-      justify="space-between"
-      flex={1}
-      height="100%"
-      maxW="445px"
-      w="full"
       bg={useColorModeValue("white", "gray.900")}
       boxShadow="2xl"
-      rounded="md"
-      p={6}
+      direction="column"
+      flex={1}
+      height="100%"
+      justify="space-between"
+      maxW="445px"
       overflow="hidden"
+      p={6}
+      rounded="md"
+      w="full"
     >
       {children}
     </Flex>
   );
+
+  console.log(`---------------- href: `, href);
+
+  if (href) {
+    const linkContents = (
+      <Center py={6} cursor="pointer" height="100%">
+        {innerContainer}
+      </Center>
+    );
+
+    if (isExternalUrl(href)) {
+      return (
+        <a href={href} target="_blank">
+          {linkContents}
+        </a>
+      );
+    }
+    return <NextLink href={href}>{linkContents}</NextLink>;
+  }
+
+  return innerContainer;
 }
 
 export function CardBody() {}

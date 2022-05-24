@@ -9,18 +9,25 @@ import {
 export type ArticleCategoryCardProps = {
   title: string;
   description: string;
+  ctaText?: string;
+  ctaHref?: string;
 };
 
-export function ArticleCategoryCard({ title, description }) {
+export function ArticleCategoryCard({
+  title,
+  description,
+  ctaText,
+  ctaHref,
+}: ArticleCategoryCardProps) {
   return (
-    <Center py={6} cursor="pointer" height="100%">
-      <CardContainer>
+    <CardContainer href={ctaHref}>
+      <>
         <Flex direction="column">
           <CardHeading>{title}</CardHeading>
           <CardDescription>{description}</CardDescription>
         </Flex>
-        <CardCta>go</CardCta>
-      </CardContainer>
-    </Center>
+        {ctaText && ctaHref ? <CardCta>{ctaText}</CardCta> : null}
+      </>
+    </CardContainer>
   );
 }
