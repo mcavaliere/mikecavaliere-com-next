@@ -1,4 +1,4 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Heading, Text } from "@chakra-ui/react";
 
 export function Heading1({ children, ...props }) {
   return (
@@ -14,4 +14,8 @@ export function Heading2({ children, ...props }) {
       {children}
     </Heading>
   );
+}
+
+export function P({ children, ...props }) {
+  return <Text {...props}>{children}</Text>;
 }

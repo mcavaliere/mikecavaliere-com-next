@@ -41,7 +41,7 @@ export const theme = extendTheme({
       950: "#0A0A0A",
     },
     red: {
-      500: "#E93820",
+      500: "#F8333C",
     },
     brand: {
       100: "#f7fafc",

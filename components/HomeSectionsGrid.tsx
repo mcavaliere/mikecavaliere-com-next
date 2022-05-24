@@ -11,12 +11,20 @@ const GRID_ITEMS = [
     emoji: "🖊",
   },
   {
+    title: "About Me",
+    body: "More about me, in more than 240 characters.",
+    href: NAVBAR_LINKS_MAP["about"].href,
+    buttonText: "About me",
+    emoji: "🤔",
+  },
+  {
     title: "Book",
     body: "Build a SaaS application along with me using the full-stack Jamstack. A crash course in Next.js, Chakra-UI, Prisma ORM and other modern JavaScript libraries.",
     href: "https://cutintothejamstack.com",
     buttonText: "Cut Into The Jamstack",
     emoji: "📘",
   },
+
   // {
   //   title: "Talks",
   //   body: "Presentations I've given at conferences, meetups and other events.",
