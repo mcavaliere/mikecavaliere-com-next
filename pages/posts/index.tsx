@@ -32,7 +32,7 @@ export const ARTICLE_INDEX_CARDS = [
     ctaHref: "https://echobind.com/team/mike-cavaliere",
   },
   {
-    title: "Freelance Programming",
+    title: "👔 Freelance Programming",
     description: "Older articles on freelancing as a programmer are below. ",
   },
 ];
