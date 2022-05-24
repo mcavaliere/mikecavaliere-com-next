@@ -1,38 +1,35 @@
-import NextImage from "next/image";
-import { Box, Flex, Image as ChakraImage } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Image as ChakraImage,
+  SimpleGrid,
+} from "@chakra-ui/react";
 import { getLayout } from "layouts/MaxWidthContainerLayout";
 import { Heading1, Heading2, P } from "components/Headings";
+import { ContactLinks } from "components/ContactLinks";
 
 export const AVATAR_SIZE = { base: 150, md: 300 };
 
 export default function AboutPage() {
   return (
     <>
-      <Box w="100%">
-        <Box
-          width="30%"
-          // bg="teal"
-          // height={400}
-          pos="relative"
-          float="left"
-          mr={5}
-          // p={3}
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
+        <ChakraImage
+          src="/images/mike-cavaliere-in-office.jpg"
           borderRadius={10}
           overflow="hidden"
+          width="100%"
           boxShadow="2xl"
-        >
-          <ChakraImage
-            src="/images/mike-cavaliere-in-office.jpg"
-            width="100%"
-            // width="2316"
-            // height="2316"
-            // layout="fill"
-            // objectFit="cover"
-          />
-        </Box>
-        <Box width="100%" pX={4}>
-          <Heading1 mb={1}>Mike Cavaliere</Heading1>
-          <Heading2 mb={2}>About Me</Heading2>
+        />
+
+        <Box paddingLeft={10}>
+          <Heading1
+            mb={1}
+            pos="relative"
+            _before={{ content: '"👋🏼"', position: "absolute", left: "-40px" }}
+          >
+            Hi, I'm Mike.
+          </Heading1>
           <P mb={5}>
             I started playing with computers when I was a kid, and never
             stopped. Since then I've written thousands of lines of code, built
@@ -55,7 +52,10 @@ export default function AboutPage() {
             useful.
           </P>
         </Box>
-      </Box>
+      </SimpleGrid>
+      <Center>
+        <ContactLinks />
+      </Center>
     </>
   );
 }

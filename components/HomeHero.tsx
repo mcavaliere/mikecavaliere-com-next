@@ -1,14 +1,6 @@
-import {
-  Heading,
-  HStack,
-  Box,
-  Button,
-  ButtonGroup,
-  IconButton,
-  Flex,
-} from "@chakra-ui/react";
-import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
+import { Heading, Box, Flex } from "@chakra-ui/react";
 import Image from "next/image";
+import { ContactLinks } from "components/ContactLinks";
 
 export const HERO_AVATAR_SIZES = {
   base: 200,
@@ -49,31 +41,7 @@ export function HomeHero() {
           <strong>author</strong> and <strong>brain hacker</strong>.
         </Heading>
 
-        <HStack marginY={10} marginX="auto">
-          <ButtonGroup size="sm">
-            <IconButton
-              as="a"
-              aria-label="Follow me on Twitter"
-              icon={<FaTwitter />}
-              href="https://twitter.com/mcavaliere"
-              target="_blank"
-            />
-            <IconButton
-              as="a"
-              aria-label="Follow me on LinkedImn"
-              icon={<FaLinkedin />}
-              href="https://www.linkedin.com/in/mikecavaliere"
-              target="_blank"
-            />
-            <IconButton
-              as="a"
-              aria-label="Follow me on GitHub"
-              icon={<FaGithub />}
-              href="https://github.com/mcavaliere"
-              target="_blank"
-            />
-          </ButtonGroup>
-        </HStack>
+        <ContactLinks />
       </Flex>
     </Flex>
   );
