@@ -10,4 +10,7 @@ module.exports = {
       "www.mikecavaliere.com",
     ],
   },
+  compiler: {
+    styledComponents: true,
+  },
 };

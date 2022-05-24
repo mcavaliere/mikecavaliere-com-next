@@ -5,7 +5,7 @@ const GRID_ITEMS = [
   {
     title: "Articles",
     body: "Writing I've done on full-stack web development, technology careers, and brain improvement.",
-    href: "/articles",
+    href: "/posts",
     buttonText: "My Articles",
     emoji: "🖊",
   },

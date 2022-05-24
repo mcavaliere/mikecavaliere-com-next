@@ -11,8 +11,12 @@ export default function PostPreview({
   excerpt,
   slug,
 }) {
+  // Strip HTML to prevent rehydration mismatch errors.
+  // See: https://nextjs.org/docs/messages/react-hydration-error
+  const cleanedExcerpt = excerpt.replace(/<[^>]*>?/gm, "");
+
   return (
-    <div>
+    <article>
       <div className="mb-5">
         {coverImage && (
           <CoverImage title={title} coverImage={coverImage} slug={slug} />
@@ -26,6 +30,6 @@ export default function PostPreview({
       </Link>
 
       <Text dangerouslySetInnerHTML={{ __html: excerpt }} />
-    </div>
+    </article>
   );
 }

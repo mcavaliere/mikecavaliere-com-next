@@ -1,15 +1,12 @@
 import Head from "next/head";
-
-import MoreStories from "../components/more-stories";
-import HeroPost from "../components/hero-post";
 import { HomeHero } from "components/HomeHero";
-
-import Intro from "../components/intro";
 import { HomeSectionsGrid } from "components/HomeSectionsGrid";
 import { NextPageWithLayout } from "lib/types";
 import { getAllPostsForHome } from "../lib/api";
 import { CMS_NAME } from "../lib/constants";
 import { getLayout } from "layouts/HomePageLayout";
+import HeroPost from "../components/hero-post";
+import Intro from "../components/intro";
 
 export type IndexPageProps = NextPageWithLayout & {
   allPosts: Record<string, any>;
