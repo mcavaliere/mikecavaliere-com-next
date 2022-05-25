@@ -25,6 +25,7 @@ export function HomeHero() {
             objectFit="cover"
             objectPosition="center"
             priority
+            alt="Mike Cavaliere"
           />
         </Box>
       </Flex>

@@ -81,7 +81,7 @@ export function CardContainer({ children, href }) {
 
     if (isExternalUrl(href)) {
       return (
-        <a href={href} target="_blank">
+        <a href={href} target="_blank" rel="noreferrer">
           {linkContents}
         </a>
       );
