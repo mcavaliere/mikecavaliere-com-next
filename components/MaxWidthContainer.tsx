@@ -1,6 +1,6 @@
 import { Container } from "@chakra-ui/react";
 
-export function MaxWidthContainer({ children }) {
+export function MaxWidthContainer({ children, ...props }) {
   return (
     <Container
       my={10}
@@ -12,6 +12,7 @@ export function MaxWidthContainer({ children }) {
       }}
       flex={1}
       flexDirection="column"
+      {...props}
     >
       {children}
     </Container>

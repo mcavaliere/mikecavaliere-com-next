@@ -2,7 +2,6 @@ import { Box, Heading } from "@chakra-ui/react";
 import MoreStories from "components/more-stories";
 import { NextPageWithLayout } from "lib/types";
 import { getAllPostsForHome } from "lib/api";
-import { getLayout } from "layouts/MaxWidthContainerLayout";
 import { CardGrid } from "components/CardGrid";
 import { ArticleCategoryCard } from "components/ArticleCategoryCard";
 import { Heading1, Heading2 } from "components/Headings";
@@ -68,8 +67,6 @@ export default function PostsIndexPage({
     </>
   );
 }
-
-PostsIndexPage.getLayout = getLayout;
 
 export async function getStaticProps({ preview = false }) {
   const allPosts = await getAllPostsForHome(preview);

@@ -4,7 +4,6 @@ import { HomeSectionsGrid } from "components/HomeSectionsGrid";
 import { NextPageWithLayout } from "lib/types";
 import { getAllPostsForHome } from "../lib/api";
 import { CMS_NAME } from "../lib/constants";
-import { getLayout } from "layouts/HomePageLayout";
 
 export type IndexPageProps = NextPageWithLayout & {
   allPosts: Record<string, any>;
@@ -52,5 +51,3 @@ export async function getStaticProps({ preview = false }) {
     props: { allPosts, preview },
   };
 }
-
-IndexPage.getLayout = getLayout;

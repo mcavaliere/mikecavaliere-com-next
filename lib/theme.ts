@@ -10,6 +10,10 @@ export const theme = extendTheme({
       body: {
         bg: mode("white", "gray.900")(props),
       },
+      // Full-height container.
+      "html, body, body > div:first-child, div#__next, div#__next > div": {
+        height: "100%",
+      },
     }),
   },
   colors: {

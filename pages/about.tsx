@@ -4,7 +4,6 @@ import {
   Image as ChakraImage,
   SimpleGrid,
 } from "@chakra-ui/react";
-import { getLayout } from "layouts/MaxWidthContainerLayout";
 import { Heading1, Heading2, P } from "components/Headings";
 import { ContactLinks } from "components/ContactLinks";
 
@@ -59,5 +58,3 @@ export default function AboutPage() {
     </>
   );
 }
-
-AboutPage.getLayout = getLayout;
