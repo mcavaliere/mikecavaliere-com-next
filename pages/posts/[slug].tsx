@@ -10,7 +10,6 @@ import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
 import PostTitle from "../../components/post-title";
 import Tags from "../../components/tags";
 import jsdom from "jsdom";
-import { inspect } from "util";
 
 export default function PostPage({ post, posts, preview }) {
   const router = useRouter();
@@ -66,11 +65,16 @@ export default function PostPage({ post, posts, preview }) {
 
 export type nodeObjType = {
   tagName: string;
-  textContent: string;
+  textContent: string | null;
   children: nodeObjType[];
 };
 
-export function traverse(node: any): nodeObjType {
+/**
+ * Take an HTML node, and return simplified information about it, recursively including its children.
+ * @param node {Element}
+ * @returns {nodeObjType[]}
+ */
+export function traverse(node: Element): nodeObjType {
   const nodeObj: nodeObjType = {
     tagName: node.tagName,
     textContent: node.textContent,
