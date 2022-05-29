@@ -49,14 +49,14 @@ export default function PostPage({ post, posts, preview }) {
               slug={post.slug}
             />
 
-            <PostBody content={post.content} />
+            <PostBody content={post.content} contentMap={post.contentMap} />
             <footer>
               {post.tags.edges.length > 0 && <Tags tags={post.tags} />}
             </footer>
           </article>
 
           <SectionSeparator />
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+          {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
         </>
       )}
     </Container>
@@ -68,6 +68,8 @@ export type nodeObjType = {
   textContent: string | null;
   children: nodeObjType[];
 };
+
+export const TAGS_TO_SKIP = ["HTML", "BODY", "HEAD"];
 
 /**
  * Take an HTML node, and return simplified information about it, recursively including its children.
@@ -81,12 +83,12 @@ export function traverse(node: Element): nodeObjType {
     children: [],
   };
 
-  const children = node.children;
-  for (let i = 0; i < children.length; i++) {
-    const child = children[i];
+  // const children = node.children;
+  // for (let i = 0; i < children.length; i++) {
+  //   const child = children[i];
 
-    nodeObj.children.push(traverse(child));
-  }
+  //   nodeObj.children.push(traverse(child));
+  // }
 
   return nodeObj;
 }
@@ -104,8 +106,17 @@ export async function getStaticProps({ params, preview = false, previewData }) {
   const nodeMap: nodeObjType[] = [];
 
   while ((currentNode = nodeIterator.nextNode())) {
+    if (TAGS_TO_SKIP.includes(currentNode.tagName)) {
+      continue;
+    }
     nodeMap.push(traverse(currentNode));
   }
+
+  // unique tags
+  const tagNames = nodeMap.map((node) => node.tagName);
+  const uniqueTags = [...new Set<string>(tagNames)];
+
+  console.log(`---------------- uniqueTags `, uniqueTags);
 
   return {
     props: {
