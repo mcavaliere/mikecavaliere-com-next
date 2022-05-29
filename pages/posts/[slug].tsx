@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Container from "../../components/container";
 import PostBody from "../../components/post-body";
-import MoreStories from "../../components/more-stories";
 import PostHeader from "../../components/post-header";
 import SectionSeparator from "../../components/section-separator";
 
@@ -33,6 +32,7 @@ export default function PostPage({ post, posts, preview }) {
             </Head>
             */
   }
+
   return (
     <Container>
       {router.isFallback ? (
@@ -109,14 +109,17 @@ export async function getStaticProps({ params, preview = false, previewData }) {
     if (TAGS_TO_SKIP.includes(currentNode.tagName)) {
       continue;
     }
+    if (currentNode.tagName === "SCRIPT") {
+      console.log(`script tag`, currentNode);
+    }
     nodeMap.push(traverse(currentNode));
   }
 
-  // unique tags
-  const tagNames = nodeMap.map((node) => node.tagName);
-  const uniqueTags = [...new Set<string>(tagNames)];
+  // // unique tags
+  // const tagNames = nodeMap.map((node) => node.tagName);
+  // const uniqueTags = [...new Set<string>(tagNames)];
 
-  console.log(`---------------- uniqueTags `, uniqueTags);
+  // console.log(`---------------- uniqueTags `, uniqueTags);
 
   return {
     props: {
