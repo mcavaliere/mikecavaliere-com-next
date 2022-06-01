@@ -34,7 +34,7 @@ export default function PostPage({ post, posts, preview }) {
   }
 
   return (
-    <Container>
+    <>
       {router.isFallback ? (
         <PostTitle>Loading…</PostTitle>
       ) : (
