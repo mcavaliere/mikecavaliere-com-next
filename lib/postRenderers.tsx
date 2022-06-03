@@ -16,7 +16,6 @@ export function Gist({ url }) {
 
 export function P({ children, ...props }) {
   if (isGist(children)) {
-    console.log(`---------------- GIST! `, children);
     return <Gist url={children} />;
   }
   return (
