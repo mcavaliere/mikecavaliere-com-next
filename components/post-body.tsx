@@ -5,21 +5,26 @@ export default function PostBody({ content, contentMap }) {
     <>
       {contentMap.map((nodeProps, index) => {
         const { tagName, textContent } = nodeProps;
+
         const tagRenderer = rendererMap[tagName];
+        if (tagName === "GIST") {
+          console.log(
+            `---------------- GIST contentmap tagName: `,
+            tagName,
+            tagRenderer
+          );
+          console.log(`---------------- nodeProps `, nodeProps);
+        }
 
         if (tagRenderer) {
           return rendererMap[tagName]({
             children: textContent,
             key: textContent,
-            // ...nodeProps,
+            ...nodeProps,
           });
         } else {
           DefaultRenderer({ children: textContent });
         }
-
-        // if (nodeProps.children) {
-
-        // }
       })}
     </>
   );

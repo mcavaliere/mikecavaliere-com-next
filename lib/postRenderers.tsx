@@ -1,6 +1,7 @@
-import { Link, Text } from "@chakra-ui/react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+
 import { Heading1, Heading2, P as Paragraph } from "components/Headings";
-import { isGist } from "./utils/isGist";
 
 export function H1({ children, ...props }) {
   return <Heading1 {...props}>{children}</Heading1>;
@@ -10,14 +11,19 @@ export function H2({ children, ...props }) {
   return <Heading2 {...props}>{children}</Heading2>;
 }
 
-export function Gist({ url }) {
-  return <Heading1>GIST HERE: {url}</Heading1>;
+export function Gist(props) {
+  console.log(`---------------- GIST:  `, props);
+  // const [filename, obj] = Object.entries(files)[0];
+  return "";
+  // return (
+  //   <>
+  //     <Heading1>filename</Heading1>
+  //     <P>{JSON.stringify(obj)}</P>
+  //   </>
+  // );
 }
 
 export function P({ children, ...props }) {
-  if (isGist(children)) {
-    return <Gist url={children} />;
-  }
   return (
     <Paragraph mb={5} {...props}>
       {children}
@@ -33,4 +39,5 @@ export const rendererMap = {
   H1,
   H2,
   P,
+  GIST: Gist,
 };

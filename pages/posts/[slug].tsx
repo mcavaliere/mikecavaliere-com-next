@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import Container from "../../components/container";
+
 import PostBody from "../../components/post-body";
 import PostHeader from "../../components/post-header";
 import SectionSeparator from "../../components/section-separator";
@@ -9,7 +9,7 @@ import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
 import PostTitle from "../../components/post-title";
 import Tags from "../../components/tags";
 import jsdom from "jsdom";
-import { isGist } from "lib/utils/isGist";
+import { gistIdFromUrl, isGist } from "lib/utils/gists";
 
 export default function PostPage({ post, posts, preview }) {
   const router = useRouter();
@@ -93,14 +93,14 @@ export function attributesFromElement(element: Element): Record<string, any> {
  * @param node {Element}
  * @returns {nodeObjType[]}
  */
-export function traverse(element: Element): nodeObjType {
+export async function traverse(element: Element): Promise<nodeObjType> {
   const { tagName, textContent, children: childElements } = element;
 
   const transformedChildren = [];
 
   for (let i = 0; i < childElements.length; i++) {
     const child = childElements[i];
-    transformedChildren.push(traverse(child) as never);
+    transformedChildren.push((await traverse(child)) as never);
   }
 
   const nodeObj: nodeObjType = {
@@ -110,10 +110,23 @@ export function traverse(element: Element): nodeObjType {
     attributes: attributesFromElement(element),
   };
 
-  // TODO: transformations here.
-  // if (isGist(node.textContent)) {
-  //   console.log(`---- it's a gist!`);
-  // }
+  // Transformations here.
+  if (isGist(textContent)) {
+    console.log(`---- it's a gist!`);
+
+    const gistId = gistIdFromUrl(textContent);
+    const gistResponse = await fetch(`https://api.github.com/gists/${gistId}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/vnd.github.v3+json",
+        Authorization: `Basic ${process.env.GITHUB_ACCESS_TOKEN}`,
+      },
+    });
+    const gist = await gistResponse.json();
+
+    nodeObj.tagName = "GIST";
+    nodeObj.meta = { gist };
+  }
 
   return nodeObj;
 }
@@ -121,12 +134,11 @@ export function traverse(element: Element): nodeObjType {
 export async function getStaticProps({ params, preview = false, previewData }) {
   const data = await getPostAndMorePosts(params.slug, preview, previewData);
 
+  // Get DOM representation of post HTML.
   const dom = new jsdom.JSDOM(data.post.content);
-
   const body = dom.window.document.getElementsByTagName("BODY")[0];
-  const nodeMap: nodeObjType[] = traverse(body).children;
-
-  // console.log(`---------------- nodeMap:  `, nodeMap);
+  // Transform all nodes into object hierarchy, transformed into the metadata we want.
+  const nodeMap: nodeObjType[] = (await traverse(body)).children;
 
   return {
     props: {
