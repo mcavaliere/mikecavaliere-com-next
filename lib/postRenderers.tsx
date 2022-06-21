@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import highlighterTheme from "react-syntax-highlighter/dist/cjs/styles/prism/vsc-dark-plus";
+import { Box, Text } from "@chakra-ui/react";
+import { theme } from "lib/theme";
 
 import { Heading1, Heading2, P as Paragraph } from "components/Headings";
 
@@ -9,6 +11,14 @@ export type PostRendererProps = {
   key: string;
   meta?: Record<string, any>;
 };
+
+export function Caption({ children }) {
+  return (
+    <Text fontFamily="Courier" mb={1}>
+      {children}
+    </Text>
+  );
+}
 
 export function H1({ children, ...props }) {
   return <Heading1 {...props}>{children}</Heading1>;
@@ -22,15 +32,23 @@ export function Gist({ meta: { gist } }) {
   return (
     <>
       {gist.files.map(({ name, text }) => (
-        <>
-          <Heading1>{name}</Heading1>
-          <SyntaxHighlighter
-            style={dark}
-            language={(gist?.language?.name || "javascript").toLowerCase()}
+        <Box key={name} mb={5}>
+          <Box
+            borderRadius={10}
+            key={name}
+            overflow="hidden"
+            p={4}
+            border={`1px solid ${theme.colors.gray["300"]}`}
           >
-            {text}
-          </SyntaxHighlighter>
-        </>
+            <Caption>{name}</Caption>
+            <SyntaxHighlighter
+              style={highlighterTheme}
+              language={(gist?.language?.name || "javascript").toLowerCase()}
+            >
+              {text}
+            </SyntaxHighlighter>
+          </Box>
+        </Box>
       ))}
     </>
   );
