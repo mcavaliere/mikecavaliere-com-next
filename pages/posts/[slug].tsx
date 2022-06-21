@@ -9,7 +9,8 @@ import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
 import PostTitle from "../../components/post-title";
 import Tags from "../../components/tags";
 import jsdom from "jsdom";
-import { gistIdFromUrl, isGist } from "lib/utils/gists";
+import { isGist } from "lib/utils/gists";
+import { loadGists } from "lib/server/loadGists";
 
 export default function PostPage({ post, posts, preview }) {
   const router = useRouter();
@@ -50,7 +51,7 @@ export default function PostPage({ post, posts, preview }) {
               slug={post.slug}
             />
 
-            <PostBody content={post.content} contentMap={post.contentMap} />
+            <PostBody contentMap={post.contentMap} />
             <footer>
               {post.tags.edges.length > 0 && <Tags tags={post.tags} />}
             </footer>
@@ -93,14 +94,17 @@ export function attributesFromElement(element: Element): Record<string, any> {
  * @param node {Element}
  * @returns {nodeObjType[]}
  */
-export async function traverse(element: Element): Promise<nodeObjType> {
+export async function traverse(
+  element: Element,
+  { gistMap }
+): Promise<nodeObjType> {
   const { tagName, textContent, children: childElements } = element;
 
   const transformedChildren = [];
 
   for (let i = 0; i < childElements.length; i++) {
     const child = childElements[i];
-    transformedChildren.push((await traverse(child)) as never);
+    transformedChildren.push((await traverse(child, { gistMap })) as never);
   }
 
   const nodeObj: nodeObjType = {
@@ -111,18 +115,12 @@ export async function traverse(element: Element): Promise<nodeObjType> {
   };
 
   // Transformations here.
-  if (isGist(textContent)) {
-    console.log(`---- it's a gist!`);
+  if (textContent && isGist(textContent)) {
+    // Gist urls in wordpress have the username in them, but the API returns them without it.
+    // Strip it to get a url in the form https://api.github.com/:id.
+    const key = textContent.replace(/\/mcavaliere/, "");
 
-    const gistId = gistIdFromUrl(textContent);
-    const gistResponse = await fetch(`https://api.github.com/gists/${gistId}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/vnd.github.v3+json",
-        Authorization: `Basic ${process.env.GITHUB_ACCESS_TOKEN}`,
-      },
-    });
-    const gist = await gistResponse.json();
+    const gist = gistMap[key];
 
     nodeObj.tagName = "GIST";
     nodeObj.meta = { gist };
@@ -134,11 +132,14 @@ export async function traverse(element: Element): Promise<nodeObjType> {
 export async function getStaticProps({ params, preview = false, previewData }) {
   const data = await getPostAndMorePosts(params.slug, preview, previewData);
 
+  const gistMap = await loadGists();
+
   // Get DOM representation of post HTML.
   const dom = new jsdom.JSDOM(data.post.content);
   const body = dom.window.document.getElementsByTagName("BODY")[0];
+
   // Transform all nodes into object hierarchy, transformed into the metadata we want.
-  const nodeMap: nodeObjType[] = (await traverse(body)).children;
+  const nodeMap: nodeObjType[] = (await traverse(body, { gistMap })).children;
 
   return {
     props: {

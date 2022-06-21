@@ -1,27 +1,27 @@
-import { rendererMap, DefaultRenderer } from "lib/postRenderers";
+import {
+  rendererMap,
+  DefaultRenderer,
+  PostRendererProps,
+} from "lib/postRenderers";
 
-export default function PostBody({ content, contentMap }) {
+export default function PostBody({ contentMap }) {
   return (
     <>
-      {contentMap.map((nodeProps, index) => {
+      {contentMap.map((nodeProps) => {
         const { tagName, textContent } = nodeProps;
+        const rendererProps: PostRendererProps = {
+          children: textContent,
+          key: textContent,
+        };
 
         const tagRenderer = rendererMap[tagName];
+
         if (tagName === "GIST") {
-          console.log(
-            `---------------- GIST contentmap tagName: `,
-            tagName,
-            tagRenderer
-          );
-          console.log(`---------------- nodeProps `, nodeProps);
+          rendererProps.meta = nodeProps.meta;
         }
 
         if (tagRenderer) {
-          return rendererMap[tagName]({
-            children: textContent,
-            key: textContent,
-            ...nodeProps,
-          });
+          return rendererMap[tagName](rendererProps);
         } else {
           DefaultRenderer({ children: textContent });
         }

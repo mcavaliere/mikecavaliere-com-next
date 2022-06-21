@@ -1,0 +1,598 @@
+[
+  {
+    "id": "MDQ6R2lzdDc4MjkxOTc=",
+    "files": [
+      {
+        "name": "index.html",
+        "language": {
+          "color": "#e34c26",
+          "id": "MDg6TGFuZ3VhZ2U0MTc=",
+          "name": "HTML"
+        },
+        "text": "<!doctype html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\"/>\n    <title>Event Pooling, or perhaps Pub/Sub</title>\n    <script type=\"text/javascript\" charset=\"utf-8\" src=\"http://ajax.microsoft.com/ajax/jQuery/jquery-1.4.2.min.js\"></script>\n</head>\n<body>\n<strong>Who is this?</strong>\n<form action=\"#\" method=\"get\" accept-charset=\"utf-8\" id=\"whoisit\">\n    <p><label for=\"name\">name</label> <input type=\"text\" name=\"name\" value=\"\" id=\"name\">\n    </p>\n    <p><label for=\"email\">email</label> <input type=\"email\" name=\"email\" value=\"\" id=\"email\">\n    </p>\n    <p><input type=\"submit\" value=\"Continue &rarr;\" id=\"submit\"></p>\n</form>\n</body>\n<script type=\"text/javascript\" charset=\"utf-8\" src=\"script.js\"></script>\n</html>"
+      },
+      {
+        "name": "script.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "// Event pooling script\n(function($) { // $ is jQuery \n\n    var eventpooling = function() {\n        // broadcast events on elements\n        $('#name').bind('blur', function(event) {\n            $(document).trigger('NAME_CHANGED',event.target);\n        });\n        $('#email').bind('blur', function(event) {\n            $(document).trigger('EMAIL_CHANGED',event.target);\n        });\n        $('#submit').bind('click', function(event) {\n            $(document).trigger('SUBMIT_CLICKED',event);\n        });\n\n        // Pool events on document\n        $(document).bind('NAME_CHANGED EMAIL_CHANGED SUBMIT_CLICKED', function(event) {\n            //Handler(s)\n            $.log(event.type);\n        })\n        .bind('NAME_CHANGED', function(event, obj) {\n            //Handler(s)\n            nameChangedHandler(event, obj);\n        })\n        .bind('EMAIL_CHANGED', function(event, obj) {\n            //Handler(s)\n            emailChangedHandler(event, obj);\n        })\n        .bind('SUBMIT_CLICKED', function(event) {\n            //Handler(s)\n            alert(\"form valid? \"+submitClickHandler(event));\n        });\n\n        // properties\n        var IS_NAME_VALID, IS_EMAIL_VALID;\n\n        // Common methods\n        function responder(str) {\n            var response = \"Are you really named: \";\n            return response + str;\n        }\n        function readyToSubmit() {\n            var ready = (IS_NAME_VALID === true && IS_EMAIL_VALID === true) || false;\n            if (ready === true) {\n                $('#submit').removeAttr('disabled');\n            }\n            return ready;\n        }\n\n        // validation methods\n        function validater(event,obj) {\n            $.log('validating: '+ event.type);\n            var valid = false;\n            var $obj = $(obj);\n            $obj.str = $obj.val();\n            $.log('value: '+ $obj.str);\n            if (event.type == 'NAME_CHANGED') {\n                valid = notEmpty($obj.str);\n                IS_NAME_VALID = valid;\n            }\n            if (event.type == 'EMAIL_CHANGED') {\n                if (notEmpty($obj.str) && validEmail($obj.str)) {\n                    valid = true;\n                    IS_EMAIL_VALID = valid;\n                } \n            }\n            $.log('valid field: '+ valid);\n            return readyToSubmit();\n        }\n        function notEmpty(str) {\n            if (str!=='') {\n                return true;\n            } else {\n                return false;\n            }\n        }\n        function validEmail(elmValue){\n           var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$/;\n           return emailPattern.test(elmValue);\n        }\n\n        // Event handlers\n        function submitClickHandler(event) {\n            validater(event);\n            return readyToSubmit();\n        }\n        function nameChangedHandler(event, obj) {\n            var name = $(obj).val();\n            $.log(responder(name));\n            validater(event,obj);\n        }\n        function emailChangedHandler(event, obj) {\n            var email = $(obj).val();\n            alert('please confirm your email: '+ email);\n            validater(event,obj);\n        }\n        // initialize behavior\n        var init = (function(){\n            $('#submit').attr('disabled', 'disabled');\n        })();\n        return init;\n    };\n    \n    // debugging methods\n    $.fn.debug = function() {\n        return this.each(function(){\n            alert(this);\n        });\n    };\n    $.log = function(message) {\n        if(window.console) {\n             console.debug(message);\n        } else {\n             alert(message);\n        }\n    };\n    \n    // doc ready\n    $(function() {\n        try {\n            eventpooling();\n        } catch(oops) {\n            $.log(oops);\n        }\n    });\n    \n})(jQuery);"
+      }
+    ],
+    "description": null,
+    "name": "7829197",
+    "url": "https://gist.github.com/7829197"
+  },
+  {
+    "id": "MDQ6R2lzdGIyNTdmNDIzNmM5YTljNWIwMTc2",
+    "files": [
+      {
+        "name": "namespacing-bad-form-example.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "var element = $(\"div.form-errors\");\n\nif (formHasErrors()) {\n  element.show();\n}\n\n// More, unrelated code...\n\nvar element = $(\"form#login\");\nelement.addClass(\"has-errors\");\n\n// Another block of code...\n\n$(\"input.submit\").on(\"click\", function() {\n  element.remove();\n  // ...\n});"
+      }
+    ],
+    "description": "",
+    "name": "b257f4236c9a9c5b0176",
+    "url": "https://gist.github.com/b257f4236c9a9c5b0176"
+  },
+  {
+    "id": "MDQ6R2lzdGM0NjVjZTc4MWM5YzVhOWI4NzU1",
+    "files": [
+      {
+        "name": "namespacing-better-form-example.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "var LoginFom = {\n  element: $(\"form#login-form\"),\n  \n  hasErrors: function() {\n    // validation code here...\n    // returns true or false.\n  }\n};\n\n// ...\n\nvar ErrorContainer = {\n  element: $(\"div.form-errors\")\n};\n\nif (LoginForm.hasErrors()) {\n  ErrorContainer.element.show();\n}\n\nLoginForm.element.addClass(\"has-errors\");\n\n$(\"input.submit\").on(\"click\", function() {\n  ErrorContainer.element.remove();\n});"
+      }
+    ],
+    "description": "",
+    "name": "c465ce781c9c5a9b8755",
+    "url": "https://gist.github.com/c465ce781c9c5a9b8755"
+  },
+  {
+    "id": "MDQ6R2lzdGVjZjhkNzc1OTM0MGJkNmU5YTlm",
+    "files": [
+      {
+        "name": "namespacing-grouping-methods.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "// Old\nfunction sum($elements) { /* calculate sum */ }\n\nfunction product($elements) {  /* calculate sum */}\n\n// New\nvar MathUtils = {\n  function sum($elements) {},\n  function product($elements) {}\n};\n\n"
+      }
+    ],
+    "description": "",
+    "name": "ecf8d7759340bd6e9a9f",
+    "url": "https://gist.github.com/ecf8d7759340bd6e9a9f"
+  },
+  {
+    "id": "MDQ6R2lzdDRlOGJhMDM2NDQzMTI5MjRmNjFk",
+    "files": [
+      {
+        "name": "namespacing-grouping-data.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "// Old\nvar DEBUG = false;\nvar MAX_ENTRIES = 100;\nvar FEED_URL = \"http://mysite.com/feed/\";\nvar POST_IDS = [123, 456, 789];\n\n// New\nvar Config = {\n  DEBUG: true,\n  MAX_ENTRIES: 100,\n  FEED_URL: \"http://mysite.com/feed/\",\n  POST_IDS: [123, 456, 789]\n};"
+      }
+    ],
+    "description": "",
+    "name": "4e8ba03644312924f61d",
+    "url": "https://gist.github.com/4e8ba03644312924f61d"
+  },
+  {
+    "id": "MDQ6R2lzdGJlOWNiOTFmNjFlMTE0ZGU4Yzdj",
+    "files": [
+      {
+        "name": "namespacing-components-bad.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "// Heavily Coupled\n$(function() {\n     $(document.body).append( $('<select id=\"countries\"></select>') );\n\n     var countriesIveBeenTo = {\n          'BE': 'Belgium',\n          'CR': 'Costa Rica',\n          'IT': 'Italy',\n          'US': 'United States of America',\n          'UK': 'United Kingdom'\n     };\n\n     $.each(countriesIveBeenTo, function(val, text) {\n          $('select#countries').append(\n               $('<option value=\"' + val + '\">' + text + '</option>')\n          );\n     });\n\n     $('select#countries').change(function() {\n          console.log('Selected country: ' + $('select#countries :selected').text());\n     });\n\n});\n"
+      }
+    ],
+    "description": "",
+    "name": "be9cb91f61e114de8c7c",
+    "url": "https://gist.github.com/be9cb91f61e114de8c7c"
+  },
+  {
+    "id": "MDQ6R2lzdDFjM2RmYjk1Y2NiZTI5NzYxNTQz",
+    "files": [
+      {
+        "name": "namespacing-components-better.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "\n// Less Coupled\nvar CountrySelectClass = function() {\n  var countriesIveBeenTo = {\n    'BE': 'Belgium',\n    'CR': 'Costa Rica',\n    'IT': 'Italy',\n    'US': 'United States of America',\n    'UK': 'United Kingdom'\n  };\n\n  this.init = function(selector) {\n    this.$el = $(selector);\n\n    $.each(countriesIveBeenTo, function(val, text) {\n      this.$el.append(\n        $('<option value=\"' + val + '\">' + text + '</option>')\n      );\n    }.bind(this));\n\n    this.$el.change(function() {\n      console.log('Selected country: ' + this.$el.find(':selected').text());\n    }.bind(this));\n  };\n};\n\n$(function() {\n  $(document.body).append( $('<select id=\"countries\"></select>') );\n\n  var csInstance = new CountrySelectClass();  \n  csInstance.init(\"#countries\");  \n});\n\n  \n"
+      }
+    ],
+    "description": "",
+    "name": "1c3dfb95ccbe29761543",
+    "url": "https://gist.github.com/1c3dfb95ccbe29761543"
+  },
+  {
+    "id": "MDQ6R2lzdDFmMTBkNTZhMWIyYjg1N2FmMmFj",
+    "files": [
+      {
+        "name": "namespacing-js-object-definition.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "var MyNamespace = {\n  myString: \"someString\",\n  myInt: 123,\n  myFunc: function() {\n    return this.myString + \" \" + this.myInt;\n  }\n};"
+      }
+    ],
+    "description": "",
+    "name": "1f10d56a1b2b857af2ac",
+    "url": "https://gist.github.com/1f10d56a1b2b857af2ac"
+  },
+  {
+    "id": "MDQ6R2lzdDg3Y2Q5YmI0MTNiOTQ3ZDVjYWVm",
+    "files": [
+      {
+        "name": "namespacing-usage.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "MyNamespace.myString;\nMyNamespace.myInt;\nMyNamespace.myFunc();"
+      }
+    ],
+    "description": "",
+    "name": "87cd9bb413b947d5caef",
+    "url": "https://gist.github.com/87cd9bb413b947d5caef"
+  },
+  {
+    "id": "MDQ6R2lzdDU4ZmQ4ZGRkNzZkYTI2ZmM1ZjZi",
+    "files": [
+      {
+        "name": "namespacing-usage-nesting.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "var MyCompany = {\n  Widgets: {\n    data1: 123,\n    func1: function() {}\n  },\n  HtmlUtils: {\n    data1: 123,\n    func1: function() {}\n  }\n}\n\n// Usage: \n// MyCompany.Widgets.data1;\n// MyCompany.HtmlUtils.func1();"
+      }
+    ],
+    "description": "",
+    "name": "58fd8ddd76da26fc5f6b",
+    "url": "https://gist.github.com/58fd8ddd76da26fc5f6b"
+  },
+  {
+    "id": "MDQ6R2lzdGFiZGUyMzJlMTA3NzdkNjljOWMz",
+    "files": [
+      {
+        "name": "namespacing-multiple-files.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "// /javascripts/mycompany.js\nvar MyCompany = {};\n\n// /javascripts/mycompany/widgets\nMyCompany.Widgets = {};\nMyCompany.Widgets.data1 = 123;\nMyCompany.Widgets.func1 = function() {};\n\n// /javascripts/mycompany/htmlutils.js\nMyCompany.HtmlUtils = {};\nMyCompany.HtmlUtils.data1 = 123;\nMyCompany.HtmlUtils.func1 = function() {};"
+      }
+    ],
+    "description": "",
+    "name": "abde232e10777d69c9c3",
+    "url": "https://gist.github.com/abde232e10777d69c9c3"
+  },
+  {
+    "id": "MDQ6R2lzdGY5M2RlNGJkNzIxZDY2YWNlOTcx",
+    "files": [
+      {
+        "name": "namespacing-jquery.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "$.MyCompany = {\n  Widgets: {\n    data1: 123,\n    func1: function() {}\n  },\n  HtmlUtils: {\n    data1: 123,\n    func1: function() {}\n  }\n};\n\n// Usage:\n// $.MyCompany.Widgets.data1;\n// $.MyCompany.HtmlUtils.func1();"
+      }
+    ],
+    "description": "",
+    "name": "f93de4bd721d66ace971",
+    "url": "https://gist.github.com/f93de4bd721d66ace971"
+  },
+  {
+    "id": "MDQ6R2lzdGU1NjRmN2M2NTEyMGZlNjI4MmEw",
+    "files": [
+      {
+        "name": "namespacing-strategy.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "// Top level. All reusable code goes somewhere under this main object.\nvar MyApp = {};\n\n// Widgets, and any components that manipulate the DOM.\nMyApp.UI = {};\n\n// Classes that have reusable logic or calculation.\nMyApp.Lib = {};\n\n// Custom code that works with external javascript libraries in a reusable way.\nMyApp.Vendor = {};\n\n// Generic utilities.\nMyApp.Utils = {};"
+      }
+    ],
+    "description": "",
+    "name": "e564f7c65120fe6282a0",
+    "url": "https://gist.github.com/e564f7c65120fe6282a0"
+  },
+  {
+    "id": "MDQ6R2lzdDg2NWE4MzZjMTgzMGMzMzcyZTQz",
+    "files": [
+      {
+        "name": "namespacing-utilities.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "var MyApp = {};\n\nMyApp.namespace = function() {\n  var ln = arguments.length, i, value, split, x, xln, parts, object;\n  \n  for (i = 0; i &lt; ln; i++) {\n    value = arguments[i];\n    parts = value.split(\".\");\n    object = window[parts[0]] = Object(window[parts[0]]);\n    \n    for (x = 1, xln = parts.length; x &lt; xln; x++) {\n      object = object[parts[x]] = Object(object[parts[x]]);\n    }\n  }\n  return object;\n};\n\n// Shortcut alias\nMyApp.ns = MyApp.namespace;\n"
+      }
+    ],
+    "description": "",
+    "name": "865a836c1830c3372e43",
+    "url": "https://gist.github.com/865a836c1830c3372e43"
+  },
+  {
+    "id": "MDQ6R2lzdGY3NWY0YTViMmM1NmEyZGI4MzM2",
+    "files": [
+      {
+        "name": "namespacing-utilities-usage.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "// /javascripts/myapp/ui/fancyslider.js\n\nMyApp.ns(\"MyApp.UI.FancySlider\");\n\nMyApp.UI.FancySlider = function() {\n  // ...\n};\n"
+      }
+    ],
+    "description": "",
+    "name": "f75f4a5b2c56a2db8336",
+    "url": "https://gist.github.com/f75f4a5b2c56a2db8336"
+  },
+  {
+    "id": "MDQ6R2lzdDBiZDcxY2VmYzIyMjJmNjJlYzdlYTNjM2RiYjBiM2I0",
+    "files": [
+      {
+        "name": "rn-design-systems-simple-component.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "class SimpleComponent extends Component {\n\trender() {\n\t\treturn (\n\t\t\t<View style={{ borderRadius: 5 }}>\n\t\t\t\t<View style={{ backgroundColor: 'beige', padding: 5 }}>\n\t\t\t\t\t<Text style={{ color: 'black', fontSize: 16, fontWeight: 'bold' }}>{ this.props.title }</Text>\n\t\t\t\t</View>\n\t\t\t\t<View style={{ padding: 5 }}>\n\t\t\t\t\t<Text style={{ color: 'black', fontSize: 12 }}>{ this.props.bodyText }</Text>\n\t\t\t\t</View>\n\t\t\t</View>\n\t\t);\n\t}\n}"
+      }
+    ],
+    "description": "React Native Design Systems: SimpleComponent",
+    "name": "0bd71cefc2222f62ec7ea3c3dbb0b3b4",
+    "url": "https://gist.github.com/0bd71cefc2222f62ec7ea3c3dbb0b3b4"
+  },
+  {
+    "id": "MDQ6R2lzdGE1MTlmYWZiMjQyNWVkY2Q0YjVlMjM1NjJjOTg3YmI3",
+    "files": [
+      {
+        "name": "rn-design-systems-simple-component-without-literals.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "let Style = StyleSheet.create({\n\tcontainer: { borderRadius: 5 },\n\theading: { backgroundColor: 'beige', padding: 5 },\n\theadingText: { color: 'black', fontSize: 16, fontWeight: 'bold' },\n\tbody: { padding: 5 },\n\tbodyText: { color: 'black', fontSize: 12 }\n})\n\nclass SimpleComponentWithoutLiterals extends Component {\n\trender() {\n\t\treturn (\n\t\t\t<View style={ Styles.container }>\n\t\t\t\t<View style={ Styles.heading }>\n\t\t\t\t\t<Text style={ Styles.headingText }>{ this.props.title }</Text>\n\t\t\t\t</View>\n\t\t\t\t<View style={ Styles.body }>\n\t\t\t\t\t<Text style={ Styles.bodyText }>{ this.props.bodyText }</Text>\n\t\t\t\t</View>\n\t\t\t</View>\n\t\t);\n\t}\n}\n"
+      }
+    ],
+    "description": "React Native Design Systems: SimpleComponentWithoutLiterals",
+    "name": "a519fafb2425edcd4b5e23562c987bb7",
+    "url": "https://gist.github.com/a519fafb2425edcd4b5e23562c987bb7"
+  },
+  {
+    "id": "MDQ6R2lzdDc2MzZlM2VhMzlhYjliZTk4YTRlOTM5MTczZTFhZTJk",
+    "files": [
+      {
+        "name": "rn-design-systems-simple-component-with-cascade.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "class SimpleComponentWithCascade extends Component {\n\trender() {\n\t\treturn (\n\t\t\t<View style={[ ComponentStyles.container, LayoutStyles.marginBottom ]}>\n\t\t\t\t<View style={[ ComponentStyles.heading, LayoutStyles.paddingSm ]}>\n\t\t\t\t\t<Text style={[ ComponentStyles.headingText, TypographyStyles.heading3, TextColors.black ]}>{ this.props.title }</Text>\n\t\t\t\t</View>\n\t\t\t\t<View style={[ ComponentStyles.body, LayoutStyles.paddingSm ]}>\n\t\t\t\t\t<Text style={[ ComponentStyles.bodyText, TypographyStyles.bodyText, TextColors.darkGrey ]}>{ this.props.bodyText }</Text>\n\t\t\t\t</View>\n\t\t\t</View>\n\t\t);\n\t}\n}"
+      }
+    ],
+    "description": "React Native Design Systems: SimpleComponentWithCascade",
+    "name": "7636e3ea39ab9be98a4e939173e1ae2d",
+    "url": "https://gist.github.com/7636e3ea39ab9be98a4e939173e1ae2d"
+  },
+  {
+    "id": "MDQ6R2lzdGQwMDI5NWJjNmY4MzU3Y2UxY2JlNTVlZWExZjkxZWY3",
+    "files": [
+      {
+        "name": "rn-design-systems-messy-cascade.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "class MessyCardComponent extends Component {\n\trender() {\n\t\treturn (\n\t\t\t<View style={[ CardComponentStyles.container, LayoutStyles.wideMargin, GlobalStyles.shadedBox ]}>\n\t\t\t\t<View style={[ CardComponentStyles.headingBar, LayoutStyles.smPadding, BackgroundColors.mediumGreen ]}>\n\t\t\t\t\t<Text style={[ TypographyStyles.heading1, Colors.textAbsoluteBlack ]}>{ this.props.title }</Text>\n\t\t\t\t</View>\n\t\t\t\t<View style={[ CardComponentStyles.contentContainer, BackgroundColors.offWhite ]}>\n\t\t\t\t\t<Text style={[ TypographyStyles.bodyText, Colors.textAbsoluteBlack ]}>{ this.props.children }</Text>\n\t\t\t\t</View>\n\t\t\t</View>\n\t\t);\n\t}\n}\n"
+      }
+    ],
+    "description": "React Native Design Systems: Messy Cascading Example",
+    "name": "d00295bc6f8357ce1cbe55eea1f91ef7",
+    "url": "https://gist.github.com/d00295bc6f8357ce1cbe55eea1f91ef7"
+  },
+  {
+    "id": "MDQ6R2lzdDg2Mjg2MzM0YjBhZTU3ZTA5NWYxNzNlNjdjYmVjNTEz",
+    "files": [
+      {
+        "name": "rn-design-systems-color-constants.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "import Constants from '../constants';\n\nexport default const Colors = {\n\tblack: {\n\t\tdefault: '#232323',\n\t\tabsolute: '#000000'\n\t},\n\n\twhite: {\n\t\tdefault: '#ffffff'\n\t},\n\n\tblue: {\n\t\tdefault: '#004d79',\n\t\talt1: '#1d84c4',\n\t\talt2: '#0083f9'\n\t},\n\n\tcyan: {\n\t\tdefault: '#7ae2ff'\n\t},\n\n\tgreen: {\n\t\tdefault: '#5b9675'\n\t}\n};\n"
+      }
+    ],
+    "description": "React Native Design Systems: Color Constants",
+    "name": "86286334b0ae57e095f173e67cbec513",
+    "url": "https://gist.github.com/86286334b0ae57e095f173e67cbec513"
+  },
+  {
+    "id": "MDQ6R2lzdDkzYzQxZWFjZTdmMjUxOWE3N2UxNzFkMGMzYjVlY2U3",
+    "files": [
+      {
+        "name": "rn-design-systems-component-styles.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "import Constants from '../../global/constants';\nimport Colors from '../../global/styles/colors';\nimport Typography from '../../global/styles/typography';\nimport { StyleSheet } from 'react-native';\n\nexport default StyleSheet.create({\n\ttitleContainer: {\n\t\tbackgroundColor: Colors.green,\n\t\tpadding: Constants.GAP\n\t},\n\n\ttitle: Object.assign({}, Typography.heading3, {\n\t\tcolor: Colors.black\n\t}),\n\n\tcontentContainer: {\n\t\tpadding: Constants.GAP\n\t},\n\n\tcontent: Object.assign({}, Typography.bodyText)\n});\n"
+      }
+    ],
+    "description": "React Native Design Systems: Component Styles",
+    "name": "93c41eace7f2519a77e171d0c3b5ece7",
+    "url": "https://gist.github.com/93c41eace7f2519a77e171d0c3b5ece7"
+  },
+  {
+    "id": "MDQ6R2lzdDQ1YjU1N2FmY2RkMjMzNWYzYzc2Njk2OWE5Y2QxMTc5",
+    "files": [
+      {
+        "name": "rn-design-systems-clean-component.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "import React, { Component } from 'react';\nimport { Text, View } from 'react-native';\n\nimport Styles from './Card.style';\n\nclass Card extends Component {\n\trender() {\n\t\treturn (\n\t\t\t<View style={ Styles.container }>\n\t\t\t\t<View style={ Styles.titleContainer }>\n\t\t\t\t\t<Text>{ this.props.title }</Text>\n\t\t\t\t</View>\n\t\t\t\t<View style={ Styles.contentContainer }>\n\t\t\t\t\t<Text>{ this.props.body }</Text>\n\t\t\t\t</View>\n\t\t\t</View>\n\t\t);\n\t}\n}\n\nexport default Card;\n"
+      }
+    ],
+    "description": "React Native Design Systems: A Cleaner Component",
+    "name": "45b557afcdd2335f3c766969a9cd1179",
+    "url": "https://gist.github.com/45b557afcdd2335f3c766969a9cd1179"
+  },
+  {
+    "id": "MDQ6R2lzdDI3OTVmMmI0YmExZjliMjk0MDdhZjNkYmYxZDk3N2Rl",
+    "files": [
+      {
+        "name": "rn-design-systems-color-constants.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "import Colors from './colors';\n\nexport default const Typography = {\n\theading1: {\n\t\tfontSize: 30,\n\t\tfontWeight: 'bold',\n\t\tlineHeight: 32,\n\t\tcolor: Colors.black\n\t},\n\n\theading2: {\n\t\tfontSize: 26,\n\t\tfontWeight: 'bold',\n\t\tlineHeight: 28,\n\t\tcolor: Colors.black\n\t},\n\n\theading3: {\n\t\tfontSize: 22,\n\t\tfontWeight: 'bold',\n\t\tlineHeight: 25,\n\t\tcolor: Colors.black\n\t},\n\n\tbodyText: {\n\t\tfontSize: 18,\n\t\tfontWeight: 'normal',\n\t\tlineHeight: 21,\n\t\tcolor: Colors.black\n\t},\n\n\t// ...etc.\n};"
+      }
+    ],
+    "description": "React Native Design Systems: Typography Constants",
+    "name": "2795f2b4ba1f9b29407af3dbf1d977de",
+    "url": "https://gist.github.com/2795f2b4ba1f9b29407af3dbf1d977de"
+  },
+  {
+    "id": "MDQ6R2lzdDVmZjI5MWM3ZDMwMTk4YzdlMTc0YWM3ZmQyMzM3OTRj",
+    "files": [
+      {
+        "name": "AsyncStorageSupplement.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "export default class AsyncStorageSupplement {\n  static multiGet(keys) {\n    return Promise.all(\n      keys.map(key => AsyncStorage.getItem(key))\n    )\n  }\n\n  static multiRemove(keys) {\n    return Promise.all(\n      keys.map(key => AsyncStorage.removeItem(key))\n    )\n  }\n\n  static multiSet(pairs) {\n    return Promise.all(\n      pairs.map(pair => AsyncStorage.setItem(pair[0], pair[1]))\n    )\n  }\n}"
+      }
+    ],
+    "description": "Workaround for promise issues with AsyncStorage multiSet/multiGet/multiRemove in React Native (unresolved as of 2018-07-02). See: https://github.com/facebook/react-native/issues/14101",
+    "name": "5ff291c7d30198c7e174ac7fd233794c",
+    "url": "https://gist.github.com/5ff291c7d30198c7e174ac7fd233794c"
+  },
+  {
+    "id": "MDQ6R2lzdDlkMDk3ZDUxNDhlZTZmYTQ1ZTYwOTE3ODcwZmJkYzUz",
+    "files": [
+      {
+        "name": "es6-obj-class-conversion-initial-obj.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "export default {\n  configSettingExists( config, key ) {\n    // Search the config object for the key value\n    let found = Object.keys( config ).indexOf( key )\n    return found;\n  },\n  \n  indexArrayBy(arr, attrName, group=false) {\n    // ...\n  },\n  \n  initConfig() {\n    // ... load a json file via AJAX, filesystem, etc. ...\n    return config\n  },\n\n  printConfigFormatInstructions() {\n     console.log('Your config file must be in json format, and contain the following keys: foo, bar, baz.');\n  },\n  \n  toRGBA(hex, opacity) {\n    // ...\n  },\n   \n  // ...\n}"
+      }
+    ],
+    "description": "",
+    "name": "9d097d5148ee6fa45e60917870fbdc53",
+    "url": "https://gist.github.com/9d097d5148ee6fa45e60917870fbdc53"
+  },
+  {
+    "id": "MDQ6R2lzdGEwYTdmM2JhMzJlNTViNmFhNzA1Yzg0YmNlMWRiNDUy",
+    "files": [
+      {
+        "name": "es6-obj-class-conversion-change-obj-def.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "// Old\nexport default {\n  // ...\n}\n\n// New\nexport default class {\n  // ...\n}"
+      }
+    ],
+    "description": "",
+    "name": "a0a7f3ba32e55b6aa705c84bce1db452",
+    "url": "https://gist.github.com/a0a7f3ba32e55b6aa705c84bce1db452"
+  },
+  {
+    "id": "MDQ6R2lzdDE0OGVkNzBjZjIyZmI4MDk2YTdhZmJiMjcxYTEyZGVi",
+    "files": [
+      {
+        "name": "es6-obj-class-conversion-initial-references.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "\nimport Utils from 'utils.js';\n\n// Load the config.\nlet config = Utils.initConfig();\n\n// Later, use it\nif ( ! Utils.configSettingExists( config, 'foo' ) ) {\n  Utils.printConfigFormatInstructions();\n}"
+      }
+    ],
+    "description": "",
+    "name": "148ed70cf22fb8096a7afbb271a12deb",
+    "url": "https://gist.github.com/148ed70cf22fb8096a7afbb271a12deb"
+  },
+  {
+    "id": "MDQ6R2lzdDE4Y2NmOGJhYTUxYmM4YjNiYmI5YWVkNDUxMGUyODM3",
+    "files": [
+      {
+        "name": "es6-obj-class-conversion-save-data-to-instance.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "export default class {\n  \n  initConfig() {\n    this.config = // ... load a json file via AJAX, filesystem, etc. ...\n    \n    return this.config;\n  },\n\n  configSettingExists( key ) {\n    // Search the config object for the key value\n    let found = Object.keys( this.config ).indexOf( key )\n    return found;\n  }\n\n  // ...\n\n}"
+      }
+    ],
+    "description": "",
+    "name": "18ccf8baa51bc8b3bbb9aed4510e2837",
+    "url": "https://gist.github.com/18ccf8baa51bc8b3bbb9aed4510e2837"
+  },
+  {
+    "id": "MDQ6R2lzdDU5NzJiMTIzOTJlNmYwZDM5YTU3MmU4ZGUyZmE5MjBl",
+    "files": [
+      {
+        "name": "es6-obj-class-conversion-make-methods-static.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "export default class {\n  \n  // ...\n  \n  static printConfigFormatInstructions() {\n     console.log('Your config file must be in json format, and contain the following keys: foo, bar, baz.');\n  }\n\n}"
+      }
+    ],
+    "description": "",
+    "name": "5972b12392e6f0d39a572e8de2fa920e",
+    "url": "https://gist.github.com/5972b12392e6f0d39a572e8de2fa920e"
+  },
+  {
+    "id": "MDQ6R2lzdDVlOGM2NGZlNzBkNGJiM2Q4NzY4ODY1NDVmMDg1OGQy",
+    "files": [
+      {
+        "name": "es6-obj-class-conversion-add-instantiation.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "// Old\nimport Utils from 'utils.js';\n\n// Load the config.\nlet config = Utils.initConfig();\n\n// New\nimport Config from 'config.js';\n\nConfig.initConfig();\n"
+      }
+    ],
+    "description": "",
+    "name": "5e8c64fe70d4bb3d876886545f0858d2",
+    "url": "https://gist.github.com/5e8c64fe70d4bb3d876886545f0858d2"
+  },
+  {
+    "id": "MDQ6R2lzdDZmODNkMGFmYWRmNTUxMDA3OTY3ZmRjNTZhOWNjMGRm",
+    "files": [
+      {
+        "name": "es6-obj-class-conversion-change-static-method-call.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "// Old\n\nif ( ! Utils.configSettingExists( config, 'foo' ) ) {\n  Utils.printConfigFormatInstructions();\n}\n\n// New\n\nif ( ! Config.configSettingExists( 'foo' ) ) {\n  Config.printConfigFormatInstructions();\n}"
+      }
+    ],
+    "description": "",
+    "name": "6f83d0afadf551007967fdc56a9cc0df",
+    "url": "https://gist.github.com/6f83d0afadf551007967fdc56a9cc0df"
+  },
+  {
+    "id": "MDQ6R2lzdGU0MTdjOTgyZmQxY2Q1NWMyZTgzMDdiNWZlNmE2OGQ1",
+    "files": [
+      {
+        "name": "es6-obj-class-conversion-final-result.js",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "// Final config.js\nexport default class {\n  init() {\n    this.config = // ... load the object ...\n    \n    // For posterity, but we don't need to return it at the moment. \n    return this.config;\n  },\n\n  settingExists( key ) {\n    let found = Object.keys( this.config ).indexOf( key )\n    return found;\n  }\n\n  static printFormatInstructions() {\n     console.log('Your config file must be in json format, and contain the following keys: foo, bar, baz.');\n  }\n}\n\n// Final usage\n\nimport Config from 'config.js';\n\nConfig.init();\n\n// Later\nif ( ! Config.settingExists( 'foo' ) ) {\n  Config.printFormatInstructions();\n}"
+      }
+    ],
+    "description": "",
+    "name": "e417c982fd1cd55c2e8307b5fe6a68d5",
+    "url": "https://gist.github.com/e417c982fd1cd55c2e8307b5fe6a68d5"
+  },
+  {
+    "id": "MDQ6R2lzdDdmZThlOGYyMDM5MWZjNGM1MGZmYWM2MThhMjE1ZGNj",
+    "files": [
+      {
+        "name": "helpers.tsx",
+        "language": {
+          "color": "#3178c6",
+          "id": "MDg6TGFuZ3VhZ2U3MTY=",
+          "name": "TSX"
+        },
+        "text": "export const LoggedInContent: FC<{}> = props => (\n  <AuthContext.Consumer>\n    {(auth): React.ReactNode => (auth && auth.token ? props.children : null)}\n  </AuthContext.Consumer>\n);\n\n/**\n * Helper to show content only if the user is logged out.\n */\nexport const LoggedOutContent: FC<{}> = props => (\n  <AuthContext.Consumer>\n    {(auth): React.ReactNode => (!auth || !auth.token ? props.children : null)}\n  </AuthContext.Consumer>\n);"
+      },
+      {
+        "name": "home.tsx",
+        "language": {
+          "color": "#0060ac",
+          "id": "MDg6TGFuZ3VhZ2UyODM=",
+          "name": "XML"
+        },
+        "text": "<LoggedInContent>\n  <Text>LOGGED IN!</Text>\n</LoggedInContent>\n<LoggedOutContent>\n  <Text>NOT LOGGED IN!</Text>\n</LoggedOutContent>"
+      }
+    ],
+    "description": "React Context API Logged-in content helpers",
+    "name": "7fe8e8f20391fc4c50ffac618a215dcc",
+    "url": "https://gist.github.com/7fe8e8f20391fc4c50ffac618a215dcc"
+  },
+  {
+    "id": "MDQ6R2lzdGQzMzJkNzNlZGM2MTQ2YTc2MGRhZjJkNmNjODNhNDMx",
+    "files": [
+      {
+        "name": "polling-function.jsx",
+        "language": {
+          "color": "#f1e05a",
+          "id": "MDg6TGFuZ3VhZ2UxNDA=",
+          "name": "JavaScript"
+        },
+        "text": "/**\n * Run an async function repeatedly until a condition is met, or we hit a max # of attempts.\n *\n * @param {Number} maxAttempts - Max # of times to run iterate() before we quit.\n * @param {Number} frequency - # milliseconds to wait in between attempts.\n * @param {Function} iterate - Async. Code to run on every iteration.\n * @param {Function} check - Accepts iterate response, return true/false if success criteria are met.\n * @param {Function} onSuccess - Success callback.\n * @param {Function} onMaxAttemptsExceeded - Failure callback.\n */\nexport const tryUntil = async ({\n  maxAttempts = 5,\n  frequency = 1000,\n  // What do do on each iteration. Returns any params required for check().\n  iterate = () => {},\n  // Take any params returned from iterate(); return true if we're done, false to iterate again.\n  check = () => {},\n  onSuccess = () => {},\n  onMaxAttemptsExceeded = () => {}\n}) => {\n    let attempts = 0;\n    const interval = setInterval(async () => {\n      const response = await iterate();\n\n      if (check(response)) {\n        onSuccess(response);\n        clearInterval(interval);\n        return\n      }\n\n      // Max # of attempts exceeded\n      attempts += 1;\n      if(attempts >= maxAttempts) {\n        onMaxAttemptsExceeded(response);\n        clearInterval(interval);\n      }\n    }, frequency)\n}"
+      }
+    ],
+    "description": "ESNext Polling Function",
+    "name": "d332d73edc6146a760daf2d6cc83a431",
+    "url": "https://gist.github.com/d332d73edc6146a760daf2d6cc83a431"
+  }
+]
