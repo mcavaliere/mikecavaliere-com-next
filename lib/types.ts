@@ -9,3 +9,13 @@ export type NextPageWithLayout = NextPage & {
 export type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
+
+export type nodeObjType = {
+  tagName: string;
+  textContent: string | null;
+  children: nodeObjType[];
+  meta?: Record<string, any>;
+  attributes: Record<string, any>;
+};
+
+export const TAGS_TO_SKIP = ["HTML", "BODY", "HEAD"];

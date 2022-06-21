@@ -8,9 +8,9 @@ import SectionSeparator from "../../components/section-separator";
 import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
 import PostTitle from "../../components/post-title";
 import Tags from "../../components/tags";
-import jsdom from "jsdom";
-import { isGist } from "lib/utils/gists";
-import { loadGists } from "lib/server/loadGists";
+
+import { htmlToNodeMap } from "lib/server/htmlToNodeMap";
+import { nodeObjType } from "lib/types";
 
 export default function PostPage({ post, posts, preview }) {
   const router = useRouter();
@@ -65,81 +65,9 @@ export default function PostPage({ post, posts, preview }) {
   );
 }
 
-export type nodeObjType = {
-  tagName: string;
-  textContent: string | null;
-  children: nodeObjType[];
-  meta?: Record<string, any>;
-  attributes: Record<string, any>;
-};
-
-export const TAGS_TO_SKIP = ["HTML", "BODY", "HEAD"];
-
-/**
- * Transform HTMLElement attributes into a key/value object.
- */
-export function attributesFromElement(element: Element): Record<string, any> {
-  const map = {};
-  const attributes = element.attributes;
-  for (let i = 0; i < attributes.length; i++) {
-    const { name, value } = attributes[i];
-    map[name] = value;
-  }
-
-  return map;
-}
-
-/**
- * Take an HTML node, and return simplified information about it, recursively including its children.
- * @param node {Element}
- * @returns {nodeObjType[]}
- */
-export async function traverse(
-  element: Element,
-  { gistMap }
-): Promise<nodeObjType> {
-  const { tagName, textContent, children: childElements } = element;
-
-  const transformedChildren = [];
-
-  for (let i = 0; i < childElements.length; i++) {
-    const child = childElements[i];
-    transformedChildren.push((await traverse(child, { gistMap })) as never);
-  }
-
-  const nodeObj: nodeObjType = {
-    tagName,
-    textContent,
-    children: transformedChildren,
-    attributes: attributesFromElement(element),
-  };
-
-  // Transformations here.
-  if (textContent && isGist(textContent)) {
-    // Gist urls in wordpress have the username in them, but the API returns them without it.
-    // Strip it to get a url in the form https://api.github.com/:id.
-    const key = textContent.replace(/\/mcavaliere/, "");
-
-    const gist = gistMap[key];
-
-    nodeObj.tagName = "GIST";
-    nodeObj.meta = { gist };
-  }
-
-  return nodeObj;
-}
-
 export async function getStaticProps({ params, preview = false, previewData }) {
   const data = await getPostAndMorePosts(params.slug, preview, previewData);
-
-  const gistMap = await loadGists();
-
-  // Get DOM representation of post HTML.
-  const dom = new jsdom.JSDOM(data.post.content);
-  const body = dom.window.document.getElementsByTagName("BODY")[0];
-
-  // Transform all nodes into object hierarchy, transformed into the metadata we want.
-  const nodeMap: nodeObjType[] = (await traverse(body, { gistMap })).children;
+  const nodeMap: nodeObjType[] = await htmlToNodeMap(data.post.content);
 
   return {
     props: {

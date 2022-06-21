@@ -3,7 +3,6 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import highlighterTheme from "react-syntax-highlighter/dist/cjs/styles/prism/vsc-dark-plus";
 import { Box, Text } from "@chakra-ui/react";
 import { theme } from "lib/theme";
-
 import { Heading1, Heading2, P as Paragraph } from "components/Headings";
 
 export type PostRendererProps = {
