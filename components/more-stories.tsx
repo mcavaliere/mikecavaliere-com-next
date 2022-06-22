@@ -1,5 +1,5 @@
 import PostPreview from "./post-preview";
-import { Box, SimpleGrid } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 
 export default function MoreStories({ posts }) {
   return (
@@ -13,6 +13,7 @@ export default function MoreStories({ posts }) {
             date={node.date}
             slug={node.slug}
             excerpt={node.excerpt}
+            slug={node.slug}
           />
         ))}
       </SimpleGrid>

@@ -1,17 +1,10 @@
 import CoverImage from "./cover-image";
-import Link from "next/link";
 import { Heading, Text } from "@chakra-ui/react";
 import { stripHtml } from "lib/utils/stripHtml";
 import { More } from "lib/postRenderers";
 import { CardContainer, CardBody } from "components/Card";
 
-export default function PostPreview({
-  title,
-  coverImage,
-  date,
-  excerpt,
-  slug,
-}) {
+export default function PostPreview({ title, coverImage, excerpt, slug }) {
   // Strip HTML to prevent rehydration mismatch errors.
   // See: https://nextjs.org/docs/messages/react-hydration-error
   const cleanedExcerpt = stripHtml(excerpt).replace(/\[\&hellip;\]/, "...");
@@ -34,7 +27,7 @@ export default function PostPreview({
         </Heading>
 
         <Text dangerouslySetInnerHTML={{ __html: cleanedExcerpt }} />
-        {hasMoreTag ? <More /> : null}
+        {hasMoreTag ? <More href={`/posts/${slug}`} /> : null}
       </CardBody>
     </CardContainer>
   );

@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import highlighterTheme from "react-syntax-highlighter/dist/cjs/styles/prism/vsc-dark-plus";
 import { Box, Button, Text } from "@chakra-ui/react";
+import NextLink from "next/link";
 import { theme } from "lib/theme";
 import { Heading1, Heading2, P as Paragraph } from "components/Headings";
 
@@ -61,12 +62,14 @@ export function P({ children, ...props }) {
   );
 }
 
-export function More() {
+export function More({ href }) {
   return (
     <Box justifyContent="flex-end" alignItems="flex-end" textAlign="right">
-      <Button size="xs" colorScheme="green">
-        read more ⮕
-      </Button>
+      <NextLink passHref href={href}>
+        <Button size="xs" colorScheme="green">
+          read more ⮕
+        </Button>
+      </NextLink>
     </Box>
   );
 }
