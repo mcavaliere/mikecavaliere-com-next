@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 import {
   Button,
   Box,
-  Center,
   Flex,
   FlexProps,
   Heading,
@@ -13,21 +12,26 @@ import { FaArrowRight } from "react-icons/fa";
 import NextLink from "next/link";
 import { isExternalUrl } from "lib/utils/isExternalUrl";
 
-export function CardHeading({ children }) {
+export function CardHeading({ children, ...props }) {
   return (
     <Heading
       color={useColorModeValue("gray.700", "white")}
       fontSize="2xl"
       fontFamily="body"
       mb={2}
+      {...props}
     >
       {children}
     </Heading>
   );
 }
 
-export function CardDescription({ children }) {
-  return <Text color="gray.500">{children}</Text>;
+export function CardDescription({ children, ...props }) {
+  return (
+    <Text color="gray.500" {...props}>
+      {children}
+    </Text>
+  );
 }
 
 export type CardCtaProps = {
@@ -38,9 +42,10 @@ export type CardCtaProps = {
 export function CardCta({
   children,
   rightIcon = <FaArrowRight />,
+  ...props
 }): JSX.Element {
   return (
-    <Button mt={4} rightIcon={rightIcon}>
+    <Button mt={4} rightIcon={rightIcon} {...props}>
       {children}
     </Button>
   );
@@ -77,20 +82,17 @@ export function CardContainer({ children, ...props }) {
   );
 
   if (href) {
-    const linkContents = (
-      <Center py={6} cursor="pointer" height="100%">
-        {innerContainer}
-      </Center>
-    );
-
+    // External urls get wrapped with a generic link.
     if (isExternalUrl(href)) {
       return (
         <a href={href} target="_blank" rel="noreferrer">
-          {linkContents}
+          {innerContainer}
         </a>
       );
     }
-    return <NextLink href={href}>{linkContents}</NextLink>;
+
+    // Internal urls use the next/link component for speed.
+    return <NextLink href={href}>{innerContainer}</NextLink>;
   }
 
   return innerContainer;
