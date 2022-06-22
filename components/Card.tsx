@@ -1,8 +1,10 @@
 import { ReactNode } from "react";
 import {
   Button,
+  Box,
   Center,
   Flex,
+  FlexProps,
   Heading,
   Text,
   useColorModeValue,
@@ -44,7 +46,7 @@ export function CardCta({
   );
 }
 
-export type CardContainerProps = {
+export type CardContainerProps = FlexProps & {
   children: ReactNode;
   href?: string;
 };
@@ -53,7 +55,8 @@ export type CardContainerProps = {
  * Card border, optionally linkable.
  * Detects whether the href is an external URL and adds a target="_blank".
  */
-export function CardContainer({ children, href }) {
+export function CardContainer({ children, ...props }) {
+  const href = props.href;
   const innerContainer = (
     <Flex
       bg={useColorModeValue("white", "gray.900")}
@@ -67,6 +70,7 @@ export function CardContainer({ children, href }) {
       p={6}
       rounded="md"
       w="full"
+      {...props}
     >
       {children}
     </Flex>
@@ -92,4 +96,6 @@ export function CardContainer({ children, href }) {
   return innerContainer;
 }
 
-export function CardBody() {}
+export function CardBody({ children }) {
+  return <Box p={6}>{children}</Box>;
+}

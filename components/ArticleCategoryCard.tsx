@@ -21,13 +21,11 @@ export function ArticleCategoryCard({
 }: ArticleCategoryCardProps) {
   return (
     <CardContainer href={ctaHref}>
-      <>
-        <Flex direction="column">
-          <CardHeading>{title}</CardHeading>
-          <CardDescription>{description}</CardDescription>
-        </Flex>
-        {ctaText && ctaHref ? <CardCta>{ctaText}</CardCta> : null}
-      </>
+      <Flex direction="column">
+        <CardHeading>{title}</CardHeading>
+        <CardDescription>{description}</CardDescription>
+      </Flex>
+      {ctaText && ctaHref ? <CardCta>{ctaText}</CardCta> : null}
     </CardContainer>
   );
 }

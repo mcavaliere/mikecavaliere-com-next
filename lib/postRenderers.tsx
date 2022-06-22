@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import highlighterTheme from "react-syntax-highlighter/dist/cjs/styles/prism/vsc-dark-plus";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Button, Text } from "@chakra-ui/react";
 import { theme } from "lib/theme";
 import { Heading1, Heading2, P as Paragraph } from "components/Headings";
 
@@ -58,6 +58,16 @@ export function P({ children, ...props }) {
     <Paragraph mb={5} {...props}>
       {children}
     </Paragraph>
+  );
+}
+
+export function More() {
+  return (
+    <Box justifyContent="flex-end" alignItems="flex-end" textAlign="right">
+      <Button size="xs" colorScheme="green">
+        read more ⮕
+      </Button>
+    </Box>
   );
 }
 
