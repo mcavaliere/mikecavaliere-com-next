@@ -37,7 +37,9 @@
 
 ## About The Project
 
-Currently in progress.
+My existing personal site at [MikeCavaliere.com](https://mikecavaliere.com/) is running on WordPress, and I want a new, faster version built with Next.js and Chakra-UI, using all the great toys like SSG, a serverless API and so on. 
+
+The first version will be a new design that pulls data from WP headlessly; eventually I'll move off WP entirely. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -68,10 +70,7 @@ For more details on this, see the Next.js example repo, ["A statically generated
    ```
 1. Install dependencies by running `yarn` (or `yarn install`).
 1. Copy `.env.local.example` to `.env.local`
-1. Enter your API in `config.js`
-   ```js
-   const API_KEY = "ENTER YOUR API";
-   ```
+1. Fill in any relevant environment variables.
 1. Start the project by running `yarn dev`, like any other Next.js app.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
