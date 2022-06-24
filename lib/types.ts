@@ -12,10 +12,10 @@ export type AppPropsWithLayout = AppProps & {
 
 export type nodeObjType = {
   tagName: string;
-  textContent: string | null;
+  text?: string;
   children: nodeObjType[];
   meta?: Record<string, any>;
-  attributes: Record<string, any>;
+  // attributes: Record<string, any>;
 };
 
 export const TAGS_TO_SKIP = ["HTML", "BODY", "HEAD"];

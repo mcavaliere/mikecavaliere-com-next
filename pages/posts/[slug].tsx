@@ -11,6 +11,7 @@ import Tags from "../../components/tags";
 
 import { htmlToNodeMap } from "lib/server/htmlToNodeMap";
 import { nodeObjType } from "lib/types";
+import { inspect } from "util";
 
 export default function PostPage({ post, posts, preview }) {
   const router = useRouter();
@@ -68,6 +69,10 @@ export default function PostPage({ post, posts, preview }) {
 export async function getStaticProps({ params, preview = false, previewData }) {
   const data = await getPostAndMorePosts(params.slug, preview, previewData);
   const nodeMap: nodeObjType[] = await htmlToNodeMap(data.post.content);
+
+  debugger;
+
+  console.log(`---------------- nodeMap `, inspect(nodeMap, { depth: 10 }));
 
   return {
     props: {
