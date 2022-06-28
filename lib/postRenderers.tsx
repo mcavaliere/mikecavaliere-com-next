@@ -1,7 +1,14 @@
 import { ReactNode } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import highlighterTheme from "react-syntax-highlighter/dist/cjs/styles/prism/vsc-dark-plus";
-import { Box, Button, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Text,
+  UnorderedList,
+  OrderedList,
+  ListItem,
+} from "@chakra-ui/react";
 import NextLink from "next/link";
 import { theme } from "lib/theme";
 import { Heading1, Heading2, P as Paragraph } from "components/Headings";
@@ -28,7 +35,27 @@ export function H2({ children, ...props }) {
   return <Heading2 {...props}>{children}</Heading2>;
 }
 
-export function Gist({ meta: { gist } }) {
+export function STRONG({ children, ...props }) {
+  return (
+    <Text fontWeight="bold" display="inline" {...props}>
+      {children}
+    </Text>
+  );
+}
+
+export function OL({ children, ...props }) {
+  return <OrderedList {...props}>{children}</OrderedList>;
+}
+
+export function UL({ children, ...props }) {
+  return <UnorderedList {...props}>{children}</UnorderedList>;
+}
+
+export function LI({ children, ...props }) {
+  return <ListItem {...props}>{children}</ListItem>;
+}
+
+export function GIST({ meta: { gist } }) {
   return (
     <>
       {gist.files.map(({ name, text }) => (
@@ -82,5 +109,10 @@ export const rendererMap = {
   H1,
   H2,
   P,
-  GIST: Gist,
+  GIST,
+  STRONG,
+  More,
+  OL,
+  UL,
+  LI,
 };

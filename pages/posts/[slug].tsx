@@ -68,11 +68,7 @@ export default function PostPage({ post, posts, preview }) {
 
 export async function getStaticProps({ params, preview = false, previewData }) {
   const data = await getPostAndMorePosts(params.slug, preview, previewData);
-  const nodeMap: nodeObjType[] = await htmlToNodeMap(data.post.content);
-
-  debugger;
-
-  console.log(`---------------- nodeMap `, inspect(nodeMap, { depth: 10 }));
+  const nodeMap = await htmlToNodeMap(data.post.content);
 
   return {
     props: {

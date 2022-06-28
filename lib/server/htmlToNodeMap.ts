@@ -6,7 +6,7 @@ import { isGist } from "lib/utils/gists";
 const NODE_TYPES_TO_SKIP = ["#comment", "SCRIPT"];
 const NODE_TYPES_WITHOUT_RENDERERS = ["DIV", "BODY"];
 
-export async function htmlToNodeMap(html: string): Promise<nodeObjType[]> {
+export async function htmlToNodeMap(html: string): Promise<nodeObjType> {
   const gistMap = await loadGists();
 
   // Get DOM representation of post HTML.
@@ -14,37 +14,54 @@ export async function htmlToNodeMap(html: string): Promise<nodeObjType[]> {
   const body = dom.window.document.getElementsByTagName("BODY")[0];
 
   // Transform all nodes into object hierarchy, transformed into the metadata we want.
-  // return (await traverse(body, { gistMap })).children;
-
-  return Promise.resolve(transform(body, { gistMap }));
+  return Promise.resolve(transform(body, { gistMap }) as nodeObjType);
 }
 
 /**
  * Return a minimal JS object representing the node.
  * @param node
  */
-export function transform(node: Node, { gistMap }): nodeObjType | undefined {
+export function transform(
+  { textContent, nodeName, childNodes }: Node,
+  { gistMap }
+): nodeObjType | undefined {
+  const meta: nodeObjType["meta"] = {};
+
   // Skip blacklisted tags.
-  if (NODE_TYPES_TO_SKIP.includes(node.nodeName)) {
+  if (NODE_TYPES_TO_SKIP.includes(nodeName)) {
     return undefined;
   }
 
   // Skip text nodes that just have a newline in them.
-  if (node.nodeName === "#text" && node.textContent === "\n") {
+  if (nodeName === "#text" && textContent === "\n") {
     return undefined;
   }
 
-  if (node.nodeName === "#text") {
+  if (nodeName === "#text") {
     return {
-      tagName: node.nodeName,
-      text: node.textContent!,
+      tagName: nodeName,
+      text: textContent!,
       children: [],
     };
   }
 
-  const transformedNodes = [];
+  // Add transformations here for specific element types.
+  if (textContent && isGist(textContent)) {
+    // Gist urls in wordpress have the username in them, but the API returns them without it.
+    // Strip it to get a url in the form https://api.github.com/:id.
+    const key = textContent.replace(/\/mcavaliere/, "");
+    const gist = gistMap[key];
 
-  node.childNodes.forEach((childNode) => {
+    return {
+      tagName: "GIST",
+      meta: { gist },
+      children: [],
+    };
+  }
+
+  const transformedNodes: nodeObjType[] = [];
+
+  childNodes.forEach((childNode) => {
     const transformedChildNode = transform(childNode, { gistMap });
     if (transformedChildNode !== undefined) {
       transformedNodes.push(transformedChildNode);
@@ -52,8 +69,9 @@ export function transform(node: Node, { gistMap }): nodeObjType | undefined {
   });
 
   return {
-    tagName: node.nodeName,
+    tagName: nodeName,
     children: transformedNodes,
+    meta,
   };
 }
 
@@ -68,8 +86,6 @@ export async function traverse(
   { gistMap }
 ): Promise<nodeObjType> {
   const { nodeName: tagName, textContent, childNodes: childElements } = element;
-  console.log(`---------------- nodeName:  `, tagName);
-  console.log(`----------------------  textContent:  `, textContent);
 
   const transformedChildren = [];
 
@@ -83,7 +99,6 @@ export async function traverse(
 
     // Skip text nodes that just have a newline in them.
     if (child.nodeName === "#text" && child.textContent === "\n") {
-      console.log(`---------------- NEWLINE, SKIPPING `);
       continue;
     }
 
