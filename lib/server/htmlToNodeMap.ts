@@ -4,6 +4,7 @@ import { nodeObjType } from "lib/types";
 import { isGist } from "lib/utils/gists";
 
 const NODE_TYPES_TO_SKIP = ["#comment", "SCRIPT"];
+const NODE_TYPES_WITHOUT_RENDERERS = ["DIV", "BODY"];
 
 export async function htmlToNodeMap(html: string): Promise<nodeObjType[]> {
   const gistMap = await loadGists();
@@ -13,7 +14,47 @@ export async function htmlToNodeMap(html: string): Promise<nodeObjType[]> {
   const body = dom.window.document.getElementsByTagName("BODY")[0];
 
   // Transform all nodes into object hierarchy, transformed into the metadata we want.
-  return (await traverse(body, { gistMap })).children;
+  // return (await traverse(body, { gistMap })).children;
+
+  return Promise.resolve(transform(body, { gistMap }));
+}
+
+/**
+ * Return a minimal JS object representing the node.
+ * @param node
+ */
+export function transform(node: Node, { gistMap }): nodeObjType | undefined {
+  // Skip blacklisted tags.
+  if (NODE_TYPES_TO_SKIP.includes(node.nodeName)) {
+    return undefined;
+  }
+
+  // Skip text nodes that just have a newline in them.
+  if (node.nodeName === "#text" && node.textContent === "\n") {
+    return undefined;
+  }
+
+  if (node.nodeName === "#text") {
+    return {
+      tagName: node.nodeName,
+      text: node.textContent!,
+      children: [],
+    };
+  }
+
+  const transformedNodes = [];
+
+  node.childNodes.forEach((childNode) => {
+    const transformedChildNode = transform(childNode, { gistMap });
+    if (transformedChildNode !== undefined) {
+      transformedNodes.push(transformedChildNode);
+    }
+  });
+
+  return {
+    tagName: node.nodeName,
+    children: transformedNodes,
+  };
 }
 
 /**
