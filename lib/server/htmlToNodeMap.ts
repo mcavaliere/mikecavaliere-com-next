@@ -4,7 +4,6 @@ import { nodeObjType } from "lib/types";
 import { isGist } from "lib/utils/gists";
 
 const NODE_TYPES_TO_SKIP = ["#comment", "SCRIPT"];
-const NODE_TYPES_WITHOUT_RENDERERS = ["DIV", "BODY"];
 
 export async function htmlToNodeMap(html: string): Promise<nodeObjType> {
   const gistMap = await loadGists();
@@ -15,6 +14,27 @@ export async function htmlToNodeMap(html: string): Promise<nodeObjType> {
 
   // Transform all nodes into object hierarchy, transformed into the metadata we want.
   return Promise.resolve(transform(body, { gistMap }) as nodeObjType);
+}
+
+export function transformGist({ textContent }: Node, gistMap) {
+  // Gist urls in wordpress have the username in them, but the API returns them without it.
+  // Strip it to get a url in the form https://api.github.com/:id.
+  const key = textContent!.replace(/\/mcavaliere/, "");
+  const gist = gistMap[key];
+
+  return {
+    tagName: "GIST",
+    meta: { gist },
+    children: [],
+  };
+}
+
+export function transformText({ nodeName, textContent }: Node) {
+  return {
+    tagName: nodeName,
+    text: textContent!,
+    children: [],
+  };
 }
 
 /**
@@ -38,39 +58,26 @@ export function transform(
   }
 
   if (nodeName === "#text") {
-    return {
-      tagName: nodeName,
-      text: textContent!,
-      children: [],
-    };
+    return transformText({ textContent, nodeName, meta });
   }
 
   // Add transformations here for specific element types.
   if (textContent && isGist(textContent)) {
-    // Gist urls in wordpress have the username in them, but the API returns them without it.
-    // Strip it to get a url in the form https://api.github.com/:id.
-    const key = textContent.replace(/\/mcavaliere/, "");
-    const gist = gistMap[key];
-
-    return {
-      tagName: "GIST",
-      meta: { gist },
-      children: [],
-    };
+    return transformGist({ textContent, nodeName, meta }, gistMap);
   }
 
-  const transformedNodes: nodeObjType[] = [];
+  const transformedChildNodes: nodeObjType[] = [];
 
   childNodes.forEach((childNode) => {
     const transformedChildNode = transform(childNode, { gistMap });
     if (transformedChildNode !== undefined) {
-      transformedNodes.push(transformedChildNode);
+      transformedChildNodes.push(transformedChildNode);
     }
   });
 
   return {
     tagName: nodeName,
-    children: transformedNodes,
+    children: transformedChildNodes,
     meta,
   };
 }

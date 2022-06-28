@@ -1,10 +1,11 @@
-import {
-  rendererMap,
-  DefaultRenderer,
-  PostRendererProps,
-} from "lib/postRenderers";
+import { rendererMap, DefaultRenderer } from "lib/postRenderers";
 import { nodeObjType } from "lib/types";
 
+/**
+ * Recursively determine the right renderer for a single nodeObjType node and render it (and any children).
+ * @param nodeProps The custom node to render and traverse.
+ * @returns {JSX.Element}
+ */
 export function renderNode(nodeProps: nodeObjType): JSX.Element | null {
   const { tagName, text, children, meta } = nodeProps;
 

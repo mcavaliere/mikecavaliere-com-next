@@ -4,14 +4,11 @@ import ErrorPage from "next/error";
 import PostBody from "../../components/post-body";
 import PostHeader from "../../components/post-header";
 import SectionSeparator from "../../components/section-separator";
-
-import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
 import PostTitle from "../../components/post-title";
 import Tags from "../../components/tags";
 
+import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
 import { htmlToNodeMap } from "lib/server/htmlToNodeMap";
-import { nodeObjType } from "lib/types";
-import { inspect } from "util";
 
 export default function PostPage({ post, posts, preview }) {
   const router = useRouter();
