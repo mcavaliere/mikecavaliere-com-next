@@ -45,8 +45,6 @@ export function transform(
   { textContent, nodeName, childNodes }: Node,
   { gistMap }
 ): nodeObjType | undefined {
-  const meta: nodeObjType["meta"] = {};
-
   // Skip blacklisted tags.
   if (NODE_TYPES_TO_SKIP.includes(nodeName)) {
     return undefined;
@@ -57,17 +55,19 @@ export function transform(
     return undefined;
   }
 
+  // Text nodes and Gists are leaf nodes.
   if (nodeName === "#text") {
-    return transformText({ textContent, nodeName, meta });
+    return transformText({ textContent, nodeName } as Node);
   }
 
   // Add transformations here for specific element types.
   if (textContent && isGist(textContent)) {
-    return transformGist({ textContent, nodeName, meta }, gistMap);
+    return transformGist({ textContent, nodeName } as Node, gistMap);
   }
 
   const transformedChildNodes: nodeObjType[] = [];
 
+  // Traverse children and recursively transform them.
   childNodes.forEach((childNode) => {
     const transformedChildNode = transform(childNode, { gistMap });
     if (transformedChildNode !== undefined) {
@@ -78,76 +78,5 @@ export function transform(
   return {
     tagName: nodeName,
     children: transformedChildNodes,
-    meta,
   };
-}
-
-/**
- * Take an HTML node, and return simplified information about it, recursively including its children.
- *
- * @param node {Element}
- * @returns {nodeObjType[]}
- */
-export async function traverse(
-  element: ChildNode,
-  { gistMap }
-): Promise<nodeObjType> {
-  const { nodeName: tagName, textContent, childNodes: childElements } = element;
-
-  const transformedChildren = [];
-
-  for (let i = 0; i < childElements?.length || 0; i++) {
-    const child = childElements[i];
-
-    // Skip blacklisted tags.
-    if (NODE_TYPES_TO_SKIP.includes(child.nodeName)) {
-      continue;
-    }
-
-    // Skip text nodes that just have a newline in them.
-    if (child.nodeName === "#text" && child.textContent === "\n") {
-      continue;
-    }
-
-    transformedChildren.push((await traverse(child, { gistMap })) as never);
-  }
-
-  const nodeObj: nodeObjType = {
-    tagName,
-    children: transformedChildren,
-    // attributes: attributesFromElement(element),
-  };
-
-  // Save text ONLY from actual text nodes.
-  if (tagName === "#text" && textContent !== null) {
-    nodeObj.text = textContent;
-  }
-
-  // Add transformations here for specific element types.
-  if (textContent && isGist(textContent)) {
-    // Gist urls in wordpress have the username in them, but the API returns them without it.
-    // Strip it to get a url in the form https://api.github.com/:id.
-    const key = textContent.replace(/\/mcavaliere/, "");
-
-    const gist = gistMap[key];
-
-    nodeObj.tagName = "GIST";
-    nodeObj.meta = { gist };
-  }
-
-  return nodeObj;
-}
-
-/**
- * Transform HTMLElement attributes into a key/value object.
- */
-export function attributesFromElement(element: Element): Record<string, any> {
-  const map = {};
-  const attributes = element.attributes;
-  for (let i = 0; i < attributes.length; i++) {
-    const { name, value } = attributes[i];
-    map[name] = value;
-  }
-
-  return map;
 }
