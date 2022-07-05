@@ -9,16 +9,20 @@ import { nodeObjType } from "lib/types";
 export function renderNode(nodeProps: nodeObjType): JSX.Element | null {
   const { tagName, text, children, meta } = nodeProps;
 
+  // Text nodes.
   if (tagName === "#text") {
     return DefaultRenderer({ children: text });
   }
 
+  // Find the renderer by tag name,
   const tagRenderer = rendererMap[tagName];
 
+  // Call the renderer differently for special elements.
   if (tagName == "GIST") {
     return tagRenderer({ meta });
   }
 
+  // Recurse appropriately.
   if (children?.length) {
     const renderedChildren = children.map(renderNode);
     if (tagRenderer) {
