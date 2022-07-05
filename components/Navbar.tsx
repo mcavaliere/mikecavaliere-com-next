@@ -14,10 +14,7 @@ import {
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
 import { FaBook } from "react-icons/fa";
-import { theme } from "lib/theme";
 import { NAVBAR_LINKS } from "lib/constants";
-
-const navbarColors = theme.colors.navbar;
 
 export type NavLinkProps = {
   children: ReactNode;
