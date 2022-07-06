@@ -1,6 +1,7 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Button, Flex, HStack } from "@chakra-ui/react";
 import { Heading2, P } from "components/Headings";
 import Image from "next/image";
+import { Talk } from "data/talks";
 
 export function TalkImage({
   talk: { imageUrl: url, imageHeight: height, imageWidth: width },
@@ -9,6 +10,27 @@ export function TalkImage({
     <Box width={200} mr={4}>
       <Image src={url} alt="talk" width={width} height={height} />
     </Box>
+  );
+}
+
+export function TalkLinks({
+  talk: { videoUrl, slidesUrl },
+}: {
+  talk: Talk;
+}): JSX.Element {
+  return (
+    <HStack>
+      {videoUrl ? (
+        <Button as="a" href={videoUrl}>
+          Video
+        </Button>
+      ) : null}
+      {slidesUrl ? (
+        <Button as="a" href={slidesUrl}>
+          Slides
+        </Button>
+      ) : null}
+    </HStack>
   );
 }
 

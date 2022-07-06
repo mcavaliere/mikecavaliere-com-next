@@ -1,4 +1,4 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import MoreStories from "components/more-stories";
 import { NextPageWithLayout } from "lib/types";
 import { getAllPostsForHome } from "lib/api";
