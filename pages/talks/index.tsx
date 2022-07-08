@@ -2,6 +2,7 @@ import { Heading, HStack, IconButton, Button } from "@chakra-ui/react";
 import CoverImage from "components/cover-image";
 import { CardGrid } from "components/CardGrid";
 import { CardBody, CardContainer } from "components/Card";
+import { Interviews } from "data/interviews";
 import { Talks } from "data/talks";
 import { Heading1 } from "components/Headings";
 import { FaVideo, FaSlideshare } from "react-icons/fa";
@@ -9,9 +10,11 @@ import { FaVideo, FaSlideshare } from "react-icons/fa";
 export default function TalksPage() {
   return (
     <>
-      <Heading1 textAlign="center">Talks & Interviews</Heading1>
+      <Heading1 textAlign="center" mb={5}>
+        Conference Talks
+      </Heading1>
 
-      <CardGrid>
+      <CardGrid mb={10}>
         {Talks.map((talk) => (
           <CardContainer
             as="article"
@@ -49,6 +52,45 @@ export default function TalksPage() {
                     rightIcon={<FaSlideshare />}
                   >
                     Slides
+                  </Button>
+                ) : null}
+              </HStack>
+            </CardBody>
+          </CardContainer>
+        ))}
+      </CardGrid>
+
+      <Heading1 textAlign="center" mb={5}>
+        Podcast Interviews
+      </Heading1>
+
+      <CardGrid>
+        {Interviews.map((article) => (
+          <CardContainer
+            as="article"
+            p={0}
+            justify="flex-start"
+            key={article.title}
+          >
+            {article.imageUrl && (
+              <CoverImage title={article.title} src={article.imageUrl} />
+            )}
+
+            <CardBody>
+              <Heading as="h2" size="lg">
+                {article.title}
+              </Heading>
+
+              <HStack>
+                {article.videoUrl ? (
+                  <Button
+                    as="a"
+                    href={article.videoUrl}
+                    size="sm"
+                    target="_blank"
+                    rightIcon={<FaVideo />}
+                  >
+                    Video
                   </Button>
                 ) : null}
               </HStack>

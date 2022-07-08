@@ -1,11 +1,10 @@
-export enum VideoType {
-  YOUTUBE = "youtube",
-}
+import { VideoType } from "lib/types";
 
 export type Talk = {
   title: string;
   videoUrl?: string;
   videoType?: VideoType;
+  excerpt?: string;
   description?: string;
   slidesUrl?: string;
   imageUrl?: string;

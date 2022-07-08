@@ -18,3 +18,7 @@ export type nodeObjType = {
 };
 
 export const TAGS_TO_SKIP = ["HTML", "BODY", "HEAD"];
+
+export enum VideoType {
+  YOUTUBE = "youtube",
+}
