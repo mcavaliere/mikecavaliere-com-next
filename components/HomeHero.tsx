@@ -20,7 +20,7 @@ export function HomeHero() {
           pos="relative"
         >
           <Image
-            src="/images/mike-cavaliere-headshot.jpg"
+            src="/images/headshot 1024 square 72DPI.jpeg"
             layout="fill"
             objectFit="cover"
             objectPosition="center"
