@@ -16,6 +16,6 @@ export function Heading2({ children, ...props }) {
   );
 }
 
-export function P({ children, ...props }) {
-  return <Text {...props}>{children}</Text>;
+export function P({ children, ...rest }) {
+  return <Text {...rest}>{children}</Text>;
 }

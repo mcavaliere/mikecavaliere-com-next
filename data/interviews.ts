@@ -1,16 +1,4 @@
-import { VideoType } from "lib/types";
-
-export type Interview = {
-  title: string;
-  videoUrl?: string;
-  videoType?: VideoType;
-  excerpt?: string;
-  description?: string;
-  imageUrl?: string;
-  imageWidth?: number;
-  imageHeight?: number;
-  presentedAt?: string;
-};
+import { Interview, VideoType } from "lib/types";
 
 export const Interviews: Interview[] = [
   {

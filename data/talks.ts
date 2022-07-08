@@ -1,17 +1,4 @@
-import { VideoType } from "lib/types";
-
-export type Talk = {
-  title: string;
-  videoUrl?: string;
-  videoType?: VideoType;
-  excerpt?: string;
-  description?: string;
-  slidesUrl?: string;
-  imageUrl?: string;
-  imageWidth?: number;
-  imageHeight?: number;
-  presentedAt?: string;
-};
+import { Talk, VideoType } from "lib/types";
 
 export const Talks: Talk[] = [
   {

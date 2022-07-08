@@ -98,6 +98,10 @@ export function CardContainer({ children, ...props }) {
   return innerContainer;
 }
 
-export function CardBody({ children }) {
-  return <Box p={6}>{children}</Box>;
+export function CardBody({ children, ...rest }) {
+  return (
+    <Box p={6} {...rest}>
+      {children}
+    </Box>
+  );
 }

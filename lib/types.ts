@@ -22,3 +22,28 @@ export const TAGS_TO_SKIP = ["HTML", "BODY", "HEAD"];
 export enum VideoType {
   YOUTUBE = "youtube",
 }
+
+export type Interview = {
+  title: string;
+  videoUrl?: string;
+  videoType?: VideoType;
+  excerpt?: string;
+  description?: string;
+  imageUrl?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  presentedAt?: string;
+};
+
+export type Talk = {
+  title: string;
+  videoUrl?: string;
+  videoType?: VideoType;
+  excerpt?: string;
+  description?: string;
+  slidesUrl?: string;
+  imageUrl?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  presentedAt?: string;
+};
