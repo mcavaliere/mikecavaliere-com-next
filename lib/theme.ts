@@ -19,6 +19,7 @@ export const theme = extendTheme({
   colors: {
     gray: {
       50: "#f5f5f5",
+      75: "#E5E5E5",
       100: "#EBEBEB",
       150: "#E0E0E0",
       200: "#D6D6D6",
@@ -40,9 +41,24 @@ export const theme = extendTheme({
       875: "#333333",
     },
     black: {
+      600: "#1C1C28",
       900: "#292929",
       925: "#1F1F1F",
       950: "#0A0A0A",
+    },
+    aqua: {
+      500: "#3FC8F1",
+    },
+    green: {
+      cta: "#33F3A2",
+    },
+    purple: {
+      200: "#AAA9FE",
+      300: "#805BEB",
+      400: "#8A64F4",
+      500: "#5544E3",
+      550: "#3635D4",
+      600: "#3232D2",
     },
     red: {
       500: "#F8333C",
@@ -52,5 +68,9 @@ export const theme = extendTheme({
       // ...
       900: "#1a202c",
     },
+  },
+  fonts: {
+    heading: `"Poppins", sans-serif`,
+    body: `"Poppins", sans-serif`,
   },
 });
