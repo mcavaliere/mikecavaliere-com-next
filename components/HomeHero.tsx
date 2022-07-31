@@ -10,7 +10,7 @@ export const HERO_AVATAR_SIZES = {
 
 export function HomeHero() {
   return (
-    <Flex direction={{ base: "column", md: "row" }} width="100%">
+    <Flex direction={{ base: "column", md: "row" }} width="100%" mb={10}>
       <Flex width={{ base: "100%", md: "50%" }} align="center" justify="center">
         <Box
           borderRadius={HERO_AVATAR_SIZES}

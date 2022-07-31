@@ -2,6 +2,18 @@ import { extendTheme } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
 export const theme = extendTheme({
+  components: {
+    Button: {
+      baseStyle: {
+        fontWeight: "600",
+      },
+      variants: {
+        primary: {
+          backgroundColor: "green.600",
+        },
+      },
+    },
+  },
   styles: {
     global: (props) => ({
       "*": {
@@ -50,7 +62,7 @@ export const theme = extendTheme({
       500: "#3FC8F1",
     },
     green: {
-      cta: "#33F3A2",
+      600: "#33F3A2",
     },
     purple: {
       200: "#AAA9FE",
