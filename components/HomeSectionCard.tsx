@@ -27,7 +27,7 @@ export function HomeSectionCard({
         </CardHeading>
         <CardDescription>{body}</CardDescription>
       </Flex>
-      <Button mt={4} rightIcon={<FaArrowRight />}>
+      <Button mt={4} rightIcon={<FaArrowRight />} variant="primary">
         {buttonText}
       </Button>
     </CardContainer>
