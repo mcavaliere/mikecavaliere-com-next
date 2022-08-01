@@ -70,7 +70,7 @@ export function CardContainer({ children, ...props }) {
       flex={1}
       height="100%"
       justify="space-between"
-      maxW="445px"
+      maxW={{ base: "100%", md: "445px" }}
       overflow="hidden"
       p={6}
       rounded="md"

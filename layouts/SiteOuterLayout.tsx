@@ -14,11 +14,8 @@ export const SiteOuterLayout = ({
 }: SiteOuterLayoutProps) => {
   return (
     <Box {...props}>
-      {/* <HeadContent />
-       */}
       <Navbar />
       {children}
-      {/* <Footer /> */}
     </Box>
   );
 };

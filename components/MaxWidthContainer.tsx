@@ -9,6 +9,7 @@ export function MaxWidthContainer({ children, ...props }) {
         base: "100%",
         md: "90%",
         lg: "75%",
+        xl: "1400px",
       }}
       flex={1}
       flexDirection="column"
