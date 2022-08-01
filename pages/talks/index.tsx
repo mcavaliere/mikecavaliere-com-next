@@ -9,15 +9,29 @@ import { Heading1, Heading2, P } from "components/Headings";
 import { FaVideo, FaSlideshare } from "react-icons/fa";
 
 export type TalkCardProps = {
-  talkOrInterview: Talk & Interview;
+  talkOrInterview: Talk | Interview;
 };
 
 export function TalkCard({ talkOrInterview }: TalkCardProps) {
-  const { title, imageUrl, videoUrl, slidesUrl, excerpt, description } =
-    talkOrInterview;
+  const {
+    title,
+    imageUrl,
+    videoUrl,
+    excerpt,
+    description,
+    imageWidth,
+    imageHeight,
+  } = talkOrInterview;
   return (
     <CardContainer as="article" p={0} justify="flex-start" key={title}>
-      {imageUrl && <CoverImage title={title} src={imageUrl} />}
+      {imageUrl && imageWidth && imageHeight && (
+        <CoverImage
+          title={title}
+          src={imageUrl}
+          width={imageWidth}
+          height={imageHeight}
+        />
+      )}
 
       <CardBody display="flex" flexDirection="column" flex={1}>
         <Heading2 size="md" mb={3} fontWeight="bold">
@@ -47,10 +61,10 @@ export function TalkCard({ talkOrInterview }: TalkCardProps) {
               Video
             </Button>
           ) : null}
-          {slidesUrl ? (
+          {talkOrInterview["slidesUrl"] ? (
             <Button
               as="a"
-              href={slidesUrl}
+              href={talkOrInterview["slidesUrl"]}
               size="sm"
               target="_blank"
               rightIcon={<FaSlideshare />}

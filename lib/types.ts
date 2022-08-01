@@ -42,8 +42,8 @@ export type Talk = {
   excerpt?: string;
   description?: string;
   slidesUrl?: string;
-  imageUrl?: string;
-  imageWidth?: number;
-  imageHeight?: number;
+  imageUrl: string;
+  imageWidth: number;
+  imageHeight: number;
   presentedAt?: string;
 };

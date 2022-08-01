@@ -18,7 +18,13 @@ export default function PostPreview({ title, coverImage, excerpt, slug }) {
       justify="flex-start"
     >
       {coverImage && (
-        <CoverImage title={title} src={coverImage?.sourceUrl} slug={slug} />
+        <CoverImage
+          title={title}
+          src={coverImage.sourceUrl}
+          slug={slug}
+          width={coverImage.mediaDetails.width}
+          height={coverImage.mediaDetails.height}
+        />
       )}
 
       <CardBody>
