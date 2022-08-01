@@ -5,6 +5,8 @@ export type CoverImageProps = {
   title: string;
   src: string;
   slug?: string;
+  width: number;
+  height: number;
 };
 
 export default function CoverImage({ title, src, slug }: CoverImageProps) {

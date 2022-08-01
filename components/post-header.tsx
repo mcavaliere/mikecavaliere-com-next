@@ -18,7 +18,15 @@ export default function PostHeader({
     <>
       <PostTitle mb={5}>{title}</PostTitle>
 
-      <CoverImage slug={slug} title={title} src={coverImage?.srcUrl} />
+      {/* {coverImage?.sourceUrl ? (
+        <CoverImage
+          slug={slug}
+          title={title}
+          src={coverImage.sourceUrl}
+          width={coverImage.mediaDetails.width}
+          height={coverImage.mediaDetails.height}
+        />
+      ) : null} */}
 
       <Flex direction="row" mb={5}>
         <Avatar author={author} />
