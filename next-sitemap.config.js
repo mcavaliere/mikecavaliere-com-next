@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 const config = {
-  siteUrl: process.env.SITE_URL || "https://mikecavaliere.com",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_BASE_URL,
   generateRobotsTxt: true, // (optional)
   // ...other options
 };
