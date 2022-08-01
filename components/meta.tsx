@@ -1,42 +1,68 @@
-import Head from 'next/head'
-import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
+import { NextSeo, NextSeoProps } from "next-seo";
+import { SITE_NAME } from "lib/constants";
 
-export default function Meta() {
-  return (
-    <Head>
-      <link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href="/favicon/apple-touch-icon.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/favicon/favicon-32x32.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/favicon/favicon-16x16.png"
-      />
-      <link rel="manifest" href="/favicon/site.webmanifest" />
-      <link
-        rel="mask-icon"
-        href="/favicon/safari-pinned-tab.svg"
-        color="#000000"
-      />
-      <link rel="shortcut icon" href="/favicon/favicon.ico" />
-      <meta name="msapplication-TileColor" content="#000000" />
-      <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
-      <meta name="theme-color" content="#000" />
-      <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <meta
-        name="description"
-        content={`A statically generated blog example using Next.js and ${CMS_NAME}.`}
-      />
-      <meta property="og:image" content={HOME_OG_IMAGE_URL} />
-    </Head>
-  )
+// NOTE: copied from next-seo since it doesn't export this type.
+export interface OpenGraphImages {
+  url: string;
+  width?: number;
+  height?: number;
+  alt?: string;
 }
+
+export interface Props {
+  seo?: NextSeoProps;
+}
+
+export enum OpenGraphType {
+  WEBSITE = "website",
+  ARTICLE = "article",
+}
+
+export interface MetaProps {
+  titlePrefix?: string;
+  titleSuffix?: string;
+  titleSeparator?: string;
+  description?: string;
+  images?: OpenGraphImages[];
+  relativeUrl?: string;
+  type?: OpenGraphType;
+  seo?: NextSeoProps;
+}
+
+export const Meta = ({
+  titlePrefix,
+  titleSeparator = "|",
+  titleSuffix = SITE_NAME,
+  type = OpenGraphType.WEBSITE,
+  description,
+  seo = { openGraph: { images: [] } },
+  relativeUrl = "",
+}: MetaProps) => {
+  const title = `${titlePrefix} ${titleSeparator} ${titleSuffix}`;
+  const url = `${process.env.SITE_BASE_URL}${relativeUrl}`;
+  const openGraph = {
+    url,
+    title,
+    description,
+    site_name: SITE_NAME,
+    type,
+    ...seo.openGraph,
+  };
+  const twitter = {
+    handle: "@mcavaliere",
+    cardType: "summary",
+    ...seo.twitter,
+  };
+
+  return (
+    <>
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={openGraph}
+        twitter={twitter}
+        {...seo}
+      />
+    </>
+  );
+};

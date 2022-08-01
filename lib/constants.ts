@@ -1,4 +1,17 @@
+// Environment variable checks here.
+if (!process.env.NEXT_PUBLIC_SITE_BASE_URL) {
+  throw "NEXT_PUBLIC_SITE_BASE_URL is not set";
+}
+
+if (!process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS) {
+  console.warn(
+    `---------------- NEXT_PUBLIC_GOOGLE_ANALYTICS is not set, tracking will not be sent.`
+  );
+}
+
 export const EXAMPLE_PATH = "cms-wordpress";
+export const SITE_NAME =
+  "Mike Cavaliere: software engineer, conference speaker, author.";
 export const CMS_NAME = "WordPress";
 export const CMS_URL = "https://wordpress.org";
 export const HOME_OG_IMAGE_URL =

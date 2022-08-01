@@ -1,9 +1,12 @@
-import { Box, Center } from "@chakra-ui/react";
-import MoreStories from "components/more-stories";
+import { Box } from "@chakra-ui/react";
+
 import { NextPageWithLayout } from "lib/types";
 import { getAllPostsForHome } from "lib/api";
-import { CardGrid } from "components/CardGrid";
 import { ArticleCategoryCard } from "components/ArticleCategoryCard";
+import { Meta } from "components/meta";
+import { CardGrid } from "components/CardGrid";
+import MoreStories from "components/more-stories";
+
 import { Heading1, Heading2 } from "components/Headings";
 
 export type PostsIndexPageProps = NextPageWithLayout & {
@@ -43,6 +46,10 @@ export default function PostsIndexPage({
   const morePosts = edges;
   return (
     <>
+      <Meta
+        titlePrefix="Mike Cavaliere's articles on JavaScript, React, technical strategy, and brain hacking."
+        description="Over the years I've written about software, tech careers, and brain improvement."
+      />
       <Box mb={10} textAlign="center">
         <Heading1 mb={3}>My Articles</Heading1>
         <Heading2 mb={10}>

@@ -1,4 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
+import { DefaultSeo } from "next-seo";
+import SEOConfig from "../next-seo.config";
 
 import { getLayout as getSiteOuterLayout } from "layouts/SiteOuterLayout";
 import { getLayout as getMaxWidthContainerLayout } from "layouts/MaxWidthContainerLayout";
@@ -23,9 +25,12 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   useAnalytics();
 
   return (
-    <ChakraProvider theme={theme}>
-      {getLayout(<Component {...pageProps} />, pageProps)}
-    </ChakraProvider>
+    <>
+      <DefaultSeo {...SEOConfig} />
+      <ChakraProvider theme={theme}>
+        {getLayout(<Component {...pageProps} />, pageProps)}
+      </ChakraProvider>
+    </>
   );
 }
 
