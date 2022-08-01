@@ -32,7 +32,7 @@ export default function PostHeader({
         <Avatar author={author} />
 
         <Box>
-          <Text fontSize="sm">
+          <Text fontSize="sm" mb={1}>
             <Date dateString={date} />
           </Text>
           <Categories categories={categories} />

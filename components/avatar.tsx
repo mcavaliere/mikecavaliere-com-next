@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Avatar } from "@chakra-ui/react";
+
+import { Avatar, Box, Flex } from "@chakra-ui/react";
 
 export default function AvatarContainer({ author }) {
   const name = author
@@ -16,11 +17,11 @@ export default function AvatarContainer({ author }) {
   // />
 
   return (
-    <div className="flex items-center">
-      <div className="w-12 h-12 relative mr-4">
-        <Avatar name={author.node.name} src={author.node.avatar.url} />
-      </div>
-      <div className="text-xl font-bold">{name}</div>
-    </div>
+    <Box>
+      <Box>
+        <Avatar name={author.node.name} src={author.node.avatar.url} mr={3} />
+      </Box>
+      <Box>{name}</Box>
+    </Box>
   );
 }

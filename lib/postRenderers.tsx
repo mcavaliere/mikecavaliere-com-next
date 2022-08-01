@@ -28,11 +28,19 @@ export function Caption({ children }) {
 }
 
 export function H1({ children, ...props }) {
-  return <Heading1 {...props}>{children}</Heading1>;
+  return (
+    <Heading1 mb={5} {...props}>
+      {children}
+    </Heading1>
+  );
 }
 
 export function H2({ children, ...props }) {
-  return <Heading2 {...props}>{children}</Heading2>;
+  return (
+    <Heading2 mb={3} {...props}>
+      {children}
+    </Heading2>
+  );
 }
 
 export function STRONG({ children, ...props }) {
@@ -44,11 +52,19 @@ export function STRONG({ children, ...props }) {
 }
 
 export function OL({ children, ...props }) {
-  return <OrderedList {...props}>{children}</OrderedList>;
+  return (
+    <OrderedList mb={5} {...props}>
+      {children}
+    </OrderedList>
+  );
 }
 
 export function UL({ children, ...props }) {
-  return <UnorderedList {...props}>{children}</UnorderedList>;
+  return (
+    <UnorderedList mb={5} {...props}>
+      {children}
+    </UnorderedList>
+  );
 }
 
 export function LI({ children, ...props }) {
