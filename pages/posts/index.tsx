@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Center } from "@chakra-ui/react";
 import MoreStories from "components/more-stories";
 import { NextPageWithLayout } from "lib/types";
 import { getAllPostsForHome } from "lib/api";
@@ -43,12 +43,13 @@ export default function PostsIndexPage({
   const morePosts = edges;
   return (
     <>
-      <Box mb={10}>
-        <Heading1>My Articles</Heading1>
-        <Heading2>
+      <Box mb={10} textAlign="center">
+        <Heading1 mb={3}>My Articles</Heading1>
+        <Heading2 mb={10}>
           Over the years I've written about software, tech careers, and brain
           improvement.
         </Heading2>
+
         <CardGrid>
           {ARTICLE_INDEX_CARDS.map(
             ({ title, description, ctaHref, ctaText }) => (
