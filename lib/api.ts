@@ -71,6 +71,14 @@ export async function getAllPostsForHome(preview) {
             featuredImage {
               node {
                 sourceUrl
+                altText
+                description
+                sizes
+                srcSet
+                mediaDetails {
+                  height
+                  width
+                }
               }
             }
             author {
