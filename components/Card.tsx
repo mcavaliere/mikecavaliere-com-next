@@ -39,7 +39,7 @@ export function CardCta({
   ...props
 }): JSX.Element {
   return (
-    <Button mt={4} rightIcon={rightIcon} {...props}>
+    <Button mt={4} rightIcon={rightIcon} variant="primary" {...props}>
       {children}
     </Button>
   );

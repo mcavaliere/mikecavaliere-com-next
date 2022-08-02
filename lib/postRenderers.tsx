@@ -109,7 +109,7 @@ export function More({ href }) {
   return (
     <Box justifyContent="flex-end" alignItems="flex-end" textAlign="right">
       <NextLink passHref href={href}>
-        <Button size="xs" colorScheme="green">
+        <Button size="xs" variant="primary">
           read more ⮕
         </Button>
       </NextLink>
