@@ -25,13 +25,13 @@ const GRID_ITEMS = [
     emoji: "📘",
   },
 
-  // {
-  //   title: "Talks",
-  //   body: "Presentations I've given at conferences, meetups and other events.",
-  //   href: NAVBAR_LINKS_MAP["talks"].href,
-  //   buttonText: "My Talks",
-  //   emoji: "🎙",
-  // },
+  {
+    title: "Talks & Interviews",
+    body: "My presentations at tech conferences and meetups, and recordings of podcasts I've been on.",
+    href: NAVBAR_LINKS_MAP["talks"].href,
+    buttonText: "My Talks",
+    emoji: "🎙",
+  },
 ];
 
 export function HomeSectionsGrid() {
