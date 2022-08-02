@@ -14,13 +14,7 @@ import { isExternalUrl } from "lib/utils/isExternalUrl";
 
 export function CardHeading({ children, ...props }) {
   return (
-    <Heading
-      color={useColorModeValue("gray.700", "white")}
-      fontSize="2xl"
-      fontFamily="body"
-      mb={2}
-      {...props}
-    >
+    <Heading fontSize="2xl" fontFamily="body" mb={2} {...props}>
       {children}
     </Heading>
   );
@@ -64,7 +58,7 @@ export function CardContainer({ children, ...props }) {
   const href = props.href;
   const innerContainer = (
     <Flex
-      bg={useColorModeValue("white", "gray.900")}
+      bg={useColorModeValue("white", "gray.875")}
       boxShadow="2xl"
       direction="column"
       flex={1}

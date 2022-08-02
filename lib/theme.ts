@@ -10,6 +10,7 @@ export const theme = extendTheme({
       variants: {
         primary: (props) => ({
           backgroundColor: "green.600",
+          color: "black.950",
         }),
         outline: {
           backgroundColor: "transparent",
@@ -24,6 +25,7 @@ export const theme = extendTheme({
       },
       body: {
         bg: mode("white", "gray.900")(props),
+        color: mode("black.950", "white")(props),
       },
       // Full-height container.
       "html, body, body > div:first-child, div#__next, div#__next > div": {

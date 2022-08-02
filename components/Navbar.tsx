@@ -62,7 +62,7 @@ export function Navbar() {
               ))}
               <Button
                 as="a"
-                variant="solid"
+                variant="primary"
                 colorScheme="teal"
                 size="sm"
                 mr={4}
