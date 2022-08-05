@@ -1,6 +1,7 @@
-import { ReactElement, ReactNode, useEffect } from "react";
+import { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import { AppProps } from "next/app";
+import { NextSeoProps } from "next-seo";
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement, pageProps?: any) => ReactNode;
@@ -46,4 +47,21 @@ export type Talk = {
   imageWidth: number;
   imageHeight: number;
   presentedAt?: string;
+};
+
+export type PageLayoutProps = {
+  children: JSX.Element;
+};
+
+export type ArticleMetaData = {
+  content: string;
+
+  title: string;
+  date: Date;
+  author: string;
+  excerpt: string;
+
+  slug: string;
+  toc?: string;
+  seo: NextSeoProps;
 };

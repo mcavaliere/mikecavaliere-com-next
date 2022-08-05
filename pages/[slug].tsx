@@ -9,28 +9,13 @@ import Tags from "components/tags";
 
 import { getAllPostsWithSlug, getPostAndMorePosts } from "lib/api";
 import { htmlToNodeMap } from "lib/server/htmlToNodeMap";
+import { getLayout } from "layouts/ArticleLayout";
 
 export default function PostPage({ post, posts, preview }) {
   const router = useRouter();
-  // const morePosts = posts?.edges;
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
-  }
-
-  {
-    /*
-  <Head>
-               <title>
-                {post.title} | Next.js Blog Example with {CMS_NAME}
-              </title>
-
-              <meta
-                property="og:image"
-                content={post.featuredImage?.node.sourceUrl}
-              />
-            </Head>
-            */
   }
 
   return (
@@ -56,16 +41,21 @@ export default function PostPage({ post, posts, preview }) {
           </article>
 
           <SectionSeparator />
-          {/* {morePosts.length > 0 && <MoreStories posts={morePosts} />} */}
         </>
       )}
     </>
   );
 }
 
+PostPage.getLayout = getLayout;
+
 export async function getStaticProps({ params, preview = false, previewData }) {
   const data = await getPostAndMorePosts(params.slug, preview, previewData);
   const nodeMap = await htmlToNodeMap(data.post.content);
+
+  const seo = {
+    openGraph: { images: [], url: "" },
+  };
 
   return {
     props: {

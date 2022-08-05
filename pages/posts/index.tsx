@@ -48,6 +48,8 @@ export default function PostsIndexPage({
     <>
       <Meta
         titlePrefix="Mike Cavaliere's articles on JavaScript, React, technical strategy, and brain hacking."
+        titleSuffix=""
+        titleSeparator=""
         description="Over the years I've written about software, tech careers, and brain improvement."
       />
       <Box mb={10} textAlign="center">

@@ -31,14 +31,14 @@ export interface MetaProps {
 
 export const Meta = ({
   titlePrefix,
-  titleSeparator = "|",
+  titleSeparator = " | ",
   titleSuffix = SITE_NAME,
   type = OpenGraphType.WEBSITE,
   description,
   seo = { openGraph: { images: [] } },
   relativeUrl = "",
 }: MetaProps) => {
-  const title = `${titlePrefix} ${titleSeparator} ${titleSuffix}`;
+  const title = `${titlePrefix}${titleSeparator}${titleSuffix}`;
   const url = `${process.env.SITE_BASE_URL}${relativeUrl}`;
   const openGraph = {
     url,

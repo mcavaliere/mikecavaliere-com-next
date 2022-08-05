@@ -10,8 +10,7 @@ if (!process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS) {
 }
 
 export const EXAMPLE_PATH = "cms-wordpress";
-export const SITE_NAME =
-  "Mike Cavaliere: software engineer, conference speaker, author.";
+export const SITE_NAME = "Mike Cavaliere";
 export const CMS_NAME = "WordPress";
 export const CMS_URL = "https://wordpress.org";
 export const HOME_OG_IMAGE_URL =
