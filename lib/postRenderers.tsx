@@ -98,10 +98,12 @@ export function GIST({ meta: { gist } }) {
 }
 
 export function P({ children, ...props }) {
+  // NOTE: using <Text as="div"> instead of <Paragraph> fixes a Next.js hydration mismatch error.
+  // TODO: find a better resolution that uses the right tags.
   return (
-    <Paragraph mb={5} {...props}>
+    <Text as="div" mb={5} {...props}>
       {children}
-    </Paragraph>
+    </Text>
   );
 }
 

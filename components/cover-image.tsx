@@ -23,7 +23,7 @@ export default function CoverImage({ title, src, slug }: CoverImageProps) {
   return (
     <div>
       {slug ? (
-        <Link href={`/posts/${slug}`}>
+        <Link href={`/${slug}`}>
           <a aria-label={title}>{image}</a>
         </Link>
       ) : (

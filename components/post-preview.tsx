@@ -33,7 +33,7 @@ export default function PostPreview({ title, coverImage, excerpt, slug }) {
         </Heading>
 
         <Text dangerouslySetInnerHTML={{ __html: cleanedExcerpt }} />
-        {hasMoreTag ? <More href={`/posts/${slug}`} /> : null}
+        {hasMoreTag ? <More href={`/${slug}`} /> : null}
       </CardBody>
     </CardContainer>
   );

@@ -1,13 +1,13 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 
-import PostBody from "../../components/post-body";
-import PostHeader from "../../components/post-header";
-import SectionSeparator from "../../components/section-separator";
-import PostTitle from "../../components/post-title";
-import Tags from "../../components/tags";
+import PostBody from "components/post-body";
+import PostHeader from "components/post-header";
+import SectionSeparator from "components/section-separator";
+import PostTitle from "components/post-title";
+import Tags from "components/tags";
 
-import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
+import { getAllPostsWithSlug, getPostAndMorePosts } from "lib/api";
 import { htmlToNodeMap } from "lib/server/htmlToNodeMap";
 
 export default function PostPage({ post, posts, preview }) {
@@ -80,7 +80,7 @@ export async function getStaticPaths() {
   const allPosts = await getAllPostsWithSlug();
 
   return {
-    paths: allPosts.edges.map(({ node }) => `/posts/${node.slug}`) || [],
+    paths: allPosts.edges.map(({ node }) => `/${node.slug}`) || [],
     fallback: true,
   };
 }
