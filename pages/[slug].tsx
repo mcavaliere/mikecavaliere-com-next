@@ -12,6 +12,7 @@ import { htmlToNodeMap } from "lib/server/htmlToNodeMap";
 import { getLayout } from "layouts/ArticleLayout";
 
 export default function PostPage({ post }) {
+  console.log(`---------------- PostPage `);
   const router = useRouter();
 
   if (!router.isFallback && !post?.slug) {

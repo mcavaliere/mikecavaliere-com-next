@@ -4,11 +4,11 @@ import { ArticlesBreadcrumb } from "components/ArticlesBreadcrumb";
 import { PageLayoutProps } from "lib/types";
 import { ArticleMetaData } from "lib/types";
 import { Meta } from "components/meta";
-import { relative } from "path";
 
 export type ArticleLayoutProps = PageLayoutProps & { post: ArticleMetaData };
 
 export const ArticleLayout = ({ children, post }: ArticleLayoutProps) => {
+  console.log(`---------------- ArticleLayout `);
   const { title, excerpt } = post;
 
   const relativeUrl = `/${post.slug}`;

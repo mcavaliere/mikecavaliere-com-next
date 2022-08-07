@@ -19,6 +19,7 @@ const defaultLayout = (page) =>
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   // Grab the layout if set; otherwise default to the default layout.
+  console.log(`---------------- _app.tsx ----------------`);
   const getLayout = Component.getLayout || defaultLayout;
 
   // Report pageviews and events to Google Analytics.
