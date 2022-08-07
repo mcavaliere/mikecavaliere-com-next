@@ -11,7 +11,7 @@ import { getAllPostsWithSlug, getPostAndMorePosts } from "lib/api";
 import { htmlToNodeMap } from "lib/server/htmlToNodeMap";
 import { getLayout } from "layouts/ArticleLayout";
 
-export default function PostPage({ post, posts, preview }) {
+export default function PostPage({ post }) {
   const router = useRouter();
 
   if (!router.isFallback && !post?.slug) {
@@ -53,15 +53,11 @@ export async function getStaticProps({ params, preview = false, previewData }) {
   const data = await getPostAndMorePosts(params.slug, preview, previewData);
   const nodeMap = await htmlToNodeMap(data.post.content);
 
-  const seo = {
-    openGraph: { images: [], url: "" },
-  };
 
   return {
     props: {
       preview,
       post: { ...data.post, contentMap: nodeMap },
-      // posts: data.posts,
     },
   };
 }

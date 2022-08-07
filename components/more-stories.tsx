@@ -10,10 +10,8 @@ export default function MoreStories({ posts }) {
             key={node.slug}
             title={node.title}
             coverImage={node.featuredImage.node}
-            // date={node.date}
             slug={node.slug}
             excerpt={node.excerpt}
-            // slug={node.slug}
           />
         ))}
       </SimpleGrid>

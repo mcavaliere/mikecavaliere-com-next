@@ -24,7 +24,7 @@ export function TalkCard({ talkOrInterview }: TalkCardProps) {
   } = talkOrInterview;
   return (
     <CardContainer as="article" p={0} justify="flex-start" key={title}>
-      {imageUrl && imageWidth && imageHeight && (
+      {title && imageUrl && imageWidth && imageHeight && (
         <CoverImage
           title={title}
           src={imageUrl}

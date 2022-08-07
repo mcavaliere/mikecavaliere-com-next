@@ -14,7 +14,7 @@ export default function CoverImage({ title, src, slug }: CoverImageProps) {
     <Image
       width={2000}
       height={1000}
-      alt={`Cover Image for ${title}`}
+      alt={`Cover Image for "${title}"`}
       src={src}
       layout="intrinsic"
       objectFit="cover"
