@@ -7,7 +7,7 @@ import SectionSeparator from "components/section-separator";
 import PostTitle from "components/post-title";
 import Tags from "components/tags";
 
-import { getAllPostsWithSlug, getPostAndMorePosts } from "lib/api";
+import { getAllPostSlugs, getPostAndMorePosts } from "lib/api";
 import { htmlToNodeMap } from "lib/server/htmlToNodeMap";
 import { getLayout } from "layouts/ArticleLayout";
 
@@ -53,7 +53,6 @@ export async function getStaticProps({ params, preview = false, previewData }) {
   const data = await getPostAndMorePosts(params.slug, preview, previewData);
   const nodeMap = await htmlToNodeMap(data.post.content);
 
-
   return {
     props: {
       preview,
@@ -63,10 +62,10 @@ export async function getStaticProps({ params, preview = false, previewData }) {
 }
 
 export async function getStaticPaths() {
-  const allPosts = await getAllPostsWithSlug();
+  const allPostSlugs = await getAllPostSlugs();
 
   return {
-    paths: allPosts.edges.map(({ node }) => `/${node.slug}`) || [],
-    fallback: true,
+    paths: allPostSlugs.map((slug) => `/${slug}`) || [],
+    fallback: false,
   };
 }

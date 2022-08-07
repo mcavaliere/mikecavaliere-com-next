@@ -1,3 +1,12 @@
+import { readFileSync } from "fs";
+import * as path from "path";
+
+const WP_POST_SLUGS_FILE__PATH = path.join(
+  process.cwd(),
+  "data",
+  "wp-post-slugs.json"
+);
+
 async function fetchAPI(query, { variables = {} } = {}) {
   const headers = { "Content-Type": "application/json" };
 
@@ -41,19 +50,12 @@ export async function getPreviewPost(id, idType = "DATABASE_ID") {
   return data.post;
 }
 
-export async function getAllPostsWithSlug() {
-  const data = await fetchAPI(`
-    {
-      posts(first: 10000) {
-        edges {
-          node {
-            slug
-          }
-        }
-      }
-    }
-  `);
-  return data?.posts;
+export async function getAllPostSlugs() {
+  return JSON.parse(
+    await readFileSync(WP_POST_SLUGS_FILE__PATH, {
+      encoding: "utf8",
+    })
+  );
 }
 
 export async function getAllPostsForHome(preview) {
