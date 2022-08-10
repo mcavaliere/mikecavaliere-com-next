@@ -8,7 +8,6 @@ import { Meta } from "components/meta";
 export type ArticleLayoutProps = PageLayoutProps & { post: ArticleMetaData };
 
 export const ArticleLayout = ({ children, post }: ArticleLayoutProps) => {
-  console.log(`---------------- ArticleLayout `);
   const { title, excerpt } = post;
 
   const relativeUrl = `/${post.slug}`;

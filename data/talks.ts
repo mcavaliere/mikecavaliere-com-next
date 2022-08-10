@@ -3,6 +3,18 @@ import { Talk, VideoType } from "lib/types";
 export const Talks: Talk[] = [
   {
     description:
+      "Having fun helps us learn faster and better. In this talk I walk through a simple game I built and talk about all the technical skills I improved  during the process.",
+    imageUrl:
+      "/images/talks/fun-and-games-with-full-stack-jamstack-kcdc-2022.png",
+    imageHeight: 809,
+    imageWidth: 1440,
+    presentedAt: "KCDC 2022",
+    slidesUrl:
+      "https://www.slideshare.net/mcavaliere/fun-and-games-wthe-fullstack-jamstack-kcdc-2022pdf",
+    title: "Fun and Games with the Full-Stack Jamstack",
+  },
+  {
+    description:
       "All about how companies can make more money by giving their people time to learn and invent.",
     imageUrl: "/images/talks/growing-engineers-with-paid-investment-time.png",
     imageHeight: 809,
