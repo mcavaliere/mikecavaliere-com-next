@@ -12,10 +12,22 @@ export type LinkProps = ChakraLinkProps & {
   href: string;
 };
 
+/**
+ * Next.js Link component + Chakra Link component.
+ */
 export const Link = ({ children, href, ...props }: LinkProps) => (
   <NextLink href={href} passHref>
     <ChakraLink {...props}>{children}</ChakraLink>
   </NextLink>
+);
+
+/**
+ * Styled element for links within paragraph content.
+ */
+export const ParagraphLink = ({ children, ...props }: LinkProps) => (
+  <Link textDecoration="underline" {...props}>
+    {children}
+  </Link>
 );
 
 export type BreadcrumbLinkProps = ChakraBreadcrumbLinkProps & {
@@ -23,6 +35,9 @@ export type BreadcrumbLinkProps = ChakraBreadcrumbLinkProps & {
   href: string;
 };
 
+/**
+ * Next.js Link component + Chakra BreadcrumbLink component.
+ */
 export const BreadcrumbLink = ({
   children,
   href,

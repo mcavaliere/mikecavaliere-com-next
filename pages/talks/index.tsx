@@ -81,7 +81,7 @@ export function TalkCard({ talkOrInterview }: TalkCardProps) {
 export default function TalksPage() {
   return (
     <>
-      <section>
+      <section id="talks">
         <Heading1 textAlign="center" mb={5}>
           Conference Talks
         </Heading1>
@@ -93,7 +93,7 @@ export default function TalksPage() {
         </CardGrid>
       </section>
 
-      <section>
+      <section id="interviews">
         <Heading1 textAlign="center" mb={5}>
           Podcast Interviews
         </Heading1>

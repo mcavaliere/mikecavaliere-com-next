@@ -6,6 +6,7 @@ import {
 } from "@chakra-ui/react";
 import { Heading1, Heading2, P } from "components/Headings";
 import { ContactLinks } from "components/ContactLinks";
+import { ParagraphLink } from "components/Link";
 
 export const AVATAR_SIZE = { base: 150, md: 300 };
 
@@ -41,9 +42,17 @@ export default function AboutPage() {
           </P>
           <P mb={5}>
             Somewhere along the way, I discovered that I love to write and
-            present. Since then I've written dozens of articles, been on a
-            number of podcasts, given talks at conferences and meetups, and
-            recently wrote my first software book.
+            present. Since then I've written dozens of{" "}
+            <ParagraphLink href="/posts">articles</ParagraphLink>, been on a
+            number of{" "}
+            <ParagraphLink href="/talks#interviews">podcasts</ParagraphLink>,
+            given a number of{" "}
+            <ParagraphLink href="/talks#interviews">talks</ParagraphLink> at
+            conferences and meetups, and recently wrote{" "}
+            <ParagraphLink href="https://cutintothejamstack.com">
+              my first software book
+            </ParagraphLink>
+            .
           </P>
 
           <P mb={5}>
