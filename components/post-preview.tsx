@@ -28,7 +28,7 @@ export default function PostPreview({ title, coverImage, excerpt, slug }) {
       ) : null}
 
       <CardBody>
-        <Heading as="h2" size="lg">
+        <Heading as="h2" size="lg" mb={4}>
           {title}
         </Heading>
 
