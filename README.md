@@ -90,9 +90,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 Twitter - [@mcavaliere](https://twitter.com/mcavaliere)
+Website - [@mcavaliere](https://mikecavaliere.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Demo
-
-### [https://mikecavaliere-com-next.vercel.app/](https://mikecavaliere-com-next.vercel.app/)
