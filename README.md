@@ -89,8 +89,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Twitter - [@mcavaliere](https://twitter.com/mcavaliere)
-Website - [@mcavaliere](https://mikecavaliere.com)
+* **Twitter** - [@mcavaliere](https://twitter.com/mcavaliere)
+* Website - [@mcavaliere](https://mikecavaliere.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
