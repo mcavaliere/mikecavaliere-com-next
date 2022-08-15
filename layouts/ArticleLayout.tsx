@@ -11,12 +11,14 @@ export const ArticleLayout = ({ children, post }: ArticleLayoutProps) => {
   const { title, excerpt } = post;
 
   const relativeUrl = `/${post.slug}`;
+  const canonical = `${process.env.NEXT_PUBLIC_SITE_BASE_URL}${relativeUrl}`;
   return (
     <>
       <Meta
         titlePrefix={title}
         description={excerpt}
         relativeUrl={relativeUrl}
+        seo={{ canonical }}
       />
       <ArticlesBreadcrumb />
       {children}
