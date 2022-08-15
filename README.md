@@ -3,7 +3,7 @@
 <h3 align="center">MikeCavaliere.com in Next.js</h3>
 
   <p align="center">
-    In-progress Next.js UI rewrite for MikeCavaliere.com (currently WordPress). Uses WordPress headlessly for the moment; all data will eventually be moved off of WordPress.
+    Next.js UI / Chakra-UI source for MikeCavaliere.com. Uses WordPress headlessly for article content; all data will eventually be moved off of WordPress entirely.
   </p>
 </div>
 
@@ -89,10 +89,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Twitter - [@mcavaliere](https://twitter.com/mcavaliere)
+* **Twitter** - [@mcavaliere](https://twitter.com/mcavaliere)
+* **Website** - [MikeCavaliere.com](https://mikecavaliere.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Demo
-
-### [https://mikecavaliere-com-next.vercel.app/](https://mikecavaliere-com-next.vercel.app/)
