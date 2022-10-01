@@ -7,9 +7,13 @@ import SectionSeparator from "components/section-separator";
 import PostTitle from "components/post-title";
 import Tags from "components/tags";
 
-import { getAllPostSlugs, getPostAndMorePosts } from "lib/api";
-import { htmlToNodeMap } from "lib/server/htmlToNodeMap";
 import { getLayout } from "layouts/ArticleLayout";
+import { readFileSync } from "fs";
+
+const appDir = process.cwd();
+const POSTS_FILE_PATH = `${appDir}/data/posts.json`;
+const NODEMAP_FILE_PATH = `${appDir}/data/postNodeMap.json`;
+const POST_PATHS_FILE_PATH = `${appDir}/data/postStaticPaths.json`;
 
 export default function PostPage({ post }) {
   const router = useRouter();
@@ -50,8 +54,8 @@ export default function PostPage({ post }) {
 PostPage.getLayout = getLayout;
 
 export async function getStaticProps({ params, preview = false, previewData }) {
-  const data = await getPostAndMorePosts(params.slug, preview, previewData);
-  const nodeMap = await htmlToNodeMap(data.post.content);
+  const data = JSON.parse(readFileSync(POSTS_FILE_PATH, "utf8"));
+  const nodeMap = JSON.parse(readFileSync(NODEMAP_FILE_PATH, "utf8"));
 
   return {
     props: {
@@ -62,7 +66,7 @@ export async function getStaticProps({ params, preview = false, previewData }) {
 }
 
 export async function getStaticPaths() {
-  const allPostSlugs = await getAllPostSlugs();
+  const allPostSlugs = JSON.parse(readFileSync(POST_PATHS_FILE_PATH, "utf8"));
 
   return {
     paths: allPostSlugs.map((slug) => `/${slug}`) || [],
