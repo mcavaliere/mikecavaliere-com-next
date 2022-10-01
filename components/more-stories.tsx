@@ -5,13 +5,13 @@ export default function MoreStories({ posts }) {
   return (
     <section>
       <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={5}>
-        {posts.map(({ node }) => (
+        {posts.map(({ slug, title, featuredImage, excerpt }) => (
           <PostPreview
-            key={node.slug}
-            title={node.title}
-            coverImage={node.featuredImage.node}
-            slug={node.slug}
-            excerpt={node.excerpt}
+            key={slug}
+            title={title}
+            coverImage={featuredImage.node}
+            slug={slug}
+            excerpt={excerpt}
           />
         ))}
       </SimpleGrid>

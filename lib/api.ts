@@ -1,5 +1,8 @@
 import { readFileSync } from "fs";
 import * as path from "path";
+const appDir = process.cwd();
+export const POST_PATHS_FILE_PATH = `${appDir}/data/postStaticPaths.json`;
+export const POSTS_MAP_FILE_PATH = `${appDir}/data/postMap.json`;
 
 const WP_POST_SLUGS_FILE__PATH = path.join(
   process.cwd(),
@@ -50,112 +53,16 @@ export async function getPreviewPost(id, idType = "DATABASE_ID") {
   return data.post;
 }
 
-export async function getAllPostSlugs() {
+export function getAllPostSlugs() {
   return JSON.parse(
-    await readFileSync(WP_POST_SLUGS_FILE__PATH, {
+    readFileSync(WP_POST_SLUGS_FILE__PATH, {
       encoding: "utf8",
     })
   );
 }
 
-export async function getAllPostsForHome(preview) {
-  const data = await fetchAPI(
-    `
-    fragment AuthorFields on User {
-      name
-      firstName
-      lastName
-      avatar {
-        url
-      }
-    }
-    fragment PostFields on Post {
-      id
-      title
-      excerpt
-      slug
-      date
-      featuredImage {
-        node {
-          sourceUrl
-          altText
-          description
-          sizes
-          srcSet
-          mediaDetails {
-            height
-            width
-          }
-        }
-      }
-      author {
-        node {
-          ...AuthorFields
-        }
-      }
-      categories {
-        edges {
-          node {
-            name
-          }
-        }
-      }
-      tags {
-        edges {
-          node {
-            name
-          }
-        }
-      }
-    }
-    query AllPosts {
-      posts(first: 100, where: { orderby: { field: DATE, order: DESC } }) {
-        edges {
-          node {
-            ...PostFields
-            content
-            id
-            title
-            excerpt
-            slug
-            date
-            featuredImage {
-              node {
-                sourceUrl
-                altText
-                description
-                sizes
-                srcSet
-                mediaDetails {
-                  height
-                  width
-                }
-              }
-            }
-            author {
-              node {
-                name
-                firstName
-                lastName
-                avatar {
-                  url
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `,
-    {
-      variables: {
-        onlyEnabled: !preview,
-        preview,
-      },
-    }
-  );
-
-  return data?.posts;
+export async function getAllPostsMap() {
+  return JSON.parse(readFileSync(POSTS_MAP_FILE_PATH, "utf8"));
 }
 
 export async function getPostAndMorePosts(slug, preview, previewData) {

@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 
 import { NextPageWithLayout } from "lib/types";
-import { getAllPostsForHome } from "lib/api";
+import { getAllPostsMap } from "lib/api";
 import { ArticleCategoryCard } from "components/ArticleCategoryCard";
 import { Meta } from "components/meta";
 import { CardGrid } from "components/CardGrid";
@@ -40,10 +40,7 @@ export const ARTICLE_INDEX_CARDS = [
   },
 ];
 
-export default function PostsIndexPage({
-  allPosts: { edges },
-}: PostsIndexPageProps) {
-  const morePosts = edges;
+export default function PostsIndexPage({ allPosts }: PostsIndexPageProps) {
   return (
     <>
       <Meta
@@ -73,13 +70,14 @@ export default function PostsIndexPage({
           )}
         </CardGrid>
       </Box>
-      <MoreStories posts={morePosts} />
+      <MoreStories posts={allPosts} />
     </>
   );
 }
 
 export async function getStaticProps({ preview = false }) {
-  const allPosts = await getAllPostsForHome(preview);
+  const allPostsMap = await getAllPostsMap();
+  const allPosts = Object.values(allPostsMap);
 
   return {
     props: { allPosts, preview },
