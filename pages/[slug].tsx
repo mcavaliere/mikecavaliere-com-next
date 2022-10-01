@@ -11,9 +11,10 @@ import { getLayout } from "layouts/ArticleLayout";
 import { readFileSync } from "fs";
 
 const appDir = process.cwd();
-const POSTS_FILE_PATH = `${appDir}/data/posts.json`;
+
 const NODEMAP_FILE_PATH = `${appDir}/data/postNodeMap.json`;
 const POST_PATHS_FILE_PATH = `${appDir}/data/postStaticPaths.json`;
+const POSTS_MAP_FILE_PATH = `${appDir}/data/postMap.json`;
 
 export default function PostPage({ post }) {
   const router = useRouter();
@@ -54,13 +55,15 @@ export default function PostPage({ post }) {
 PostPage.getLayout = getLayout;
 
 export async function getStaticProps({ params, preview = false, previewData }) {
-  const data = JSON.parse(readFileSync(POSTS_FILE_PATH, "utf8"));
+  const allPostsMap = JSON.parse(readFileSync(POSTS_MAP_FILE_PATH, "utf8"));
+  const post = allPostsMap[params.slug];
+
   const nodeMap = JSON.parse(readFileSync(NODEMAP_FILE_PATH, "utf8"));
 
   return {
     props: {
       preview,
-      post: { ...data.post, contentMap: nodeMap },
+      post: { ...post, contentMap: nodeMap },
     },
   };
 }

@@ -61,10 +61,59 @@ export async function getAllPostSlugs() {
 export async function getAllPostsForHome(preview) {
   const data = await fetchAPI(
     `
+    fragment AuthorFields on User {
+      name
+      firstName
+      lastName
+      avatar {
+        url
+      }
+    }
+    fragment PostFields on Post {
+      id
+      title
+      excerpt
+      slug
+      date
+      featuredImage {
+        node {
+          sourceUrl
+          altText
+          description
+          sizes
+          srcSet
+          mediaDetails {
+            height
+            width
+          }
+        }
+      }
+      author {
+        node {
+          ...AuthorFields
+        }
+      }
+      categories {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+      tags {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+    }
     query AllPosts {
       posts(first: 100, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
           node {
+            ...PostFields
+            content
             id
             title
             excerpt
