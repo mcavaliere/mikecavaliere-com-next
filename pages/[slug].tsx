@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
+import { Box } from "@chakra-ui/react";
 
+import CoverImage from "components/cover-image";
 import PostBody from "components/post-body";
 import PostHeader from "components/post-header";
 import SectionSeparator from "components/section-separator";
@@ -14,6 +16,7 @@ import { getAllPostsMap, getAllPostSlugs } from "lib/api";
 
 export default function PostPage({ post }) {
   const router = useRouter();
+  const featuredImage = post.featuredImage?.node;
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
@@ -28,12 +31,21 @@ export default function PostPage({ post }) {
           <article>
             <PostHeader
               title={post.title}
-              coverImage={post.featuredImage.node}
               date={post.date}
               author={post.author}
               categories={post.categories}
               slug={post.slug}
             />
+
+            {featuredImage?.sourceUrl ? (
+              <CoverImage
+                slug={post.slug}
+                title={post.title}
+                src={featuredImage.sourceUrl}
+                width={featuredImage.mediaDetails.width}
+                height={featuredImage.mediaDetails.height}
+              />
+            ) : null}
 
             <PostBody contentMap={post.contentMap} />
             <footer>
