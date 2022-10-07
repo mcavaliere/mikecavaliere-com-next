@@ -5,11 +5,35 @@ import Date from "./date";
 
 import PostTitle from "./post-title";
 import Categories from "./categories";
+import CoverImage from "components/cover-image";
 
-export default function PostHeader({ title, date, author, categories, slug }) {
+export default function PostHeader({
+  title,
+  date,
+  author,
+  categories,
+  slug,
+  featuredImage,
+}) {
   return (
     <>
       <PostTitle mb={5}>{title}</PostTitle>
+      {featuredImage?.sourceUrl ? (
+        <Box
+          boxShadow="dark-inner"
+          overflow="hidden"
+          float={{ base: "none", md: "right" }}
+          ml={{ base: "0", md: 5 }}
+        >
+          <CoverImage
+            slug={slug}
+            title={title}
+            src={featuredImage.sourceUrl}
+            width={featuredImage.mediaDetails.width}
+            height={featuredImage.mediaDetails.height}
+          />
+        </Box>
+      ) : null}
 
       <Flex direction="row" mb={5}>
         <Avatar author={author} />

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 import Link from "next/link";
 
 export type CoverImageProps = {
@@ -30,15 +30,5 @@ export default function CoverImage({
       objectFit="cover"
     />
   );
-  return (
-    <div>
-      {slug ? (
-        <Link href={`/${slug}`}>
-          <a aria-label={title}>{image}</a>
-        </Link>
-      ) : (
-        image
-      )}
-    </div>
-  );
+  return slug ? <Link href={`/${slug}`}>{image}</Link> : <>{image}</>;
 }

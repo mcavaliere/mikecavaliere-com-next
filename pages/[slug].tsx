@@ -1,8 +1,7 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import { Box } from "@chakra-ui/react";
+import { Flex, Box } from "@chakra-ui/react";
 
-import CoverImage from "components/cover-image";
 import PostBody from "components/post-body";
 import PostHeader from "components/post-header";
 import SectionSeparator from "components/section-separator";
@@ -28,24 +27,15 @@ export default function PostPage({ post }) {
         <PostTitle>Loading…</PostTitle>
       ) : (
         <>
-          <article>
+          <article style={{ position: "relative" }}>
             <PostHeader
               title={post.title}
               date={post.date}
               author={post.author}
               categories={post.categories}
               slug={post.slug}
+              featuredImage={featuredImage}
             />
-
-            {featuredImage?.sourceUrl ? (
-              <CoverImage
-                slug={post.slug}
-                title={post.title}
-                src={featuredImage.sourceUrl}
-                width={featuredImage.mediaDetails.width}
-                height={featuredImage.mediaDetails.height}
-              />
-            ) : null}
 
             <PostBody contentMap={post.contentMap} />
             <footer>
