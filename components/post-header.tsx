@@ -22,6 +22,7 @@ export default function PostHeader({
         <Box
           boxShadow="dark-inner"
           overflow="hidden"
+          width={{ base: "100%", md: "50%" }}
           float={{ base: "none", md: "right" }}
           ml={{ base: "0", md: 5 }}
         >
