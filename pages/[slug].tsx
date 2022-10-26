@@ -1,7 +1,5 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import { Flex, Box } from "@chakra-ui/react";
-
 import PostBody from "components/post-body";
 import PostHeader from "components/post-header";
 import SectionSeparator from "components/section-separator";
@@ -10,12 +8,18 @@ import Tags from "components/tags";
 
 import { getLayout } from "layouts/ArticleLayout";
 import { htmlToNodeMap } from "lib/server/htmlToNodeMap";
-
 import { getAllPostsMap, getAllPostSlugs } from "lib/api";
+
+if (!process.env.NEXT_PUBLIC_CLOUDINARY_BASE_URL) {
+  throw new Error("Missing NEXT_PUBLIC_CLOUDINARY_BASE_URL");
+}
 
 export default function PostPage({ post }) {
   const router = useRouter();
-  const featuredImage = post.featuredImage?.node;
+  const featuredImage = {
+    ...post.featuredImage?.node,
+    sourceUrl: `${process.env.NEXT_PUBLIC_CLOUDINARY_BASE_URL}${post.featuredImage?.node.sourceUrl}`,
+  };
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;

@@ -9,10 +9,6 @@ export type CoverImageProps = {
   height: number;
 };
 
-if (!process.env.NEXT_PUBLIC_CLOUDINARY_BASE_URL) {
-  throw new Error("Missing NEXT_PUBLIC_CLOUDINARY_BASE_URL");
-}
-
 export default function CoverImage({
   title,
   src,
@@ -25,7 +21,7 @@ export default function CoverImage({
       width={width}
       height={height}
       alt={`Cover Image for "${title}"`}
-      src={`${process.env.NEXT_PUBLIC_CLOUDINARY_BASE_URL}${src}`}
+      src={`${src}`}
       layout="intrinsic"
       objectFit="cover"
     />

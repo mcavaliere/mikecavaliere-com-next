@@ -4,6 +4,10 @@ import { stripHtml } from "lib/utils/stripHtml";
 import { More } from "lib/postRenderers";
 import { CardContainer, CardBody } from "components/Card";
 
+if (!process.env.NEXT_PUBLIC_CLOUDINARY_BASE_URL) {
+  throw new Error("Missing NEXT_PUBLIC_CLOUDINARY_BASE_URL");
+}
+
 export default function PostPreview({ title, coverImage, excerpt, slug }) {
   // Strip HTML to prevent rehydration mismatch errors.
   // See: https://nextjs.org/docs/messages/react-hydration-error
@@ -20,7 +24,7 @@ export default function PostPreview({ title, coverImage, excerpt, slug }) {
       {coverImage?.mediaDetails?.width ? (
         <CoverImage
           title={title}
-          src={coverImage.sourceUrl}
+          src={`${process.env.NEXT_PUBLIC_CLOUDINARY_BASE_URL}${coverImage.sourceUrl}`}
           slug={slug}
           width={coverImage.mediaDetails.width}
           height={coverImage.mediaDetails.height}
