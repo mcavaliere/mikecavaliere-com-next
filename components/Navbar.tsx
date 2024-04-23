@@ -3,7 +3,6 @@ import {
   Box,
   Flex,
   HStack,
-  Link as ChakraLink,
   IconButton,
   Button,
   useDisclosure,
@@ -15,6 +14,7 @@ import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
 import { FaBook } from "react-icons/fa";
 import { NAVBAR_LINKS } from "lib/constants";
+import { Link } from "@chakra-ui/next-js";
 
 export type NavLinkProps = {
   children: ReactNode;
@@ -22,20 +22,18 @@ export type NavLinkProps = {
 };
 
 export const NavLink = ({ href, children }: NavLinkProps) => (
-  <NextLink href={href} passHref>
-    <ChakraLink
-      px={2}
-      py={1}
-      rounded="md"
-      _hover={{
-        textDecoration: "none",
-        bg: useColorModeValue("gray.200", "gray.700"),
-      }}
-      href={"#"}
-    >
-      {children}
-    </ChakraLink>
-  </NextLink>
+  <Link
+    href={href}
+    px={2}
+    py={1}
+    rounded="md"
+    _hover={{
+      textDecoration: "none",
+      bg: useColorModeValue("gray.200", "gray.700"),
+    }}
+  >
+    {children}
+  </Link>
 );
 
 export function Navbar() {

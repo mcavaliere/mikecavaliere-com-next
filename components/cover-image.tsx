@@ -1,4 +1,4 @@
-import Image, { ImageProps } from "next/legacy/image";
+import Image, { ImageProps } from "next/image";
 import Link from "next/link";
 
 export type CoverImageProps = {
@@ -22,9 +22,11 @@ export default function CoverImage({
       height={height}
       alt={`Cover Image for "${title}"`}
       src={`${src}`}
-      layout="intrinsic"
-      objectFit="cover"
-    />
+      style={{
+        maxWidth: "100%",
+        height: "auto",
+        objectFit: "cover"
+      }} />
   );
   return slug ? <Link href={`/${slug}`}>{image}</Link> : <>{image}</>;
 }
