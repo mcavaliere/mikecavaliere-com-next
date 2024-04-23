@@ -1,5 +1,5 @@
 import { Heading, Box, Flex } from "@chakra-ui/react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { ContactLinks } from "components/ContactLinks";
 
 export const HERO_AVATAR_SIZES = {
