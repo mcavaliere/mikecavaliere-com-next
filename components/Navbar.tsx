@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
-import { FaBook } from "react-icons/fa";
+import { FaLaptopCode } from "react-icons/fa";
 import { NAVBAR_LINKS } from "lib/constants";
 import { Link } from "@chakra-ui/next-js";
 
@@ -64,11 +64,10 @@ export function Navbar() {
                 colorScheme="teal"
                 size="sm"
                 mr={4}
-                leftIcon={<FaBook />}
-                href="https://www.cutintothejamstack.com"
-                target="_blank"
+                leftIcon={<FaLaptopCode />}
+                href="/projects"
               >
-                My Book
+                Projects
               </Button>
             </HStack>
           </HStack>

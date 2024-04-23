@@ -49,6 +49,15 @@ export type Talk = {
   presentedAt?: string;
 };
 
+export type Project = {
+  title: string;
+  description: string;
+  url: string;
+  imageUrl?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+};
+
 export type PageLayoutProps = {
   children: JSX.Element;
 };
