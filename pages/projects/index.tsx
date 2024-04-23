@@ -66,7 +66,7 @@ export default function TalksPage() {
     <>
       <section id="talks">
         <Heading1 textAlign="center" mb={5}>
-          Conference Talks
+          Projects
         </Heading1>
 
         <CardGrid mb={10}>
