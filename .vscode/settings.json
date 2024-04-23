@@ -19,5 +19,8 @@
     "titleBar.inactiveForeground": "#15202b99",
     "commandCenter.border": "#15202b99"
   },
-  "peacock.color": "#fb7530"
+  "peacock.color": "#fb7530",
+  "editor.formatOnSave": true,
+  "notebook.formatOnSave.enabled": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

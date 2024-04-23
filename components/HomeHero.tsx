@@ -32,12 +32,14 @@ export function HomeHero() {
           >
             <Image
               src="/images/headshot 1024 square 72DPI.jpeg"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
               priority
               alt="photo of Mike Cavaliere"
-            />
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover",
+                objectPosition: "center"
+              }} />
           </Box>
         </Box>
       </Flex>
