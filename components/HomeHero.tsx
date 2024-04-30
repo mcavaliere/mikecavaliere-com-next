@@ -53,7 +53,7 @@ export function HomeHero() {
         <Heading as="h2" size="md" fontWeight="normal">
           I'm a <strong>technical strategist</strong>,{" "}
           <strong>software engineer</strong>, <strong>presenter</strong>,{" "}
-          <strong>author</strong> and <strong>brain hacker</strong>.
+          <strong>author</strong> and <strong>presenter</strong>.
         </Heading>
 
         <ContactLinks />
