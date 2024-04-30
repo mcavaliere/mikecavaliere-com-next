@@ -15,13 +15,6 @@ export type PostsIndexPageProps = NextPageWithLayout & {
 
 export const ARTICLE_INDEX_CARDS = [
   {
-    title: "🧠 Brain Improvement",
-    description:
-      "My articles on brain hacking, and on being a programmer with ADHD live on ADHDTechies.com",
-    ctaText: "ADHDTechies.com",
-    ctaHref: "https://adhdtechies.com",
-  },
-  {
     title: "⚛️ Full-Stack React",
     description:
       "I write about React, Next.js and other full-stack Jamstack topics at cutintothejamstack.com.",
