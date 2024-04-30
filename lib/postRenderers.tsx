@@ -29,7 +29,7 @@ export function Caption({ children }) {
 
 export function H1({ children, ...props }) {
   return (
-    <Heading1 mb={5} {...props}>
+    <Heading1 fontFamily="Poppins" mb={5} {...props}>
       {children}
     </Heading1>
   );
@@ -37,7 +37,7 @@ export function H1({ children, ...props }) {
 
 export function H2({ children, ...props }) {
   return (
-    <Heading2 mb={3} {...props}>
+    <Heading2 fontFamily="Poppins" mb={3} {...props}>
       {children}
     </Heading2>
   );
@@ -101,7 +101,7 @@ export function P({ children, ...props }) {
   // NOTE: using <Text as="div"> instead of <Paragraph> fixes a Next.js hydration mismatch error.
   // TODO: find a better resolution that uses the right tags.
   return (
-    <Text as="div" mb={5} {...props}>
+    <Text fontFamily="Poppins" as="div" mb={5} {...props}>
       {children}
     </Text>
   );
