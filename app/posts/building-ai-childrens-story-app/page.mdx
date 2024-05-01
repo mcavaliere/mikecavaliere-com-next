@@ -30,17 +30,17 @@ So I quickly switched to stable diffusion. Stability's rate limits are much more
 
 ### Streaming JSON isn't perfect
 
-The way conversational chat interfaces work on the web is by streaming content-word by word—to the front end. But what if you want your front end to have information that is more structured streamed to it- like say, a JSON object with the title of a story, an array of paragraphs, and so on? That's a bit trickier.
+The way conversational chat interfaces work on the web is by streaming content word by word to the front end. But what if you want your front end to have information that is more structured streamed to it—like say, a JSON object with the title of a story, an array of paragraphs, and so on? That's a bit trickier.
 
 The OpenAI SDK does support JSON streaming - but at any given time the object you receive might look like this:
 
-<code>
-`{"title": "Sammy's Big Adventure", "content": "Once upon a time there was an elephant named Sammy`
-</code>
+~~~
+{"title": "Sammy's Big Adventure", "content": "Once upon a time there was an elephant named Sammy
+~~~
 
 Notice anything funny? There's no ending quote or curly brace, making this invalid JSON. Any attempts to parse this on your front end will fail, causing an error (in fact, several in a row).
 
-Luckily there are patterns for parsing broken JSON and making something useful out of it, like the one featured in `[best-effort-json-parser](https://github.com/beenotung/best-effort-json-parser)`. [This article by Mike Borozdin](https://www.mikeborozdin.com/post/json-streaming-from-openai) explains the approach in great detail. You basically have to attempt to add quotes and curly braces until the thing is valid. You'll also have to have fallbacks for when it simply can't be parsed, so that you don't lose the content that is already displaying to the user and get a nasty flicker effect.
+Luckily there are patterns for parsing broken JSON and making something useful out of it, like the one featured in [best-effort-json-parser](https://github.com/beenotung/best-effort-json-parser). [This article by Mike Borozdin](https://www.mikeborozdin.com/post/json-streaming-from-openai) explains the approach in great detail. You basically have to attempt to add quotes and curly braces until the thing is valid. You'll also have to have fallbacks for when it simply can't be parsed, so that you don't lose the content that is already displaying to the user and get a nasty flicker effect.
 
 ### Prompt Engineering May (Not) be Enough
 
