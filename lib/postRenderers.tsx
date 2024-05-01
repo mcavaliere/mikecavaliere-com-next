@@ -1,23 +1,25 @@
 import { ReactNode } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import highlighterTheme from "react-syntax-highlighter/dist/cjs/styles/prism/vsc-dark-plus";
-import {
-  Box,
-  Button,
-  Text,
-  UnorderedList,
-  OrderedList,
-  ListItem,
-} from "@chakra-ui/react";
+import { Box, Button, Text, UnorderedList, OrderedList, ListItem } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { theme } from "lib/theme";
 import { Heading1, Heading2, P as Paragraph } from "components/Headings";
+import { Link } from "@/components/Link";
 
 export type PostRendererProps = {
   children: ReactNode;
   key: string;
   meta?: Record<string, any>;
 };
+
+export function A({ children, href, ...props }) {
+  return (
+    <Link textDecoration="underline" href={href} {...props}>
+      {children}
+    </Link>
+  );
+}
 
 export function Caption({ children }) {
   return (
@@ -97,6 +99,30 @@ export function GIST({ meta: { gist } }) {
   );
 }
 
+export type CodeComponentProps = JSX.IntrinsicElements["code"] & {
+  inline?: boolean;
+};
+
+export const CODE = ({ children, ...rest }: CodeComponentProps & { inline: boolean }) => {
+  const language = rest.className?.replace(/language-/, "") || "javascript";
+
+  if (!rest.inline) {
+    return (
+      <Box mb={4}>
+        <SyntaxHighlighter language={language} style={highlighterTheme}>
+          {children}
+        </SyntaxHighlighter>
+      </Box>
+    );
+  }
+
+  return (
+    <Text as="code" color="brand.red">
+      {children}
+    </Text>
+  );
+};
+
 export function P({ children, ...props }) {
   // NOTE: using <Text as="div"> instead of <Paragraph> fixes a Next.js hydration mismatch error.
   // TODO: find a better resolution that uses the right tags.
@@ -124,9 +150,11 @@ export function DefaultRenderer({ children }) {
 }
 
 export const rendererMap = {
+  A,
   H1,
   H2,
   P,
+  CODE,
   GIST,
   STRONG,
   More,
