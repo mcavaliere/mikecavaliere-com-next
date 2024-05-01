@@ -4,8 +4,9 @@ import highlighterTheme from "react-syntax-highlighter/dist/cjs/styles/prism/vsc
 import { Box, Button, Text, UnorderedList, OrderedList, ListItem } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { theme } from "lib/theme";
-import { Heading1, Heading2, P as Paragraph } from "components/Headings";
+import { Heading1, Heading2, Heading3, Heading4, P as Paragraph } from "components/Headings";
 import { Link } from "@/components/Link";
+import Image from "next/image";
 
 export type PostRendererProps = {
   children: ReactNode;
@@ -42,6 +43,22 @@ export function H2({ children, ...props }) {
     <Heading2 fontFamily="Poppins" mb={3} {...props}>
       {children}
     </Heading2>
+  );
+}
+
+export function H3({ children, ...props }) {
+  return (
+    <Heading3 fontFamily="Poppins" mb={3} {...props}>
+      {children}
+    </Heading3>
+  );
+}
+
+export function H4({ children, ...props }) {
+  return (
+    <Heading4 fontFamily="Poppins" mb={3} {...props}>
+      {children}
+    </Heading4>
   );
 }
 
@@ -145,6 +162,11 @@ export function More({ href }) {
   );
 }
 
+// export function IMG(props) {
+//   console.log(`---------------- IMG: `, props);
+//   return <Image {...props} />;
+// }
+
 export function DefaultRenderer({ children }) {
   return children;
 }
@@ -153,10 +175,13 @@ export const rendererMap = {
   A,
   H1,
   H2,
+  H3,
+  H4,
   P,
   CODE,
   GIST,
   STRONG,
+  // IMG,
   More,
   OL,
   UL,
