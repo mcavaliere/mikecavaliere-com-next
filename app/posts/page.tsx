@@ -33,46 +33,37 @@ export const ARTICLE_INDEX_CARDS = [
   },
 ];
 
-export default function PostsIndexPage({ allPosts }: PostsIndexPageProps) {
+export default async function PostsIndexPage() {
+  const allPostsMap = await getAllPostsMap();
+  const allPosts = Object.values(allPostsMap);
+
   return (
     <>
-      <Meta
+      {/* <Meta
         titlePrefix="Mike Cavaliere's articles on JavaScript, React, technical strategy, and brain hacking."
         titleSuffix=""
         titleSeparator=""
         description="Over the years I've written about software, tech careers, and brain improvement."
-      />
+      /> */}
       <Box mb={10} textAlign="center">
         <Heading1 mb={3}>My Articles</Heading1>
         <Heading2 mb={10}>
-          Over the years I've written about software, tech careers, and brain
-          improvement.
+          Over the years I've written about software, tech careers, and brain improvement.
         </Heading2>
 
         <CardGrid>
-          {ARTICLE_INDEX_CARDS.map(
-            ({ title, description, ctaHref, ctaText }) => (
-              <ArticleCategoryCard
-                key={title}
-                title={title}
-                description={description}
-                ctaText={ctaText}
-                ctaHref={ctaHref}
-              />
-            )
-          )}
+          {ARTICLE_INDEX_CARDS.map(({ title, description, ctaHref, ctaText }) => (
+            <ArticleCategoryCard
+              key={title}
+              title={title}
+              description={description}
+              ctaText={ctaText}
+              ctaHref={ctaHref}
+            />
+          ))}
         </CardGrid>
       </Box>
       <MoreStories posts={allPosts} />
     </>
   );
-}
-
-export async function getStaticProps({ preview = false }) {
-  const allPostsMap = await getAllPostsMap();
-  const allPosts = Object.values(allPostsMap);
-
-  return {
-    props: { allPosts, preview },
-  };
 }

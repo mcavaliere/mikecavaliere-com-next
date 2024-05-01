@@ -1,3 +1,5 @@
+"use client"
+
 import { ReactNode } from "react";
 import {
   Button,
@@ -56,9 +58,10 @@ export type CardContainerProps = FlexProps & {
  */
 export function CardContainer({ children, ...props }) {
   const href = props.href;
+  const bg = useColorModeValue("white", "gray.875")
   const innerContainer = (
     <Flex
-      bg={useColorModeValue("white", "gray.875")}
+      bg={bg}
       boxShadow="2xl"
       direction="column"
       flex={1}
