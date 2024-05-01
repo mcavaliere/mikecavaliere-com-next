@@ -16,7 +16,7 @@ export type PostRendererProps = {
 
 export function A({ children, href, ...props }) {
   return (
-    <Link textDecoration="underline" href={href} {...props}>
+    <Link textDecoration="underline" fontWeight="semibold" href={href} {...props}>
       {children}
     </Link>
   );
