@@ -1,3 +1,4 @@
+import type { Metadata, ResolvingMetadata } from 'next'
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPostsMap, getPostContent, getPostFrontMatter } from "@/lib/api";
 import { rendererMapLowercase } from "@/lib/postRenderers";
@@ -7,6 +8,30 @@ export async function generateStaticParams() {
   const map = await getAllPostsMap();
   const params = Object.values(map)
   return params;
+}
+
+type Props = {
+  params: { slug: string }
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const slug = params.slug
+
+  // fetch data
+  const frontmatter = await getPostFrontMatter(slug)
+
+
+  return {
+    title: frontmatter.title,
+    description: frontmatter.excerpt,
+    openGraph: frontmatter.featuredImage?.src ? {
+      images: [frontmatter.featuredImage?.src],
+    } : undefined,
+  }
 }
 
 export default async function ArticlePage({ params: { slug } }) {
