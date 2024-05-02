@@ -11,12 +11,12 @@ export type IndexPageProps = NextPageWithLayout & {};
 export default function IndexPage({}: IndexPageProps) {
   return (
     <>
-      <Meta
+      {/* <Meta
         titlePrefix="Mike Cavaliere: software engineer, conference speaker, author."
         titleSuffix=""
         titleSeparator=""
         description="Over the years I've written about software, tech careers, and brain improvement."
-      />
+      /> */}
       <HomeHero />
 
       <HomeSectionsGrid />
