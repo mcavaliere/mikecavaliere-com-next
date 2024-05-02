@@ -1,12 +1,8 @@
 import { Providers } from "./providers";
 import SiteOuterLayout from "@/layouts/SiteOuterLayout";
 import { MaxWidthContainerLayout } from "@/layouts/MaxWidthContainerLayout";
+import { fonts } from './fonts'
 
-import "@fontsource/barlow/400.css";
-import "@fontsource/barlow/700.css";
-import "@fontsource/poppins/400.css";
-import "@fontsource/poppins/600.css";
-import "@fontsource/poppins/700.css";
 
 export const metadata = {
   title: "Next.js",
@@ -18,7 +14,7 @@ import { theme } from "@/lib/theme";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={fonts.poppins.variable}>
       <body>
         <ColorModeScript initialColorMode={theme.initialColorMode} />
         <Providers>
