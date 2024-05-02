@@ -12,7 +12,7 @@ const POSTS_MAP_FILE_PATH = `${appDir}/data/postMap.json`;
 
 
 export async function getPostFrontMatter(slug: string) {
-  const path = `${appDir}/app/posts/(post)/${slug}/page.mdx`;
+  const path = `${appDir}/data/posts/${slug}.mdx`;
   const file = await read(path);
   matter(file)
 
@@ -40,7 +40,7 @@ export async function getAllPostsMap() {
 
       matter(file);
       const pathParts = path.split(/\//)
-      const slug = pathParts[pathParts.length - 2];
+      const slug = pathParts[pathParts.length - 1].split(".")[0];
 
       map[slug] = {slug, ...(file.data.matter as Object)};
     })
