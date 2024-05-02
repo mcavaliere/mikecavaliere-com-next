@@ -13,33 +13,10 @@ import { useEffect, useState } from "react";
 import { getPostFrontMatter } from "@/lib/api";
 import { useSelectedLayoutSegment } from "next/navigation";
 
-/**
- * Fetch the post front matter based on the current slug, and render the PostHeader.
- */
-export function PostHeaderContainer() {
-  const segment = useSelectedLayoutSegment();
-  const [post, setPost] = useState<Record<string, any>>();
-  console.log(`segment:`, segment);
-
-  useEffect(() => {
-    console.log(`useEffect`);
-    if (!segment || !!post) return;
-
-    getPostFrontMatter(segment).then((post) => {
-      console.log(`---------------- got post:  `, post);
-      setPost(() => post);
-    });
-  }, [segment, post]);
-
-  if (!post) return null;
-
-  return <PostHeader {...post} />;
-}
-
 export function PostHeader({
   title,
   date,
-  author,
+  // author,
   // categories,
   slug,
   featuredImage,
