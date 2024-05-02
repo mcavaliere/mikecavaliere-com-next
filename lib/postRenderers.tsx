@@ -6,7 +6,7 @@ import NextLink from "next/link";
 import { theme } from "lib/theme";
 import { Heading1, Heading2, Heading3, Heading4, P as Paragraph } from "components/Headings";
 import { Link } from "@/components/Link";
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 
 export type PostRendererProps = {
   children: ReactNode;
@@ -23,11 +23,7 @@ export function A({ children, href, ...props }) {
 }
 
 export function Caption({ children }) {
-  return (
-    <Text mb={1}>
-      {children}
-    </Text>
-  );
+  return <Text mb={1}>{children}</Text>;
 }
 
 export function H1({ children, ...props }) {
@@ -142,7 +138,6 @@ export const CODE = ({ children, ...rest }: CodeComponentProps & { inline: boole
 
 export function P({ children, ...props }) {
   // NOTE: using <Text as="div"> instead of <Paragraph> fixes a Next.js hydration mismatch error.
-  console.log(`---------------- paragraph: `, children);
   // TODO: find a better resolution that uses the right tags.
   return (
     <Text as="div" mb={5} {...props}>
@@ -163,10 +158,12 @@ export function More({ href }) {
   );
 }
 
-// export function IMG(props) {
-//   console.log(`---------------- IMG: `, props);
-//   return <Image {...props} />;
-// }
+export function IMAGE(props) {
+  console.log(`---------------- IMAGE:  `, props);
+  return (
+    <Image sizes="100vw" style={{ width: "100%", height: "auto" }} {...(props as ImageProps)} />
+  );
+}
 
 export function DefaultRenderer({ children }) {
   return children;
@@ -182,9 +179,14 @@ export const rendererMap = {
   CODE,
   GIST,
   STRONG,
-  // IMG,
+  IMAGE,
   More,
   OL,
   UL,
   LI,
 };
+
+export const rendererMapLowercase = Object.keys(rendererMap).reduce((acc, key) => {
+  acc[key.toLowerCase()] = rendererMap[key];
+  return acc;
+}, {});

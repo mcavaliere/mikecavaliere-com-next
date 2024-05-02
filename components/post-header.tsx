@@ -65,8 +65,6 @@ export function PostHeader({
       ) : null}
 
       <Flex direction="row" mb={5}>
-        {/* <Avatar author={author} /> */}
-
         <Box>
           <Text fontSize="sm" mb={1}>
             <Date dateString={date} />
