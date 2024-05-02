@@ -24,9 +24,8 @@ export async function getAllPostsMap() {
       const pathParts = path.split(/\//)
       const slug = pathParts[pathParts.length - 2];
 
-      map[slug] = file.data.matter;
+      map[slug] = {slug, ...(file.data.matter as Object)};
 
-      return file.data.matter;
     })
   );
 
