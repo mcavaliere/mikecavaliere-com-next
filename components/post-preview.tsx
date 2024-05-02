@@ -1,3 +1,5 @@
+"use client";
+
 import CoverImage from "./cover-image";
 import { Heading, Text } from "@chakra-ui/react";
 import { stripHtml } from "lib/utils/stripHtml";
