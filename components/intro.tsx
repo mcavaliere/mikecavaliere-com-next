@@ -7,7 +7,7 @@ export default function Intro() {
         Mike Cavaliere
       </Heading>
       <Heading as="h2" size="md" fontWeight="normal">
-        I'm a <strong>technical strategist</strong>,{" "}
+        I$#39;m a <strong>technical strategist</strong>,{" "}
         <strong>software engineer</strong>, <strong>presenter</strong>,{" "}
         <strong>author</strong> and <strong>brain hacker</strong>.
       </Heading>
