@@ -24,7 +24,7 @@ export function A({ children, href, ...props }) {
 
 export function Caption({ children }) {
   return (
-    <Text fontFamily="Courier" mb={1}>
+    <Text mb={1}>
       {children}
     </Text>
   );
@@ -32,7 +32,7 @@ export function Caption({ children }) {
 
 export function H1({ children, ...props }) {
   return (
-    <Heading1 fontFamily="Poppins" mb={5} {...props}>
+    <Heading1 mb={5} {...props}>
       {children}
     </Heading1>
   );
@@ -40,7 +40,7 @@ export function H1({ children, ...props }) {
 
 export function H2({ children, ...props }) {
   return (
-    <Heading2 fontFamily="Poppins" mb={3} {...props}>
+    <Heading2 mb={3} {...props}>
       {children}
     </Heading2>
   );
@@ -48,7 +48,7 @@ export function H2({ children, ...props }) {
 
 export function H3({ children, ...props }) {
   return (
-    <Heading3 fontFamily="Poppins" mb={3} {...props}>
+    <Heading3 mb={3} {...props}>
       {children}
     </Heading3>
   );
@@ -56,7 +56,7 @@ export function H3({ children, ...props }) {
 
 export function H4({ children, ...props }) {
   return (
-    <Heading4 fontFamily="Poppins" mb={3} {...props}>
+    <Heading4 mb={3} {...props}>
       {children}
     </Heading4>
   );
@@ -142,9 +142,10 @@ export const CODE = ({ children, ...rest }: CodeComponentProps & { inline: boole
 
 export function P({ children, ...props }) {
   // NOTE: using <Text as="div"> instead of <Paragraph> fixes a Next.js hydration mismatch error.
+  console.log(`---------------- paragraph: `, children);
   // TODO: find a better resolution that uses the right tags.
   return (
-    <Text fontFamily="Poppins" as="div" mb={5} {...props}>
+    <Text as="div" mb={5} {...props}>
       {children}
     </Text>
   );
