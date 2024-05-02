@@ -50,18 +50,6 @@ export default async function PostsIndexPage() {
         <Heading2 mb={10}>
           Over the years I've written about software, tech careers, and brain improvement.
         </Heading2>
-
-        {/* <CardGrid>
-          {ARTICLE_INDEX_CARDS.map(({ title, description, ctaHref, ctaText }) => (
-            <ArticleCategoryCard
-              key={title}
-              title={title}
-              description={description}
-              ctaText={ctaText}
-              ctaHref={ctaHref}
-            />
-          ))}
-        </CardGrid> */}
       </Box>
       <MoreStories posts={allPosts} />
     </>

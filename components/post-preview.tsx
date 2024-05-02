@@ -23,13 +23,13 @@ export default function PostPreview({ title, coverImage, excerpt, slug }) {
       href={`/posts/${slug}`}
       justify="flex-start"
     >
-      {coverImage?.mediaDetails?.width ? (
+      {coverImage?.width ? (
         <CoverImage
           title={title}
-          src={`${process.env.NEXT_PUBLIC_CLOUDINARY_BASE_URL}${coverImage.sourceUrl}`}
+          src={coverImage.src}
           slug={slug}
-          width={coverImage.mediaDetails.width}
-          height={coverImage.mediaDetails.height}
+          width={coverImage.width}
+          height={coverImage.height}
         />
       ) : null}
 
