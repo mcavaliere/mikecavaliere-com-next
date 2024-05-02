@@ -4,7 +4,7 @@ import Link from "next/link";
 export type CoverImageProps = {
   title: string;
   src: string;
-  slug?: string;
+  href?: string;
   width: number;
   height: number;
 };
@@ -12,7 +12,7 @@ export type CoverImageProps = {
 export default function CoverImage({
   title,
   src,
-  slug,
+  href,
   width,
   height,
 }: CoverImageProps) {
@@ -28,5 +28,6 @@ export default function CoverImage({
         objectFit: "cover"
       }} />
   );
-  return slug ? <Link href={`/${slug}`}>{image}</Link> : <>{image}</>;
+
+  return href ? <Link href={`/${href}`}>{image}</Link> : <>{image}</>;
 }

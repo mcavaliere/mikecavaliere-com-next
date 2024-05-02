@@ -27,7 +27,6 @@ export default function PostHeader({
           ml={{ base: "0", md: 5 }}
         >
           <CoverImage
-            slug={slug}
             title={title}
             src={featuredImage.sourceUrl}
             width={featuredImage.mediaDetails.width}

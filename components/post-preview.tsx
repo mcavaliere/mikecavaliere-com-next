@@ -27,7 +27,6 @@ export default function PostPreview({ title, coverImage, excerpt, slug }) {
         <CoverImage
           title={title}
           src={coverImage.src}
-          slug={slug}
           width={coverImage.width}
           height={coverImage.height}
         />

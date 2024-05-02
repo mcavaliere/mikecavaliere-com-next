@@ -18,27 +18,6 @@ export const metadata: Metadata = {
   description: "Over the years I've written about software, tech careers, and personal development.",
 }
 
-
-// export const ARTICLE_INDEX_CARDS = [
-//   {
-//     title: "⚛️ Full-Stack React",
-//     description:
-//       "I write about React, Next.js and other full-stack Jamstack topics at cutintothejamstack.com.",
-//     ctaText: "cutintothejamstack.com",
-//     ctaHref: "https://cutintothejamstack.com",
-//   },
-//   {
-//     title: "🛣 Tech Strategy",
-//     description: "I've written about various tech topics on the Echobind Blog.",
-//     ctaText: "Echobind Blog",
-//     ctaHref: "https://echobind.com/team/mike-cavaliere",
-//   },
-//   {
-//     title: "👔 Freelance Programming",
-//     description: "Older articles on freelancing as a programmer are below. ",
-//   },
-// ];
-
 export default async function PostsIndexPage() {
   const allPostsMap = await getAllPostsMap();
   const allPosts = Object.values(allPostsMap);
