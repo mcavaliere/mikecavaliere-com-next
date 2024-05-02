@@ -8,8 +8,6 @@ import { Heading1, Heading2, P } from "components/Headings";
 import { ContactLinks } from "components/ContactLinks";
 import { ParagraphLink } from "components/Link";
 
-export const AVATAR_SIZE = { base: 150, md: 300 };
-
 export default function AboutPage() {
   return (
     <>
