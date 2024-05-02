@@ -9,7 +9,7 @@ export default function MoreStories({ posts }) {
           <PostPreview
             key={slug}
             title={title}
-            coverImage={featuredImage.node}
+            coverImage={featuredImage}
             slug={slug}
             excerpt={excerpt}
           />

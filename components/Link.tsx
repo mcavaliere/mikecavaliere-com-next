@@ -1,6 +1,8 @@
+"use client";
+
 import { ReactNode } from "react";
+import { Link as ChakraLink } from "@chakra-ui/next-js";
 import {
-  Link as ChakraLink,
   LinkProps as ChakraLinkProps,
   BreadcrumbLink as ChakraBreadcrumbLink,
   BreadcrumbLinkProps as ChakraBreadcrumbLinkProps,
@@ -16,9 +18,9 @@ export type LinkProps = ChakraLinkProps & {
  * Next.js Link component + Chakra Link component.
  */
 export const Link = ({ children, href, ...props }: LinkProps) => (
-  <NextLink href={href} passHref>
-    <ChakraLink {...props}>{children}</ChakraLink>
-  </NextLink>
+  <ChakraLink href={href} {...props}>
+    {children}
+  </ChakraLink>
 );
 
 /**
@@ -38,11 +40,7 @@ export type BreadcrumbLinkProps = ChakraBreadcrumbLinkProps & {
 /**
  * Next.js Link component + Chakra BreadcrumbLink component.
  */
-export const BreadcrumbLink = ({
-  children,
-  href,
-  ...props
-}: BreadcrumbLinkProps) => (
+export const BreadcrumbLink = ({ children, href, ...props }: BreadcrumbLinkProps) => (
   <NextLink href={href} passHref>
     <ChakraBreadcrumbLink {...props}>{children}</ChakraBreadcrumbLink>
   </NextLink>

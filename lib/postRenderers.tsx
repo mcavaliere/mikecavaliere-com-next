@@ -1,17 +1,12 @@
 import { ReactNode } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import highlighterTheme from "react-syntax-highlighter/dist/cjs/styles/prism/vsc-dark-plus";
-import {
-  Box,
-  Button,
-  Text,
-  UnorderedList,
-  OrderedList,
-  ListItem,
-} from "@chakra-ui/react";
+import { Box, Button, Text, UnorderedList, OrderedList, ListItem } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { theme } from "lib/theme";
-import { Heading1, Heading2, P as Paragraph } from "components/Headings";
+import { Heading1, Heading2, Heading3, Heading4, P as Paragraph } from "components/Headings";
+import { Link } from "@/components/Link";
+import Image, { ImageProps } from "next/image";
 
 export type PostRendererProps = {
   children: ReactNode;
@@ -19,12 +14,16 @@ export type PostRendererProps = {
   meta?: Record<string, any>;
 };
 
-export function Caption({ children }) {
+export function A({ children, href, ...props }) {
   return (
-    <Text fontFamily="Courier" mb={1}>
+    <Link textDecoration="underline" fontWeight="semibold" href={href} {...props}>
       {children}
-    </Text>
+    </Link>
   );
+}
+
+export function Caption({ children }) {
+  return <Text mb={1}>{children}</Text>;
 }
 
 export function H1({ children, ...props }) {
@@ -40,6 +39,22 @@ export function H2({ children, ...props }) {
     <Heading2 mb={3} {...props}>
       {children}
     </Heading2>
+  );
+}
+
+export function H3({ children, ...props }) {
+  return (
+    <Heading3 mb={3} {...props}>
+      {children}
+    </Heading3>
+  );
+}
+
+export function H4({ children, ...props }) {
+  return (
+    <Heading4 mb={3} {...props}>
+      {children}
+    </Heading4>
   );
 }
 
@@ -97,6 +112,30 @@ export function GIST({ meta: { gist } }) {
   );
 }
 
+export type CodeComponentProps = JSX.IntrinsicElements["code"] & {
+  inline?: boolean;
+};
+
+export const CODE = ({ children, ...rest }: CodeComponentProps & { inline: boolean }) => {
+  const language = rest.className?.replace(/language-/, "") || "javascript";
+
+  if (!rest.inline) {
+    return (
+      <Box mb={4}>
+        <SyntaxHighlighter language={language} style={highlighterTheme}>
+          {children}
+        </SyntaxHighlighter>
+      </Box>
+    );
+  }
+
+  return (
+    <Text as="code" color="brand.red">
+      {children}
+    </Text>
+  );
+};
+
 export function P({ children, ...props }) {
   // NOTE: using <Text as="div"> instead of <Paragraph> fixes a Next.js hydration mismatch error.
   // TODO: find a better resolution that uses the right tags.
@@ -119,18 +158,35 @@ export function More({ href }) {
   );
 }
 
+export function IMAGE(props) {
+  console.log(`---------------- IMAGE:  `, props);
+  return (
+    <Image sizes="100vw" style={{ width: "100%", height: "auto" }} {...(props as ImageProps)} />
+  );
+}
+
 export function DefaultRenderer({ children }) {
   return children;
 }
 
 export const rendererMap = {
+  A,
   H1,
   H2,
+  H3,
+  H4,
   P,
+  CODE,
   GIST,
   STRONG,
+  IMAGE,
   More,
   OL,
   UL,
   LI,
 };
+
+export const rendererMapLowercase = Object.keys(rendererMap).reduce((acc, key) => {
+  acc[key.toLowerCase()] = rendererMap[key];
+  return acc;
+}, {});

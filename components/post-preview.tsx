@@ -1,3 +1,5 @@
+"use client";
+
 import CoverImage from "./cover-image";
 import { Heading, Text } from "@chakra-ui/react";
 import { stripHtml } from "lib/utils/stripHtml";
@@ -21,13 +23,12 @@ export default function PostPreview({ title, coverImage, excerpt, slug }) {
       href={`/posts/${slug}`}
       justify="flex-start"
     >
-      {coverImage?.mediaDetails?.width ? (
+      {coverImage?.width ? (
         <CoverImage
           title={title}
-          src={`${process.env.NEXT_PUBLIC_CLOUDINARY_BASE_URL}${coverImage.sourceUrl}`}
-          slug={slug}
-          width={coverImage.mediaDetails.width}
-          height={coverImage.mediaDetails.height}
+          src={coverImage.src}
+          width={coverImage.width}
+          height={coverImage.height}
         />
       ) : null}
 

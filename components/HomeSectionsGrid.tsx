@@ -18,10 +18,10 @@ const GRID_ITEMS = [
     emoji: "🤔",
   },
   {
-    title: "Book",
-    body: "Build a SaaS application along with me using the full-stack Jamstack. A crash course in Next.js, Chakra-UI, Prisma ORM and other modern JavaScript libraries.",
-    href: "https://cutintothejamstack.com",
-    buttonText: "Cut Into The Jamstack",
+    title: "Projects",
+    body: "My books and software projects.",
+    href: "/projects",
+    buttonText: "My Projects",
     emoji: "📘",
   },
 
