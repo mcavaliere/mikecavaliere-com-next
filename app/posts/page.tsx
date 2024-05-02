@@ -25,7 +25,7 @@ export default async function PostsIndexPage() {
       <Box mb={10} textAlign="center">
         <Heading1 mb={3}>My Articles</Heading1>
         <Heading2 mb={10}>
-          Over the years I've written about software, tech careers, and brain improvement.
+          Over the years I&#39;ve written about software, tech careers, and brain improvement.
         </Heading2>
       </Box>
       <MoreStories posts={allPosts} />

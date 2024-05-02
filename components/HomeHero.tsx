@@ -49,9 +49,9 @@ export function HomeHero() {
         width={{ base: "100%", md: "50%" }}
         textAlign={{ base: "center", md: "left" }}
       >
-        <Heading>Hi, I'm Mike Cavaliere.</Heading>
+        <Heading>Hi, I$#39;m Mike Cavaliere.</Heading>
         <Heading as="h2" size="md" fontWeight="normal">
-          I'm a <strong>technical strategist</strong>,{" "}
+          I$#39;m a <strong>technical strategist</strong>,{" "}
           <strong>software engineer</strong>, <strong>presenter</strong>,{" "}
           <strong>author</strong> and <strong>presenter</strong>.
         </Heading>

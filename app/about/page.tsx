@@ -26,21 +26,21 @@ export default function AboutPage() {
             pos="relative"
             _before={{ content: '"👋🏼"', position: "absolute", left: "-40px" }}
           >
-            Hi, I'm Mike.
+            Hi, I$#39;m Mike.
           </Heading1>
           <P mb={5}>
             I started playing with computers when I was a kid, and never
-            stopped. Since then I've written thousands of lines of code, built
+            stopped. Since then I$#39;ve written thousands of lines of code, built
             websites and applications galore, and worked with dozens upon dozens
             of bright people in the tech world.
           </P>
           <P mb={5}>
-            I've been a full-stack software engineer for many years. I've also
+            I$#39;ve been a full-stack software engineer for many years. I$#39;ve also
             managed and mentored others, and continue to do so.
           </P>
           <P mb={5}>
             Somewhere along the way, I discovered that I love to write and
-            present. Since then I've written dozens of{" "}
+            present. Since then I$#39;ve written dozens of{" "}
             <ParagraphLink href="/posts">articles</ParagraphLink>, been on a
             number of{" "}
             <ParagraphLink href="/talks#interviews">podcasts</ParagraphLink>,
