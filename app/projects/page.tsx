@@ -12,7 +12,7 @@ export type ProjectCardProps = {
   project: Project;
 };
 
-export function ProjectCard({ project }: ProjectCardProps) {
+function ProjectCard({ project }: ProjectCardProps) {
   const {
     title,
     imageUrl,

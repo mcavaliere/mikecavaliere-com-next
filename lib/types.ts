@@ -11,6 +11,12 @@ export type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
+export type FeaturedImage = {
+  src: string;
+  width: number;
+  height: number;
+};
+
 export type nodeObjType = {
   tagName: string;
   text?: string;

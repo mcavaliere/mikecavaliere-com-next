@@ -86,31 +86,31 @@ export function LI({ children, ...props }) {
   return <ListItem {...props}>{children}</ListItem>;
 }
 
-export function GIST({ meta: { gist } }) {
-  return (
-    <>
-      {gist.files.map(({ name, text }) => (
-        <Box key={name} mb={5}>
-          <Box
-            borderRadius={10}
-            key={name}
-            overflow="hidden"
-            p={4}
-            border={`1px solid ${theme.colors.gray["300"]}`}
-          >
-            <Caption>{name}</Caption>
-            <SyntaxHighlighter
-              style={highlighterTheme}
-              language={(gist?.language?.name || "javascript").toLowerCase()}
-            >
-              {text}
-            </SyntaxHighlighter>
-          </Box>
-        </Box>
-      ))}
-    </>
-  );
-}
+// export function GIST({ meta: { gist } }) {
+//   return (
+//     <>
+//       {gist.files.map(({ name, text }) => (
+//         <Box key={name} mb={5}>
+//           <Box
+//             borderRadius={10}
+//             key={name}
+//             overflow="hidden"
+//             p={4}
+//             border={`1px solid ${theme.colors.gray["300"]}`}
+//           >
+//             <Caption>{name}</Caption>
+//             <SyntaxHighlighter
+//               style={highlighterTheme}
+//               language={(gist?.language?.name || "javascript").toLowerCase()}
+//             >
+//               {text}
+//             </SyntaxHighlighter>
+//           </Box>
+//         </Box>
+//       ))}
+//     </>
+//   );
+// }
 
 export type CodeComponentProps = JSX.IntrinsicElements["code"] & {
   inline?: boolean;
@@ -123,7 +123,7 @@ export const CODE = ({ children, ...rest }: CodeComponentProps & { inline: boole
     return (
       <Box mb={4}>
         <SyntaxHighlighter language={language} style={highlighterTheme}>
-          {children}
+          {children as string | string[]}
         </SyntaxHighlighter>
       </Box>
     );
@@ -177,7 +177,7 @@ export const rendererMap = {
   H4,
   P,
   CODE,
-  GIST,
+  // GIST,
   STRONG,
   IMAGE,
   More,

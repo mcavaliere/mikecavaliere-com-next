@@ -8,11 +8,11 @@ import { Interview, Talk } from "lib/types";
 import { Heading1, Heading2, P } from "components/Headings";
 import { FaVideo, FaSlideshare } from "react-icons/fa";
 
-export type TalkCardProps = {
+type TalkCardProps = {
   talkOrInterview: Talk | Interview;
 };
 
-export function TalkCard({ talkOrInterview }: TalkCardProps) {
+function TalkCard({ talkOrInterview }: TalkCardProps) {
   const {
     title,
     imageUrl,

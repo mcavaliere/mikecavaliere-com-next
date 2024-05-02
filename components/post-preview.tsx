@@ -5,12 +5,19 @@ import { Heading, Text } from "@chakra-ui/react";
 import { stripHtml } from "lib/utils/stripHtml";
 import { More } from "lib/postRenderers";
 import { CardContainer, CardBody } from "components/Card";
+import { FeaturedImage } from "@/lib/types";
 
 if (!process.env.NEXT_PUBLIC_CLOUDINARY_BASE_URL) {
   throw new Error("Missing NEXT_PUBLIC_CLOUDINARY_BASE_URL");
 }
 
-export default function PostPreview({ title, coverImage, excerpt, slug }) {
+export default function PostPreview({ title, coverImage, excerpt, slug }: {
+  title: string,
+  coverImage?: FeaturedImage,
+  excerpt: string,
+  slug: string
+
+}) {
   // Strip HTML to prevent rehydration mismatch errors.
   // See: https://nextjs.org/docs/messages/react-hydration-error
   const cleanedExcerpt = stripHtml(excerpt).replace(/\[\&hellip;\]/, "...");

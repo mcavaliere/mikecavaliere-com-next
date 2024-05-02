@@ -1,25 +1,21 @@
 "use client";
 
 import { Box, Flex, Text } from "@chakra-ui/react";
-
-// import Avatar from "./avatar";
 import Date from "./date";
-
 import PostTitle from "./post-title";
-import Categories from "./categories";
 import CoverImage from "components/cover-image";
-
-import { useEffect, useState } from "react";
-import { getPostFrontMatter } from "@/lib/api";
-import { useSelectedLayoutSegment } from "next/navigation";
+import { FeaturedImage } from "@/lib/types";
 
 export function PostHeader({
   title,
   date,
-  // author,
-  // categories,
   slug,
   featuredImage,
+}: {
+  title: string,
+  date: Date,
+  slug: string,
+  featuredImage?: FeaturedImage
 }) {
   return (
     <>
