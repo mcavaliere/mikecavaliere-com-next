@@ -3,9 +3,9 @@ import { getAllPostsMap, getPostContent } from "@/lib/api";
 import { rendererMapLowercase } from "@/lib/postRenderers";
 
 export async function generateStaticParams() {
-  const { posts } = await getAllPostsMap();
-
-  return Object.values(posts);
+  const map = await getAllPostsMap();
+  const params = Object.values(map)
+  return params;
 }
 
 export default async function ArticlePage({ params: { slug } }) {

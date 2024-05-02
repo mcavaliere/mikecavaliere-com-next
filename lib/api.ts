@@ -29,7 +29,8 @@ export async function getPostContent(slug: string) {
  * Return an object of slug/frontmatter pairs for all posts.
  */
 export async function getAllPostsMap() {
-  const paths = await globby(["data/posts/**/*.mdx"]);
+  const path = `${appDir}/data/posts/**/*.mdx`
+  const paths = await globby([path]);
 
   const map = {
   }
@@ -42,7 +43,9 @@ export async function getAllPostsMap() {
       const pathParts = path.split(/\//)
       const slug = pathParts[pathParts.length - 1].split(".")[0];
 
-      map[slug] = {slug, ...(file.data.matter as Object)};
+      const obj = {slug, ...(file.data.matter as Object)}
+
+      map[slug] = obj;
     })
   );
 
