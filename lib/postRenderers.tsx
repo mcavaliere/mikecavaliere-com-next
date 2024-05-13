@@ -159,7 +159,6 @@ export function More({ href }) {
 }
 
 export function IMAGE(props) {
-  console.log(`---------------- IMAGE:  `, props);
   return (
     <Image sizes="100vw" style={{ width: "100%", height: "auto" }} {...(props as ImageProps)} />
   );

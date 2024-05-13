@@ -27,6 +27,7 @@ export function PostHeader({
           width={{ base: "100%", md: "50%" }}
           float={{ base: "none", md: "right" }}
           ml={{ base: "0", md: 5 }}
+          mb={{ base: 10, md: 30 }}
         >
           <CoverImage
             title={title}
