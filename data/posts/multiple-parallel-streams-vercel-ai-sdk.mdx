@@ -1,0 +1,217 @@
+---
+title: "Multiple Parallel AI Streams with Vercel AI SDK"
+excerpt: "The Vercel AI SDK makes it easy to interact with LLM APIs like OpenAI, Anthropic and so on, and stream the data so it shows up in your web app rapidly as it loads. In this article we’ll learn how to run multiple prompts at the same time and see their results in parallel."
+date: "2024-05-13"
+featuredImage:
+  src: "/images/posts/storytime-logo.png"
+  height: 500
+  width: 500
+---
+
+The Vercel AI SDK makes it easy to interact with LLM APIs like OpenAI, Anthropic and so on, and stream the data so it shows up in your web app rapidly as it loads. In this article we’ll learn how to run multiple prompts at the same time and see their results in parallel.
+
+TL;DR: GitHub Repo is [here](https://github.com/mcavaliere/vercel-ai-sdk-parallel-streams).
+
+## Why would I want to do this?
+
+It’s not uncommon in a web app to want to run multiple data-fetching requests at the same time. For example, in a hypothetical blogging system, when the dashboard interface loads, we might want to fetch the user’s profile data, posts they’ve created, and other user’s posts they’ve favorited all at the same time.
+
+If the same dashboard was making requests to OpenAI at the same time, we might want to simultaneously ask OpenAI for tips on improving the user’s profile, and an analysis of their latest post at the same time. In theory we could use dozens of AI requests in parallel if we wanted to (even from completely different platforms and models), and and analyze information, generate content, and do all types of other tasks at the same time.
+
+## Installation & Setup
+
+You can clone the GitHub repo containing the final result [here](https://github.com/mcavaliere/vercel-ai-sdk-parallel-streams).
+
+**To set up from scratch:**
+
+1. Follow the **[Next.js App Router Quickstart](https://sdk.vercel.ai/docs/getting-started/nextjs-app-router#nextjs-app-router-quickstart).** Just the basics; generate the app, install dependencies, and add your OpenAI API key.
+2. Install and set up [shadcn/ui](https://ui.shadcn.com/docs/installation/next).
+
+## Setting up basic UI
+
+The main component that does all the work will contain a form and some containers for the output. Using some basic shadcn-ui components, the form will look like this:
+
+```
+export function GenerationForm() {
+    // State and other info will be defined here...
+
+		return (
+	    <form onSubmit={onSubmit} className="flex flex-col gap-3 w-full">
+	      <div className="inline-block mb-4 w-full flex flex-row gap-1">
+	        <Button type="submit">Generate News & Weather</Button>
+	      </div>
+
+	      {isGenerating ? (
+	        <div className="flex flex-row w-full justify-center items-center p-4 transition-all">
+	          <Spinner className="h-6 w-6 text-slate-900" />
+	        </div>
+	      ) : null}
+
+	      <h3 className="font-bold">Historical Weather</h3>
+	      <div className="mt-4 mb-8 p-4 rounded-md shadow-md bg-blue-100">
+	        {weather ? weather : null}
+	      </div>
+
+	      <h4 className="font-bold">Historical News</h4>
+	      <div className="mt-4 p-4 rounded-md shadow-md bg-green-100">{news ? news : null}</div>
+	    </form>
+	  )
+}
+```
+
+You can see that we have a few things here:
+
+- A form
+- A loading animation (and an `isGenerating` flag for showing/hiding it)
+- A container for rendering weather content
+- A container for rendering news content
+
+For now you can hardcode these values; they’ll all be pulled from our streams.
+
+## Setting up the React Server Components (RSCs)
+
+The streamAnswer server action is what will do the work of creating and updating our streams.
+
+The structure of the action is this:
+
+```jsx
+export async function streamAnswer(question: string) {
+	// Booleans for indicating whether each stream is currently streaming
+  const isGeneratingStream1 = createStreamableValue(true);
+  const isGeneratingStream2 = createStreamableValue(true);
+
+  // The current stream values
+  const weatherStream = createStreamableValue("");
+  const newsStream = createStreamableValue("");
+
+	// Create the first stream. Notice that we don't use await here, so that we
+	//  don't block the rest of this function from running.
+	streamText({
+		// ... params, including the LLM prompt
+  }).then(async (result) => {
+		  // Read from the async iterator. Set the stream value to each new word
+		  //  received.
+      for await (const value of result.textStream) {
+        weatherStream.update(value || "");
+      }
+    } finally {
+	    // Set isGenerating to false, and close that stream.
+      isGeneratingStream1.update(false);
+      isGeneratingStream1.done();
+
+      // Close the given stream so the request doesn't hang.
+      weatherStream.done();
+    }
+  });
+
+  // Same thing for the second stream.
+	streamText({
+		// ... params
+  }).then(async (result) => {
+	  // ...
+  })
+
+  // Return any streams we want to read on the client.
+  return {
+    isGeneratingStream1: isGeneratingStream1.value,
+    isGeneratingStream2: isGeneratingStream2.value,
+    weatherStream: weatherStream.value,
+    newsStream: newsStream.value,
+  };
+}
+```
+
+## Writing the client code
+
+The form’s `onSubmit` handler will do all the work here. Here’s the breakdown of how it works:
+
+```tsx
+"use client";
+
+import { SyntheticEvent, useState } from "react";
+import { Button } from "./ui/button";
+import { readStreamableValue, useUIState } from "ai/rsc";
+import { streamAnswer } from "@/app/actions";
+import { Spinner } from "./svgs/Spinner";
+
+export function GenerationForm() {
+	// State for loading flags
+  const [isGeneratingStream1, setIsGeneratingStream1] = useState<boolean>(false);
+  const [isGeneratingStream2, setIsGeneratingStream2] = useState<boolean>(false);
+
+  // State for the LLM output streams
+  const [weather, setWeather] = useState<string>("");
+  const [news, setNews] = useState<string>("");
+
+  // We'll hide the loader when both streams are done.
+  const isGenerating = isGeneratingStream1 || isGeneratingStream2;
+
+  async function onSubmit(e: SyntheticEvent) {
+    e.preventDefault();
+
+    // Clear previous results.
+    setNews("");
+    setWeather("");
+
+		// Call the server action. The returned object will have all the streams in it.
+    const result = await streamAnswer(question);
+
+    // Translate each stream into an async iterator so we can loop through
+    //  the values as they are generated.
+    const isGeneratingStream1 = readStreamableValue(result.isGeneratingStream1);
+    const isGeneratingStream2 = readStreamableValue(result.isGeneratingStream2);
+    const weatherStream = readStreamableValue(result.weatherStream);
+    const newsStream = readStreamableValue(result.newsStream);
+
+		// Iterate through each stream, putting its values into state one by one.
+		//  Notice the IIFEs again! As on the server, these allow us to prevent blocking
+		//   the function, so that we can run these iterators in parallel.
+    (async () => {
+      for await (const value of isGeneratingStream1) {
+        if (value != null) {
+          setIsGeneratingStream1(value);
+        }
+      }
+    })();
+
+    (async () => {
+      for await (const value of isGeneratingStream2) {
+        if (value != null) {
+          setIsGeneratingStream2(value);
+        }
+      }
+    })();
+
+    (async () => {
+      for await (const value of weatherStream) {
+        setWeather((existing) => (existing + value) as string);
+      }
+    })();
+
+    (async () => {
+      for await (const value of newsStream) {
+        setNews((existing) => (existing + value) as string);
+      }
+    })();
+  }
+
+  return (
+    // ... The form code from before.
+  );
+}
+```
+
+## Other fun things to try
+
+- Streaming structured JSON data instead of text using `streamObject()`
+- Streaming lots more things in parallel
+- Streaming from different APIs at once
+- Streaming different models with the same prompts for comparison (e.g., Cohere, Anthropic, Gemini, etc.)
+- Streaming the UI from the server (using `createStreamableUI()` )
+
+## Further reading & links
+
+- **[Server Actions and Mutations](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations)**
+- [Vercel AI SDK](https://sdk.vercel.ai/docs/introduction)
+- [`streamText()`](https://sdk.vercel.ai/docs/reference/ai-sdk-core/stream-text) API docs
+- **[Next.js App Router Quickstart](https://sdk.vercel.ai/docs/getting-started/nextjs-app-router#nextjs-app-router-quickstart)**
