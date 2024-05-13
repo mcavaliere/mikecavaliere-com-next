@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Mike Cavaliere: software engineer, conference speaker, author.",
-  description: "Over the years I've written about software, tech careers, and brain improvement.",
+  description: "The personal website of Mike Cavaliere: software engineer, conference speaker, and author.",
 };
 
 export default function IndexPage() {
