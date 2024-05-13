@@ -3,9 +3,9 @@ if (!process.env.NEXT_PUBLIC_SITE_BASE_URL) {
   throw "NEXT_PUBLIC_SITE_BASE_URL is not set";
 }
 
-if (!process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS) {
+if (!process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID) {
   console.warn(
-    `---------------- NEXT_PUBLIC_GOOGLE_ANALYTICS is not set, tracking will not be sent.`
+    `---------------- NEXT_PUBLIC_GOOGLE_ANALYTICS_ID is not set, tracking will not be sent.`
   );
 }
 
