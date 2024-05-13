@@ -1,19 +1,12 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
+"use client"
+
 import posthog from "posthog-js";
+import { PostHogProvider } from "posthog-js/react";
 
-export function usePostHog() {
-  const router = useRouter();
+export const posthogClient = initPostHog();
 
-  useEffect(() => {
-    // Track page views
-    const handleRouteChange = () => posthog?.capture("$pageview");
-    router.events.on("routeChangeComplete", handleRouteChange);
-
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, []);
+export function PHProvider({ children }) {
+  return <PostHogProvider client={posthogClient}>{children}</PostHogProvider>;
 }
 
 export function initPostHog() {
@@ -21,6 +14,7 @@ export function initPostHog() {
   if (typeof window !== "undefined" && process.env.NEXT_PUBLIC_POSTHOG_KEY) {
     posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
       api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://app.posthog.com",
+      capture_pageview: false, // We'll capture it manually
       // Enable debug mode in development
       loaded: (posthog) => {
         if (process.env.NODE_ENV === "development") posthog.debug();
@@ -28,5 +22,5 @@ export function initPostHog() {
     });
   }
 
-  return posthog
+  return posthog;
 }
