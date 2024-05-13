@@ -27,6 +27,9 @@ export async function generateMetadata(
   return {
     title: frontmatter.title,
     description: frontmatter.excerpt,
+    alternates: {
+      canonical: `/posts/${slug}`,
+    },
     openGraph: frontmatter.featuredImage?.src
       ? {
           images: [frontmatter.featuredImage?.src],
