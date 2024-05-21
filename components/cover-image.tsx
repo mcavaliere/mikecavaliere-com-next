@@ -9,13 +9,7 @@ export type CoverImageProps = {
   height: number;
 };
 
-export default function CoverImage({
-  title,
-  src,
-  href,
-  width,
-  height,
-}: CoverImageProps) {
+export default function CoverImage({ title, src, href, width, height }: CoverImageProps) {
   const image = (
     <Image
       width={width}
@@ -25,8 +19,9 @@ export default function CoverImage({
       style={{
         maxWidth: "100%",
         height: "auto",
-        objectFit: "cover"
-      }} />
+        objectFit: "cover",
+      }}
+    />
   );
 
   return href ? <Link href={`/${href}`}>{image}</Link> : <>{image}</>;
