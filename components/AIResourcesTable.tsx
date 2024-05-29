@@ -26,7 +26,7 @@ export function AIResourcesTable() {
                   </Link>
                 </Td>
                 <Td>{r.description}</Td>
-                <Td>{r.tags.join(", ")}</Td>
+                <Td>{r.tags?.join(", ")}</Td>
                 <Td>
                   {r.websiteUrl && (
                     <Link href={r.websiteUrl} target="_blank" textDecoration="underline">
