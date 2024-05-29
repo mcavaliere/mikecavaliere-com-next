@@ -1,46 +1,44 @@
-{
-  "libraries": [
-    {
-      "name": "Gemini AI",
-      "githubUrl": "https://github.com/EvanZhouDev/gemini-ai",
-      "websiteUrl": "",
-      "description": "The simpler JavaScript Gemini SDK",
-      "tags": ["JavaScript", "SDK", "AI", "Gemini"]
-    },
-    {
-      "name": "bumpgen",
-      "githubUrl": "https://github.com/xeol-io/bumpgen",
-      "websiteUrl": "",
-      "description": "bumpgen is an AI agent that upgrades npm packages",
-      "tags": ["JavaScript", "AI", "npm", "package management"]
-    },
-    {
-      "name": "empirical",
-      "githubUrl": "https://github.com/empirical-run/empirical",
-      "websiteUrl": "",
-      "description": "Test and evaluate LLMs and model configurations, across all the scenarios that matter for your application",
-      "tags": ["JavaScript", "LLMs", "testing", "evaluation"]
-    },
-    {
-      "name": "Flowise",
-      "githubUrl": "",
-      "websiteUrl": "https://flowiseai.com/",
-      "description": "Open source low-code tool for developers to build customized LLM orchestration flow & AI agents",
-      "tags": ["JavaScript", "low-code", "LLM", "AI", "development"]
-    },
-    {
-      "name": "CopilotKit",
-      "githubUrl": "https://github.com/CopilotKit/CopilotKit",
-      "websiteUrl": "",
-      "description": "A framework for building custom AI Copilots 🤖 in-app AI chatbots, in-app AI Agents, & AI-powered Textareas.",
-      "tags": ["JavaScript", "AI", "framework", "chatbots", "agents"]
-    },
-    {
-      "name": "cursive",
-      "githubUrl": "https://github.com/meistrari/cursive",
-      "websiteUrl": "",
-      "description": "A universal and intuitive framework for interacting with LLMs.",
-      "tags": ["JavaScript", "LLM", "framework", "interaction"]
-    }
-  ]
-}
+[
+  {
+    "name": "Gemini AI",
+    "githubUrl": "https://github.com/EvanZhouDev/gemini-ai",
+    "websiteUrl": "",
+    "description": "The simpler JavaScript Gemini SDK",
+    "tags": ["JavaScript", "SDK", "AI", "Gemini"]
+  },
+  {
+    "name": "bumpgen",
+    "githubUrl": "https://github.com/xeol-io/bumpgen",
+    "websiteUrl": "",
+    "description": "An AI agent that upgrades npm packages",
+    "tags": ["JavaScript", "AI", "npm", "package management"]
+  },
+  {
+    "name": "empirical",
+    "githubUrl": "https://github.com/empirical-run/empirical",
+    "websiteUrl": "",
+    "description": "Test and evaluate LLMs and model configurations, across all the scenarios that matter for your application",
+    "tags": ["JavaScript", "LLMs", "testing", "evaluation"]
+  },
+  {
+    "name": "Flowise",
+    "githubUrl": "",
+    "websiteUrl": "https://flowiseai.com/",
+    "description": "Open source low-code tool for developers to build customized LLM orchestration flow & AI agents",
+    "tags": ["JavaScript", "low-code", "LLM", "AI", "development"]
+  },
+  {
+    "name": "CopilotKit",
+    "githubUrl": "https://github.com/CopilotKit/CopilotKit",
+    "websiteUrl": "",
+    "description": "A framework for building custom AI Copilots 🤖 in-app AI chatbots, in-app AI Agents, & AI-powered Textareas.",
+    "tags": ["JavaScript", "AI", "framework", "chatbots", "agents"]
+  },
+  {
+    "name": "cursive",
+    "githubUrl": "https://github.com/meistrari/cursive",
+    "websiteUrl": "",
+    "description": "A universal and intuitive framework for interacting with LLMs.",
+    "tags": ["JavaScript", "LLM", "framework", "interaction"]
+  }
+]
