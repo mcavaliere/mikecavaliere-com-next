@@ -3,6 +3,7 @@ import { Providers } from "./providers";
 import SiteOuterLayout from "@/layouts/SiteOuterLayout";
 import { MaxWidthContainerLayout } from "@/layouts/MaxWidthContainerLayout";
 import { fonts } from "./fonts";
+import "./globals.css";
 
 export const metadata = {
   metadataBase: new URL("https://mikecavaliere.com"),
@@ -44,7 +45,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && process.env.NODE_ENV !== "development" ? (
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
       ) : null}
-
     </html>
   );
 }
