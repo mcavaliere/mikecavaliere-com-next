@@ -7,6 +7,20 @@
     "category": "libraries"
   },
   {
+    "name": "Mistral JS SDK",
+    "githubUrl": "https://github.com/mistralai/client-js",
+    "description": "The official Mistral JavaScript SDK",
+    "tags": ["SDK"],
+    "category": "libraries"
+  },
+  {
+    "name": "Anthropic TS SDK",
+    "githubUrl": "https://github.com/anthropics/anthropic-sdk-typescript",
+    "description": "The official Anthropic JavaScript SDK",
+    "tags": ["SDK"],
+    "category": "libraries"
+  },
+  {
     "name": "bumpgen",
     "githubUrl": "https://github.com/xeol-io/bumpgen",
     "websiteUrl": "https://www.xeol.io/beta",
