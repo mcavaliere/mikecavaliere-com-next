@@ -1,4 +1,4 @@
-import { HStack, Button, Box, Flex } from "@chakra-ui/react";
+import { Button } from "components/ui/button";
 import CoverImage from "components/cover-image";
 import { CardGrid } from "components/CardGrid";
 import { CardContent } from "components/ui/card";
@@ -7,6 +7,7 @@ import { Project } from "lib/types";
 import { Heading1, Heading2, P } from "components/Headings";
 import { FaGlobe, FaGithub } from "react-icons/fa";
 import { ArticleCard } from "@/components/ui/card";
+import Link from "next/link";
 
 export type ProjectCardProps = {
   project: Project;
@@ -29,14 +30,20 @@ function ProjectCard({ project }: ProjectCardProps) {
 
         <div className="flex flex-row justify-end mt-4 gap-3">
           {project["url"] ? (
-            <Button as="a" href={project["url"]} size="sm" target="_blank" rightIcon={<FaGlobe />}>
-              Website
-            </Button>
+            <Link href={project["url"]} passHref target="_blank">
+              <Button size="sm" className="font-semibold">
+                Website
+                <FaGlobe className="ml-2" />
+              </Button>
+            </Link>
           ) : null}
           {project["githubUrl"] ? (
-            <Button as="a" href={project["url"]} size="sm" target="_blank" rightIcon={<FaGithub />}>
-              GitHub
-            </Button>
+            <Link href={project["url"]} passHref target="_blank">
+              <Button size="sm" className="font-semibold">
+                GitHub
+                <FaGithub className="ml-2" />
+              </Button>
+            </Link>
           ) : null}
         </div>
       </CardContent>
