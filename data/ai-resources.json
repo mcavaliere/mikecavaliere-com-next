@@ -2,7 +2,6 @@
   {
     "name": "Gemini AI",
     "githubUrl": "https://github.com/EvanZhouDev/gemini-ai",
-    "websiteUrl": "",
     "description": "The simpler JavaScript Gemini SDK",
     "tags": ["SDK"],
     "category": "libraries"
@@ -10,7 +9,7 @@
   {
     "name": "bumpgen",
     "githubUrl": "https://github.com/xeol-io/bumpgen",
-    "websiteUrl": "",
+    "websiteUrl": "https://www.xeol.io/beta",
     "description": "An AI agent that upgrades npm packages",
     "tags": [],
     "category": "tools"
@@ -57,6 +56,7 @@
   {
     "name": "Jacob",
     "websiteUrl": "https://www.jacb.ai/",
+    "githubUrl": "https://github.com/jacob-ai-bot/jacob",
     "description": "An Open Source AI Coding Agent",
     "category": "tools"
   },
@@ -65,20 +65,23 @@
     "websiteUrl": "https://brain.js.org/",
     "githubUrl": "https://github.com/BrainJS/brain.js",
     "description": "GPU accelerated Neural networks in JavaScript for Browsers and Node.js",
-    "tags": ["Machine Learning"]
+    "tags": ["Machine Learning"],
+    "category": "libraries"
   },
   {
     "name": "TensorFlow.js",
     "description": "Develop ML models in JavaScript, and use ML directly in the browser or in Node.js.",
     "websiteUrl": "https://www.tensorflow.org/js",
     "githubUrl": "https://github.com/tensorflow/tfjs",
-    "tags": ["Machine Learning"]
+    "tags": ["Machine Learning"],
+    "category": "libraries"
   },
   {
     "name": "LangChain.js",
     "websiteUrl": "https://langchain.js.org/",
     "githubUrl": "https://github.com/langchain-ai/langchainjs",
-    "description": "A framework for developing applications powered by large language models (LLMs)"
+    "description": "A framework for developing applications powered by large language models (LLMs)",
+    "category": "libraries"
   },
   {
     "name": "Vercel AI SDK",

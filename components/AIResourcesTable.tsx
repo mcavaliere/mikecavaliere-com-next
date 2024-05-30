@@ -11,13 +11,15 @@ export function AIResourcesTable() {
           <Tr>
             <Th>Name</Th>
             <Th>Description</Th>
-            <Th>Tags</Th>
             <Th>Links</Th>
           </Tr>
         </Thead>
         <Tbody>
           {resources.map((r, i) => {
             const href = r.githubUrl ? r.githubUrl : r.websiteUrl;
+            if (!href) {
+              return null;
+            }
             return (
               <Tr key={i}>
                 <Td>
@@ -26,13 +28,13 @@ export function AIResourcesTable() {
                   </Link>
                 </Td>
                 <Td>{r.description}</Td>
-                <Td>{r.tags?.join(", ")}</Td>
                 <Td>
                   {r.websiteUrl && (
                     <Link href={r.websiteUrl} target="_blank" textDecoration="underline">
                       Website
                     </Link>
                   )}
+                  {r.websiteUrl && r.githubUrl && " | "}
                   {r.githubUrl && (
                     <Link href={r.githubUrl} target="_blank" textDecoration="underline">
                       GitHub
