@@ -59,6 +59,7 @@ export type Project = {
   title: string;
   description: string;
   url: string;
+  githubUrl?: string;
   imageUrl?: string;
   imageWidth?: number;
   imageHeight?: number;

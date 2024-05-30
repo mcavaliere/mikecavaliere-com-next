@@ -7,7 +7,7 @@ export type CoverImageProps = {
   href?: string;
   width: number;
   height: number;
-};
+} & Omit<ImageProps, "alt">;
 
 export default function CoverImage({ title, src, href, width, height }: CoverImageProps) {
   const image = (
