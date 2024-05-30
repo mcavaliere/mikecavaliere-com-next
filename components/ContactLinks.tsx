@@ -1,38 +1,31 @@
-import { HStack, ButtonGroup, IconButton } from "@chakra-ui/react";
+import { cn } from "@/lib/utils";
 import { FaTwitter, FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
-export function ContactLinks() {
+export function ContactLinks({ className = "" }) {
+  const classNames = cn(
+    "flex flex-row gap-3 my-3 mx-auto md:mt-10 w-full justify-center",
+    className
+  );
+
   return (
-    <HStack marginY={10} marginX="auto">
-      <ButtonGroup size="sm">
-        <IconButton
-          size="lg"
-          as="a"
-          aria-label="Follow me on Twitter"
-          icon={<FaTwitter color="#fff" />}
-          href="https://twitter.com/mcavaliere"
-          target="_blank"
-          bg="#2BC2FA"
-        />
-        <IconButton
-          size="lg"
-          as="a"
-          aria-label="Follow me on LinkedIn"
-          icon={<FaLinkedinIn color="#fff" />}
-          href="https://www.linkedin.com/in/mikecavaliere"
-          target="_blank"
-          bg="#0077b5"
-        />
-        <IconButton
-          size="lg"
-          as="a"
-          aria-label="Follow me on GitHub"
-          icon={<FaGithub color="#fff" />}
-          href="https://github.com/mcavaliere"
-          target="_blank"
-          bg="#24292e"
-        />
-      </ButtonGroup>
-    </HStack>
+    <div className={classNames}>
+      <Link href="https://twitter.com/mcavaliere" passHref target="_blank">
+        <Button size="lg" aria-label="Follow me on Twitter" className="bg-[#2BC2FA]">
+          <FaTwitter className="text-white" />
+        </Button>
+      </Link>
+      <Link href="https://www.linkedin.com/in/mikecavaliere" target="_blank" passHref>
+        <Button size="lg" aria-label="Follow me on LinkedIn" className="bg-[#0077b5]">
+          <FaLinkedinIn className="text-white" />
+        </Button>
+      </Link>
+      <Link href="https://github.com/mcavaliere" passHref target="_blank">
+        <Button size="lg" aria-label="Follow me on GitHub" className="bg-[#24292e]">
+          <FaGithub className="text-white" />
+        </Button>
+      </Link>
+    </div>
   );
 }

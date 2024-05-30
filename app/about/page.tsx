@@ -1,4 +1,4 @@
-import { Box, Center, SimpleGrid } from "@chakra-ui/react";
+import { Box, Center } from "@chakra-ui/react";
 import { Heading1, P } from "components/Headings";
 import { ContactLinks } from "components/ContactLinks";
 import { ParagraphLink } from "components/Link";
@@ -43,11 +43,10 @@ export default function AboutPage() {
           <p className="mb-3 text-lg">
             I plan to continue sharing my knowledge, and hope you find it useful.
           </p>
+
+          <ContactLinks />
         </Box>
       </div>
-      <Center>
-        <ContactLinks />
-      </Center>
     </>
   );
 }
