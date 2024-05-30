@@ -1,47 +1,26 @@
 "use client";
 
-import { ReactNode } from "react";
-import { Link as ChakraLink } from "@chakra-ui/next-js";
-import {
-  LinkProps as ChakraLinkProps,
-  BreadcrumbLink as ChakraBreadcrumbLink,
-  BreadcrumbLinkProps as ChakraBreadcrumbLinkProps,
-} from "@chakra-ui/react";
 import { default as NextLink } from "next/link";
+import { cn } from "@/lib/utils";
 
-export type LinkProps = ChakraLinkProps & {
-  children: ReactNode;
-  href: string;
+export const Link = ({ children, className = "", href, ...props }) => {
+  const classNames = cn("underline hover:text-primary", className);
+
+  return (
+    <NextLink href={href} className={classNames} {...props}>
+      {children}
+    </NextLink>
+  );
 };
-
-/**
- * Next.js Link component + Chakra Link component.
- */
-export const Link = ({ children, href, ...props }: LinkProps) => (
-  <ChakraLink href={href} {...props}>
-    {children}
-  </ChakraLink>
-);
 
 /**
  * Styled element for links within paragraph content.
  */
-export const ParagraphLink = ({ children, ...props }: LinkProps) => (
-  <Link textDecoration="underline" {...props}>
-    {children}
-  </Link>
-);
-
-export type BreadcrumbLinkProps = ChakraBreadcrumbLinkProps & {
-  children: ReactNode;
-  href: string;
+export const ParagraphLink = ({ children, href, className = "", ...props }) => {
+  const classNames = cn("underline hover:text-primary", className);
+  return (
+    <Link href={href} className={classNames} {...props}>
+      {children}
+    </Link>
+  );
 };
-
-/**
- * Next.js Link component + Chakra BreadcrumbLink component.
- */
-export const BreadcrumbLink = ({ children, href, ...props }: BreadcrumbLinkProps) => (
-  <NextLink href={href} passHref>
-    <ChakraBreadcrumbLink {...props}>{children}</ChakraBreadcrumbLink>
-  </NextLink>
-);

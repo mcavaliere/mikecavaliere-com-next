@@ -1,5 +1,4 @@
-import { Box, Center } from "@chakra-ui/react";
-import { Heading1, P } from "components/Headings";
+import { Heading1 } from "components/Headings";
 import { ContactLinks } from "components/ContactLinks";
 import { ParagraphLink } from "components/Link";
 import Image from "next/image";
@@ -15,7 +14,7 @@ export default function AboutPage() {
           className="rounded-lg overflow-hidden shadow-2xl"
         />
 
-        <Box paddingLeft={10}>
+        <div className="pl-10">
           <Heading1 className="relative before:content-['👋🏼'] before:absolute before:left-[-40px] mb-3">
             Hi, I&#39;m Mike.
           </Heading1>
@@ -45,7 +44,7 @@ export default function AboutPage() {
           </p>
 
           <ContactLinks />
-        </Box>
+        </div>
       </div>
     </>
   );
