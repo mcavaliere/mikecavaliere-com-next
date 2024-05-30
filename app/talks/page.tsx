@@ -7,57 +7,33 @@ import { Talks } from "data/talks";
 import { Interview, Talk } from "lib/types";
 import { Heading1, Heading2, P } from "components/Headings";
 import { FaVideo, FaSlideshare } from "react-icons/fa";
+import { cn } from "@/lib/utils";
+import { CARD_DEFAULT_CLASSNAMES, CardContent } from "@/components/ui/card";
 
 type TalkCardProps = {
   talkOrInterview: Talk | Interview;
 };
 
 function TalkCard({ talkOrInterview }: TalkCardProps) {
-  const {
-    title,
-    imageUrl,
-    videoUrl,
-    excerpt,
-    description,
-    imageWidth,
-    imageHeight,
-  } = talkOrInterview;
+  const { title, imageUrl, videoUrl, excerpt, description, imageWidth, imageHeight } =
+    talkOrInterview;
   return (
-    <CardContainer as="article" p={0} justify="flex-start" key={title}>
+    <article className={cn(CARD_DEFAULT_CLASSNAMES, "justify-start")} key={title}>
       {title && imageUrl && imageWidth && imageHeight && (
-        <CoverImage
-          title={title}
-          src={imageUrl}
-          width={imageWidth}
-          height={imageHeight}
-        />
+        <CoverImage title={title} src={imageUrl} width={imageWidth} height={imageHeight} />
       )}
 
-      <CardBody display="flex" flexDirection="column" flex={1}>
-        <Heading2 size="md" mb={3} fontWeight="bold">
+      <CardContent className="flex flex-col flex-1 p-4">
+        <Heading2 size="md" className="mb-3">
           {title}
         </Heading2>
 
-        {excerpt ? (
-          <P d="flex" flexDirection="column" flex={1}>
-            {excerpt}
-          </P>
-        ) : null}
-        {description ? (
-          <P d="flex" flexDirection="column" flex={1}>
-            {description}
-          </P>
-        ) : null}
+        {excerpt ? <p className="flex flex-col">{excerpt}</p> : null}
+        {description ? <p className="flex flex-col flex-1">{description}</p> : null}
 
-        <HStack justifyContent="flex-end" mt={5}>
+        <div className="flex flex-row justify-end mt-3 gap-2">
           {videoUrl ? (
-            <Button
-              as="a"
-              href={videoUrl}
-              size="sm"
-              target="_blank"
-              rightIcon={<FaVideo />}
-            >
+            <Button as="a" href={videoUrl} size="sm" target="_blank" rightIcon={<FaVideo />}>
               Video
             </Button>
           ) : null}
@@ -72,9 +48,9 @@ function TalkCard({ talkOrInterview }: TalkCardProps) {
               Slides
             </Button>
           ) : null}
-        </HStack>
-      </CardBody>
-    </CardContainer>
+        </div>
+      </CardContent>
+    </article>
   );
 }
 
@@ -82,11 +58,9 @@ export default function TalksPage() {
   return (
     <>
       <section id="talks">
-        <Heading1 textAlign="center" mb={5}>
-          Conference Talks
-        </Heading1>
+        <Heading1 className="mb-3 text-center">Conference Talks</Heading1>
 
-        <CardGrid mb={10}>
+        <CardGrid className="mb-4">
           {Talks.map((talk) => (
             <TalkCard key={talk.title} talkOrInterview={talk} />
           ))}
@@ -94,9 +68,7 @@ export default function TalksPage() {
       </section>
 
       <section id="interviews">
-        <Heading1 textAlign="center" mb={5}>
-          Podcast Interviews
-        </Heading1>
+        <Heading1 className="mb-3 text-center">Podcast Interviews</Heading1>
 
         <CardGrid>
           {Interviews.map((interview) => (
