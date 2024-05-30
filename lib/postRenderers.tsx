@@ -1,12 +1,14 @@
 import { ReactNode } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import highlighterTheme from "react-syntax-highlighter/dist/cjs/styles/prism/vsc-dark-plus";
-import { Box, Button, Text, UnorderedList, OrderedList, ListItem } from "@chakra-ui/react";
+import { Box, Text, UnorderedList, OrderedList, ListItem } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { theme } from "lib/theme";
 import { Heading1, Heading2, Heading3, Heading4, P as Paragraph } from "components/Headings";
 import { Link } from "@/components/Link";
 import Image, { ImageProps } from "next/image";
+import { Button } from "@/components/ui/button";
+import { cn } from "./utils";
 
 export type PostRendererProps = {
   children: ReactNode;
@@ -146,15 +148,15 @@ export function P({ children, ...props }) {
   );
 }
 
-export function More({ href }) {
+export function More({ href, className = "" }) {
   return (
-    <Box justifyContent="flex-end" alignItems="flex-end" textAlign="right">
+    <div className={cn("justify-end items-end text-right", className)}>
       <NextLink passHref href={href}>
-        <Button size="xs" variant="primary">
+        <Button size="xs" variant="default">
           read more ⮕
         </Button>
       </NextLink>
-    </Box>
+    </div>
   );
 }
 

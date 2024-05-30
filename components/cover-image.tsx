@@ -7,9 +7,17 @@ export type CoverImageProps = {
   href?: string;
   width: number;
   height: number;
+  className?: string;
 } & Omit<ImageProps, "alt">;
 
-export default function CoverImage({ title, src, href, width, height }: CoverImageProps) {
+export default function CoverImage({
+  title,
+  src,
+  href,
+  width,
+  height,
+  className = "",
+}: CoverImageProps) {
   const image = (
     <Image
       width={width}
@@ -21,6 +29,7 @@ export default function CoverImage({ title, src, href, width, height }: CoverIma
         height: "auto",
         objectFit: "cover",
       }}
+      className={className}
     />
   );
 
