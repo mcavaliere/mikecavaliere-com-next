@@ -1,7 +1,7 @@
-import { Button, Center, Flex, Text } from "@chakra-ui/react";
-import { FaArrowRight } from "react-icons/fa";
+import { Button } from "./ui/button";
 
-import { CardContainer, CardDescription, CardHeading } from "components/Card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowRight } from "lucide-react";
 
 export type HomeSectionCardProps = {
   href: string;
@@ -11,25 +11,23 @@ export type HomeSectionCardProps = {
   emoji?: string;
 };
 
-export function HomeSectionCard({
-  emoji,
-  href,
-  title,
-  body,
-  buttonText,
-}: HomeSectionCardProps) {
+export function HomeSectionCard({ emoji, href, title, body, buttonText }: HomeSectionCardProps) {
   return (
-    <CardContainer href={href}>
-      <Flex direction="column">
-        <CardHeading>
-          {emoji ? `${emoji} ` : null}
-          {title}
-        </CardHeading>
-        <CardDescription>{body}</CardDescription>
-      </Flex>
-      <Button mt={4} rightIcon={<FaArrowRight />} variant="primary">
-        {buttonText}
-      </Button>
-    </CardContainer>
+    <Card className="flex flex-col">
+      <CardHeader className="flex flex-0">
+        <CardTitle>
+          {emoji} {title}
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="flex flex-1">
+        <p className="text-[#999999]">{body}</p>
+      </CardContent>
+      <CardFooter className="flex flex-0">
+        <Button className="mt-2" size="cta">
+          {buttonText}
+          <ArrowRight />
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }
