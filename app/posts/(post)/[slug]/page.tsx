@@ -35,12 +35,12 @@ export async function generateMetadata(
           images: [frontmatter.featuredImage?.src],
         }
       : undefined,
-      twitter: {
-        card: frontmatter.featuredImage?.src ? "summary_large_image" : "summary",
-        site: "@mcavaliere",
-        description: frontmatter.excerpt,
-        images: frontmatter.featuredImage?.src ? [frontmatter.featuredImage?.src] : undefined
-      }
+    twitter: {
+      card: frontmatter.featuredImage?.src ? "summary_large_image" : "summary",
+      site: "@mcavaliere",
+      description: frontmatter.excerpt,
+      images: frontmatter.featuredImage?.src ? [frontmatter.featuredImage?.src] : undefined,
+    },
   };
 }
 
@@ -51,6 +51,7 @@ export default async function ArticlePage({ params: { slug } }) {
   return (
     <>
       <PostHeader {...frontmatter} />
+
       <MDXRemote
         source={article}
         components={rendererMapLowercase}
