@@ -8,7 +8,7 @@ import { Heading1, Heading2, P } from "components/Headings";
 import { Presentation, Video } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { CARD_DEFAULT_CLASSNAMES, CardContent } from "@/components/ui/card";
+import { ArticleCard, CARD_DEFAULT_CLASSNAMES, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 
 type TalkCardProps = {
@@ -19,7 +19,7 @@ function TalkCard({ talkOrInterview }: TalkCardProps) {
   const { title, imageUrl, videoUrl, excerpt, description, imageWidth, imageHeight } =
     talkOrInterview;
   return (
-    <article className={cn(CARD_DEFAULT_CLASSNAMES, "justify-start")} key={title}>
+    <ArticleCard key={title}>
       {title && imageUrl && imageWidth && imageHeight && (
         <CoverImage title={title} src={imageUrl} width={imageWidth} height={imageHeight} />
       )}
@@ -50,7 +50,7 @@ function TalkCard({ talkOrInterview }: TalkCardProps) {
           ) : null}
         </div>
       </CardContent>
-    </article>
+    </ArticleCard>
   );
 }
 

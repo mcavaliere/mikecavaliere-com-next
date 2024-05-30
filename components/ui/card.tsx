@@ -39,7 +39,7 @@ CardDescription.displayName = "CardDescription";
 
 const CardContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+    <div ref={ref} className={cn("flex flex-col flex-1 p-5", className)} {...props} />
   )
 );
 CardContent.displayName = "CardContent";
@@ -50,5 +50,16 @@ const CardFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDiv
   )
 );
 CardFooter.displayName = "CardFooter";
+
+export function ArticleCard({ children, className, ...props }: React.HTMLAttributes<HTMLElement>) {
+  return (
+    <article
+      className={cn(CARD_DEFAULT_CLASSNAMES, "justify-start flex flex-col", className)}
+      {...props}
+    >
+      {children}
+    </article>
+  );
+}
 
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent };

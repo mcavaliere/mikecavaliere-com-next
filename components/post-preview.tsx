@@ -5,7 +5,7 @@ import { stripHtml } from "lib/utils/stripHtml";
 import { More } from "lib/postRenderers";
 import { FeaturedImage } from "@/lib/types";
 import Link from "next/link";
-import { CARD_DEFAULT_CLASSNAMES, CardContent } from "./ui/card";
+import { ArticleCard, CARD_DEFAULT_CLASSNAMES, CardContent } from "./ui/card";
 import { cn } from "@/lib/utils";
 
 if (!process.env.NEXT_PUBLIC_CLOUDINARY_BASE_URL) {
@@ -29,7 +29,7 @@ export default function PostPreview({
 
   return (
     <Link passHref href={`/posts/${slug}`} className="flex flex-col flex-1">
-      <article className={cn(CARD_DEFAULT_CLASSNAMES, "flex-col flex-1 justify-start h-full")}>
+      <ArticleCard className="flex-col flex-1 h-full">
         {coverImage?.width ? (
           <CoverImage
             title={title}
@@ -39,13 +39,16 @@ export default function PostPreview({
           />
         ) : null}
 
-        <CardContent className="p-6 flex flex-col flex-1">
+        <CardContent>
           <h2 className="text-lg mb-2 text-3xl font-bold">{title}</h2>
 
-          <p dangerouslySetInnerHTML={{ __html: cleanedExcerpt }} />
+          <p
+            dangerouslySetInnerHTML={{ __html: cleanedExcerpt }}
+            className="flex flex-col flex-1"
+          />
           <More href={`/posts/${slug}`} className="mt-4" />
         </CardContent>
-      </article>
+      </ArticleCard>
     </Link>
   );
 }
