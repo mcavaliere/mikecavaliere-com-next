@@ -1,4 +1,4 @@
-import { Heading, Box, Flex } from "@chakra-ui/react";
+import { Heading, Flex } from "@chakra-ui/react";
 import Image from "next/image";
 import { ContactLinks } from "components/ContactLinks";
 
@@ -10,26 +10,10 @@ export const HERO_AVATAR_SIZES = {
 
 export function HomeHero() {
   return (
-    <Flex direction={{ base: "column", md: "row" }} width="100%" mb={10}>
-      <Flex width={{ base: "100%", md: "50%" }} align="center" justify="center">
-        <Box
-          borderRadius={HERO_AVATAR_SIZES}
-          overflow="hidden"
-          width={HERO_AVATAR_SIZES}
-          height={HERO_AVATAR_SIZES}
-          pos="relative"
-          // Outer container has the gradient.
-          bgGradient="linear(to-br, aqua.500, purple.550, purple.300)"
-        >
-          <Box
-            borderRadius={HERO_AVATAR_SIZES}
-            width={HERO_AVATAR_SIZES}
-            height={HERO_AVATAR_SIZES}
-            overflow="hidden"
-            // Inner container uses a transparent border to make the gradient show around the image.
-            border="solid 10px transparent"
-            pos="relative"
-          >
+    <div className="flex flex-col md:flex-row w-full mb-10">
+      <div className="flex w-full md:w-1/2 justify-center items-center">
+        <div className="relative rounded-full overflow-hidden w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] bg-gradient-to-br from-[rgb(63,200,241)] via-[rgb(54,53,212)] to-[rgb(128,91,235)]">
+          <div className="relative rounded-full overflow-hidden w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] border-[10px] border-transparent ">
             <Image
               src="/images/headshot 1024 square 72DPI.jpeg"
               priority
@@ -38,11 +22,12 @@ export function HomeHero() {
               sizes="100vw"
               style={{
                 objectFit: "cover",
-                objectPosition: "center"
-              }} />
-          </Box>
-        </Box>
-      </Flex>
+                objectPosition: "center",
+              }}
+            />
+          </div>
+        </div>
+      </div>
       <Flex
         direction="column"
         justify="center"
@@ -51,13 +36,12 @@ export function HomeHero() {
       >
         <Heading>Hi, I&#39;m Mike Cavaliere.</Heading>
         <Heading as="h2" size="md" fontWeight="normal">
-          I&#39;m a <strong>technical strategist</strong>,{" "}
-          <strong>software engineer</strong>, {" "}
+          I&#39;m a <strong>technical strategist</strong>, <strong>software engineer</strong>,{" "}
           <strong>author</strong> and <strong>conference speaker</strong>.
         </Heading>
 
         <ContactLinks />
       </Flex>
-    </Flex>
+    </div>
   );
 }
