@@ -1,10 +1,8 @@
 "use client";
 
 import CoverImage from "./cover-image";
-import { Heading, Text } from "@chakra-ui/react";
 import { stripHtml } from "lib/utils/stripHtml";
 import { More } from "lib/postRenderers";
-import { CardContainer, CardBody } from "components/Card";
 import { FeaturedImage } from "@/lib/types";
 import Link from "next/link";
 import { CARD_DEFAULT_CLASSNAMES, CardContent } from "./ui/card";

@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import { NextPageWithLayout } from "lib/types";
 import { getAllPostsMap } from "lib/api";
 import type { Metadata } from "next";
@@ -13,8 +12,7 @@ export type PostsIndexPageProps = NextPageWithLayout & {
 
 export const metadata: Metadata = {
   title: "Mike Cavaliere's articles on JavaScript, React, technical strategy, and brain hacking.",
-  description:
-    "Over the years I've written about software, tech careers, and personal development.",
+  description: "Articles on software development.",
 };
 
 export default async function PostsIndexPage() {
@@ -23,12 +21,12 @@ export default async function PostsIndexPage() {
 
   return (
     <>
-      <Box mb={10} textAlign="center">
-        <Heading1 mb={3}>My Articles</Heading1>
-        <Heading2 mb={10}>
-          Over the years I&#39;ve written about software, tech careers, and personal development.
+      <div className="mb-2.5 text-center">
+        <Heading1 className="mb-4">My Articles</Heading1>
+        <Heading2 className="mb-10">
+          Articles about software development, and whatever tech I&#39;m using currently.
         </Heading2>
-      </Box>
+      </div>
       <CardGrid>
         {allPosts.map(({ slug, title, featuredImage, excerpt }) => (
           <PostPreview

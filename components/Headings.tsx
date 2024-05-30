@@ -1,37 +1,46 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { cn } from "@/lib/utils";
 
-export function Heading1({ children, ...props }) {
+export function Heading1({ children, className = "", ...props }) {
+  const classNames = cn("font-bold text-3xl", className);
   return (
-    <Heading as="h1" fontWeight="bold" {...props}>
+    <h1 className={classNames} {...props}>
       {children}
-    </Heading>
+    </h1>
   );
 }
 
-export function Heading2({ children, ...props }) {
+export function Heading2({ children, className = "", ...props }) {
+  const classNames = cn("font-bold text-2xl", className);
   return (
-    <Heading as="h2" size="lg" fontWeight="bold" {...props}>
+    <h2 className={classNames} {...props}>
       {children}
-    </Heading>
+    </h2>
   );
 }
 
-export function Heading3({ children, ...props }) {
+export function Heading3({ children, className = "", ...props }) {
+  const classNames = cn("font-bold text-xl", className);
   return (
-    <Heading as="h3" size="md" fontWeight="bold" {...props}>
+    <h3 className={classNames} {...props}>
       {children}
-    </Heading>
+    </h3>
   );
 }
 
-export function Heading4({ children, ...props }) {
+export function Heading4({ children, className = "", ...props }) {
+  const classNames = cn("font-bold text-lg", className);
   return (
-    <Heading as="h4" size="md" fontWeight="normal" {...props}>
+    <h4 className={classNames} {...props}>
       {children}
-    </Heading>
+    </h4>
   );
 }
 
-export function P({ children, ...rest }) {
-  return <Text {...rest}>{children}</Text>;
+export function P({ children, className = "", ...rest }) {
+  const classNames = cn("font-bold text-2xl", className);
+  return (
+    <p className={classNames} {...rest}>
+      {children}
+    </p>
+  );
 }
