@@ -2,9 +2,10 @@ import { Box } from "@chakra-ui/react";
 import { NextPageWithLayout } from "lib/types";
 import { getAllPostsMap } from "lib/api";
 import type { Metadata } from "next";
-import MoreStories from "components/more-stories";
 
 import { Heading1, Heading2 } from "components/Headings";
+import { CardGrid } from "@/components/CardGrid";
+import PostPreview from "@/components/post-preview";
 
 export type PostsIndexPageProps = NextPageWithLayout & {
   allPosts: Record<string, any>;
@@ -28,7 +29,17 @@ export default async function PostsIndexPage() {
           Over the years I&#39;ve written about software, tech careers, and personal development.
         </Heading2>
       </Box>
-      <MoreStories posts={allPosts} />
+      <CardGrid>
+        {allPosts.map(({ slug, title, featuredImage, excerpt }) => (
+          <PostPreview
+            key={slug}
+            title={title}
+            coverImage={featuredImage}
+            slug={slug}
+            excerpt={excerpt}
+          />
+        ))}
+      </CardGrid>
     </>
   );
 }
