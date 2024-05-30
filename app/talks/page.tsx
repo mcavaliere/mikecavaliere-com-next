@@ -1,14 +1,15 @@
-import { Heading, HStack, IconButton, Button } from "@chakra-ui/react";
+import { Button } from "components/ui/button";
 import CoverImage from "components/cover-image";
 import { CardGrid } from "components/CardGrid";
-import { CardBody, CardContainer } from "components/Card";
 import { Interviews } from "data/interviews";
 import { Talks } from "data/talks";
 import { Interview, Talk } from "lib/types";
 import { Heading1, Heading2, P } from "components/Headings";
-import { FaVideo, FaSlideshare } from "react-icons/fa";
+import { Presentation, Video } from "lucide-react";
+
 import { cn } from "@/lib/utils";
 import { CARD_DEFAULT_CLASSNAMES, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 
 type TalkCardProps = {
   talkOrInterview: Talk | Interview;
@@ -23,7 +24,7 @@ function TalkCard({ talkOrInterview }: TalkCardProps) {
         <CoverImage title={title} src={imageUrl} width={imageWidth} height={imageHeight} />
       )}
 
-      <CardContent className="flex flex-col flex-1 p-4">
+      <CardContent className="flex flex-col flex-1 p-5">
         <Heading2 size="md" className="mb-3">
           {title}
         </Heading2>
@@ -33,20 +34,19 @@ function TalkCard({ talkOrInterview }: TalkCardProps) {
 
         <div className="flex flex-row justify-end mt-3 gap-2">
           {videoUrl ? (
-            <Button as="a" href={videoUrl} size="sm" target="_blank" rightIcon={<FaVideo />}>
-              Video
-            </Button>
+            <Link href={videoUrl} passHref target="_blank">
+              <Button size="sm" className="font-bold">
+                Video <Video className="size-4 ml-2" />
+              </Button>
+            </Link>
           ) : null}
           {talkOrInterview["slidesUrl"] ? (
-            <Button
-              as="a"
-              href={talkOrInterview["slidesUrl"]}
-              size="sm"
-              target="_blank"
-              rightIcon={<FaSlideshare />}
-            >
-              Slides
-            </Button>
+            <Link href={talkOrInterview["slidesUrl"]} passHref target="_blank">
+              <Button size="sm" className="font-bold">
+                Slides
+                <Presentation className="size-4 ml-2" />
+              </Button>
+            </Link>
           ) : null}
         </div>
       </CardContent>
