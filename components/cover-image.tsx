@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import Image, { ImageProps } from "next/image";
 import Link from "next/link";
 
@@ -18,18 +19,14 @@ export default function CoverImage({
   height,
   className = "",
 }: CoverImageProps) {
+  const classNames = cn("max-w-full h-auto object-cover", className);
   const image = (
     <Image
       width={width}
       height={height}
       alt={`Cover Image for "${title}"`}
       src={`${src}`}
-      style={{
-        maxWidth: "100%",
-        height: "auto",
-        objectFit: "cover",
-      }}
-      className={className}
+      className={classNames}
     />
   );
 
