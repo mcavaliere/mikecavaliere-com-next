@@ -18,7 +18,15 @@ function ProjectCard({ project }: ProjectCardProps) {
   return (
     <ArticleCard key={title}>
       {title && imageUrl && imageWidth && imageHeight && (
-        <CoverImage title={title} src={imageUrl} width={imageWidth} height={400} />
+        <div className="min-h-56 w-full flex justify-center items-center">
+          <CoverImage
+            title={title}
+            src={imageUrl}
+            width={imageWidth}
+            height={400}
+            className="object-center mx-auto"
+          />
+        </div>
       )}
 
       <CardContent>
