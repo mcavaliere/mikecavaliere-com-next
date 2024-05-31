@@ -31,7 +31,7 @@ export const Projects: Project[] = [
     title: "AI for JS Devs",
     description: "A list of AI resources and tools for JavaScript / TypeScript developers.",
     url: "/ai-for-js-devs",
-    imageUrl: "/images/projects/ai-for-js-devs.webp",
+    imageUrl: "/images/projects/ai-for-js-devs.png",
     imageWidth: 303,
     imageHeight: 153,
   },
