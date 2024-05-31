@@ -64,7 +64,7 @@
     "name": "HuggingBuddy",
     "githubUrl": "https://github.com/angu10/HuggingBuddy",
     "description": "Chrome extension that simplifies the process of reading and understanding complex research papers from Hugging Face.",
-    "tags": ["Chrome extension", "Hugging Face"],
+    "tags": [],
     "category": "tools"
   },
   {
