@@ -5,8 +5,8 @@ import { AIResource } from "./types";
 
 export function AIResourcesTable() {
   return (
-    <div className="container mx-auto py-10">
+    <>
       <DataTable columns={columns} data={resources as AIResource[]} />
-    </div>
+    </>
   );
 }
