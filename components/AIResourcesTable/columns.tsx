@@ -8,7 +8,7 @@ import { FaGithub, FaGlobe } from "react-icons/fa";
 
 export function GithubButton({ url }: { url: string }) {
   return (
-    <Link href={url}>
+    <Link href={url} target="_blank">
       <Button size="icon">
         <FaGithub className="w-5 h-5" />
       </Button>
@@ -18,7 +18,7 @@ export function GithubButton({ url }: { url: string }) {
 
 export function WebsiteButton({ url }: { url: string }) {
   return (
-    <Link href={url}>
+    <Link href={url} target="_blank">
       <Button size="icon">
         <FaGlobe className="w-5 h-5" />
       </Button>
