@@ -2,7 +2,7 @@ import { Project } from "lib/types";
 
 export const Projects: Project[] = [
   {
-    title: "StoryTime App",
+    title: "StoryTime",
     description: "An AI-powered app for writing children's stories.",
     url: "https://storytimeapp.vercel.app",
     imageUrl: "/images/projects/storytime.png",
