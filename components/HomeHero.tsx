@@ -1,12 +1,16 @@
-import { Heading, Flex } from "@chakra-ui/react";
 import Image from "next/image";
 import { ContactLinks } from "components/ContactLinks";
+import { Heading1, Heading2 } from "./Headings";
 
 export const HERO_AVATAR_SIZES = {
   base: 200,
   md: 200,
   lg: 300,
 };
+
+function Strong({ children }) {
+  return <strong className="font-semibold">{children}</strong>;
+}
 
 export function HomeHero() {
   return (
@@ -28,20 +32,15 @@ export function HomeHero() {
           </div>
         </div>
       </div>
-      <Flex
-        direction="column"
-        justify="center"
-        width={{ base: "100%", md: "50%" }}
-        textAlign={{ base: "center", md: "left" }}
-      >
-        <Heading>Hi, I&#39;m Mike Cavaliere.</Heading>
-        <Heading as="h2" size="md" fontWeight="normal">
-          I&#39;m a <strong>technical strategist</strong>, <strong>software engineer</strong>,{" "}
-          <strong>author</strong> and <strong>conference speaker</strong>.
-        </Heading>
+      <div className="flex flex-col justify-center items-center md:items-start w-full md:w-1/2 text-center md:text-left">
+        <Heading1 className="mb-3">Hi, I&#39;m Mike Cavaliere.</Heading1>
+        <Heading2 size="md" className="font-normal">
+          I&#39;m a <Strong>technical strategist</Strong>, <Strong>software engineer</Strong>,{" "}
+          <Strong>author</Strong> and <Strong>conference speaker</Strong>.
+        </Heading2>
 
         <ContactLinks />
-      </Flex>
+      </div>
     </div>
   );
 }
