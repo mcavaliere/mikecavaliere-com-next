@@ -1,4 +1,3 @@
-import { Link } from "@/components/Link";
 import resources from "../../data/ai-resources.json";
 import { columns } from "./columns";
 import { DataTable } from "./DataTable";
