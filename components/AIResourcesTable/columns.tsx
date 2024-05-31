@@ -5,6 +5,7 @@ import { AIResource } from "./types";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FaGithub, FaGlobe } from "react-icons/fa";
+import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 
 export function GithubButton({ url }: { url: string }) {
   return (
@@ -29,7 +30,12 @@ export function WebsiteButton({ url }: { url: string }) {
 export const columns: ColumnDef<AIResource>[] = [
   {
     accessorKey: "name",
-    header: "Name",
+    header: ({ column }) => (
+      <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+        Name
+        <ArrowUpDown className="ml-2 h-4 w-4" />
+      </Button>
+    ),
   },
   {
     accessorKey: "description",
