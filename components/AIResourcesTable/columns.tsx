@@ -3,7 +3,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { AIResource } from "./types";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Link } from "@/components/Link";
 import { FaGithub, FaGlobe } from "react-icons/fa";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 
@@ -36,6 +36,20 @@ export const columns: ColumnDef<AIResource>[] = [
         <ArrowUpDown className="ml-2 h-4 w-4" />
       </Button>
     ),
+    cell: (cell) => {
+      const githubUrl = cell.row.original.githubUrl;
+      const websiteUrl = cell.row.original.websiteUrl;
+      const name = cell.row.original.name;
+      const url = websiteUrl || githubUrl;
+
+      if (!url) return name;
+
+      return (
+        <Link href={url} target="_blank">
+          {name}
+        </Link>
+      );
+    },
   },
   {
     accessorKey: "description",
