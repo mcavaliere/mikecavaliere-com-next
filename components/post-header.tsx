@@ -19,7 +19,7 @@ export function PostHeader({
       <PostTitle>{title}</PostTitle>
 
       {featuredImage?.src ? (
-        <div className="shadow-inner overflow-hidden w-full md:w-1/2 md:float-right md:ml-4 mb-2.5 md:mb-7">
+        <div className="overflow-hidden w-full md:w-1/2 md:float-right md:ml-4 mb-2.5 md:mb-7">
           <CoverImage
             title={title}
             src={featuredImage.src}
