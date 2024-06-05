@@ -13,6 +13,7 @@ import {
   CardDescription,
   AINewsletterCard,
 } from "./components/ui/card";
+import { TwitterLink } from "./components/Link";
 
 export const mdxComponents = {
   ...rendererMapLowercase,
@@ -27,6 +28,7 @@ export const mdxComponents = {
   CardTitle,
   CardDescription,
   AINewsletterCard,
+  TwitterLink,
 };
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {

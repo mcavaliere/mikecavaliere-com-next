@@ -64,9 +64,7 @@ export function ArticleCard({ children, className, ...props }: React.HTMLAttribu
   );
 }
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent };
-
-export function AINewsletterCard({ className = "", children, title, href, frequency }) {
+function AINewsletterCard({ className = "", children, title, href, frequency }) {
   const classNames = cn("mb-4 bg-gradient-to-br from-background to-accent", className);
   return (
     <Card className={classNames}>
@@ -79,3 +77,5 @@ export function AINewsletterCard({ className = "", children, title, href, freque
     </Card>
   );
 }
+
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent, AINewsletterCard };

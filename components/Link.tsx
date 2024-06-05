@@ -24,3 +24,23 @@ export const ParagraphLink = ({ children, href, className = "", ...props }) => {
     </Link>
   );
 };
+
+export function TwitterLink({
+  children,
+  username,
+  className = "",
+
+  ...props
+}) {
+  const classNames = cn("underline font-semibold text-cyan hover:text-primary", className);
+  const href = `https://x.com/${username}`;
+  if (!children) {
+    children = `@${username}`;
+  }
+
+  return (
+    <NextLink href={href} className={classNames} {...props}>
+      {children}
+    </NextLink>
+  );
+}
