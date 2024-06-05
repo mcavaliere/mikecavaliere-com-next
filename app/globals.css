@@ -34,9 +34,9 @@
 
     --radius: 0.5rem;
 
-    --purple: 255deg 78.3% 63.9%
-    --purple-dark: 240deg 64.9% 52%
-    --cyan: 194deg 86.4% 59.6%
+    --purple: 255deg 78.3% 63.9%;
+    --purple-dark: 240deg 64.9% 52%;
+    --cyan: 194deg 86.4% 59.6%;
   }
 
   .dark {
@@ -74,7 +74,6 @@
     background: hsl(var(--primary) / 0%);
     border-radius: 24px;
     rotate: 35deg;
-
     width: 260px;
     top: 200px;
     height: 400px;
