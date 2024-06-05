@@ -33,6 +33,7 @@ export function HomeHero() {
         </div>
       </div>
       <div className="flex flex-col justify-center items-center md:items-start w-full md:w-1/2 text-center md:text-left">
+        <div className="shadow" />
         <Heading1 className="mb-3">Hi, I&#39;m Mike Cavaliere.</Heading1>
         <Heading2 size="md" className="font-normal">
           I&#39;m a <Strong>technical strategist</Strong>, <Strong>software engineer</Strong>,{" "}

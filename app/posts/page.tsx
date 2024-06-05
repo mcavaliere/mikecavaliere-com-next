@@ -3,7 +3,6 @@ import { getAllPostsMap } from "lib/api";
 import type { Metadata } from "next";
 
 import { Heading1, Heading2 } from "components/Headings";
-import { CardGrid } from "@/components/CardGrid";
 import PostPreview from "@/components/post-preview";
 
 export type PostsIndexPageProps = NextPageWithLayout & {
@@ -17,7 +16,11 @@ export const metadata: Metadata = {
 
 export default async function PostsIndexPage() {
   const allPostsMap = await getAllPostsMap();
-  const allPosts = Object.values(allPostsMap);
+
+  // Sort descending by date
+  const allPosts = Object.values(allPostsMap).sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
 
   return (
     <>
@@ -27,7 +30,8 @@ export default async function PostsIndexPage() {
           Articles about software development, and whatever tech I&#39;m using currently.
         </Heading2>
       </div>
-      <CardGrid>
+      <div className="flex flex-col gap-3 md:gap-4">
+        <div className="shadow" />
         {allPosts.map(({ slug, title, featuredImage, excerpt }) => (
           <PostPreview
             key={slug}
@@ -37,7 +41,7 @@ export default async function PostsIndexPage() {
             excerpt={excerpt}
           />
         ))}
-      </CardGrid>
+      </div>
     </>
   );
 }

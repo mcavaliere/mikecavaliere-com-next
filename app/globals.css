@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
 
-    --primary: 155 89% 58%;
+    --primary: 155deg 88.6% 75.9%;
     --primary-foreground: 0deg 0% 3.92%;
 
     --secondary: 0 0% 96.1%;
@@ -71,7 +71,7 @@
 
   .shadow {
     position: absolute;
-    background: hsl(var(--primary) / 0%);
+    background: hsl(var(--purple) / 0%);
     border-radius: 24px;
     rotate: 35deg;
     width: 260px;
@@ -84,11 +84,11 @@
 
   @keyframes shadow-slide {
     from {
-      background: hsl(var(--primary) / 20%);
+      background: hsl(var(--purple) / 20%);
       right: 460px;
     }
     to {
-      background: hsl(var(--primary) / 80%);
+      background: hsl(var(--purple) / 80%);
       right: 160px;
     }
   }
@@ -100,11 +100,11 @@
 
     @keyframes shadow-slide {
       from {
-        background: hsl(var(--primary) / 20%);
+        background: hsl(var(--purple) / 20%);
         right: 460px;
       }
       to {
-        background: hsl(var(--primary) / 50%);
+        background: hsl(var(--purple) / 50%);
         right: 160px;
       }
     }
@@ -120,11 +120,11 @@
 
     @keyframes shadow-slide {
       from {
-        background: hsl(var(--primary) / 20%);
+        background: hsl(var(--purple) / 20%);
         right: 280px;
       }
       to {
-        background: hsl(var(--primary) / 30%);
+        background: hsl(var(--purple) / 30%);
         right: 100px;
       }
     }

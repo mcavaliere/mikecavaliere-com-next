@@ -30,15 +30,6 @@ export default function PostPreview({
   return (
     <Link passHref href={`/posts/${slug}`} className="flex flex-col flex-1">
       <ArticleCard className="flex-col flex-1 h-full">
-        {coverImage?.width ? (
-          <CoverImage
-            title={title}
-            src={coverImage.src}
-            width={coverImage.width}
-            height={coverImage.height}
-          />
-        ) : null}
-
         <CardContent>
           <h2 className="text-lg mb-2 text-3xl font-bold">{title}</h2>
 

@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPostsMap, getPostContent, getPostFrontMatter } from "@/lib/api";
 import { rendererMapLowercase } from "@/lib/postRenderers";
 import { PostHeader } from "@/components/post-header";
+import { mdxComponents } from "@/mdx-components";
 
 export async function generateStaticParams() {
   const map = await getAllPostsMap();
@@ -54,7 +55,7 @@ export default async function ArticlePage({ params: { slug } }) {
 
       <MDXRemote
         source={article}
-        components={rendererMapLowercase}
+        components={mdxComponents}
         options={{
           parseFrontmatter: true,
         }}
