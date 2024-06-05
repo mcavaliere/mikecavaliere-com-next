@@ -17,6 +17,9 @@ export default function Styleguide() {
         <div className="bg-accent p-4 text-accent-foreground">Accent</div>
         <div className="bg-popover p-4 text-popover-foreground">Popover</div>
         <div className="bg-card p-4 text-card-foreground">Card</div>
+        <div className="bg-cyan p-4 text-foreground">Cyan</div>
+        <div className="bg-purple p-4 text-background">Purple</div>
+        <div className="bg-purple-dark p-4 text-background">Purple Dark</div>
       </div>
     </div>
   );
