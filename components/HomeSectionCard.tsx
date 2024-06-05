@@ -1,7 +1,7 @@
 import { Button } from "./ui/button";
-
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export type HomeSectionCardProps = {
   href: string;
@@ -23,10 +23,12 @@ export function HomeSectionCard({ emoji, href, title, body, buttonText }: HomeSe
         <p className="text-[#999999]">{body}</p>
       </CardContent>
       <CardFooter className="flex flex-0">
-        <Button className="mt-2" size="cta">
-          {buttonText}
-          <ArrowRight />
-        </Button>
+        <Link href={href} className="w-full">
+          <Button className="mt-2" size="cta">
+            {buttonText}
+            <ArrowRight />
+          </Button>
+        </Link>
       </CardFooter>
     </Card>
   );
