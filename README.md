@@ -1,6 +1,6 @@
 <div id="top"></div>
 
-<h3 align="center">MikeCavaliere.com</h3>
+# MikeCavaliere.com
 
 <p>Public repo for my personal website.</p>
 
@@ -11,7 +11,6 @@
 - [Shadcn-UI](https://ui.shadcn.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
