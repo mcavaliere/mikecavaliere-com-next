@@ -35,19 +35,16 @@
 
 <!-- ABOUT THE PROJECT -->
 
-## About The Project
 
-My existing personal site at [MikeCavaliere.com](https://mikecavaliere.com/) is running on WordPress, and I want a new, faster version built with Next.js and Chakra-UI, using all the great toys like SSG, a serverless API and so on. 
-
-The first version will be a new design that pulls data from WP headlessly; eventually I'll move off WP entirely. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### Built With
+## Built With
 
 - [Next.js](https://nextjs.org/)
-- [React.js](https://reactjs.org/)
-- [Chakra-UI](https://chakra-ui.com/)
+~~- [Chakra-UI](https://chakra-ui.com/)~~
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Shadcn-UI](https://ui.shadcn.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -56,11 +53,6 @@ The first version will be a new design that pulls data from WP headlessly; event
 
 ## Getting Started
 
-### Prerequisites
-
-You'll need a headless [WordPress](https://wordpress.org) installation to populate the article pages.
-
-For more details on this, see the Next.js example repo, ["A statically generated blog example using Next.js and WordPress"](https://nextjs.org/docs/basic-features/pages) . This is where the WordPress data fetching logic was taken from.
 
 ### Installation
 
@@ -71,7 +63,9 @@ For more details on this, see the Next.js example repo, ["A statically generated
 1. Install dependencies by running `yarn` (or `yarn install`).
 1. Copy `.env.local.example` to `.env.local`
 1. Fill in any relevant environment variables.
-1. Start the project by running `yarn dev`, like any other Next.js app.
+2. `pnpm install`
+3. `pnpm dev`
+4. Visit `http://localhost:3000`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
