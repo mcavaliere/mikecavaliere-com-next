@@ -1,7 +1,4 @@
 import { AIResource } from "@/components/AIResourcesTable/types";
-import { add } from "date-fns";
-import { githubGist } from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import { github } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export const AIResources: AIResource[] = [
   {
