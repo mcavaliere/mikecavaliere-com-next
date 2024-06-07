@@ -1,4 +1,7 @@
 import { AIResource } from "@/components/AIResourcesTable/types";
+import { add } from "date-fns";
+import { githubGist } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import { github } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export const AIResources: AIResource[] = [
   {
@@ -7,6 +10,7 @@ export const AIResources: AIResource[] = [
     description: "The simpler JavaScript Gemini SDK",
     tags: ["sdk"],
     category: "libraries",
+    addedOn: "2024-05-31",
   },
   {
     name: "Mistral JS SDK",
@@ -14,6 +18,7 @@ export const AIResources: AIResource[] = [
     description: "The official Mistral JavaScript SDK",
     tags: ["sdk"],
     category: "libraries",
+    addedOn: "2024-05-31",
   },
   {
     name: "Anthropic TS SDK",
@@ -21,6 +26,7 @@ export const AIResources: AIResource[] = [
     description: "The official Anthropic JavaScript SDK",
     tags: ["sdk"],
     category: "libraries",
+    addedOn: "2024-05-31",
   },
   {
     name: "bumpgen",
@@ -29,6 +35,7 @@ export const AIResources: AIResource[] = [
     description: "An AI agent that upgrades npm packages",
     tags: [],
     category: "tools",
+    addedOn: "2024-05-31",
   },
   {
     name: "empirical",
@@ -38,6 +45,7 @@ export const AIResources: AIResource[] = [
       "Test and evaluate LLMs and model configurations, across all the scenarios that matter for your application",
     tags: [],
     category: "tools",
+    addedOn: "2024-05-31",
   },
   {
     name: "Flowise",
@@ -47,6 +55,7 @@ export const AIResources: AIResource[] = [
       "Open source low-code tool for developers to build customized LLM orchestration flow & AI agents",
     tags: ["low-code"],
     category: "tools",
+    addedOn: "2024-05-31",
   },
   {
     name: "CopilotKit",
@@ -56,6 +65,7 @@ export const AIResources: AIResource[] = [
       "A framework for building custom AI Copilots 🤖 in-app AI chatbots, in-app AI Agents, & AI-powered Textareas.",
     tags: ["framework"],
     category: "libraries",
+    addedOn: "2024-05-31",
   },
   {
     name: "cursive",
@@ -64,6 +74,7 @@ export const AIResources: AIResource[] = [
     description: "A universal and intuitive framework for interacting with LLMs.",
     tags: ["framework"],
     category: "libraries",
+    addedOn: "2024-05-31",
   },
   {
     name: "HuggingBuddy",
@@ -72,6 +83,7 @@ export const AIResources: AIResource[] = [
       "Chrome extension that simplifies the process of reading and understanding complex research papers from Hugging Face.",
     tags: [],
     category: "tools",
+    addedOn: "2024-05-31",
   },
   {
     name: "Jacob",
@@ -79,6 +91,7 @@ export const AIResources: AIResource[] = [
     githubUrl: "https://github.com/jacob-ai-bot/jacob",
     description: "An Open Source AI Coding Agent",
     category: "tools",
+    addedOn: "2024-05-31",
   },
   {
     name: "Brain.js",
@@ -87,6 +100,7 @@ export const AIResources: AIResource[] = [
     description: "GPU accelerated Neural networks in JavaScript for Browsers and Node.js",
     tags: ["machine learning"],
     category: "libraries",
+    addedOn: "2024-05-31",
   },
   {
     name: "TensorFlow.js",
@@ -96,6 +110,7 @@ export const AIResources: AIResource[] = [
     githubUrl: "https://github.com/tensorflow/tfjs",
     tags: ["machine learning"],
     category: "libraries",
+    addedOn: "2024-05-31",
   },
   {
     name: "LangChain.js",
@@ -103,6 +118,7 @@ export const AIResources: AIResource[] = [
     githubUrl: "https://github.com/langchain-ai/langchainjs",
     description: "A framework for developing applications powered by large language models (LLMs)",
     category: "libraries",
+    addedOn: "2024-05-31",
   },
   {
     name: "Vercel AI SDK",
@@ -110,6 +126,7 @@ export const AIResources: AIResource[] = [
     githubUrl: "https://github.com/vercel/ai",
     description: "A library for building AI-powered streaming text and chat UIs",
     category: "libraries",
+    addedOn: "2024-05-31",
   },
   {
     name: "NLP.js",
@@ -117,6 +134,7 @@ export const AIResources: AIResource[] = [
     description:
       "An NLP library for building bots, with entity extraction, sentiment analysis, automatic language identify, and more",
     category: "libraries",
+    addedOn: "2024-05-31",
   },
   {
     name: "AI.JSX",
@@ -124,6 +142,7 @@ export const AIResources: AIResource[] = [
     websiteUrl: "https://docs.ai-jsx.com/",
     description: "A framework for building AI applications using JSX / React",
     category: "libraries",
+    addedOn: "2024-05-31",
   },
   {
     name: "RoomGPT",
@@ -131,6 +150,7 @@ export const AIResources: AIResource[] = [
     websiteUrl: "https://www.roomgpt.io/",
     githubUrl: "https://github.com/Nutlope/roomGPT",
     category: "projects",
+    addedOn: "2024-05-31",
   },
   {
     name: "PDFToChat",
@@ -138,6 +158,7 @@ export const AIResources: AIResource[] = [
     githubUrl: "https://github.com/Nutlope/pdftochat",
     websiteUrl: "https://www.pdftochat.com/",
     category: "projects",
+    addedOn: "2024-05-31",
   },
   {
     name: "NotesGPT",
@@ -145,5 +166,64 @@ export const AIResources: AIResource[] = [
     websiteUrl: "https://usenotesgpt.com/",
     githubUrl: "https://github.com/Nutlope/notesGPT",
     category: "projects",
+    addedOn: "2024-05-31",
+  },
+  {
+    name: "Sandbox",
+    githubUrl: "https://github.com/ishaan1013/sandbox",
+    description:
+      "Open-source cloud-based code editing environment with custom AI code autocompletion and real-time collaboration.",
+    category: "projects",
+    addedOn: "2024-06-07",
+  },
+  {
+    name: "WebLLM",
+    description: "High-Performance In-Browser LLM Inference Engine",
+    websiteUrl: "https://webllm.mlc.ai/",
+    githubUrl: "https://github.com/mlc-ai/web-llm",
+    category: "libraries",
+    addedOn: "2024-06-07",
+  },
+  {
+    name: "TurboSeek",
+    description: "A free and open source AI search engine inspired by Perplexity",
+    websiteUrl: "https://www.turboseek.io/",
+    githubUrl: "https://github.com/Nutlope/turboseek",
+    category: "projects",
+    addedOn: "2024-06-07",
+  },
+  {
+    name: "Ragged",
+    description:
+      "A 0-dependency, lightweight, universal LLM client for JavaScript and Typescript. It makes it easy to access LLMs via a simple, easy to understand, and uncomplicated API.",
+    githubUrl: "https://github.com/monarchwadia/ragged",
+    category: "libraries",
+    addedOn: "2024-06-07",
+  },
+  {
+    name: "Ratchet",
+    description: "A cross-platform browser ML framework. By HuggingFace.",
+    githubUrl: "https://github.com/huggingface/ratchet",
+    websiteUrl: "https://www.ratchet.sh/",
+    category: "libraries",
+    tags: ["framework"],
+    addedOn: "2024-06-07",
+    notes: "Runs on WebGPU, which means it can run on web, desktop or mobile.",
+  },
+  {
+    name: "whisper-turbo",
+    description:
+      "A fast, cross-platform Whisper implementation, designed to run entirely client-side in your browser/electron app. Built on HuggingFace's Ratchet ML framework.",
+    websiteUrl: "https://whisper-turbo.com/",
+    githubUrl: "https://github.com/FL33TW00D/whisper-turbo",
+    category: "projects",
+    addedOn: "2024-06-07",
+  },
+  {
+    name: "wllama",
+    description: "WebAssembly binding for llama.cpp - Enabling in-browser LLM inference",
+    githubUrl: "https://github.com/ngxson/wllama",
+    category: "libraries",
+    addedOn: "2024-06-07",
   },
 ];

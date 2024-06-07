@@ -1,11 +1,20 @@
 export type AIResourceCategory = "libraries" | "tools" | "projects" | "articles";
 export type AIResourceTag = "sdk" | "machine learning" | "framework" | "low-code";
 
+export type SQLDateString =
+  `${number}${number}${number}${number}-${number}${number}-${number}${number}`;
+
 export type AIResourceBase = {
   name: string;
+  // AKA the project tagline.
   description: string;
+  // Populate these as the list grows, and we figure out how best to organize the info.
   tags?: AIResourceTag[];
   category: AIResourceCategory;
+  // Date added to this list.
+  addedOn: SQLDateString;
+  // We can gradually add this as "what's cool about this project."
+  notes?: string;
 };
 
 export type AIResourceWithWebsite = AIResourceBase & {
