@@ -226,4 +226,12 @@ export const AIResources: AIResource[] = [
     category: "libraries",
     addedOn: "2024-06-07",
   },
+  {
+    name: "Agentic",
+    description: "AI agent stdlib that works with any LLM and TypeScript AI SDK.",
+    githubUrl: "https://github.com/transitive-bullshit/agentic",
+    category: "libraries",
+    tags: ["framework"],
+    addedOn: "2024-06-07",
+  },
 ];
