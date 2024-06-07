@@ -1,5 +1,5 @@
 export type AIResourceCategory = "libraries" | "tools" | "projects" | "articles";
-export type AIResourceTag = "SDK" | "Machine Learning";
+export type AIResourceTag = "sdk" | "machine learning" | "framework" | "low-code";
 
 export type AIResourceBase = {
   name: string;

@@ -1,4 +1,4 @@
-import resources from "../../data/ai-resources.json";
+import { AIResources } from "../../data/ai-resources";
 import { columns } from "./columns";
 import { DataTable } from "./DataTable";
 import { AIResource } from "./types";
@@ -6,7 +6,7 @@ import { AIResource } from "./types";
 export function AIResourcesTable() {
   return (
     <>
-      <DataTable columns={columns} data={resources as AIResource[]} />
+      <DataTable columns={columns} data={AIResources as AIResource[]} />
     </>
   );
 }
