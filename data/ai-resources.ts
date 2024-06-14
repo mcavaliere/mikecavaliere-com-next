@@ -243,4 +243,95 @@ export const AIResources: AIResource[] = [
     category: "libraries",
     addedOn: "2024-06-07",
   },
+
+  {
+    name: "nlUX",
+    description: "UI and functionality toolkit for building AI chat applications.",
+    githubUrl: "https://github.com/nlkitai/nlux",
+    websiteUrl: "https://docs.nlkit.com/nlux",
+    category: "libraries",
+    addedOn: "2024-06-14",
+    notes: "Supports LangChain / HuggingFace / Vercel AI",
+    tags: ["framework"],
+  },
+
+  {
+    name: "ReRank",
+    description: "TypeScript library for re-ranking search results from retreival systems.",
+    githubUrl: "https://github.com/tensorlakeai/rerank-ts",
+    category: "libraries",
+    addedOn: "2024-06-14",
+    notes: "Re-Ranking improves the accuracy of RAG-based searches and other retrieval systems.",
+  },
+
+  {
+    name: "ReVideo",
+    description: "Programmatic video creation and video editing",
+    githubUrl: "https://github.com/redotvideo/revideo",
+    websiteUrl: "https://re.video/",
+    category: "libraries",
+    addedOn: "2024-06-14",
+    tags: ["video"],
+    notes: "Forked from Motion Canvas, with the goal of turning it into a library.",
+  },
+
+  {
+    name: "Motion Canvas",
+    description:
+      "A TS lib using generators to program animations, and an editor for previewing them.",
+    githubUrl: "https://github.com/motion-canvas/motion-canvas",
+    websiteUrl: "https://motioncanvas.io",
+    category: "libraries",
+    addedOn: "2024-06-14",
+    tags: ["video"],
+  },
+
+  {
+    name: "Firebase GenKit",
+    description: "Google's framework for building AI-powered web apps.",
+    githubUrl: "https://github.com/firebase/genkit",
+    websiteUrl: "https://firebase.google.com/docs/genkit",
+    category: "libraries",
+    addedOn: "2024-06-14",
+    tags: ["framework"],
+    notes: "Has tools for prompting, prompt management, RAG tools and more.",
+  },
+
+  {
+    name: "ReAgent",
+    description: "JS library for creating agents with multi-step workflows that in the browser.",
+    githubUrl: "https://github.com/reagentai/reagent",
+    category: "libraries",
+    addedOn: "2024-06-14",
+    notes: "Auto-generates a graph visualizing the agent's workflow.",
+    tags: ["browser"],
+  },
+
+  {
+    name: "Magic Spell",
+    description: "Text editor built with Next.js and the Vercel AI SDK, usingGroq.",
+    githubUrl: "https://github.com/ai-ng/magic-spell",
+    websiteUrl: "https://magic-spell.vercel.app/",
+    category: "projects",
+    addedOn: "2024-06-14",
+  },
+
+  {
+    name: "Farfalle",
+    description: "Another Perplexity clone.",
+    githubUrl: "https://github.com/rashadphz/farfalle",
+    websiteUrl: "https://www.farfalle.dev/",
+    category: "projects",
+    addedOn: "2024-06-14",
+    notes: "Backend is Python, but frontend is Next.js ",
+  },
+
+  {
+    name: "Photoshot",
+    description: "A web app that uses AI to generate avatars.",
+    githubUrl: "https://github.com/baptadn/photoshot",
+    websiteUrl: "https://photoshot.app/",
+    category: "projects",
+    addedOn: "2024-06-14",
+  },
 ];

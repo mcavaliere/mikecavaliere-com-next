@@ -1,5 +1,11 @@
 export type AIResourceCategory = "libraries" | "tools" | "projects" | "articles";
-export type AIResourceTag = "browser" | "sdk" | "machine learning" | "framework" | "low-code";
+export type AIResourceTag =
+  | "browser"
+  | "sdk"
+  | "machine learning"
+  | "framework"
+  | "low-code"
+  | "video";
 
 export type SQLDateString =
   `${number}${number}${number}${number}-${number}${number}-${number}${number}`;
