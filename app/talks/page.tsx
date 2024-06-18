@@ -39,6 +39,7 @@ function TalkCard({ talkOrInterview }: TalkCardProps) {
               </Button>
             </Link>
           ) : null}
+
           {talkOrInterview["slidesUrl"] ? (
             <Link href={talkOrInterview["slidesUrl"]} passHref target="_blank">
               <Button size="sm" className="font-bold">

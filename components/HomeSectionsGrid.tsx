@@ -12,7 +12,7 @@ const GRID_ITEMS = [
   },
   {
     title: "About Me",
-    body: "More about me, in more than 240 characters.",
+    body: "About me, in more than 240 characters.",
     href: NAVBAR_LINKS_MAP["about"].href,
     buttonText: "About me",
     emoji: "🤔",

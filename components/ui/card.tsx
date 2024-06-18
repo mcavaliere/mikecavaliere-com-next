@@ -56,7 +56,11 @@ CardFooter.displayName = "CardFooter";
 export function ArticleCard({ children, className, ...props }: React.HTMLAttributes<HTMLElement>) {
   return (
     <article
-      className={cn(CARD_DEFAULT_CLASSNAMES, "justify-start flex flex-col", className)}
+      className={cn(
+        CARD_DEFAULT_CLASSNAMES,
+        "justify-start flex flex-col w-full sm:w-[calc(50%-2rem)] xl:w-[calc(33%-4rem)] ",
+        className
+      )}
       {...props}
     >
       {children}

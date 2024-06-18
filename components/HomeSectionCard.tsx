@@ -13,7 +13,7 @@ export type HomeSectionCardProps = {
 
 export function HomeSectionCard({ emoji, href, title, body, buttonText }: HomeSectionCardProps) {
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col w-full sm:w-[calc(50%-2rem)] xl:w-[calc(33%-4rem)]">
       <CardHeader className="flex flex-0">
         <CardTitle>
           {emoji} {title}
