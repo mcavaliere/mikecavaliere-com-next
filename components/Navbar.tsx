@@ -17,6 +17,7 @@ import NextLink from "next/link";
 import { FaLaptopCode } from "react-icons/fa";
 import { NAVBAR_LINKS } from "lib/constants";
 import { Link } from "@chakra-ui/next-js";
+import { useTheme } from "next-themes";
 
 export type NavLinkProps = {
   children: ReactNode;
@@ -39,8 +40,12 @@ export const NavLink = ({ href, children }: NavLinkProps) => (
 );
 
 export function Navbar() {
-  const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { setTheme, theme } = useTheme();
+
+  function toggleTheme() {
+    setTheme(theme === "light" ? "dark" : "light");
+  }
 
   return (
     <>
@@ -74,8 +79,9 @@ export function Navbar() {
             </HStack>
           </HStack>
           <Flex alignItems="center">
-            <Button onClick={toggleColorMode}>
-              {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+            <Button onClick={toggleTheme}>
+              {theme === "light" ? <MoonIcon /> : <SunIcon />}
+              <span className="sr-only">Toggle theme</span>
             </Button>
           </Flex>
         </Flex>

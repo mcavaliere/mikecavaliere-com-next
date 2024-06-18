@@ -18,8 +18,6 @@ export const metadata = {
   },
 };
 
-import { ColorModeScript } from "@chakra-ui/react";
-import { theme } from "@/lib/theme";
 import { PHProvider } from "@/lib/client/posthog";
 
 import dynamic from "next/dynamic";
@@ -34,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <PHProvider>
         <body>
           <PostHogPageView />
-          <ColorModeScript initialColorMode={theme.initialColorMode} />
+
           <Providers>
             <SiteOuterLayout>
               <MaxWidthContainerLayout>{children}</MaxWidthContainerLayout>
