@@ -7,6 +7,8 @@ import photo from "/public/images/mike-cavaliere-in-office.jpg";
 export default function AboutPage() {
   return (
     <>
+      <Heading1 className="text-center mt-10 mb-20">👋🏼 Hi, I&#39;m Mike.</Heading1>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Image
           alt="Mike Cavaliere in his office, smiling at the camera."
@@ -14,10 +16,7 @@ export default function AboutPage() {
           className="rounded-lg overflow-hidden shadow-2xl"
         />
 
-        <div className="pl-10">
-          <Heading1 className="relative before:content-['👋🏼'] before:absolute before:left-[-40px] mb-3">
-            Hi, I&#39;m Mike.
-          </Heading1>
+        <div className="pl-10 py-10 md:py-0 md:flex flex-col justify-center">
           <p className="mb-3 text-lg">
             I started playing with computers when I was a kid, and never stopped. Since then
             I&#39;ve written thousands of lines of code, built websites and applications galore, and

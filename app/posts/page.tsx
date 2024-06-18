@@ -24,12 +24,11 @@ export default async function PostsIndexPage() {
 
   return (
     <>
-      <div className="mb-2.5 text-center">
-        <Heading1 className="mb-4">My Articles</Heading1>
-        <Heading2 className="mb-10">
-          Articles about software development, and whatever tech I&#39;m using currently.
-        </Heading2>
-      </div>
+      <Heading1 className="text-center my-10">My Articles</Heading1>
+      <Heading2 className="text-center mb-20 font-normal">
+        Articles about software development, and whatever tech I&#39;m using currently.
+      </Heading2>
+
       <div className="flex flex-col gap-3 md:gap-4">
         <div className="shadow" />
         {allPosts.map(({ slug, title, featuredImage, excerpt }) => (

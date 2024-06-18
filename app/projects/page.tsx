@@ -14,7 +14,7 @@ export type ProjectCardProps = {
 };
 
 function ProjectCard({ project }: ProjectCardProps) {
-  const { title, imageUrl, description, imageWidth, imageHeight, url } = project;
+  const { title, imageUrl, description, imageWidth, imageHeight } = project;
   return (
     <ArticleCard key={title}>
       {title && imageUrl && imageWidth && imageHeight && (
@@ -45,6 +45,7 @@ function ProjectCard({ project }: ProjectCardProps) {
               </Button>
             </Link>
           ) : null}
+
           {project["githubUrl"] ? (
             <Link href={project["url"]} passHref target="_blank">
               <Button size="sm" className="font-semibold">
@@ -63,7 +64,11 @@ export default function TalksPage() {
   return (
     <>
       <section id="talks">
-        <Heading1 className="text-center mb-4">Projects</Heading1>
+        <Heading1 className="text-center my-10">Projects</Heading1>
+
+        <Heading2 className="mb-20 font-normal text-center">
+          Software I&#39;ve built, and content I&#39;ve created.
+        </Heading2>
 
         <CardGrid mb={10}>
           {Projects.map((talk) => (

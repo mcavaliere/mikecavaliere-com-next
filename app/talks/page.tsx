@@ -7,8 +7,7 @@ import { Interview, Talk } from "lib/types";
 import { Heading1, Heading2, P } from "components/Headings";
 import { Presentation, Video } from "lucide-react";
 
-import { cn } from "@/lib/utils";
-import { ArticleCard, CARD_DEFAULT_CLASSNAMES, CardContent } from "@/components/ui/card";
+import { ArticleCard, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 
 type TalkCardProps = {
@@ -58,7 +57,11 @@ export default function TalksPage() {
   return (
     <>
       <section id="talks">
-        <Heading1 className="mb-3 text-center">Conference Talks</Heading1>
+        <Heading1 className="my-10 text-center">Conference Talks</Heading1>
+
+        <Heading2 className="mb-20 font-normal text-center">
+          Presentations and podcast interviews I&#39;ve done, both in-person and virtual.
+        </Heading2>
 
         <CardGrid className="mb-4">
           {Talks.map((talk) => (

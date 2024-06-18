@@ -20,7 +20,7 @@ export function HomeSectionCard({ emoji, href, title, body, buttonText }: HomeSe
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-1">
-        <p className="text-[#999999]">{body}</p>
+        <p>{body}</p>
       </CardContent>
       <CardFooter className="flex flex-0">
         <Link href={href} className="w-full">
