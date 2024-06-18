@@ -8,7 +8,7 @@ export type SiteOuterLayoutProps = {
 export const SiteOuterLayout = ({ children, ...props }: SiteOuterLayoutProps) => {
   return (
     <div {...props}>
-      <Navbar />
+      <Navbar className="bg-transparent" />
       {children}
     </div>
   );

@@ -8,11 +8,14 @@ import { buttonVariants } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "@/components/ModeToggle";
 import { NAVBAR_LINKS } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
-export const Navbar = () => {
+export const Navbar = ({ className = "" }) => {
+  const classNames = cn("sticky top-0 z-40 w-full bg-white dark:bg-background", className);
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <header className="sticky top-0 z-40 w-full bg-white dark:bg-background">
+    <header className={classNames}>
       <NavigationMenu className="mx-auto">
         <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between ">
           {/* mobile */}
