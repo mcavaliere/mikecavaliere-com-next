@@ -51,9 +51,21 @@ module.exports = {
         purple: {
           DEFAULT: "hsl(var(--purple))",
           dark: "hsl(var(--purple-dark))",
+          200: "#AAA9FE",
+          300: "#805BEB",
+          400: "#8A64F4",
+          500: "#5544E3",
+          550: "#3635D4",
+          600: "#3232D2",
+        },
+        aqua: {
+          DEFAULT: "#3FC8F1",
         },
         cyan: {
           DEFAULT: "hsl(var(--cyan))",
+        },
+        red: {
+          DEFAULT: "#F8333C",
         },
       },
       borderRadius: {

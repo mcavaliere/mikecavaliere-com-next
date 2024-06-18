@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import highlighterTheme from "react-syntax-highlighter/dist/cjs/styles/prism/vsc-dark-plus";
-import { Box, Text, UnorderedList, OrderedList, ListItem } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { Heading1, Heading2, Heading3, Heading4, P as Paragraph } from "components/Headings";
 import { Link } from "@/components/Link";
@@ -24,7 +23,7 @@ export function A({ children, href, ...props }) {
 }
 
 export function Caption({ children }) {
-  return <Text mb={1}>{children}</Text>;
+  return <p className="mb-3">{children}</p>;
 }
 
 export function H1({ children, ...props }) {
@@ -61,57 +60,31 @@ export function H4({ children, ...props }) {
 
 export function STRONG({ children, ...props }) {
   return (
-    <Text fontWeight="bold" display="inline" {...props}>
+    <strong className="font-bold inline" {...props}>
       {children}
-    </Text>
+    </strong>
   );
 }
 
 export function OL({ children, ...props }) {
   return (
-    <OrderedList mb={5} {...props}>
+    <ol className="mb-4" {...props}>
       {children}
-    </OrderedList>
+    </ol>
   );
 }
 
 export function UL({ children, ...props }) {
   return (
-    <UnorderedList mb={5} {...props}>
+    <ul className="mb-4" {...props}>
       {children}
-    </UnorderedList>
+    </ul>
   );
 }
 
 export function LI({ children, ...props }) {
-  return <ListItem {...props}>{children}</ListItem>;
+  return <li {...props}>{children}</li>;
 }
-
-// export function GIST({ meta: { gist } }) {
-//   return (
-//     <>
-//       {gist.files.map(({ name, text }) => (
-//         <Box key={name} mb={5}>
-//           <Box
-//             borderRadius={10}
-//             key={name}
-//             overflow="hidden"
-//             p={4}
-//             border={`1px solid ${theme.colors.gray["300"]}`}
-//           >
-//             <Caption>{name}</Caption>
-//             <SyntaxHighlighter
-//               style={highlighterTheme}
-//               language={(gist?.language?.name || "javascript").toLowerCase()}
-//             >
-//               {text}
-//             </SyntaxHighlighter>
-//           </Box>
-//         </Box>
-//       ))}
-//     </>
-//   );
-// }
 
 export type CodeComponentProps = JSX.IntrinsicElements["code"] & {
   inline?: boolean;
@@ -122,28 +95,22 @@ export const CODE = ({ children, ...rest }: CodeComponentProps & { inline: boole
 
   if (!rest.inline) {
     return (
-      <Box mb={4}>
+      <div className="mb-4">
         <SyntaxHighlighter language={language} style={highlighterTheme}>
           {children as string | string[]}
         </SyntaxHighlighter>
-      </Box>
+      </div>
     );
   }
 
-  return (
-    <Text as="code" color="brand.red">
-      {children}
-    </Text>
-  );
+  return <code className="text-red">{children}</code>;
 };
 
 export function P({ children, ...props }) {
-  // NOTE: using <Text as="div"> instead of <Paragraph> fixes a Next.js hydration mismatch error.
-  // TODO: find a better resolution that uses the right tags.
   return (
-    <Text as="div" mb={5} {...props}>
+    <div className="mb-4" {...props}>
       {children}
-    </Text>
+    </div>
   );
 }
 
@@ -177,7 +144,6 @@ export const rendererMap = {
   H4,
   P,
   CODE,
-  // GIST,
   STRONG,
   IMAGE,
   More,
