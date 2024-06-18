@@ -21,7 +21,7 @@ export const NAVBAR_LINKS = [
   { slug: "about", title: "About", href: "/about" },
   { slug: "articles", title: "Articles", href: "/posts" },
   { slug: "talks", title: "Talks", href: "/talks" },
-  // { slug: "talks", title: "Talks", href: "/talks" },
+  { slug: "projects", title: "Projects", href: "/projects" },
 ];
 
 export const NAVBAR_LINKS_MAP = NAVBAR_LINKS.reduce((acc, curr) => {

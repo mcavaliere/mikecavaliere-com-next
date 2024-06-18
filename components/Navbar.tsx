@@ -1,103 +1,82 @@
 "use client";
 
-import { ReactNode } from "react";
+import { useState } from "react";
 import {
-  Box,
-  Flex,
-  HStack,
-  IconButton,
-  Button,
-  useDisclosure,
-  useColorModeValue,
-  useColorMode,
-  Stack,
-} from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
-import NextLink from "next/link";
-import { FaLaptopCode } from "react-icons/fa";
-import { NAVBAR_LINKS } from "lib/constants";
-import { Link } from "@chakra-ui/next-js";
-import { useTheme } from "next-themes";
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
-export type NavLinkProps = {
-  children: ReactNode;
-  href: string;
-};
+import { buttonVariants } from "@/components/ui/button";
+import { Menu } from "lucide-react";
+import { ModeToggle } from "@/components/ModeToggle";
+import { NAVBAR_LINKS } from "@/lib/constants";
 
-export const NavLink = ({ href, children }: NavLinkProps) => (
-  <Link
-    href={href}
-    px={2}
-    py={1}
-    rounded="md"
-    _hover={{
-      textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
-    }}
-  >
-    {children}
-  </Link>
-);
-
-export function Navbar() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { setTheme, theme } = useTheme();
-
-  function toggleTheme() {
-    setTheme(theme === "light" ? "dark" : "light");
-  }
-
+export const Navbar = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <>
-      <Box bg="transparent" px={4}>
-        <Flex h={16} alignItems="center" justifyContent="space-between">
-          <IconButton
-            size="md"
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label="Open Menu"
-            display={{ md: "none" }}
-            onClick={isOpen ? onClose : onOpen}
-          />
-          <HStack spacing={8} alignItems="center">
-            <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }}>
-              {NAVBAR_LINKS.map(({ title, href }) => (
-                <NavLink key={title} href={href}>
-                  {title}
-                </NavLink>
-              ))}
-              <Button
-                as="a"
-                variant="primary"
-                colorScheme="teal"
-                size="sm"
-                mr={4}
-                leftIcon={<FaLaptopCode />}
-                href="/projects"
-              >
-                Projects
-              </Button>
-            </HStack>
-          </HStack>
-          <Flex alignItems="center">
-            <Button onClick={toggleTheme}>
-              {theme === "light" ? <MoonIcon /> : <SunIcon />}
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-          </Flex>
-        </Flex>
+    <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
+      <NavigationMenu className="mx-auto">
+        <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between ">
+          {/* <NavigationMenuItem className="font-bold flex">
+            <a rel="noreferrer noopener" href="/" className="ml-2 font-bold text-xl flex">
+              {APP_NAME}
+            </a>
+          </NavigationMenuItem> */}
 
-        {isOpen ? (
-          <Box pb={4} display={{ md: "none" }}>
-            <Stack as="nav" spacing={4}>
-              {NAVBAR_LINKS.map(({ title, href }) => (
-                <NavLink key={title} href={href}>
-                  {title}
-                </NavLink>
-              ))}
-            </Stack>
-          </Box>
-        ) : null}
-      </Box>
-    </>
+          {/* mobile */}
+          <span className="flex md:hidden">
+            <ModeToggle />
+
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger className="px-2">
+                <Menu className="flex md:hidden h-5 w-5" onClick={() => setIsOpen(true)} />
+                <span className="sr-only">Menu Icon</span>
+              </SheetTrigger>
+
+              <SheetContent side={"left"}>
+                {/* <SheetHeader>
+                  <SheetTitle className="font-bold text-xl">{APP_NAME}</SheetTitle>
+                </SheetHeader> */}
+                <nav className="flex flex-col justify-center items-center gap-2 mt-4">
+                  {NAVBAR_LINKS.map(({ href, title }) => (
+                    <a
+                      rel="noreferrer noopener"
+                      key={title}
+                      href={href}
+                      onClick={() => setIsOpen(false)}
+                      className={buttonVariants({ variant: "ghost" })}
+                    >
+                      {title}
+                    </a>
+                  ))}
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </span>
+
+          {/* desktop */}
+          <nav className="hidden md:flex gap-2">
+            {NAVBAR_LINKS.map((route, i) => (
+              <a
+                rel="noreferrer noopener"
+                href={route.href}
+                key={i}
+                className={`text-[17px] ${buttonVariants({
+                  variant: "ghost",
+                })}`}
+              >
+                {route.title}
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden md:flex gap-2">
+            <ModeToggle />
+          </div>
+        </NavigationMenuList>
+      </NavigationMenu>
+    </header>
   );
-}
+};

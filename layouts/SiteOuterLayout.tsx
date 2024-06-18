@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Box } from "@chakra-ui/react";
-import { Navbar } from "components/Navbar";
+import { Navbar } from "@/components/Navbar";
 
 export type SiteOuterLayoutProps = {
   children: ReactNode;
