@@ -1,22 +1,11 @@
 "use client";
 
 import { ReactNode } from "react";
-import {
-  Box,
-  Flex,
-  HStack,
-  IconButton,
-  Button,
-  useDisclosure,
-  useColorModeValue,
-  useColorMode,
-  Stack,
-} from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
-import NextLink from "next/link";
+
 import { FaLaptopCode } from "react-icons/fa";
 import { NAVBAR_LINKS } from "lib/constants";
-import { Link } from "@chakra-ui/next-js";
+import { Link } from "@/components/Link";
+import { Button } from "./ui/button";
 
 export type NavLinkProps = {
   children: ReactNode;
@@ -26,61 +15,64 @@ export type NavLinkProps = {
 export const NavLink = ({ href, children }: NavLinkProps) => (
   <Link
     href={href}
-    px={2}
-    py={1}
-    rounded="md"
-    _hover={{
-      textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
-    }}
+    // px={2}
+    // py={1}
+    // rounded="md"
+    // _hover={{
+    //   textDecoration: "none",
+    //   bg: useColorModeValue("gray.200", "gray.700"),
+    // }}
   >
     {children}
   </Link>
 );
 
 export function Navbar() {
-  const { colorMode, toggleColorMode } = useColorMode();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { colorMode, toggleColorMode } = useColorMode();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Box bg="transparent" px={4}>
-        <Flex h={16} alignItems="center" justifyContent="space-between">
-          <IconButton
-            size="md"
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+      <div className="bg-transparent px-4">
+        <div className="h-[16px] items-center justify-between">
+          <Button
+            // size="md"
+            // icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
             aria-label="Open Menu"
-            display={{ md: "none" }}
-            onClick={isOpen ? onClose : onOpen}
+            // display={{ md: "none" }}
+            // onClick={isOpen ? onClose : onOpen}
           />
-          <HStack spacing={8} alignItems="center">
-            <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }}>
+          <div className="flex flex-row gap-[8px] items-center">
+            <nav className="flex-row gap-[4px] hidden md:flex">
               {NAVBAR_LINKS.map(({ title, href }) => (
                 <NavLink key={title} href={href}>
                   {title}
                 </NavLink>
               ))}
-              <Button
-                as="a"
-                variant="primary"
-                colorScheme="teal"
-                size="sm"
-                mr={4}
-                leftIcon={<FaLaptopCode />}
-                href="/projects"
-              >
-                Projects
-              </Button>
-            </HStack>
-          </HStack>
-          <Flex alignItems="center">
-            <Button onClick={toggleColorMode}>
-              {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+              <Link href="/projects">
+                <Button
+                // as="a"
+                // variant="primary"
+                // colorScheme="teal"
+                // size="sm"
+                // mr={4}
+                // leftIcon={<FaLaptopCode />}
+                >
+                  Projects
+                </Button>
+              </Link>
+            </nav>
+          </div>
+          <div className="flex items-center">
+            <Button>
+              toggle
+              {/* onClick={toggleColorMode} */}
+              {/* {colorMode === "light" ? <MooonClick={toggleColorMode}nIcon /> : <SunIcon />} */}
             </Button>
-          </Flex>
-        </Flex>
+          </div>
+        </div>
 
-        {isOpen ? (
+        {/* {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>
             <Stack as="nav" spacing={4}>
               {NAVBAR_LINKS.map(({ title, href }) => (
@@ -90,8 +82,8 @@ export function Navbar() {
               ))}
             </Stack>
           </Box>
-        ) : null}
-      </Box>
+        ) : null} */}
+      </div>
     </>
   );
 }
