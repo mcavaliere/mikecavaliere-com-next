@@ -14,6 +14,7 @@ export default function AboutPage() {
           alt="Mike Cavaliere in his office, smiling at the camera."
           src={photo}
           className="rounded-lg overflow-hidden shadow-2xl"
+          priority
         />
 
         <div className="pl-10 py-10 md:py-0 md:flex flex-col justify-center">

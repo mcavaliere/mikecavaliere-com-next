@@ -117,11 +117,9 @@ export function P({ children, ...props }) {
 export function More({ href, className = "" }) {
   return (
     <div className={cn("justify-end items-end text-right", className)}>
-      <NextLink passHref href={href}>
-        <Button size="sm" variant="default" className="font-bold">
-          Read more ⮕
-        </Button>
-      </NextLink>
+      <Button size="sm" variant="default" className="font-bold">
+        Read more ⮕
+      </Button>
     </div>
   );
 }
