@@ -28,6 +28,7 @@
     "classnames": "2.5.1",
     "clsx": "^2.1.1",
     "date-fns": "3.6.0",
+    "dayjs": "^1.11.11",
     "framer-motion": "^11.1.7",
     "globby": "^14.0.1",
     "jsdom": "^24.0.0",

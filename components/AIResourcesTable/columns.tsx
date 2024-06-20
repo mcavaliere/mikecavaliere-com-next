@@ -5,7 +5,8 @@ import { AIResource } from "./types";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/components/Link";
 import { FaGithub, FaGlobe } from "react-icons/fa";
-import { ArrowUpDown, MoreHorizontal } from "lucide-react";
+import { ArrowUpDown } from "lucide-react";
+import dayjs from "dayjs";
 
 export function GithubButton({ url }: { url: string }) {
   return (
@@ -68,6 +69,20 @@ export const columns: ColumnDef<AIResource>[] = [
           {websiteUrl ? <WebsiteButton url={websiteUrl} /> : null}
         </div>
       );
+    },
+  },
+  {
+    accessorKey: "addedOn",
+    header: ({ column }) => (
+      <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+        Date Added
+        <ArrowUpDown className="ml-2 h-4 w-4" />
+      </Button>
+    ),
+    cell: (cell) => {
+      const addedOn = cell.row.original.addedOn;
+
+      return dayjs(addedOn).format("MMM D, YYYY");
     },
   },
 ];
