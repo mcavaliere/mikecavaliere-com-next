@@ -334,4 +334,54 @@ export const AIResources: AIResource[] = [
     category: "projects",
     addedOn: "2024-06-14",
   },
+
+  {
+    name: "Lobe Chat",
+    description:
+      "A web app that provides a UI layer on top of various LLM APIs, allowing users to add specialized assistants to their account. It offers a platform for creating custom GPT-like experiences with a simple click.",
+    githubUrl: "https://github.com/lobehub/lobe-chat",
+    websiteUrl: "https://chat-preview.lobehub.com/welcome",
+    category: "projects",
+    addedOn: "2024-06-20",
+  },
+
+  {
+    name: "Dify",
+    description:
+      "An LLM app development platform with a Next.js front end, featuring a visual editor for creating AI workflows, an IDE for creating prompts, RAG tools, and monitoring capabilities.",
+    githubUrl: "https://github.com/langgenius/dify",
+    websiteUrl: "https://dify.ai/",
+    category: "projects",
+    addedOn: "2024-06-20",
+  },
+
+  {
+    name: "Hopfield",
+    description:
+      "A TypeScript-first LLM framework with strong type inference and a chainable interface. It's designed to easily integrate chat functionality with a lightweight library.",
+    githubUrl: "https://github.com/EnjoinHQ/hopfield",
+    websiteUrl: "https://hopfield.ai/",
+    category: "projects",
+    addedOn: "2024-06-20",
+  },
+  {
+    name: "Julep",
+    description:
+      "An open-source framework for AI agents with built-in statefulness. It features conversation history, workflows for agents similar to GitHub Actions, the ability to switch between language models, and integration with over 90 third-party apps.",
+    githubUrl: "https://github.com/julep-ai/julep",
+    websiteUrl: "https://www.julep.ai/",
+    category: "projects",
+    addedOn: "2024-06-20",
+  },
+
+  {
+    name: "MS AI Chat Protocol",
+    description:
+      "Protocol definition and TS library for standardizing client/API communication in a chat apps.",
+    githubUrl: "https://github.com/microsoft/ai-chat-protocol",
+    websiteUrl:
+      "https://devblogs.microsoft.com/azure-sdk/announcing-the-public-preview-of-the-microsoft-ai-chat-protocol-library-for-javascript/",
+    category: "libraries",
+    addedOn: "2024-06-20",
+  },
 ];
