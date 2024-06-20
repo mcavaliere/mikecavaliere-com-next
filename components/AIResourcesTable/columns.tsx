@@ -5,7 +5,7 @@ import { AIResource } from "./types";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/components/Link";
 import { FaGithub, FaGlobe } from "react-icons/fa";
-import { ArrowUpDown } from "lucide-react";
+import { ArrowUpDown, ArrowUp, ArrowDown } from "lucide-react";
 import dayjs from "dayjs";
 
 export function GithubButton({ url }: { url: string }) {
@@ -31,12 +31,25 @@ export function WebsiteButton({ url }: { url: string }) {
 export const columns: ColumnDef<AIResource>[] = [
   {
     accessorKey: "name",
-    header: ({ column }) => (
-      <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-        Name
-        <ArrowUpDown className="ml-2 h-4 w-4" />
-      </Button>
-    ),
+    header: ({ column }) => {
+      const sortDir = column.getIsSorted();
+      const sortIcon =
+        sortDir === "asc" ? (
+          <ArrowUp className="ml-2 h-4 w-4" />
+        ) : sortDir === "desc" ? (
+          <ArrowDown className="ml-2 h-4 w-4" />
+        ) : null;
+
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Name
+          {sortIcon}
+        </Button>
+      );
+    },
     cell: (cell) => {
       const githubUrl = cell.row.original.githubUrl;
       const websiteUrl = cell.row.original.websiteUrl;
@@ -73,12 +86,25 @@ export const columns: ColumnDef<AIResource>[] = [
   },
   {
     accessorKey: "addedOn",
-    header: ({ column }) => (
-      <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-        Date Added
-        <ArrowUpDown className="ml-2 h-4 w-4" />
-      </Button>
-    ),
+    header: ({ column }) => {
+      const sortDir = column.getIsSorted();
+      const sortIcon =
+        sortDir === "asc" ? (
+          <ArrowUp className="ml-2 h-4 w-4" />
+        ) : sortDir === "desc" ? (
+          <ArrowDown className="ml-2 h-4 w-4" />
+        ) : null;
+
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Date Added
+          {sortIcon}
+        </Button>
+      );
+    },
     cell: (cell) => {
       const addedOn = cell.row.original.addedOn;
 
