@@ -384,4 +384,19 @@ export const AIResources: AIResource[] = [
     category: "libraries",
     addedOn: "2024-06-20",
   },
+  {
+    name: "lobe-i18n",
+    description: "CLI tool for generating i18n translations using OpenAI.",
+    githubUrl: "https://github.com/lobehub/lobe-cli-toolbox/tree/master/packages/lobe-i18n",
+    category: "libraries",
+    addedOn: "2024-06-21",
+  },
+
+  {
+    name: "lobe-tts",
+    description: "Node and React library for text-to-speech.",
+    githubUrl: "https://github.com/lobehub/lobe-tts",
+    category: "libraries",
+    addedOn: "2024-06-21",
+  },
 ];
