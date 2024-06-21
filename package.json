@@ -9,11 +9,13 @@
     "build": "next build",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "julep": "tsx ./scripts/julep.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@julep/sdk": "^0.3.6",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^14.2.3",
@@ -57,6 +59,7 @@
     "@types/react": "^18.2.79",
     "@types/react-syntax-highlighter": "^15.5.11",
     "autoprefixer": "^10.4.19",
+    "dotenv": "^16.4.5",
     "eslint-config-next": "^14.2.2",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
