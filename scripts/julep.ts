@@ -4,6 +4,8 @@ import { AIResources } from "../data/ai-resources";
 import { AIResource } from "@/components/AIResourcesTable/types";
 import { inspect } from "util";
 
+import * as repl from "repl";
+
 dotenv.config({
   path: "scripts/.env",
 });
@@ -144,19 +146,32 @@ async function main() {
     metadata: { agentId: agent.id, userId: user.id },
   });
 
-  const response = await client.sessions.chat(session.id, {
-    messages: [
-      {
-        role: "user",
-        content: userMessage,
-        name: "Anon",
-      },
-    ],
-    recall: true,
-    remember: true,
-  });
+  const replServer = repl.start({
+    prompt: "julep > ",
+    eval: async (cmd: string, context: any, filename: string, callback: Function) => {
+      try {
+        // Evaluate the command and return the result
+        // const result = eval(cmd);
+        // callback(null, result);
+        const response = await client.sessions.chat(session.id, {
+          messages: [
+            {
+              role: "user",
+              content: cmd,
+              name: "Anon",
+            },
+          ],
+          recall: true,
+          remember: true,
+        });
 
-  console.log(`---------------- response:  `, inspect(response, false, null, true));
+        console.log(`---------------- response:  `, inspect(response, false, null, true));
+      } catch (err) {
+        console.error("JULEP ERROR: ", err);
+        // callback(err);
+      }
+    },
+  });
 }
 
 main();
