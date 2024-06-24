@@ -2,9 +2,7 @@ import createMDX from "@next/mdx";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import remarkFrontmatter from "remark-frontmatter";
-
-// import remarkGfm from 'remark-gfm'
-// import createMDX from '@next/mdx'
+import { redirects } from "./redirects.mjs";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -19,13 +17,7 @@ const nextConfig = {
     styledComponents: true,
   },
   async redirects() {
-    return [
-      {
-        source: "/ai-tools-for-js-devs",
-        destination: "/ai-for-js-devs",
-        permanent: true,
-      },
-    ];
+    return redirects;
   },
 };
 

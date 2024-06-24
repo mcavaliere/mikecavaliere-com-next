@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPostsMap, getPostContent, getPostFrontMatter } from "@/lib/api";
-import { rendererMapLowercase } from "@/lib/postRenderers";
+
 import { PostHeader } from "@/components/post-header";
 import { mdxComponents } from "@/mdx-components";
 
