@@ -2,6 +2,8 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { Providers } from "./providers";
 import SiteOuterLayout from "@/layouts/SiteOuterLayout";
 import { MaxWidthContainerLayout } from "@/layouts/MaxWidthContainerLayout";
+import { PHProvider } from "@/lib/client/posthog";
+import dynamic from "next/dynamic";
 import { fonts } from "./fonts";
 import "./globals.css";
 
@@ -18,17 +20,13 @@ export const metadata = {
   },
 };
 
-import { PHProvider } from "@/lib/client/posthog";
-
-import dynamic from "next/dynamic";
-
 const PostHogPageView = dynamic(() => import("../components/PostHogPageView"), {
   ssr: false,
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={fonts.poppins.variable}>
+    <html lang="en" className={fonts.poppins.variable} suppressHydrationWarning>
       <PHProvider>
         <body>
           <PostHogPageView />
