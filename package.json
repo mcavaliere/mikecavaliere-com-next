@@ -38,7 +38,7 @@
     "next-seo": "^6.5.0",
     "next-sitemap": "^4.2.3",
     "next-themes": "^0.3.0",
-    "posthog-js": "^1.131.4",
+    "posthog-js": "^1.140.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.1.0",
