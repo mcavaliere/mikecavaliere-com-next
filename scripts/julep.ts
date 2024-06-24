@@ -16,7 +16,6 @@ const client = new Client({ apiKey, baseUrl });
 
 const instructions = [
   "The user will inform you about the type of AI resource they want to find.",
-  "You WILL ask the user more questions about they type of resource they are trying to find until you are clear. You WILL NOT proceed if you are unclear.",
   "You will will call the search_resources function to find resources based on the users needs. You can call this multiple times if needed.",
   "You will display all of the resources found using the log_matches function.",
   "You will ask the user if these results are helpful. If they are not, you will ask more questions to refine the search. If they are, you will proceed to the next step.",
@@ -28,7 +27,6 @@ const situationPrompt = `
   You know all the resources available for AI and JavaScript developers.
   You are extremely specific about the resources you look for and seek to understand all the parameters when searching for resources.
   After that, you find the best resources for the user and summarize themn.
-
   Here, you are helping the a user find some resources on AI. The user will inform you about the type of AI resource they want to find.
   Follow the instructions strictly.
 `;
@@ -38,6 +36,7 @@ const userMessage =
 
 function search_resources(query: string): AIResource[] {
   const matches: AIResource[] = [];
+  if (!query) throw new Error("No query provided.");
   const queryFragments = query.split(/\s+/);
 
   for (const resource of AIResources) {
@@ -73,6 +72,7 @@ const tools = [
     type: "function" as "function" | "webhook",
     function: {
       name: "search_resources",
+      function: search_resources,
       description: "Retrieves a list of matching resources based on the string query provided.",
       parameters: {
         type: "object",
@@ -90,6 +90,7 @@ const tools = [
     type: "function" as "function" | "webhook",
     function: {
       name: "log_matches",
+      function: log_matches,
       description: "Logs the matching resources to the console.",
       parameters: {
         type: "object",
@@ -168,8 +169,10 @@ async function main() {
           case "function_call": {
             const { arguments: args, name } = JSON.parse(responseMessage.content);
 
+            const jsonArgs = JSON.parse(args);
+
             if (name === "search_resources") {
-              const matches = search_resources(args.query);
+              const matches = search_resources(jsonArgs.query);
               log_matches(matches);
             }
             break;
