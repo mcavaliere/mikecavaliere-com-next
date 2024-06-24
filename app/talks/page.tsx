@@ -57,7 +57,7 @@ function TalkCard({ talkOrInterview }: TalkCardProps) {
 export default function TalksPage() {
   return (
     <>
-      <section id="talks">
+      <section id="talks" className="mb-10">
         <Heading1 className="my-10 text-center">Conference Talks</Heading1>
 
         <Heading2 className="mb-20 font-normal text-center">
@@ -71,8 +71,8 @@ export default function TalksPage() {
         </CardGrid>
       </section>
 
-      <section id="interviews">
-        <Heading1 className="mb-3 text-center">Podcast Interviews</Heading1>
+      <section id="interviews" className="mb-10">
+        <Heading1 className="my-10 text-center">Podcast Interviews</Heading1>
 
         <CardGrid>
           {Interviews.map((interview) => (
