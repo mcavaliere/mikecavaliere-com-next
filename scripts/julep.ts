@@ -150,9 +150,6 @@ async function main() {
     prompt: "julep > ",
     eval: async (cmd: string, context: any, filename: string, callback: Function) => {
       try {
-        // Evaluate the command and return the result
-        // const result = eval(cmd);
-        // callback(null, result);
         const response = await client.sessions.chat(session.id, {
           messages: [
             {
@@ -161,14 +158,34 @@ async function main() {
               name: "Anon",
             },
           ],
-          recall: true,
-          remember: true,
+          recall: false,
+          remember: false,
         });
 
-        console.log(`---------------- response:  `, inspect(response, false, null, true));
+        const responseMessage = response.response[0][0];
+
+        switch (responseMessage.role) {
+          case "function_call": {
+            const { arguments: args, name } = JSON.parse(responseMessage.content);
+
+            if (name === "search_resources") {
+              const matches = search_resources(args.query);
+              log_matches(matches);
+            }
+            break;
+          }
+
+          case "assistant": {
+            console.log(responseMessage.content);
+            break;
+          }
+
+          default:
+            console.log(`response:  `, inspect(response, false, null, true));
+            break;
+        }
       } catch (err) {
-        console.error("JULEP ERROR: ", err);
-        // callback(err);
+        console.log("JULEP ERROR: ", err);
       }
     },
   });
