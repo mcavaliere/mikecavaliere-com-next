@@ -63,7 +63,7 @@ function ProjectCard({ project }: ProjectCardProps) {
 export default function TalksPage() {
   return (
     <>
-      <section id="talks">
+      <section id="talks" className="mb-10">
         <Heading1 className="text-center my-10">Projects</Heading1>
 
         <Heading2 className="mb-20 font-normal text-center">
