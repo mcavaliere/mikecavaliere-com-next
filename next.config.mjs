@@ -18,6 +18,15 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  async redirects() {
+    return [
+      {
+        source: "/ai-tools-for-js-devs",
+        destination: "/ai-for-js-devs",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 const withMDX = createMDX({
