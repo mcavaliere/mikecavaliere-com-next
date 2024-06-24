@@ -38,6 +38,8 @@ export default async function PostsIndexPage() {
             coverImage={featuredImage}
             slug={slug}
             excerpt={excerpt}
+            className="w-full"
+            cardClassName="w-full sm:w-full xl:w-full"
           />
         ))}
       </div>
