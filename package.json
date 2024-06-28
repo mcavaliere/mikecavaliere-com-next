@@ -10,7 +10,8 @@
     "postbuild": "next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "lint": "next lint",
-    "julep": "tsx ./scripts/julep.ts"
+    "julep": "tsx ./scripts/julep.ts",
+    "julep:sessions": "tsx ./scripts/julep-sessions.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",

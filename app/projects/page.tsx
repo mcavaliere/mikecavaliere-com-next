@@ -15,6 +15,7 @@ export type ProjectCardProps = {
 
 function ProjectCard({ project }: ProjectCardProps) {
   const { title, imageUrl, description, imageWidth, imageHeight } = project;
+
   return (
     <ArticleCard key={title}>
       {title && imageUrl && imageWidth && imageHeight && (

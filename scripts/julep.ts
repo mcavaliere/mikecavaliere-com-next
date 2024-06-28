@@ -31,9 +31,6 @@ const situationPrompt = `
   Follow the instructions strictly.
 `;
 
-const userMessage =
-  "Help me find all JavaScript and TypeScript libraries for developing custom agents.";
-
 function search_resources(query: string): AIResource[] {
   const matches: AIResource[] = [];
   if (!query) throw new Error("No query provided.");
@@ -147,7 +144,7 @@ async function main() {
     metadata: { agentId: agent.id, userId: user.id },
   });
 
-  const replServer = repl.start({
+  repl.start({
     prompt: "julep > ",
     eval: async (cmd: string, context: any, filename: string, callback: Function) => {
       try {
