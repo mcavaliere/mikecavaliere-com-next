@@ -487,14 +487,7 @@ export const AIResources: AIResource[] = [
     addedOn: "2024-06-28",
     websiteUrl: "https://windowai.io/",
   },
-  {
-    name: "Lightning AI",
-    description: "Platform for building and deploying AI-powered applications.",
-    tags: ["saas app"],
-    category: "tools",
-    addedOn: "2024-06-28",
-    websiteUrl: "https://lightning.ai/",
-  },
+
   {
     name: "ChatGPT Architecture Coach",
     description: "Prompt Engineering resource for software engineers.",
