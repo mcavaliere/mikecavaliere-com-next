@@ -496,4 +496,15 @@ export const AIResources: AIResource[] = [
     addedOn: "2024-06-28",
     githubUrl: "https://github.com/mikaelvesavuori/chatgpt-architecture-coach",
   },
+
+  {
+    name: "UnKey",
+    description:
+      "OSS/cloud API management platform that includes LLM semantic caching and observability.",
+    githubUrl: "https://github.com/unkeyed/unkey",
+    websiteUrl: "https://www.unkey.com/blog/semantic-caching",
+    category: "tools",
+    tags: ["saas app"],
+    addedOn: "2024-06-28",
+  },
 ];
