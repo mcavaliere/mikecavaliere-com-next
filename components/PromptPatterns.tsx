@@ -47,7 +47,7 @@ export function PromptPatterns() {
                   ))}
                 </PromptPatternsList>
 
-                <Heading4 className="mb-2">Intent</Heading4>
+                <Heading4 className="mb-2">What it does</Heading4>
 
                 <PromptPatternsList>
                   {intent.map((item, index) => (
@@ -55,7 +55,7 @@ export function PromptPatterns() {
                   ))}
                 </PromptPatternsList>
 
-                <Heading4 className="mb-2">Motivation</Heading4>
+                <Heading4 className="mb-2">Why it's useful</Heading4>
 
                 <PromptPatternsList>
                   {motivation.map((item, index) => (
@@ -63,7 +63,7 @@ export function PromptPatterns() {
                   ))}
                 </PromptPatternsList>
 
-                <Heading4 className="mb-2">Structure</Heading4>
+                <Heading4 className="mb-2">Structure &amp; Key Ideas</Heading4>
 
                 <PromptPatternsList>
                   {structure.map((item, index) => (
@@ -71,7 +71,7 @@ export function PromptPatterns() {
                   ))}
                 </PromptPatternsList>
 
-                <Heading4 className="mb-2">Consequences</Heading4>
+                <Heading4 className="mb-2">Pro & Con / Notes</Heading4>
 
                 <PromptPatternsList>
                   {consequences.map((item, index) => (
