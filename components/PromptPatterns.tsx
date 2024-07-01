@@ -55,7 +55,7 @@ export function PromptPatterns() {
                   ))}
                 </PromptPatternsList>
 
-                <Heading4 className="mb-2">Why it's useful</Heading4>
+                <Heading4 className="mb-2">Why it&#39;s useful</Heading4>
 
                 <PromptPatternsList>
                   {motivation.map((item, index) => (
