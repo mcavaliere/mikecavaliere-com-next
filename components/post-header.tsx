@@ -1,7 +1,6 @@
 "use client";
 
 import Date from "./date";
-import PostTitle from "./post-title";
 import CoverImage from "components/cover-image";
 import { FeaturedImage } from "@/lib/types";
 import { Heading1 } from "./Headings";
