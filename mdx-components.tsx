@@ -14,6 +14,7 @@ import {
   AINewsletterCard,
 } from "./components/ui/card";
 import { TwitterLink } from "./components/Link";
+import { PromptPatterns } from "./components/PromptPatterns";
 
 export const mdxComponents = {
   ...rendererMapLowercase,
@@ -27,6 +28,7 @@ export const mdxComponents = {
   CardFooter,
   CardTitle,
   CardDescription,
+  PromptPatterns,
   AINewsletterCard,
   TwitterLink,
 };
