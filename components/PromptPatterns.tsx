@@ -50,7 +50,9 @@ export function PromptPatterns() {
               >
                 <span>{name}</span>
                 <span className="flex flex-row">
-                  <Badge className={`${categories[category]} text-background dark:text-foreground`}>
+                  <Badge
+                    className={`${categories[category]} hover:${categories[category]} text-background dark:text-foreground`}
+                  >
                     {category}
                   </Badge>
                   <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200" />
