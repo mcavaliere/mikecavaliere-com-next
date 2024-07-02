@@ -4,10 +4,22 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { ChevronDown } from "lucide-react";
 import { PromptPattern, promptPatterns } from "@/data/prompt-patterns";
 import { Heading3, Heading4 } from "./Headings";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 const patterns = promptPatterns.sort((a, b) => a.name.localeCompare(b.name));
+
+const categories = {
+  "Output Customization": "bg-red-800",
+  "Error Identification": "bg-green-800",
+  "Prompt Improvement": "bg-yellow-800",
+  Interaction: "bg-blue-800",
+  "Context Control": "bg-violet-800",
+};
 
 export function PromptPatternsList({ children, ...props }: { children: React.ReactNode }) {
   return (
@@ -30,11 +42,23 @@ export function PromptPatterns() {
           consequences,
         }: PromptPattern) => (
           <AccordionItem value={name} key={name}>
-            <AccordionTrigger>{name}</AccordionTrigger>
+            <AccordionPrimitive.Header className="flex">
+              <AccordionPrimitive.Trigger
+                className={cn(
+                  "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:no-underline hover:opacity-80 hover:-translate-x-1 hover:-translate-y-1 [&[data-state=open]>svg]:rotate-180"
+                )}
+              >
+                <span>{name}</span>
+                <span className="flex flex-row">
+                  <Badge className={`${categories[category]} text-background dark:text-foreground`}>
+                    {category}
+                  </Badge>
+                  <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200" />
+                </span>
+              </AccordionPrimitive.Trigger>
+            </AccordionPrimitive.Header>
             <AccordionContent>
-              <div className="p-4 rounded-md bg-purple-100">
-                <Heading3 className="mb-4">{name}</Heading3>
-
+              <div className="p-4 rounded-md bg-accent">
                 <Heading4 className="mb-2">Example</Heading4>
 
                 <PromptPatternsList>
