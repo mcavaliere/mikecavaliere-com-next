@@ -67,7 +67,7 @@ export function STRONG({ children, ...props }) {
 
 export function OL({ children, ...props }) {
   return (
-    <ol className="mb-4" {...props}>
+    <ol className="list-decimal pl-4 mb-4" {...props}>
       {children}
     </ol>
   );
@@ -75,7 +75,7 @@ export function OL({ children, ...props }) {
 
 export function UL({ children, ...props }) {
   return (
-    <ul className="mb-4" {...props}>
+    <ul className="list-disc pl-4 mb-4" {...props}>
       {children}
     </ul>
   );
@@ -97,9 +97,11 @@ export const CODE = ({ children, ...rest }: CodeComponentProps & { inline: boole
   }
 
   return (
-    <SyntaxHighlighter language={language} style={highlighterTheme}>
-      {children as string | string[]}
-    </SyntaxHighlighter>
+    <div className="mb-4">
+      <SyntaxHighlighter language={language} style={highlighterTheme}>
+        {children as string | string[]}
+      </SyntaxHighlighter>
+    </div>
   );
 };
 
