@@ -28,9 +28,11 @@ export function PromptPatternsList({ children, ...props }: { children: React.Rea
     </ul>
   );
 }
-export function PromptPatterns() {
+export function PromptPatterns({ className = "" }) {
+  const classNames = cn("mb-2 list-disc pl-4", className);
+
   return (
-    <Accordion type="multiple">
+    <Accordion type="multiple" className={classNames}>
       {patterns.map(
         ({
           name,
