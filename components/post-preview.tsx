@@ -4,7 +4,7 @@ import { stripHtml } from "lib/utils/stripHtml";
 import { More } from "lib/postRenderers";
 import { FeaturedImage } from "@/lib/types";
 import Link from "next/link";
-import { ArticleCard, CARD_DEFAULT_CLASSNAMES, CardContent } from "./ui/card";
+import { ArticleCard, CardContent } from "./ui/card";
 import { cn } from "@/lib/utils";
 
 export default function PostPreview({

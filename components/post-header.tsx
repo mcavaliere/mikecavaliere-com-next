@@ -23,8 +23,9 @@ export function PostHeader({
       </div>
 
       {featuredImage?.src ? (
-        <div className="overflow-hidden w-full md:w-1/2 md:float-right md:ml-4 mb-2.5 md:mb-7">
+        <div className={`overflow-hidden w-full md:w-auto md:float-right md:ml-4 mb-2.5 md:mb-7`}>
           <CoverImage
+            className="inline-block w-full"
             title={title}
             src={featuredImage.src}
             width={featuredImage.width}
