@@ -15,6 +15,8 @@ export type FeaturedImage = {
   src: string;
   width: number;
   height: number;
+  alt?: string;
+  caption?: string;
 };
 
 export type nodeObjType = {

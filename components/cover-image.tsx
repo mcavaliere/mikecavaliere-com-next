@@ -9,6 +9,8 @@ export type CoverImageProps = {
   width: number;
   height: number;
   className?: string;
+  caption?: string;
+  alt?: string;
 } & Omit<ImageProps, "alt">;
 
 export default function CoverImage({
@@ -18,16 +20,21 @@ export default function CoverImage({
   width,
   height,
   className = "",
+  caption = "",
+  alt = "",
 }: CoverImageProps) {
   const classNames = cn("max-w-full h-auto object-cover", className);
+  const altText = alt || `Cover Image for "${title}"`;
   const image = (
-    <Image
-      width={width}
-      height={height}
-      alt={`Cover Image for "${title}"`}
-      src={`${src}`}
-      className={classNames}
-    />
+    <figure>
+      <Image width={width} height={height} alt={altText} src={`${src}`} className={classNames} />
+      {caption ? (
+        <figcaption
+          className="text-sm text-center mt-2 italic"
+          dangerouslySetInnerHTML={{ __html: caption }}
+        />
+      ) : null}
+    </figure>
   );
 
   return href ? <Link href={`/${href}`}>{image}</Link> : <>{image}</>;

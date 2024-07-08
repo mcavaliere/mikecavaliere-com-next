@@ -30,6 +30,8 @@ export function PostHeader({
             src={featuredImage.src}
             width={featuredImage.width}
             height={featuredImage.height}
+            alt={featuredImage?.alt || undefined}
+            caption={featuredImage?.caption || undefined}
           />
         </div>
       ) : null}
