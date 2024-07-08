@@ -2,6 +2,14 @@ import { Project } from "lib/types";
 
 export const Projects: Project[] = [
   {
+    title: "AI for JS Devs",
+    description: "A list of AI resources and tools for JavaScript / TypeScript developers.",
+    url: "/ai-for-js-devs",
+    imageUrl: "/images/projects/ai-for-js-devs.png",
+    imageWidth: 303,
+    imageHeight: 153,
+  },
+  {
     title: "StoryTime",
     description: "An AI-powered app for writing children's stories.",
     url: "https://storytimeapp.vercel.app",
@@ -26,13 +34,5 @@ export const Projects: Project[] = [
     imageUrl: "/images/projects/citjs.png",
     imageWidth: 608,
     imageHeight: 607,
-  },
-  {
-    title: "AI for JS Devs",
-    description: "A list of AI resources and tools for JavaScript / TypeScript developers.",
-    url: "/ai-for-js-devs",
-    imageUrl: "/images/projects/ai-for-js-devs.png",
-    imageWidth: 303,
-    imageHeight: 153,
   },
 ];
