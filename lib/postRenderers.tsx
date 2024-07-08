@@ -92,17 +92,15 @@ export type CodeComponentProps = JSX.IntrinsicElements["code"] & {
 export const CODE = ({ children, ...rest }: CodeComponentProps & { inline: boolean }) => {
   const language = rest.className?.replace(/language-/, "") || "javascript";
 
-  if (!rest.inline) {
-    return (
-      <div className="mb-4">
-        <SyntaxHighlighter language={language} style={highlighterTheme}>
-          {children as string | string[]}
-        </SyntaxHighlighter>
-      </div>
-    );
+  if (!rest.className?.match(/language-/)) {
+    return <code className="text-red">{children}</code>;
   }
 
-  return <code className="text-red">{children}</code>;
+  return (
+    <SyntaxHighlighter language={language} style={highlighterTheme}>
+      {children as string | string[]}
+    </SyntaxHighlighter>
+  );
 };
 
 export function P({ children, ...props }) {
