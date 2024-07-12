@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "parse": "tsx ./parse.ts"
+    "parse": "tsx ./parse.ts",
+    "aj:zod": "ts-to-zod ../components/AIResourcesTable/types.tsx "
   },
   "keywords": [],
   "author": "",
@@ -14,10 +15,16 @@
     "@anthropic-ai/sdk": "^0.24.3",
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.2",
+    "ts-to-zod": "^3.9.1",
     "tsx": "^4.16.2",
     "typescript": "^5.5.3"
   },
   "dependencies": {
-    "@next/env": "^14.2.5"
+    "@ai-sdk/anthropic": "^0.0.30",
+    "@next/env": "^14.2.5",
+    "ai": "^3.2.22",
+    "best-effort-json-parser": "^1.1.2",
+    "ora": "^8.0.1",
+    "zod": "^3.23.8"
   }
 }

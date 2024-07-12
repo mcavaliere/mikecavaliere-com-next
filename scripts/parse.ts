@@ -1,9 +1,14 @@
 import fs from "fs";
-
+import ora from "ora";
 import Anthropic from "@anthropic-ai/sdk";
 import { loadEnvConfig } from "@next/env";
 import { system as SYSTEM_PROMPT } from "./prompt";
 import { replaceTemplateVars } from "./replaceTemplateVars";
+import { generateObject } from "ai";
+import { anthropic } from "@ai-sdk/anthropic";
+import { aIResourceSchema } from "./aiResourceSchema";
+import { z } from "zod";
+import { inspect } from "util";
 
 loadEnvConfig(process.cwd());
 
@@ -19,25 +24,38 @@ async function main() {
   const inputFileContent = fs.readFileSync(inputFilePath, "utf8");
   const typesFileContent = fs.readFileSync(typesFilePath, "utf8");
 
-  const anthropic = new Anthropic();
-
   const system = replaceTemplateVars(SYSTEM_PROMPT, {
     types: typesFileContent,
   });
 
   console.log(`system prompt: `, system);
 
-  const msg = await anthropic.messages.create({
-    model: "claude-3-5-sonnet-20240620",
-    max_tokens: 1024,
-    system,
-    messages: [{ role: "user", content: inputFileContent }],
-  });
+  const spinner = ora(`Generating...`).start();
 
-  console.log(`---------------- OUTPUT: `);
-  console.log(msg);
+  try {
+    const response = await generateObject({
+      model: anthropic("claude-3-5-sonnet-20240620"),
+      system,
+      maxTokens: 4096,
+      messages: [{ role: "user", content: inputFileContent }],
+      schema: z.object({
+        resources: z.array(aIResourceSchema),
+      }),
+    });
 
-  console.log(`----------------  `);
+    console.log(`---------------- OUTPUT: `);
+    console.log(inspect(response.object.resources, false, null, true));
+    console.log(`----------------  `);
+  } catch (error) {
+    console.log(`error: `, error);
+  } finally {
+    spinner.stop();
+  }
+
+  // const json = JSON.parse(msg.content[0].text);
+
+  // console.log(`---------------- json:  `, json);
+  // console.log(`response:`, msg);
 
   // import types for AIResource as text file
   // import prompt.md
