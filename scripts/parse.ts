@@ -43,9 +43,8 @@ async function main() {
       }),
     });
 
-    console.log(`---------------- OUTPUT: `);
     console.log(inspect(response.object.resources, false, null, true));
-    console.log(`----------------  `);
+    console.log(`response: `, response);
   } catch (error) {
     console.log(`error: `, error);
   } finally {
