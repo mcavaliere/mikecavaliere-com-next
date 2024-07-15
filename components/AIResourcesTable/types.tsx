@@ -1,9 +1,4 @@
-export type AIResourceCategory =
-  | "libraries"
-  | "tools"
-  | "projects"
-  | "articles"
-  | "learning resources";
+export type AIResourceCategory = "libraries" | "tools" | "projects" | "articles" | "learning";
 export type AIResourceTag =
   | "browser"
   | "sdk"
@@ -21,7 +16,7 @@ export const AIResourceCategoryColors = {
   libraries: "bg-yellow-800",
   tools: "bg-blue-800",
   articles: "bg-red-800",
-  "learning resources": "bg-green-800",
+  learning: "bg-green-800",
   // "other": "bg-blue-800",
   projects: "bg-violet-800",
 };

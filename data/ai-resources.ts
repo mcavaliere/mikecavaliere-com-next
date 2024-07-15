@@ -492,7 +492,7 @@ export const AIResources: AIResource[] = [
     name: "ChatGPT Architecture Coach",
     description: "Prompt Engineering resource for software engineers.",
     tags: ["prompt engineering", "learning resource"],
-    category: "learning resources",
+    category: "learning",
     addedOn: "2024-06-28",
     githubUrl: "https://github.com/mikaelvesavuori/chatgpt-architecture-coach",
   },

@@ -6,7 +6,7 @@ export const aIResourceCategorySchema = z.union([
   z.literal("tools"),
   z.literal("projects"),
   z.literal("articles"),
-  z.literal("learning resources"),
+  z.literal("learning"),
 ]);
 
 export const aIResourceTagSchema = z.union([
