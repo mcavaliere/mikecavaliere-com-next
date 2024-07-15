@@ -1,9 +1,4 @@
-export type AIResourceCategory =
-  | "libraries"
-  | "tools"
-  | "projects"
-  | "articles"
-  | "learning resources";
+export type AIResourceCategory = "libraries" | "tools" | "projects" | "articles" | "learning";
 export type AIResourceTag =
   | "browser"
   | "sdk"
@@ -15,7 +10,20 @@ export type AIResourceTag =
   | "rag"
   | "saas app"
   | "prompt engineering"
+  | "library"
+  | "testing"
+  | "tool"
+  | "agents"
   | "learning resource";
+
+export const AIResourceCategoryColors = {
+  libraries: "bg-yellow-800",
+  tools: "bg-blue-800",
+  articles: "bg-red-800",
+  learning: "bg-green-800",
+  // "other": "bg-blue-800",
+  projects: "bg-violet-800",
+};
 
 export type SQLDateString =
   `${number}${number}${number}${number}-${number}${number}-${number}${number}`;

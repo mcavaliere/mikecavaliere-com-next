@@ -1,12 +1,13 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { AIResource } from "./types";
+import { AIResource, AIResourceCategoryColors } from "./types";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/components/Link";
 import { FaGithub, FaGlobe } from "react-icons/fa";
-import { ArrowUpDown, ArrowUp, ArrowDown } from "lucide-react";
+import { ArrowUp, ArrowDown } from "lucide-react";
 import dayjs from "dayjs";
+import { Badge } from "../ui/badge";
 
 export function GithubButton({ url }: { url: string }) {
   return (
@@ -28,27 +29,30 @@ export function WebsiteButton({ url }: { url: string }) {
   );
 }
 
+export function getSortIcon({ column }) {
+  const sortDir = column.getIsSorted();
+  return sortDir === "asc" ? (
+    <ArrowUp className="ml-2 h-4 w-4" />
+  ) : sortDir === "desc" ? (
+    <ArrowDown className="ml-2 h-4 w-4" />
+  ) : null;
+}
+
+export function SortLink({ column, label }) {
+  const sortIcon = getSortIcon({ column });
+  return (
+    <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+      {label}
+      {sortIcon}
+    </Button>
+  );
+}
+
 export const columns: ColumnDef<AIResource>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
-      const sortDir = column.getIsSorted();
-      const sortIcon =
-        sortDir === "asc" ? (
-          <ArrowUp className="ml-2 h-4 w-4" />
-        ) : sortDir === "desc" ? (
-          <ArrowDown className="ml-2 h-4 w-4" />
-        ) : null;
-
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Name
-          {sortIcon}
-        </Button>
-      );
+      return <SortLink column={column} label="Name" />;
     },
     cell: (cell) => {
       const githubUrl = cell.row.original.githubUrl;
@@ -87,23 +91,7 @@ export const columns: ColumnDef<AIResource>[] = [
   {
     accessorKey: "addedOn",
     header: ({ column }) => {
-      const sortDir = column.getIsSorted();
-      const sortIcon =
-        sortDir === "asc" ? (
-          <ArrowUp className="ml-2 h-4 w-4" />
-        ) : sortDir === "desc" ? (
-          <ArrowDown className="ml-2 h-4 w-4" />
-        ) : null;
-
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Date Added
-          {sortIcon}
-        </Button>
-      );
+      return <SortLink column={column} label="Date Added" />;
     },
     cell: (cell) => {
       const addedOn = cell.row.original.addedOn;
@@ -111,4 +99,26 @@ export const columns: ColumnDef<AIResource>[] = [
       return dayjs(addedOn).format("MMM D, YYYY");
     },
   },
+  {
+    accessorKey: "category",
+    header: ({ column }) => {
+      return <SortLink column={column} label="Category" />;
+    },
+    cell: (cell) => {
+      const category = cell.row.original.category;
+      const categoryClassName = AIResourceCategoryColors[category];
+      return (
+        <Badge
+          className={`${categoryClassName} hover:${categoryClassName} text-background dark:text-foreground`}
+        >
+          {cell.row.original.category}
+        </Badge>
+      );
+    },
+  },
+  // TODO: Add tags column after all data is tagged.
+  // {
+  //   accessorKey: "tags",
+  //   header: "Tags",
+  // },
 ];
