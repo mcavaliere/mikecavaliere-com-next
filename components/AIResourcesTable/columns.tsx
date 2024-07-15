@@ -116,8 +116,9 @@ export const columns: ColumnDef<AIResource>[] = [
       );
     },
   },
-  {
-    accessorKey: "tags",
-    header: "Tags",
-  },
+  // TODO: Add tags column after all data is tagged.
+  // {
+  //   accessorKey: "tags",
+  //   header: "Tags",
+  // },
 ];

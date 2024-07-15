@@ -10,6 +10,10 @@ export type AIResourceTag =
   | "rag"
   | "saas app"
   | "prompt engineering"
+  | "library"
+  | "testing"
+  | "tool"
+  | "agents"
   | "learning resource";
 
 export const AIResourceCategoryColors = {
