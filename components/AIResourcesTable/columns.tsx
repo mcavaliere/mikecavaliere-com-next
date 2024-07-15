@@ -111,4 +111,12 @@ export const columns: ColumnDef<AIResource>[] = [
       return dayjs(addedOn).format("MMM D, YYYY");
     },
   },
+  {
+    accessorKey: "category",
+    header: "Category",
+  },
+  {
+    accessorKey: "tags",
+    header: "Tags",
+  },
 ];
