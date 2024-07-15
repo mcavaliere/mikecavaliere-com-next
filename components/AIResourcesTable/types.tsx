@@ -17,12 +17,12 @@ export type AIResourceTag =
   | "prompt engineering"
   | "learning resource";
 
-const AIResourceCategoryColors = {
+export const AIResourceCategoryColors = {
   libraries: "bg-yellow-800",
   tools: "bg-blue-800",
   articles: "bg-red-800",
   "learning resources": "bg-green-800",
-  // "projets": "bg-blue-800",
+  // "other": "bg-blue-800",
   projects: "bg-violet-800",
 };
 
