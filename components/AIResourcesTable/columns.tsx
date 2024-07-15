@@ -1,12 +1,13 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { AIResource } from "./types";
+import { AIResource, AIResourceCategoryColors } from "./types";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/components/Link";
 import { FaGithub, FaGlobe } from "react-icons/fa";
 import { ArrowUp, ArrowDown } from "lucide-react";
 import dayjs from "dayjs";
+import { Badge } from "../ui/badge";
 
 export function GithubButton({ url }: { url: string }) {
   return (
@@ -102,6 +103,17 @@ export const columns: ColumnDef<AIResource>[] = [
     accessorKey: "category",
     header: ({ column }) => {
       return <SortLink column={column} label="Category" />;
+    },
+    cell: (cell) => {
+      const category = cell.row.original.category;
+      const categoryClassName = AIResourceCategoryColors[category];
+      return (
+        <Badge
+          className={`${categoryClassName} hover:${categoryClassName} text-background dark:text-foreground`}
+        >
+          {cell.row.original.category}
+        </Badge>
+      );
     },
   },
   {
