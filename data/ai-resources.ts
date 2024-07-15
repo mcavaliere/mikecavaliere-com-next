@@ -627,7 +627,7 @@ export const AIResources: AIResource[] = [
     description:
       "Tutorial for building a RAG (Retrieval Augmented Generation) chatbot using Vercel AI SDK",
     tags: ["learning resource", "rag"],
-    category: "learning resources",
+    category: "learning",
     addedOn: "2024-03-18",
     websiteUrl: "https://sdk.vercel.ai/docs/guides/rag-chatbot",
     githubUrl: "https://github.com/vercel/ai-sdk-rag-starter",
