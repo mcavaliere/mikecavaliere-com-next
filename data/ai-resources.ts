@@ -562,16 +562,6 @@ export const AIResources: AIResource[] = [
       "https://dev.to/this-is-learning/lets-build-ai-tools-with-the-help-of-ai-and-typescript-450b",
   },
   {
-    name: "AI-powered Resume and Cover Letter Generator",
-    description:
-      "Tutorial on building an AI-powered resume and cover letter generator using Next.js, GPT4, Langchain & CopilotKit",
-    tags: ["article"],
-    category: "articles",
-    addedOn: "2024-03-18",
-    websiteUrl:
-      "https://dev.to/the_greatbonnie/ai-powered-resume-and-cover-letter-generator-nextjs-gpt4-langchain-copilotkit-53pb",
-  },
-  {
     name: "Everyone Should Learn Prompt Engineering, Even Software Engineers",
     description: "Article on the importance of prompt engineering for software engineers",
     tags: ["article", "prompt engineering"],
