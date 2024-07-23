@@ -1,8 +1,7 @@
-import { AIResourcesTable } from '@/components/AIResourcesTable/AIResourcesTable'
-import { AIArticleList } from '@/components/AIResourcesTable/AIArticleList'
 import CoverImage from '@/components/cover-image'
 import { Heading1 } from '@/components/Headings'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { AIResourcesTabs } from '@/components/AIResourcesTable/AIResourcesTabs'
+
 
 export const metadata = {
   title: "AI for JavaScript Devs",
@@ -36,16 +35,4 @@ export const metadata = {
 </div>
 
 
-<Tabs defaultValue="tools">
-  <TabsList>
-    <TabsTrigger value="tools">🛠️ Tools</TabsTrigger>
-    <TabsTrigger value="articles">📄 Articles</TabsTrigger>
-  </TabsList>
-  <TabsContent value="tools">
-    <AIResourcesTable />
-  </TabsContent>
-  <TabsContent value="articles">
-    <AIArticleList />
-  </TabsContent>
-</Tabs>
-
+<AIResourcesTabs />
