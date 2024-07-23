@@ -4,9 +4,11 @@ import { DataTable } from "./DataTable";
 import { AIResource } from "./types";
 
 export function AIResourcesTable() {
+  const resources = AIResources.filter((r) => !["articles", "learning"].includes(r.category));
+
   return (
     <>
-      <DataTable columns={columns} data={AIResources as AIResource[]} />
+      <DataTable columns={columns} data={resources} />
     </>
   );
 }
