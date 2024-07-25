@@ -709,4 +709,57 @@ export const AIResources: AIResource[] = [
     websiteUrl:
       "https://dev.to/nickolasbenakis/building-a-secure-pdf-chat-ai-application-with-langchain-nextjs-arcjet-and-pinecone-db-ddh",
   },
+  {
+    name: "LlamaTutor",
+    websiteUrl: "https://llamatutor.com/",
+    description:
+      "An AI personal tutor who can explain any subject at any education level using up-to-date sources.",
+    githubUrl: "https://github.com/Nutlope/llamatutor",
+    category: "projects",
+    notes: "Next.js w/app router, Tailwind, and some cool tools like Serper and Helicone.",
+    tags: ["saas app", "framework"],
+    addedOn: "2024-07-14",
+  },
+  {
+    name: "Buildware",
+    websiteUrl: "https://www.buildware.ai/",
+    description:
+      "Tool that uses Claude to generate high-quality code (and even creates PRs!) from GitHub issues.",
+    githubUrl: "https://github.com/mckaywrigley/buildware-ai",
+    category: "projects",
+    notes:
+      "This won Anthropic's Build With Claude contest. Orig tweet: https://x.com/mckaywrigley/status/1816168589776544100",
+    tags: ["tool", "sdk"],
+    addedOn: "2024-07-14",
+  },
+  {
+    name: "Design GUI",
+    websiteUrl: "https://www.designgui.io/",
+    description:
+      "Chrome plugin that visualizes colors stored in CSS variables, and allows you to change them on the fly.",
+    category: "tools",
+    notes: "Features prompt-driven color palette generation, shadcn-ui and daisyUI support. ",
+    tags: ["browser"],
+    addedOn: "2024-07-14",
+  },
+  {
+    name: "Pezzo",
+    websiteUrl: "https://pezzo.ai/",
+    description:
+      "Open-source AIOps platform. Monitoring, prompt management, debugging & collaboration tools.",
+    githubUrl: "https://github.com/pezzolabs/pezzo",
+    category: "tools",
+    notes: "Written in TypeScript.",
+    tags: ["sdk", "tool"],
+    addedOn: "2024-07-14",
+  },
+  {
+    name: "AI and the Modern Developer",
+    websiteUrl: "https://www.dev3loper.ai/insights/ai-and-the-modern-developer",
+    description:
+      "Incredible write up on the state of LLM-assisted software engineering. Breaks the current tools down into very specific categories and lists their key features and use cases.",
+    category: "articles",
+    tags: ["article", "learning resource"],
+    addedOn: "2024-07-14",
+  },
 ];
