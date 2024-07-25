@@ -12,7 +12,7 @@ import { Badge } from "../ui/badge";
 export function GithubButton({ url }: { url: string }) {
   return (
     <Link href={url} target="_blank">
-      <Button size="icon">
+      <Button size="icon" className="bg-transparent hover:scale-110 hover:bg-transparent">
         <FaGithub className="w-5 h-5" />
       </Button>
     </Link>
@@ -22,7 +22,7 @@ export function GithubButton({ url }: { url: string }) {
 export function WebsiteButton({ url }: { url: string }) {
   return (
     <Link href={url} target="_blank">
-      <Button size="icon">
+      <Button size="icon" className="bg-transparent hover:scale-110 hover:bg-transparent">
         <FaGlobe className="w-5 h-5" />
       </Button>
     </Link>
