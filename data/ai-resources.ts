@@ -718,7 +718,7 @@ export const AIResources: AIResource[] = [
     category: "projects",
     notes: "Next.js w/app router, Tailwind, and some cool tools like Serper and Helicone.",
     tags: ["saas app", "framework"],
-    addedOn: "2024-07-14",
+    addedOn: "2024-07-25",
   },
   {
     name: "Buildware",
@@ -730,7 +730,7 @@ export const AIResources: AIResource[] = [
     notes:
       "This won Anthropic's Build With Claude contest. Orig tweet: https://x.com/mckaywrigley/status/1816168589776544100",
     tags: ["tool", "sdk"],
-    addedOn: "2024-07-14",
+    addedOn: "2024-07-25",
   },
   {
     name: "Design GUI",
@@ -740,7 +740,7 @@ export const AIResources: AIResource[] = [
     category: "tools",
     notes: "Features prompt-driven color palette generation, shadcn-ui and daisyUI support. ",
     tags: ["browser"],
-    addedOn: "2024-07-14",
+    addedOn: "2024-07-25",
   },
   {
     name: "Pezzo",
@@ -751,7 +751,7 @@ export const AIResources: AIResource[] = [
     category: "tools",
     notes: "Written in TypeScript.",
     tags: ["sdk", "tool"],
-    addedOn: "2024-07-14",
+    addedOn: "2024-07-25",
   },
   {
     name: "AI and the Modern Developer",
@@ -760,6 +760,6 @@ export const AIResources: AIResource[] = [
       "Incredible write up on the state of LLM-assisted software engineering. Breaks the current tools down into very specific categories and lists their key features and use cases.",
     category: "articles",
     tags: ["article", "learning resource"],
-    addedOn: "2024-07-14",
+    addedOn: "2024-07-25",
   },
 ];
