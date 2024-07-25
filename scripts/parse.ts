@@ -18,7 +18,7 @@ if (!process.env.ANTHROPIC_API_KEY) {
 
 async function main() {
   // read in the file 2024-07-12.md
-  const inputFilePath = "./2024-07-12.md";
+  const inputFilePath = "./2024-07-25.md";
   const typesFilePath = "../components/AIResourcesTable/types.tsx";
 
   const inputFileContent = fs.readFileSync(inputFilePath, "utf8");
