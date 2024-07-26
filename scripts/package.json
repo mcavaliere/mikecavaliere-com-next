@@ -15,14 +15,14 @@
     "@anthropic-ai/sdk": "^0.24.3",
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.2",
-    "ts-to-zod": "^3.9.1",
+    "ts-to-zod": "^3.10.0",
     "tsx": "^4.16.2",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   },
   "dependencies": {
-    "@ai-sdk/anthropic": "^0.0.30",
+    "@ai-sdk/anthropic": "^0.0.33",
     "@next/env": "^14.2.5",
-    "ai": "^3.2.22",
+    "ai": "^3.2.36",
     "best-effort-json-parser": "^1.1.2",
     "ora": "^8.0.1",
     "zod": "^3.23.8"
