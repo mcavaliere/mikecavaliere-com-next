@@ -21,6 +21,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useState } from "react";
+import { FilterStateHeader } from "./FilterStateHeader";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -45,9 +46,13 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
     onColumnFiltersChange: setColumnFilters,
   });
 
+  const hasFilter = columnFilters.length > 0;
+  const tagFilter = (columnFilters.find((filter) => filter.id === "tags")?.value as string) || "";
+
   return (
     <div className="rounded-md border">
-      <pre className="block bg-red-200 w-full h-10">{JSON.stringify(columnFilters)}</pre>
+      {/* <pre className="block bg-red-200 w-full h-10">{JSON.stringify(columnFilters)}</pre> */}
+      {hasFilter ? <FilterStateHeader tag={tagFilter} /> : null}
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
