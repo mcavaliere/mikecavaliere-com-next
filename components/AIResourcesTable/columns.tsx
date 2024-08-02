@@ -1,13 +1,13 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { AIResource, AIResourceCategoryColors } from "./types";
+import { AIResource } from "./types";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/components/Link";
 import { FaGithub, FaGlobe } from "react-icons/fa";
 import { ArrowUp, ArrowDown } from "lucide-react";
 import dayjs from "dayjs";
-import { Badge } from "../ui/badge";
+import { TagBadge } from "./TagBadge";
 
 export const headerTextSize = "text-md";
 
@@ -106,43 +106,27 @@ export const columns: ColumnDef<AIResource>[] = [
     },
   },
   {
-    accessorKey: "category",
-    header: ({ column }) => {
-      return <SortLink column={column} label="Category" />;
-    },
-    cell: (cell) => {
-      const category = cell.row.original.category;
-      const categoryClassName = AIResourceCategoryColors[category];
-      return (
-        <Badge
-          className={`${categoryClassName} hover:${categoryClassName} text-background dark:text-foreground`}
-        >
-          {cell.row.original.category}
-        </Badge>
-      );
-    },
-  },
-  {
     accessorKey: "tags",
-    header: "Tags",
+    header: "Tags (click to filter)",
     filterFn: "arrIncludesAll",
     cell: (cell) => {
       const tags = cell.row.original.tags;
-      return tags?.sort().map((t, i) => {
+
+      return tags?.sort().map((t) => {
         return (
-          <span>
-            <a
-              href="#"
-              className="font-mono text-sm"
-              onClick={(e) => {
-                e.preventDefault();
-                cell.column.setFilterValue([t]);
-              }}
-            >
-              {t}
-            </a>
-            {i < tags.length - 1 ? ", " : ""}
-          </span>
+          <ul>
+            <li key={t} className="mb-1 inline-block">
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  cell.column.setFilterValue([t]);
+                }}
+              >
+                <TagBadge t={t} includeHovers />
+              </a>
+            </li>
+          </ul>
         );
       });
     },
