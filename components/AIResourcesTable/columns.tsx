@@ -9,6 +9,8 @@ import { ArrowUp, ArrowDown } from "lucide-react";
 import dayjs from "dayjs";
 import { Badge } from "../ui/badge";
 
+export const headerTextSize = "text-md";
+
 export function GithubButton({ url }: { url: string }) {
   return (
     <Link href={url} target="_blank">
@@ -41,7 +43,11 @@ export function getSortIcon({ column }) {
 export function SortLink({ column, label }) {
   const sortIcon = getSortIcon({ column });
   return (
-    <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+    <Button
+      variant="ghost"
+      onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      className={`${headerTextSize}`}
+    >
       {label}
       {sortIcon}
     </Button>
