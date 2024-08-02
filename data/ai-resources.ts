@@ -438,7 +438,7 @@ export const AIResources: AIResource[] = [
   {
     name: "LangGraph.js",
     description: "LangChain's library for building apps with agent and multi-agent workflows.",
-    tags: ["sdk", "machine learning"],
+    tags: ["sdk", "machine learning", "agents"],
     category: "libraries",
     addedOn: "2024-06-28",
     githubUrl: "https://github.com/langchain-ai/langgraphjs",

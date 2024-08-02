@@ -14,6 +14,7 @@ import {
 import {
   Table,
   TableBody,
+  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -39,11 +40,14 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
     getFilteredRowModel: getFilteredRowModel(),
     state: {
       sorting,
+      columnFilters,
     },
+    onColumnFiltersChange: setColumnFilters,
   });
 
   return (
     <div className="rounded-md border">
+      <pre className="block bg-red-200 w-full h-10">{JSON.stringify(columnFilters)}</pre>
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (

@@ -119,9 +119,22 @@ export const columns: ColumnDef<AIResource>[] = [
   {
     accessorKey: "tags",
     header: "Tags",
+    filterFn: "arrIncludes",
     cell: (cell) => {
       const tags = cell.row.original.tags;
-      return tags?.join(", ");
+      return tags?.map((t) => {
+        return (
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              cell.column.setFilterValue(t);
+            }}
+          >
+            {t}
+          </a>
+        );
+      });
     },
   },
   // TODO: Add tags column after all data is tagged.
