@@ -119,7 +119,7 @@ export const columns: ColumnDef<AIResource>[] = [
   {
     accessorKey: "tags",
     header: "Tags",
-    filterFn: "arrIncludes",
+    filterFn: "arrIncludesAll",
     cell: (cell) => {
       const tags = cell.row.original.tags;
       return tags?.map((t) => {
@@ -128,7 +128,7 @@ export const columns: ColumnDef<AIResource>[] = [
             href="#"
             onClick={(e) => {
               e.preventDefault();
-              cell.column.setFilterValue(t);
+              cell.column.setFilterValue([t]);
             }}
           >
             {t}
