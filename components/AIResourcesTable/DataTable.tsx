@@ -48,11 +48,15 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
 
   const hasFilter = columnFilters.length > 0;
   const tagFilter = (columnFilters.find((filter) => filter.id === "tags")?.value as string) || "";
+  function clearAllFilters(e) {
+    e.preventDefault();
+    setColumnFilters([]);
+  }
 
   return (
     <div className="rounded-md border">
       {/* <pre className="block bg-red-200 w-full h-10">{JSON.stringify(columnFilters)}</pre> */}
-      {hasFilter ? <FilterStateHeader tag={tagFilter} /> : null}
+      {hasFilter ? <FilterStateHeader tag={tagFilter} onCloseClick={clearAllFilters} /> : null}
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
