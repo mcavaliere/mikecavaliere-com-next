@@ -128,11 +128,12 @@ export const columns: ColumnDef<AIResource>[] = [
     filterFn: "arrIncludesAll",
     cell: (cell) => {
       const tags = cell.row.original.tags;
-      return tags?.map((t, i) => {
+      return tags?.sort().map((t, i) => {
         return (
           <span>
             <a
               href="#"
+              className="font-mono text-sm"
               onClick={(e) => {
                 e.preventDefault();
                 cell.column.setFilterValue([t]);
