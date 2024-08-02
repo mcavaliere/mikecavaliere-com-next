@@ -116,6 +116,14 @@ export const columns: ColumnDef<AIResource>[] = [
       );
     },
   },
+  {
+    accessorKey: "tags",
+    header: "Tags",
+    cell: (cell) => {
+      const tags = cell.row.original.tags;
+      return tags?.join(", ");
+    },
+  },
   // TODO: Add tags column after all data is tagged.
   // {
   //   accessorKey: "tags",
