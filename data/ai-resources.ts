@@ -5,7 +5,7 @@ export const AIResources: AIResource[] = [
     name: "Gemini AI",
     githubUrl: "https://github.com/EvanZhouDev/gemini-ai",
     description: "The simpler JavaScript Gemini SDK",
-    tags: ["sdk", "library"],
+    tags: ["sdk", "lib"],
     category: "libraries",
     addedOn: "2024-05-31",
   },
@@ -13,7 +13,7 @@ export const AIResources: AIResource[] = [
     name: "Mistral JS SDK",
     githubUrl: "https://github.com/mistralai/client-js",
     description: "The official Mistral JavaScript SDK",
-    tags: ["sdk", "library"],
+    tags: ["sdk"],
     category: "libraries",
     addedOn: "2024-05-31",
   },
@@ -21,7 +21,7 @@ export const AIResources: AIResource[] = [
     name: "Anthropic TS SDK",
     githubUrl: "https://github.com/anthropics/anthropic-sdk-typescript",
     description: "The official Anthropic JavaScript SDK",
-    tags: ["sdk", "library"],
+    tags: ["sdk"],
     category: "libraries",
     addedOn: "2024-05-31",
   },
@@ -30,7 +30,7 @@ export const AIResources: AIResource[] = [
     githubUrl: "https://github.com/xeol-io/bumpgen",
     websiteUrl: "https://www.xeol.io/beta",
     description: "An AI agent that upgrades npm packages",
-    tags: ["library", "tool", "agents"],
+    tags: ["dev tool", "open source"],
     category: "tools",
     addedOn: "2024-05-31",
   },
@@ -40,7 +40,7 @@ export const AIResources: AIResource[] = [
     websiteUrl: "",
     description:
       "Test and evaluate LLMs and model configurations, across all the scenarios that matter for your application",
-    tags: ["library", "testing"],
+    tags: ["testing", "dev tool", "open source"],
     category: "tools",
     addedOn: "2024-05-31",
   },
@@ -50,7 +50,7 @@ export const AIResources: AIResource[] = [
     websiteUrl: "https://flowiseai.com/",
     description:
       "Open source low-code tool for developers to build customized LLM orchestration flow & AI agents",
-    tags: ["low-code", "agents"],
+    tags: ["open source", "low-code", "dev tool"],
     category: "tools",
     addedOn: "2024-05-31",
   },
@@ -60,7 +60,7 @@ export const AIResources: AIResource[] = [
     websiteUrl: "",
     description:
       "A framework for building custom AI Copilots 🤖 in-app AI chatbots, in-app AI Agents, & AI-powered Textareas.",
-    tags: ["framework"],
+    tags: ["framework", "agents"],
     category: "libraries",
     addedOn: "2024-05-31",
   },
@@ -71,15 +71,6 @@ export const AIResources: AIResource[] = [
     description: "A universal and intuitive framework for interacting with LLMs.",
     tags: ["framework"],
     category: "libraries",
-    addedOn: "2024-05-31",
-  },
-  {
-    name: "HuggingBuddy",
-    githubUrl: "https://github.com/angu10/HuggingBuddy",
-    description:
-      "Chrome extension that simplifies the process of reading and understanding complex research papers from Hugging Face.",
-    tags: [],
-    category: "tools",
     addedOn: "2024-05-31",
   },
   {
@@ -105,7 +96,7 @@ export const AIResources: AIResource[] = [
       "Develop ML models in JavaScript, and use ML directly in the browser or in Node.js.",
     websiteUrl: "https://www.tensorflow.org/js",
     githubUrl: "https://github.com/tensorflow/tfjs",
-    tags: ["machine learning"],
+    tags: ["lib", "machine learning"],
     category: "libraries",
     addedOn: "2024-05-31",
   },
@@ -116,6 +107,7 @@ export const AIResources: AIResource[] = [
     description: "A framework for developing applications powered by large language models (LLMs)",
     category: "libraries",
     addedOn: "2024-05-31",
+    tags: ["lib", "machine learning"],
   },
   {
     name: "Vercel AI SDK",
@@ -124,6 +116,7 @@ export const AIResources: AIResource[] = [
     description: "A library for building AI-powered streaming text and chat UIs",
     category: "libraries",
     addedOn: "2024-05-31",
+    tags: ["lib", "ui"],
   },
   {
     name: "NLP.js",
@@ -132,6 +125,7 @@ export const AIResources: AIResource[] = [
       "An NLP library for building bots, with entity extraction, sentiment analysis, automatic language identify, and more",
     category: "libraries",
     addedOn: "2024-05-31",
+    tags: ["lib", "machine learning"],
   },
   {
     name: "AI.JSX",
@@ -140,6 +134,7 @@ export const AIResources: AIResource[] = [
     description: "A framework for building AI applications using JSX / React",
     category: "libraries",
     addedOn: "2024-05-31",
+    tags: ["framework", "ui"],
   },
   {
     name: "RoomGPT",
@@ -148,6 +143,7 @@ export const AIResources: AIResource[] = [
     githubUrl: "https://github.com/Nutlope/roomGPT",
     category: "projects",
     addedOn: "2024-05-31",
+    tags: ["project", "open source"],
   },
   {
     name: "PDFToChat",
@@ -156,6 +152,7 @@ export const AIResources: AIResource[] = [
     websiteUrl: "https://www.pdftochat.com/",
     category: "projects",
     addedOn: "2024-05-31",
+    tags: ["project", "open source", "pdf", "q&a"],
   },
   {
     name: "NotesGPT",
@@ -164,6 +161,7 @@ export const AIResources: AIResource[] = [
     githubUrl: "https://github.com/Nutlope/notesGPT",
     category: "projects",
     addedOn: "2024-05-31",
+    tags: ["project", "open source", "multimodal"],
   },
   {
     name: "Sandbox",
@@ -172,6 +170,7 @@ export const AIResources: AIResource[] = [
       "Open-source cloud-based code editing environment with custom AI code autocompletion and real-time collaboration.",
     category: "projects",
     addedOn: "2024-06-07",
+    tags: ["project", "open source", "dev tool"],
   },
   {
     name: "WebLLM",
@@ -189,6 +188,7 @@ export const AIResources: AIResource[] = [
     githubUrl: "https://github.com/Nutlope/turboseek",
     category: "projects",
     addedOn: "2024-06-07",
+    tags: ["project", "open source", "perplexity clone"],
   },
   {
     name: "Ragged",
@@ -197,6 +197,7 @@ export const AIResources: AIResource[] = [
     githubUrl: "https://github.com/monarchwadia/ragged",
     category: "libraries",
     addedOn: "2024-06-07",
+    tags: ["lib", "llm client"],
   },
   {
     name: "Ratchet",
@@ -204,7 +205,7 @@ export const AIResources: AIResource[] = [
     githubUrl: "https://github.com/huggingface/ratchet",
     websiteUrl: "https://www.ratchet.sh/",
     category: "libraries",
-    tags: ["browser", "framework"],
+    tags: ["browser", "framework", "machine learning"],
     addedOn: "2024-06-07",
     notes: "Runs on WebGPU, which means it can run on web, desktop or mobile.",
   },
@@ -214,7 +215,7 @@ export const AIResources: AIResource[] = [
       "A fast, cross-platform Whisper implementation, designed to run entirely client-side in your browser/electron app. Built on HuggingFace's Ratchet ML framework.",
     websiteUrl: "https://whisper-turbo.com/",
     githubUrl: "https://github.com/FL33TW00D/whisper-turbo",
-    tags: ["browser"],
+    tags: ["browser", "open source", "speech recognition"],
     category: "projects",
     addedOn: "2024-06-07",
   },
@@ -222,7 +223,7 @@ export const AIResources: AIResource[] = [
     name: "wllama",
     description: "WebAssembly binding for llama.cpp - Enabling in-browser LLM inference",
     githubUrl: "https://github.com/ngxson/wllama",
-    tags: ["browser"],
+    tags: ["browser", "inference"],
     category: "libraries",
     addedOn: "2024-06-07",
   },
@@ -231,7 +232,7 @@ export const AIResources: AIResource[] = [
     description: "AI agent stdlib that works with any LLM and TypeScript AI SDK.",
     githubUrl: "https://github.com/transitive-bullshit/agentic",
     category: "libraries",
-    tags: ["framework"],
+    tags: ["framework", "lib"],
     addedOn: "2024-06-07",
   },
   {
@@ -242,6 +243,7 @@ export const AIResources: AIResource[] = [
     websiteUrl: "https://dexter.dexa.ai/",
     category: "libraries",
     addedOn: "2024-06-07",
+    tags: ["framework", "rag", "dev tool"],
   },
 
   {
@@ -252,7 +254,7 @@ export const AIResources: AIResource[] = [
     category: "libraries",
     addedOn: "2024-06-14",
     notes: "Supports LangChain / HuggingFace / Vercel AI",
-    tags: ["framework"],
+    tags: ["dev tool", "ui", "browser"],
   },
 
   {
@@ -262,6 +264,7 @@ export const AIResources: AIResource[] = [
     category: "libraries",
     addedOn: "2024-06-14",
     notes: "Re-Ranking improves the accuracy of RAG-based searches and other retrieval systems.",
+    tags: ["lib", "semantic search"],
   },
 
   {
@@ -271,7 +274,7 @@ export const AIResources: AIResource[] = [
     websiteUrl: "https://re.video/",
     category: "libraries",
     addedOn: "2024-06-14",
-    tags: ["video"],
+    tags: ["lib", "video"],
     notes: "Forked from Motion Canvas, with the goal of turning it into a library.",
   },
 
@@ -283,7 +286,7 @@ export const AIResources: AIResource[] = [
     websiteUrl: "https://motioncanvas.io",
     category: "libraries",
     addedOn: "2024-06-14",
-    tags: ["video"],
+    tags: ["video", "dev tool", "open source"],
   },
 
   {
@@ -293,18 +296,18 @@ export const AIResources: AIResource[] = [
     websiteUrl: "https://firebase.google.com/docs/genkit",
     category: "libraries",
     addedOn: "2024-06-14",
-    tags: ["framework"],
+    tags: ["framework", "agentic workflows", "prompt engineering", "dev tool"],
     notes: "Has tools for prompting, prompt management, RAG tools and more.",
   },
 
   {
     name: "ReAgent",
-    description: "JS library for creating agents with multi-step workflows that in the browser.",
+    description: "JS library for creating agents with multi-step workflows.",
     githubUrl: "https://github.com/reagentai/reagent",
     category: "libraries",
     addedOn: "2024-06-14",
     notes: "Auto-generates a graph visualizing the agent's workflow.",
-    tags: ["browser"],
+    tags: ["browser", "agents", "open source", "lib"],
   },
 
   {
@@ -314,6 +317,7 @@ export const AIResources: AIResource[] = [
     websiteUrl: "https://magic-spell.vercel.app/",
     category: "projects",
     addedOn: "2024-06-14",
+    tags: ["project", "open source", "dev tool"],
   },
 
   {
@@ -324,6 +328,7 @@ export const AIResources: AIResource[] = [
     category: "projects",
     addedOn: "2024-06-14",
     notes: "Backend is Python, but frontend is Next.js ",
+    tags: ["project", "open source", "perplexity clone"],
   },
 
   {
@@ -333,16 +338,17 @@ export const AIResources: AIResource[] = [
     websiteUrl: "https://photoshot.app/",
     category: "projects",
     addedOn: "2024-06-14",
+    tags: ["project", "open source", "images"],
   },
 
   {
     name: "Lobe Chat",
-    description:
-      "A web app that provides a UI layer on top of various LLM APIs, allowing users to add specialized assistants to their account. It offers a platform for creating custom GPT-like experiences with a simple click.",
+    description: "A web app that provides a UI layer on top of various LLM APIs.",
     githubUrl: "https://github.com/lobehub/lobe-chat",
     websiteUrl: "https://chat-preview.lobehub.com/welcome",
     category: "projects",
     addedOn: "2024-06-20",
+    tags: ["project", "ui"],
   },
 
   {
@@ -353,16 +359,7 @@ export const AIResources: AIResource[] = [
     websiteUrl: "https://dify.ai/",
     category: "projects",
     addedOn: "2024-06-20",
-  },
-
-  {
-    name: "Hopfield",
-    description:
-      "A TypeScript-first LLM framework with strong type inference and a chainable interface. It's designed to easily integrate chat functionality with a lightweight library.",
-    githubUrl: "https://github.com/EnjoinHQ/hopfield",
-    websiteUrl: "https://hopfield.ai/",
-    category: "projects",
-    addedOn: "2024-06-20",
+    tags: ["saas app", "agentic workflows", "prompt engineering", "rag", "llm observability"],
   },
   {
     name: "Julep",
@@ -372,6 +369,7 @@ export const AIResources: AIResource[] = [
     websiteUrl: "https://www.julep.ai/",
     category: "projects",
     addedOn: "2024-06-20",
+    tags: ["saas app", "open source", "agents", "agentic workflows", "llm memory"],
   },
 
   {
@@ -383,13 +381,15 @@ export const AIResources: AIResource[] = [
       "https://devblogs.microsoft.com/azure-sdk/announcing-the-public-preview-of-the-microsoft-ai-chat-protocol-library-for-javascript/",
     category: "libraries",
     addedOn: "2024-06-20",
+    tags: ["sdk", "lib"],
   },
   {
     name: "lobe-i18n",
     description: "CLI tool for generating i18n translations using OpenAI.",
     githubUrl: "https://github.com/lobehub/lobe-cli-toolbox/tree/master/packages/lobe-i18n",
-    category: "libraries",
+    category: "tools",
     addedOn: "2024-06-21",
+    tags: ["dev tool", "cli"],
   },
 
   {
@@ -398,94 +398,105 @@ export const AIResources: AIResource[] = [
     githubUrl: "https://github.com/lobehub/lobe-tts",
     category: "libraries",
     addedOn: "2024-06-21",
+    tags: ["lib", "text-to-speech"],
   },
   {
     name: "Perplexica",
     description:
       "An open source Perplexity clone using Next.js, LangChain.js, HeadlessUI and Express.",
-    tags: ["framework", "machine learning"],
     category: "projects",
     addedOn: "2024-06-28",
-    notes: "Possibly the most substantial Perplexity clone, with lots to learn from.",
+    notes: "Possibly the most substantial Perplexity clone I've found.",
     githubUrl: "https://github.com/ItzCrazyKns/Perplexica/",
+    tags: ["project", "perplexity clone"],
   },
   {
     name: "LLM Answer Engine",
     description:
       "Another Perplexity clone made as a learning tool, using Next.js, Groq, Llama-3, Langchain, OpenAI, Upstash, Brave & Serper.",
-    tags: ["framework", "machine learning"],
     category: "projects",
     addedOn: "2024-06-28",
     githubUrl: "https://github.com/developersdigest/llm-answer-engine",
+    tags: ["project", "perplexity clone"],
   },
   {
     name: "Vercel AI DX Image Search App",
     description: "An open-source image search app using Next.js, Vercel AI SDK, and DrizzleORM.",
-    tags: ["framework", "machine learning"],
     category: "projects",
     addedOn: "2024-06-28",
     websiteUrl: "https://semantic-image-search.vercel.app/",
+    tags: ["project", "images", "semantic search"],
   },
   {
     name: "tsx-ai",
     description: "Make TypeScript files executable with tsx and run them from the terminal.",
-    tags: ["sdk"],
     category: "tools",
     addedOn: "2024-06-28",
     notes: "Useful for creating re-usable AI scripts that you can run like any other command.",
     githubUrl: "https://github.com/lgrammel/tsx-ai",
+    tags: ["lib", "dev tool"],
   },
   {
     name: "LangGraph.js",
     description: "LangChain's library for building apps with agent and multi-agent workflows.",
-    tags: ["sdk", "machine learning", "agents"],
     category: "libraries",
     addedOn: "2024-06-28",
     githubUrl: "https://github.com/langchain-ai/langgraphjs",
+    tags: [
+      "agentic workflows",
+      "agents",
+      "dev tool",
+      "framework",
+      "lib",
+      "llm memory",
+      "multi-agent",
+      "q&a",
+      "rag",
+    ],
   },
   {
     name: "LangChain Next.js Template",
     description:
       "Updated Next.js template repo to include LangGraph for creating apps with multiple agents.",
-    tags: [],
     category: "projects",
     addedOn: "2024-06-28",
     githubUrl: "https://github.com/langchain-ai/langchain-nextjs-template/tree/main",
+    tags: ["multi-agent", "dev tool", "rag"],
   },
   {
     name: "AI-Powered Blog Pt. II",
     description: "Building an AI-powered blog using Next.js, GPT4, Supabase & CopilotKit.",
-    tags: ["article"],
     category: "articles",
     addedOn: "2024-06-28",
     websiteUrl:
       "https://dev.to/copilotkit/im-building-an-ai-powered-blog-nextjs-langchain-supabase-5145",
+    tags: ["article"],
   },
   {
     name: "Serverless AI Chat with RAG using LangChain.js",
     description: "Tutorial on creating a serverless AI chat with RAG using LangChain.js.",
-    tags: ["article", "machine learning", "rag"],
     category: "articles",
     addedOn: "2024-06-28",
     websiteUrl:
       "https://learn.microsoft.com/en-us/samples/azure-samples/serverless-chat-langchainjs/serverless-chat-langchainjs/",
+    tags: ["article", "rag"],
   },
   {
     name: "Building an AI-powered crossword puzzle with Genkit and Gemini",
     description:
       "Learn how the FireBase team used Genkit and Gemini to add a smart hint feature to a classic word game",
-    tags: ["article"],
     category: "articles",
     addedOn: "2024-06-28",
     websiteUrl: "https://firebase.blog/posts/2024/06/ai-powered-crossword-genkit",
+    tags: ["article"],
   },
   {
     name: "Chrome window.ai",
     description: "Gemini Nano AI model right inside your browser.",
-    tags: ["browser"],
     category: "tools",
     addedOn: "2024-06-28",
     websiteUrl: "https://windowai.io/",
+    tags: ["browser", "chrome extension"],
   },
 
   {
@@ -496,61 +507,40 @@ export const AIResources: AIResource[] = [
     addedOn: "2024-06-28",
     githubUrl: "https://github.com/mikaelvesavuori/chatgpt-architecture-coach",
   },
-
-  {
-    name: "UnKey",
-    description:
-      "OSS/cloud API management platform that includes LLM semantic caching and observability.",
-    githubUrl: "https://github.com/unkeyed/unkey",
-    websiteUrl: "https://www.unkey.com/blog/semantic-caching",
-    category: "tools",
-    tags: ["saas app"],
-    addedOn: "2024-06-28",
-  },
-  {
-    name: "Litlyx",
-    description:
-      "A single-line code analytics solution that integrates with every JavaScript/TypeScript framework. Track 10+ KPIs and as many custom events as you want for your website or web app.",
-    tags: ["sdk"],
-    category: "tools",
-    addedOn: "2024-03-18",
-    websiteUrl: "https://litlyx.com/",
-    githubUrl: "https://github.com/Litlyx/litlyx",
-  },
   {
     name: "Eidos",
     description: "Offline-first Notion alternative with deep LLM integration",
-    tags: ["saas app"],
     category: "tools",
     addedOn: "2024-03-18",
     websiteUrl: "https://eidos.space/",
     githubUrl: "https://github.com/mayneyao/eidos",
+    tags: ["saas app", "open source", "project"],
   },
   {
     name: "GPTPortal",
     description:
       "A feature-rich portal to chat with GPT-4, Claude, Gemini, Mistral, & OpenAI Assistant APIs via a lightweight Node.js web app; supports customizable multimodality for voice, images, & files.",
-    tags: ["sdk"],
     category: "projects",
     addedOn: "2024-03-18",
     githubUrl: "https://github.com/Zaki-1052/GPTPortal",
+    tags: ["project", "chat ui", "multimodal", "open source"],
   },
   {
     name: "LLM operators, an approach that opens up new possibilities",
     description: "Article about LLM operators",
-    tags: ["article"],
     category: "articles",
     addedOn: "2024-03-18",
     websiteUrl: "https://dev.to/abdallah_meddah/llm-operators-144h",
+    tags: ["article"],
   },
   {
     name: "A basic LangChain.js chain with prompt template, structured JSON output and OpenAI / Ollama LLMs",
     description: "Tutorial on using LangChain.js with OpenAI and Ollama",
-    tags: ["article"],
     category: "articles",
     addedOn: "2024-03-18",
     websiteUrl:
       "https://dev.to/this-is-learning/a-basic-langchainjs-chain-with-prompt-template-structured-json-output-and-openai-ollama-llms-121p",
+    tags: ["article"],
   },
   {
     name: "Let's build AI-tools with the help of AI and Typescript!",
@@ -588,16 +578,16 @@ export const AIResources: AIResource[] = [
   {
     name: "Autoshow",
     description: "Open-source video transcription workflow",
-    tags: ["sdk"],
     category: "tools",
     addedOn: "2024-03-18",
     githubUrl: "https://github.com/ajcwebdev/autoshow",
+    tags: ["lib", "cli", "speech recognition", "video", "dev tool", "transcription"],
   },
   {
     name: "Parea",
     description:
       "YC-backed suite of tools for shipping AI applications with tools for generating dummy data, app monitoring, testing and more",
-    tags: ["sdk"],
+    tags: ["sdk", "dev tool", "testing", "llm observability"],
     category: "tools",
     addedOn: "2024-03-18",
     websiteUrl: "https://www.parea.ai/",
@@ -606,11 +596,11 @@ export const AIResources: AIResource[] = [
   {
     name: "Amplication",
     description: "Instantly generate production-ready .NET and Node.js backend apps",
-    tags: ["low-code"],
     category: "tools",
     addedOn: "2024-03-18",
     websiteUrl: "https://amplication.com/",
     githubUrl: "https://github.com/amplication/amplication",
+    tags: ["low-code", "code gen"],
   },
   {
     name: "Vercel AI SDK RAG Tutorial",
@@ -630,6 +620,7 @@ export const AIResources: AIResource[] = [
     addedOn: "2024-07-18",
     websiteUrl: "https://docs.tokenjs.ai/",
     githubUrl: "https://github.com/token-js/token.js",
+    tags: ["llm client"],
   },
   {
     name: "Celp",
@@ -638,6 +629,7 @@ export const AIResources: AIResource[] = [
     category: "tools",
     addedOn: "2024-07-18",
     websiteUrl: "https://www.celp.ai/",
+    tags: ["cli", "dev tool", "code gen", "testing"],
   },
   {
     name: "Upscayl",
@@ -647,6 +639,7 @@ export const AIResources: AIResource[] = [
     addedOn: "2024-07-18",
     websiteUrl: "https://upscayl.org/",
     githubUrl: "https://github.com/upscayl/upscayl",
+    tags: ["project", "open source", "images"],
   },
   {
     name: "chatbot-ui",
@@ -656,6 +649,7 @@ export const AIResources: AIResource[] = [
     addedOn: "2024-07-18",
     websiteUrl: "https://www.chatbotui.com/",
     githubUrl: "https://github.com/mckaywrigley/chatbot-ui/tree/main",
+    tags: ["project", "open source", "ui", "llm client"],
   },
   {
     name: "Chatbox",
@@ -664,6 +658,7 @@ export const AIResources: AIResource[] = [
     addedOn: "2024-07-18",
     websiteUrl: "https://chatboxai.app/",
     githubUrl: "https://github.com/Bin-Huang/chatbox",
+    tags: ["project", "open source", "llm client"],
   },
   {
     name: "Leon",
@@ -672,6 +667,7 @@ export const AIResources: AIResource[] = [
     addedOn: "2024-07-18",
     websiteUrl: "https://getleon.ai/",
     githubUrl: "https://github.com/leon-ai/leon",
+    tags: ["project", "open source", "cli", "dev tool", "agents"],
   },
   {
     name: "LibreChat",
@@ -682,6 +678,7 @@ export const AIResources: AIResource[] = [
     githubUrl: "https://github.com/danny-avila/LibreChat",
     notes:
       "Like a self-hostable ChatGPT client/server system, which can use all popular model providers.",
+    tags: ["project", "open source", "llm client"],
   },
   {
     name: "Crawlee",
@@ -691,6 +688,7 @@ export const AIResources: AIResource[] = [
     addedOn: "2024-07-18",
     websiteUrl: "https://crawlee.dev/",
     githubUrl: "https://github.com/apify/crawlee",
+    tags: ["lib", "web scraping"],
   },
   {
     name: "Continue",
@@ -700,6 +698,7 @@ export const AIResources: AIResource[] = [
     notes: "Lots of interesting TS code to learn from under the hood.",
     websiteUrl: "https://www.continue.dev/",
     githubUrl: "https://github.com/continuedev/continue",
+    tags: ["dev tool", "open source", "code gen"],
   },
   {
     name: "Building a Secure PDF Chat AI Application with Langchain, Next.js, arcjet, and Pinecone DB",
@@ -708,6 +707,7 @@ export const AIResources: AIResource[] = [
     addedOn: "2024-07-18",
     websiteUrl:
       "https://dev.to/nickolasbenakis/building-a-secure-pdf-chat-ai-application-with-langchain-nextjs-arcjet-and-pinecone-db-ddh",
+    tags: ["article", "learning resource"],
   },
   {
     name: "LlamaTutor",
@@ -717,7 +717,7 @@ export const AIResources: AIResource[] = [
     githubUrl: "https://github.com/Nutlope/llamatutor",
     category: "projects",
     notes: "Next.js w/app router, Tailwind, and some cool tools like Serper and Helicone.",
-    tags: ["saas app", "framework"],
+    tags: ["project", "open source", "learning resource"],
     addedOn: "2024-07-25",
   },
   {
@@ -729,7 +729,7 @@ export const AIResources: AIResource[] = [
     category: "projects",
     notes:
       "This won Anthropic's Build With Claude contest. Orig tweet: https://x.com/mckaywrigley/status/1816168589776544100",
-    tags: ["tool", "sdk"],
+    tags: ["dev tool", "sdk"],
     addedOn: "2024-07-25",
   },
   {
@@ -739,7 +739,7 @@ export const AIResources: AIResource[] = [
       "Chrome plugin that visualizes colors stored in CSS variables, and allows you to change them on the fly.",
     category: "tools",
     notes: "Features prompt-driven color palette generation, shadcn-ui and daisyUI support. ",
-    tags: ["browser"],
+    tags: ["browser", "chrome extension", "dev tool"],
     addedOn: "2024-07-25",
   },
   {
@@ -750,7 +750,7 @@ export const AIResources: AIResource[] = [
     githubUrl: "https://github.com/pezzolabs/pezzo",
     category: "tools",
     notes: "Written in TypeScript.",
-    tags: ["sdk", "tool"],
+    tags: ["sdk", "dev tool", "llm observability", "platform"],
     addedOn: "2024-07-25",
   },
   {
