@@ -112,23 +112,25 @@ export const columns: ColumnDef<AIResource>[] = [
     cell: (cell) => {
       const tags = cell.row.original.tags;
 
-      return tags?.sort().map((t) => {
-        return (
-          <ul>
-            <li key={t} className="mb-1 inline-block">
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  cell.column.setFilterValue([t]);
-                }}
-              >
-                <TagBadge t={t} includeHovers />
-              </a>
-            </li>
-          </ul>
-        );
-      });
+      return (
+        <ul className="max-w-48">
+          {tags?.sort().map((t) => {
+            return (
+              <li key={t} className="mb-1 mr-1 inline-block">
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    cell.column.setFilterValue([t]);
+                  }}
+                >
+                  <TagBadge t={t} includeHovers />
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      );
     },
   },
 ];
