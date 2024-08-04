@@ -11,9 +11,9 @@ export function TagBadge({
   className?: string;
   includeHovers?: boolean;
 }) {
-  const hoverClassNames = `hover:${AIResourceTagColors[t]} hover:brightness-125`;
+  const hoverClassNames = `hover:brightness-125 cursor-pointer`;
   const classNames = cn(
-    `${AIResourceTagColors[t]} text-background dark:text-foreground font-mono text-xs truncate`,
+    `${AIResourceTagColors[t]} hover:${AIResourceTagColors[t]} text-background dark:text-foreground font-mono text-xs truncate cursor-auto`,
     includeHovers ? hoverClassNames : "",
     className
   );
