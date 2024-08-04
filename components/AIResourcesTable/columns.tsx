@@ -8,12 +8,14 @@ import { FaGithub, FaGlobe } from "react-icons/fa";
 import { ArrowUp, ArrowDown } from "lucide-react";
 import dayjs from "dayjs";
 import { TagBadge } from "./TagBadge";
+import { cn } from "@/lib/utils";
 
 export const headerTextSize = "text-md";
 
-export function GithubButton({ url }: { url: string }) {
+export function GithubButton({ url, className = "" }: { url: string; className?: string }) {
+  const classNames = cn("inline-block", className);
   return (
-    <Link href={url} target="_blank">
+    <Link href={url} target="_blank" className={classNames}>
       <Button size="icon" className="bg-transparent hover:scale-110 hover:bg-transparent">
         <FaGithub className="w-5 h-5" />
       </Button>
@@ -21,9 +23,11 @@ export function GithubButton({ url }: { url: string }) {
   );
 }
 
-export function WebsiteButton({ url }: { url: string }) {
+export function WebsiteButton({ url, className }: { url: string; className?: string }) {
+  const classNames = cn("inline-block", className);
+
   return (
-    <Link href={url} target="_blank">
+    <Link href={url} target="_blank" className={classNames}>
       <Button size="icon" className="bg-transparent hover:scale-110 hover:bg-transparent">
         <FaGlobe className="w-5 h-5" />
       </Button>
@@ -87,9 +91,9 @@ export const columns: ColumnDef<AIResource>[] = [
       const websiteUrl = cell.row.original.websiteUrl;
 
       return (
-        <div className="flex flex-row gap-2">
-          {githubUrl ? <GithubButton url={githubUrl} /> : null}
-          {websiteUrl ? <WebsiteButton url={websiteUrl} /> : null}
+        <div className="grid grid-cols-2 gap-2">
+          {githubUrl ? <GithubButton url={githubUrl} /> : <span></span>}
+          {websiteUrl ? <WebsiteButton url={websiteUrl} /> : <span></span>}
         </div>
       );
     },
