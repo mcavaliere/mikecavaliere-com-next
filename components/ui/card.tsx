@@ -69,7 +69,7 @@ export function ArticleCard({ children, className, ...props }: React.HTMLAttribu
 }
 
 function AINewsletterCard({ className = "", children, title, href, frequency }) {
-  const classNames = cn("mb-4 bg-gradient-to-br from-background to-accent", className);
+  const classNames = cn("mb-4 bg-linear-to-br from-background to-accent", className);
   return (
     <Card className={classNames}>
       <CardHeader className="flex-row gap-3 items-center">
