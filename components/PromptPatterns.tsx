@@ -4,10 +4,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDown } from "lucide-react";
 import { PromptPattern, promptPatterns } from "@/data/prompt-patterns";
-import { Heading3, Heading4 } from "./Headings";
+import { Heading4 } from "./Headings";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
@@ -44,23 +43,21 @@ export function PromptPatterns({ className = "" }) {
           consequences,
         }: PromptPattern) => (
           <AccordionItem value={name} key={name}>
-            <AccordionPrimitive.Header className="flex">
-              <AccordionPrimitive.Trigger
-                className={cn(
-                  "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:no-underline hover:opacity-80 hover:-translate-x-1 hover:-translate-y-1 [&[data-state=open]>svg]:rotate-180"
-                )}
-              >
-                <span>{name}</span>
-                <span className="flex flex-row">
-                  <Badge
-                    className={`${categories[category]} hover:${categories[category]} text-background dark:text-foreground`}
-                  >
-                    {category}
-                  </Badge>
-                  <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200" />
-                </span>
-              </AccordionPrimitive.Trigger>
-            </AccordionPrimitive.Header>
+            <AccordionTrigger
+              className={cn(
+                "grid grid-cols-[1fr_1fr_20px] items-center py-4 font-medium transition-all hover:no-underline hover:opacity-80 hover:-translate-x-1 hover:-translate-y-1 [&[data-state=open]>svg]:rotate-180"
+              )}
+            >
+              <span className="text-left">{name}</span>
+
+              <span className="text-left">
+                <Badge
+                  className={`${categories[category]} hover:${categories[category]} text-background dark:text-foreground justify-self-end`}
+                >
+                  {category}
+                </Badge>
+              </span>
+            </AccordionTrigger>
             <AccordionContent>
               <div className="p-4 rounded-md bg-accent">
                 <Heading4 className="mb-2">Example</Heading4>
