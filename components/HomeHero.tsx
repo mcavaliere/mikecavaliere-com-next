@@ -16,8 +16,8 @@ export function HomeHero() {
   return (
     <div className="flex flex-col md:flex-row w-full mb-10">
       <div className="flex w-full md:w-1/2 justify-center items-center">
-        <div className="relative rounded-full overflow-hidden w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] bg-gradient-to-br from-cyan via-purple-dark to-purple">
-          <div className="relative rounded-full overflow-hidden w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] border-[10px] border-transparent ">
+        <div className="relative rounded-full overflow-hidden w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] bg-linear-to-br from-cyan via-purple-dark to-purple">
+          <div className="relative rounded-full overflow-hidden w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] border-10 border-transparent ">
             <Image
               src="/images/headshot 1024 square 72DPI.jpeg"
               priority
