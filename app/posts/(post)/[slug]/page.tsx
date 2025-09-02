@@ -11,15 +11,16 @@ export async function generateStaticParams() {
   return params;
 }
 
-type Props = {
-  params: { slug: string };
-};
+type Params = Promise<{ slug: string }>;
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Params;
+  searchParams: SearchParams;
+}): Promise<Metadata> {
   // read route params
+  const params = await props.params;
+  // const searchParams = await props.searchParams
   const slug = params.slug;
 
   // fetch data
@@ -45,7 +46,9 @@ export async function generateMetadata(
   };
 }
 
-export default async function ArticlePage({ params: { slug } }) {
+export default async function ArticlePage(props: { params: Params; searchParams: SearchParams }) {
+  const params = await props.params;
+  const slug = params.slug;
   const article = await getPostContent(slug);
   const frontmatter = await getPostFrontMatter(slug);
 
