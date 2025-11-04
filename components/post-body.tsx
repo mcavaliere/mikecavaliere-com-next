@@ -1,12 +1,13 @@
+import { ReactElement } from "react";
 import { rendererMap, DefaultRenderer } from "lib/postRenderers";
 import { nodeObjType } from "lib/types";
 
 /**
  * Recursively determine the right renderer for a single nodeObjType node and render it (and any children).
  * @param nodeProps The custom node to render and traverse.
- * @returns {JSX.Element}
+ * @returns {ReactElement}
  */
-export function renderNode(nodeProps: nodeObjType): JSX.Element | null {
+export function renderNode(nodeProps: nodeObjType): ReactElement | null {
   const { tagName, text, children, meta } = nodeProps;
 
   // Text nodes.

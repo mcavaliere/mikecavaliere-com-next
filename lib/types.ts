@@ -68,7 +68,7 @@ export type Project = {
 };
 
 export type PageLayoutProps = {
-  children: JSX.Element;
+  children: ReactElement;
 };
 
 export type ArticleMetaData = {

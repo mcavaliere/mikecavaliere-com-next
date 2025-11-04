@@ -2,7 +2,6 @@ import { Heading1 } from "components/Headings";
 import { ContactLinks } from "components/ContactLinks";
 import { ParagraphLink } from "components/Link";
 import Image from "next/image";
-import photo from "/public/images/mike-cavaliere-in-office.jpg";
 
 export default function AboutPage() {
   return (
@@ -12,9 +11,11 @@ export default function AboutPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Image
           alt="Mike Cavaliere in his office, smiling at the camera."
-          src={photo}
+          src="/images/mike-cavaliere-in-office.jpg"
           className="rounded-lg overflow-hidden shadow-2xl"
           priority
+          width={800}
+          height={600}
         />
 
         <div className="pl-10 py-10 md:py-0 md:flex flex-col justify-center">

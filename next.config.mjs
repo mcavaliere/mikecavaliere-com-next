@@ -1,7 +1,4 @@
 import createMDX from "@next/mdx";
-import remarkGfm from "remark-gfm";
-import rehypeHighlight from "rehype-highlight";
-import remarkFrontmatter from "remark-frontmatter";
 import { redirects } from "./redirects.mjs";
 
 /** @type {import('next').NextConfig} */
@@ -11,7 +8,20 @@ const nextConfig = {
   // Optionally, add any other Next.js config below
 
   images: {
-    domains: ["mikecavaliere.com", "www.mikecavaliere.com", "res.cloudinary.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "mikecavaliere.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.mikecavaliere.com",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+    ],
   },
   compiler: {
     styledComponents: true,
@@ -37,9 +47,15 @@ const nextConfig = {
 
 const withMDX = createMDX({
   // Add markdown plugins here, as desired
+  // Using string names for Turbopack compatibility in Next.js 16
   options: {
-    remarkPlugins: [remarkFrontmatter, remarkGfm],
-    rehypePlugins: [rehypeHighlight],
+    remarkPlugins: [
+      "remark-frontmatter",
+      "remark-gfm",
+    ],
+    rehypePlugins: [
+      "rehype-highlight",
+    ],
   },
 });
 

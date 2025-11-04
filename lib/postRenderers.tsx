@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import highlighterTheme from "react-syntax-highlighter/dist/cjs/styles/prism/vsc-dark-plus";
 import { Heading1, Heading2, Heading3, Heading4, P as Paragraph } from "components/Headings";
@@ -85,7 +85,7 @@ export function LI({ children, ...props }) {
   return <li {...props}>{children}</li>;
 }
 
-export type CodeComponentProps = JSX.IntrinsicElements["code"] & {
+export type CodeComponentProps = React.JSX.IntrinsicElements["code"] & {
   inline?: boolean;
 };
 

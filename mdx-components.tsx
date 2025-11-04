@@ -36,6 +36,6 @@ export const mdxComponents = {
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
-    mdxComponents,
-  };
+    ...mdxComponents,
+  } as MDXComponents;
 }
