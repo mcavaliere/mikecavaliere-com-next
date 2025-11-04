@@ -21,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={fonts.poppins.variable} suppressHydrationWarning>
-      <body>
+      <body className="bg-[#F6F5F4] dark:bg-background">
         <Providers>
           <SiteOuterLayout>
             <MaxWidthContainerLayout>{children}</MaxWidthContainerLayout>

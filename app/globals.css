@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @plugin 'tailwindcss-animate';
 
@@ -52,9 +52,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
-  --font-sans:
-    Poppins, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-sans: Poppins, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
@@ -178,11 +177,11 @@
     background: hsl(var(--purple) / 0%);
     border-radius: 24px;
     rotate: 35deg;
-    width: 260px;
-    top: 200px;
+    width: 500px;
+    top: 0px;
     height: 400px;
     filter: blur(150px);
-    animation: shadow-slide infinite 4s linear alternate;
+    animation: shadow-slide infinite 3s linear alternate;
     z-index: -1;
   }
 
