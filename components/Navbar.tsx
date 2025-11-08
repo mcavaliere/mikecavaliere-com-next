@@ -11,7 +11,7 @@ import { NAVBAR_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 export const Navbar = ({ className = "" }) => {
-  const classNames = cn("sticky top-0 z-40 w-full bg-white dark:bg-background", className);
+  const classNames = cn("sticky top-0 z-40 w-full bg-white dark:bg-transparent", className);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
