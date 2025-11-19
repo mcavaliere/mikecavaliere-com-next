@@ -190,6 +190,15 @@
     position: relative;
   }
 
+  .underline-hover > span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.25em;
+    width: 0px;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+  }
+
   .underline-hover::before {
     content: "";
     background-color: hsla(196, 61%, 58%, 0.75);
@@ -204,6 +213,10 @@
 
   .underline-hover:hover::before {
     width: 100%;
+  }
+
+  .underline-hover:hover > span {
+    width: 25px;
   }
 
   @keyframes shadow-slide {
