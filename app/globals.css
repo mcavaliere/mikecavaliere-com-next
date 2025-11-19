@@ -185,6 +185,27 @@
     z-index: -1;
   }
 
+  .underline-hover {
+    display: inline-block;
+    position: relative;
+  }
+
+  .underline-hover::before {
+    content: "";
+    background-color: hsla(196, 61%, 58%, 0.75);
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 20%;
+    z-index: -1;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .underline-hover:hover::before {
+    width: 100%;
+  }
+
   @keyframes shadow-slide {
     from {
       background: hsl(var(--purple) / 20%);

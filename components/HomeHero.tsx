@@ -9,7 +9,7 @@ export const HERO_AVATAR_SIZES = {
 };
 
 function Strong({ children }) {
-  return <strong className="font-semibold">{children}</strong>;
+  return <strong className="font-semibold underline-hover">{children}</strong>;
 }
 
 export function HomeHero() {
