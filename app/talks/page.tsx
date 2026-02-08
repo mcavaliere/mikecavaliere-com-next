@@ -4,7 +4,7 @@ import { CardGrid } from "components/card-grid";
 import { Interviews } from "data/interviews";
 import { Talks } from "data/talks";
 import { Interview, Talk } from "lib/types";
-import { Heading1, Heading2, P } from "components/headings";
+import { Heading1, Heading2, P } from "@/components/headings";
 import { Presentation, Video } from "lucide-react";
 
 import { ArticleCard, CardContent } from "@/components/ui/card";

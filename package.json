@@ -11,7 +11,9 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "ts": "tsc --noEmit",
+    "ts:watch": "tsc --watch --noEmit"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.0.1",

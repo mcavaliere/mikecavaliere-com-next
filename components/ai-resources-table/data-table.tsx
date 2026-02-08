@@ -69,7 +69,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
                       : flexRender(header.column.columnDef.header, header.getContext())}
                   </TableHead>
                 );
-              ))}
+              })}
             </TableRow>
           ))}
         </TableHeader>

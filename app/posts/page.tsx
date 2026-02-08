@@ -2,7 +2,7 @@ import { NextPageWithLayout } from "lib/types";
 import { getAllPostsMap } from "lib/api";
 import type { Metadata } from "next";
 
-import { Heading1, Heading2 } from "components/headings";
+import { Heading1, Heading2 } from "@/components/headings";
 import PostPreview from "@/components/post-preview";
 
 export type PostsIndexPageProps = NextPageWithLayout & {
