@@ -1,5 +1,5 @@
-import { HomeHero } from "components/HomeHero";
-import { HomeSectionsGrid } from "components/HomeSectionsGrid";
+import { HomeHero } from "components/home-hero";
+import { HomeSectionsGrid } from "components/home-sections-grid";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

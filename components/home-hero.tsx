@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { ContactLinks } from "components/ContactLinks";
-import { Heading1, Heading2 } from "./Headings";
+import { ContactLinks } from "components/contact-links";
+import { Heading1, Heading2 } from "./headings";
 
 export const HERO_AVATAR_SIZES = {
   base: 200,

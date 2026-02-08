@@ -3,7 +3,7 @@
 import Date from "./date";
 import CoverImage from "components/cover-image";
 import { FeaturedImage } from "@/lib/types";
-import { Heading1 } from "./Headings";
+import { Heading1 } from "./headings";
 
 export function PostHeader({
   title,

@@ -1,7 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import { rendererMapLowercase } from "./lib/postRenderers";
-import { AIResourcesTable } from "./components/AIResourcesTable/AIResourcesTable";
-import * as headings from "./components/Headings";
+import { AIResourcesTable } from "./components/ai-resources-table/ai-resources-table";
+import * as headings from "./components/headings";
 import CoverImage from "./components/cover-image";
 import { Badge } from "./components/ui/badge";
 import {
@@ -13,8 +13,8 @@ import {
   CardDescription,
   AINewsletterCard,
 } from "./components/ui/card";
-import { TwitterLink } from "./components/Link";
-import { PromptPatterns } from "./components/PromptPatterns";
+import { TwitterLink } from "./components/link";
+import { PromptPatterns } from "./components/prompt-patterns";
 
 export const mdxComponents = {
   ...rendererMapLowercase,

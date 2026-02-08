@@ -1,6 +1,6 @@
-import { HomeSectionCard } from "components/HomeSectionCard";
+import { HomeSectionCard } from "components/home-section-card";
 import { NAVBAR_LINKS_MAP } from "lib/constants";
-import { CardGrid } from "./CardGrid";
+import { CardGrid } from "./card-grid";
 
 const GRID_ITEMS = [
   {

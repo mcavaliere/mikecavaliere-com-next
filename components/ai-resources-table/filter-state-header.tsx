@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
 import { Button } from "../ui/button";
 import { SyntheticEvent } from "react";
-import { TagBadge } from "./TagBadge";
+import { TagBadge } from "./tag-badge";
 
 export function FilterStateHeader({
   className = "",

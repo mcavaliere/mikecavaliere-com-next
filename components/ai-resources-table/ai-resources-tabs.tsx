@@ -1,5 +1,5 @@
-import { AIResourcesTable } from "@/components/AIResourcesTable/AIResourcesTable";
-import { AIArticleList } from "@/components/AIResourcesTable/AIArticleList";
+import { AIResourcesTable } from "@/components/ai-resources-table/ai-resources-table";
+import { AIArticleList } from "@/components/ai-resources-table/ai-article-list";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AIResources } from "@/data/ai-resources";
 export function AIResourcesTabs() {

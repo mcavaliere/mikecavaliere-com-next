@@ -1,6 +1,6 @@
 import { AIResource } from "./types";
 import Link from "next/link";
-import { Heading2 } from "../Headings";
+import { Heading2 } from "../headings";
 import { SquareArrowUpRight } from "lucide-react";
 
 export function ArticleList({ articles }: { articles: AIResource[] }) {

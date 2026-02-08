@@ -1,10 +1,10 @@
 import { Button } from "components/ui/button";
 import CoverImage from "components/cover-image";
-import { CardGrid } from "components/CardGrid";
+import { CardGrid } from "components/card-grid";
 import { Interviews } from "data/interviews";
 import { Talks } from "data/talks";
 import { Interview, Talk } from "lib/types";
-import { Heading1, Heading2, P } from "components/Headings";
+import { Heading1, Heading2, P } from "components/headings";
 import { Presentation, Video } from "lucide-react";
 
 import { ArticleCard, CardContent } from "@/components/ui/card";

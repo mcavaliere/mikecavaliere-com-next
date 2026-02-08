@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/accordion";
 import { ChevronDown } from "lucide-react";
 import { PromptPattern, promptPatterns } from "@/data/prompt-patterns";
-import { Heading4 } from "./Headings";
+import { Heading4 } from "./headings";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 

@@ -1,4 +1,4 @@
-import { Link } from "@/components/Link";
+import { Link } from "@/components/link";
 import { cn } from "@/lib/utils";
 import { FaArrowLeft } from "react-icons/fa";
 export function BackLink({ href, className = "", ...props }: { href: string; [key: string]: any }) {

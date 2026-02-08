@@ -3,11 +3,11 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { AIResource } from "./types";
 import { Button } from "@/components/ui/button";
-import { Link } from "@/components/Link";
+import { Link } from "@/components/link";
 import { FaGithub, FaGlobe } from "react-icons/fa";
 import { ArrowUp, ArrowDown } from "lucide-react";
 import dayjs from "dayjs";
-import { TagBadge } from "./TagBadge";
+import { TagBadge } from "./tag-badge";
 import { cn } from "@/lib/utils";
 
 export const headerTextSize = "text-md";

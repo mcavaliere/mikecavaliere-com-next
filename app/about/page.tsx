@@ -1,6 +1,6 @@
-import { Heading1 } from "components/Headings";
-import { ContactLinks } from "components/ContactLinks";
-import { ParagraphLink } from "components/Link";
+import { Heading1 } from "components/headings";
+import { ContactLinks } from "components/contact-links";
+import { ParagraphLink } from "components/link";
 import Image from "next/image";
 
 export default function AboutPage() {

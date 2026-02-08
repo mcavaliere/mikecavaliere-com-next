@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
-import { Heading3 } from "@/components/Headings";
+import { Heading3 } from "@/components/headings";
 
 export const CARD_DEFAULT_CLASSNAMES = "rounded-lg shadow-xl bg-card text-card-foreground";
 

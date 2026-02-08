@@ -1,4 +1,4 @@
-import { AIResource } from "@/components/AIResourcesTable/types";
+import { AIResource } from "../components/ai-resources-table/types";
 
 export const AIResources: AIResource[] = [
   {

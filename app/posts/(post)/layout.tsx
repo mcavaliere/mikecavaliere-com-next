@@ -1,4 +1,4 @@
-import { BackLink } from "@/components/BackLink";
+import { BackLink } from "@/components/back-link";
 
 export default function PostLayout(props: { children: React.ReactNode }) {
   return (

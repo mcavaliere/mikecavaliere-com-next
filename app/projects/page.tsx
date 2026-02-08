@@ -1,10 +1,10 @@
 import { Button } from "components/ui/button";
 import CoverImage from "components/cover-image";
-import { CardGrid } from "components/CardGrid";
+import { CardGrid } from "components/card-grid";
 import { CardContent } from "components/ui/card";
 import { Projects } from "data/projects";
 import { Project } from "lib/types";
-import { Heading1, Heading2, P } from "components/Headings";
+import { Heading1, Heading2, P } from "components/headings";
 import { FaGlobe, FaGithub } from "react-icons/fa";
 import { ArticleCard } from "@/components/ui/card";
 import Link from "next/link";

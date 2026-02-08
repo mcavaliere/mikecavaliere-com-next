@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import highlighterTheme from "react-syntax-highlighter/dist/cjs/styles/prism/vsc-dark-plus";
-import { Heading1, Heading2, Heading3, Heading4, P as Paragraph } from "components/Headings";
-import { Link } from "@/components/Link";
+import { Heading1, Heading2, Heading3, Heading4, P as Paragraph } from "components/headings";
+import { Link } from "@/components/link";
 import Image, { ImageProps } from "next/image";
 import { Button } from "@/components/ui/button";
 import { cn } from "./utils";

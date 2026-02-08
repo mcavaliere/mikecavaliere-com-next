@@ -21,7 +21,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useState } from "react";
-import { FilterStateHeader } from "./FilterStateHeader";
+import { FilterStateHeader } from "./filter-state-header";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -69,7 +69,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
                       : flexRender(header.column.columnDef.header, header.getContext())}
                   </TableHead>
                 );
-              })}
+              ))}
             </TableRow>
           ))}
         </TableHeader>

@@ -1,5 +1,5 @@
 import { AIResources } from "../../data/ai-resources";
-import { ArticleList } from "./ArticleList";
+import { ArticleList } from "./article-list";
 import { AIResource } from "./types";
 
 /**

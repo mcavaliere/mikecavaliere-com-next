@@ -1,4 +1,4 @@
-import { Heading1, Heading2, P } from "@/components/Headings";
+import { Heading1, Heading2, P } from "@/components/headings";
 
 export default function Styleguide() {
   return (
